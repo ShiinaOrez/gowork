@@ -8,7 +8,7 @@ import (
 type Product struct {
 	gorm.Model
 	Code string
-	Price uint
+	Price int
 }
 
 func main() {
@@ -24,7 +24,19 @@ func main() {
 	// 创建
 	db.Create(&Product{Code: "L1212", Price: 1000})
 
-	// 读取
+	db.Set("gorm:table_options","Price=233")
+
+/*	has_table:=db.HasTable(&Product{})
+	//check the table exist? return type is bool
+	fmt.Println(has_table)//true*/
+
+	db.CreateTable(&Product{})
+
+	db.DropTable(&Product{})
+
+
+
+/*	// 读取
 	var product Product
 	db.First(&product, 1) // 查询id为1的product
 
@@ -36,5 +48,5 @@ func main() {
 	db.Model(&product).Update("Price", 2000)
 
 	// 删除 - 删除product
-	db.Delete(&product)
+	db.Delete(&product)*/
 }
