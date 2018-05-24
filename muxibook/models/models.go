@@ -7,7 +7,7 @@ import (
 
 type User struct {
 	//tablename auto-create to be "users"
-	gorm.Model
+	ID            int         `gorm:"primary_key"`
 	//Model include : ID CreateAt UpdateAt DeleteAt
 	Username      string      `gorm:"size:20;unique"`//username=db.Column(db.String(20),unique=True)
 	Password      string      `gorm:"size:20"`

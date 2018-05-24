@@ -5,6 +5,7 @@ import (
 	"gowork/muxibook/models"
 
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"log"
 	"strconv"
 )
@@ -17,7 +18,7 @@ var DB *gorm.DB
 
 func init(){
 	var err error
-	DB,err=gorm.Open("sqlite3","test.db")
+	DB,err=gorm.Open("sqlite3","muxibook.db")
 	if err != nil{
 		log.Fatalln(err)
 	}
@@ -26,7 +27,7 @@ func init(){
 	DB.AutoMigrate(&models.Kind{})
 }
 
-func login(ctx iris.Context){
+func Signin(ctx iris.Context){
 	var data Login
 	var usr models.User
 	err:=ctx.ReadJSON(&data)
@@ -40,16 +41,14 @@ func login(ctx iris.Context){
 		usr.Password="muxibook"
 		DB.Create(&usr)
 	}else{
-		ctx.JSON(
-			map[string]string{
-				"token":strconv.Itoa(usr.ID)+usr.Username
-			}
-		)
+		ctx.JSON(map[string]string{
+				"token":strconv.Itoa(usr.ID)+usr.Username,
+		})
 	}
 	ctx.StatusCode(200)
 }
 
-func signup(ctx iris.Context){
+func Signup(ctx iris.Context){
 	var data Login
 	var usr models.User
 	err:=ctx.ReadJSON(&data)
