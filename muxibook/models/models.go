@@ -11,7 +11,7 @@ type User struct {
 	//Model include : ID CreateAt UpdateAt DeleteAt
 	Username      string      `gorm:"size:20;unique"`//username=db.Column(db.String(20),unique=True)
 	Password      string      `gorm:"size:20"`
-	PasswordHash  string  	  `gorm:"size:128"`//column name is password_hash
+//	PasswordHash  string  	  `gorm:"size:128"`//column name is password_hash
 	Confirmed     bool        `gorm:"default:False"`
 	BookCount     int         `gorm:"default:False"`
 

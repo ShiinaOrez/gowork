@@ -8,6 +8,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"log"
 	"strconv"
+	"fmt"
 )
 
 type Login struct {
@@ -39,6 +40,7 @@ func Signin(ctx iris.Context){
 	if DB.Where("username=?",data.Username).First(&usr).RecordNotFound(){
 		usr.Username=data.Username
 		usr.Password="muxibook"
+		usr.Bookcount=0
 		DB.Create(&usr)
 	}else{
 		ctx.JSON(map[string]string{
@@ -52,13 +54,17 @@ func Signup(ctx iris.Context){
 	var data Login
 	var usr models.User
 	err:=ctx.ReadJSON(&data)
+	fmt.Println(data.Username)
 	if err != nil{
 		ctx.StatusCode(iris.StatusBadRequest)
 		ctx.WriteString(err.Error())
 		return
 	}
 	if DB.Where("username=?",data.Username).First(&usr).RecordNotFound(){
-		usr.Password="muxiboook"
+		usr.Username=data.Username
+		usr.Password="muxibook"
+		usr.Bookcount=0
+		fmt.Println(usr.Username)
 		DB.Create(&usr)
 		ctx.JSON(map[string]string{
 			"msg": "successful",

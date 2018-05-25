@@ -9,7 +9,7 @@ import (
 
 func main() {
 	app := iris.New()
-	app.Logger().SetLevel("debug")
+	app.Logger().SetLevel("debug")//--logloevel=debug?
 	// Optionally, add two built'n handlers
 	// that can recover from any http-relative panics
 	// and log the requests to the terminal.
@@ -18,9 +18,13 @@ func main() {
 
 	// Method:   GET
 	// Resource: http://localhost:8080
-	app.Handle("GET", "/", func(ctx iris.Context) {
-		ctx.HTML("<h1>Welcome</h1>")
-	})
+	app.Handle(
+		"GET",
+		"/", 
+		func(ctx iris.Context) {//handle:route method-path-context?
+			ctx.HTML("<h1>Welcome</h1>")
+		}
+	)
 
 	// same as app.Handle("GET", "/ping", [...])
 	// Method:   GET
@@ -32,9 +36,9 @@ func main() {
 	// Method:   GET
 	// Resource: http://localhost:8080/hello
 	app.Get("/hello", func(ctx iris.Context) {
-		ctx.JSON(iris.Map{"message": "Hello Iris!"})
+		ctx.JSON(iris.Map{"message": "Hello Iris!"})//map2json
 	})
-
+	//使用了ctx中的三种不同的方法：HTML，Writestring，JSON
 	// http://localhost:8080
 	// http://localhost:8080/ping
 	// http://localhost:8080/hello

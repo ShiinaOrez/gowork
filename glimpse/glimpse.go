@@ -5,7 +5,7 @@ import (
 )
 
 // User is just a bindable object structure.
-type User struct {
+type User struct {//like python's models-table
 	Username  string `json:"username"`
 	Firstname string `json:"firstname"`
 	Lastname  string `json:"lastname"`
