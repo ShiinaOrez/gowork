@@ -8,6 +8,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"log"
 	"strconv"
+	_ "fmt"
 	"fmt"
 )
 
@@ -40,7 +41,7 @@ func Signin(ctx iris.Context){
 	if DB.Where("username=?",data.Username).First(&usr).RecordNotFound(){
 		usr.Username=data.Username
 		usr.Password="muxibook"
-		usr.Bookcount=0
+		usr.BookCount=0
 		DB.Create(&usr)
 	}else{
 		ctx.JSON(map[string]string{
@@ -63,7 +64,7 @@ func Signup(ctx iris.Context){
 	if DB.Where("username=?",data.Username).First(&usr).RecordNotFound(){
 		usr.Username=data.Username
 		usr.Password="muxibook"
-		usr.Bookcount=0
+		usr.BookCount=0
 		fmt.Println(usr.Username)
 		DB.Create(&usr)
 		ctx.JSON(map[string]string{

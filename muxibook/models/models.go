@@ -28,7 +28,7 @@ type Book struct {
 	//tablename auto-create to be "books"
 	gorm.Model
 	Bookname      string     `gorm:"size:30"`
-	BookNum       string     `gorm:"size:20;unique"`
+	Booknum       string     `gorm:"size:20;unique"`
 	Available     uint       `gorm:"default:1"`
 	Realname      string     `gorm:"size:20"`
 	LendTime      time.Time  //think gorm.Model.xx later
