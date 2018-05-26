@@ -55,7 +55,6 @@ func Signup(ctx iris.Context){
 	var data Login
 	var usr models.User
 	err:=ctx.ReadJSON(&data)
-	fmt.Println(data.Username)
 	if err != nil{
 		ctx.StatusCode(iris.StatusBadRequest)
 		ctx.WriteString(err.Error())

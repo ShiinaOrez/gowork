@@ -11,7 +11,7 @@ import (
 	_ "fmt"
 	"strings"
 	"time"
-	"encoding/json"
+	_ "encoding/json"
 )
 
 type AddBook struct {
@@ -27,12 +27,12 @@ type LendBook struct {
 }
 
 type LResponse struct {
-	Book       string `json:"book"`
-	Kind       string `json:"kind"`
-	Available  int    `json:"available"`
-	Who        string `json:"who"`
-	When       string `json:"when"`
-	Realname   string `json:"realname"`
+	Book       string    `json:"book"`
+	Kind       int       `json:"kind"`
+	Available  int       `json:"available"`
+	Who        string    `json:"who"`
+	When       time.Time `json:"when"`
+	Realname   string    `json:"realname"`
 }
 
 func init(){
@@ -115,6 +115,12 @@ func BookLend (ctx iris.Context){
 		})
 		return
 	}
+	if bok.Available==0{
+		ctx.StatusCode(405)
+		ctx.JSON(map[string]string{
+			"msg": "book not available!",
+		})
+	}
 	bok.Available=0
 	bok.UserID=usr.ID
 	bok.Realname=data.Realname
@@ -127,10 +133,10 @@ func BookLend (ctx iris.Context){
 	bok.LendTime=lendtime
 	bok.ReturnTime=returntime
 	DB.Save(&bok)
-	response:=LResponse{data.Book,bok.Kind,0,data.Username,returntime,data.Realname}
-	lresponse,err:=json.MarshalIndent(&response,"","\t\t")
+	response:=LResponse{data.Book,bok.KindID,0,data.Username,returntime,data.Realname}
+//	lresponse,err:=json.Marshal(response)
 
-	ctx.JSON(iris.StatusOK,lresponse)
+	ctx.JSON(response)
 }
 
 
