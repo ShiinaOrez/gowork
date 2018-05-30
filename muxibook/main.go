@@ -13,6 +13,8 @@ func main(){
 
 	muxibook.Post("/book",api.Book)
 	muxibook.Post("/lendbook",api.BookLend)
+    muxibook.Post("/returnbook",api.BookReturn)
+    muxibook.Post("/renewbook",api.BookRenew)
 
 	muxibook.Run(iris.Addr(":8080"))
 }

@@ -4,9 +4,6 @@
     <list default="true" id="9b55ff35-24ba-44fc-8785-692477b084c1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/muxibook/api/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/api/book.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/muxibook/api/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/api/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/muxibook/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/muxibook/muxibook.db" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/muxibook.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,44 +12,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-            <file leaf-file-name="user.go" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/muxibook/api/user.go">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="776">
-                    <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="models.go" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/muxibook/models/models.go">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="587">
-                    <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file leaf-file-name="book.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="124" selection-start-line="124" selection-end-line="125" />
-              <folding>
-                <element signature="e#13#212#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="471">
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
             </state>
           </provider>
         </entry>
@@ -78,7 +44,7 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/muxibook/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
+            <state relative-caret-position="280">
               <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
               <folding>
                 <element signature="e#14#74#0" expanded="true" />
@@ -105,8 +71,8 @@
         <option value="$PROJECT_DIR$/gorm/muxibook_model.go" />
         <option value="$PROJECT_DIR$/muxibook/models/models.go" />
         <option value="$PROJECT_DIR$/muxibook/main.go" />
-        <option value="$PROJECT_DIR$/muxibook/api/book.go" />
         <option value="$PROJECT_DIR$/muxibook/api/user.go" />
+        <option value="$PROJECT_DIR$/muxibook/api/book.go" />
       </list>
     </option>
   </component>
@@ -176,19 +142,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="33" width="960" height="1023" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.019832985" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.33298537" side_tool="true" visible="true" weight="0.028835064" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6670146" weight="0.010380623" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6670146" weight="0.010380623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -524,7 +489,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/muxibook/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
+        <state relative-caret-position="280">
           <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
           <folding>
             <element signature="e#14#74#0" expanded="true" />
@@ -532,19 +497,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="124" selection-start-line="124" selection-end-line="125" />
-          <folding>
-            <element signature="e#13#212#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/muxibook/models/models.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
+        <state relative-caret-position="608">
           <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
         </state>
       </provider>
@@ -553,6 +508,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="776">
           <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
         </state>
       </provider>
     </entry>

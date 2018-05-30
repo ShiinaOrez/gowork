@@ -26,6 +26,11 @@ type LendBook struct {
 	Realname string
 }
 
+type ReturnBook struct {
+	No         string
+	Username   string
+}
+
 type LResponse struct {
 	Book       string    `json:"book"`
 	Kind       int       `json:"kind"`
@@ -128,7 +133,7 @@ func BookLend (ctx iris.Context){
 	DB.Save(&bok)
 	DB.Save(&usr)
 	lendtime:=bok.UpdatedAt
-	mm,err:=time.ParseDuration("-1h")
+	mm,err:=time.ParseDuration("1h")
 	returntime:=lendtime.Add(720*mm)
 	bok.LendTime=lendtime
 	bok.ReturnTime=returntime
@@ -137,6 +142,73 @@ func BookLend (ctx iris.Context){
 //	lresponse,err:=json.Marshal(response)
 
 	ctx.JSON(response)
+	return
+}
+
+func BookReturn(ctx iris.Context){
+	var data ReturnBook
+	var usr models.User
+	var bok models.Book
+	err:=ctx.ReadJSON(&data)
+	if err != nil {
+        ctx.StatusCode(iris.StatusBadRequest)
+        ctx.WriteString(err.Error())
+	}
+	if DB.Where("username=?",data.Username).First(&usr).RecordNotFound() || DB.Where("booknum=?",data.No).First(&bok).RecordNotFound(){
+		ctx.StatusCode(402)
+		ctx.JSON(map[string]string{
+			"msg": "user or book not found!",
+		})
+		return
+	}
+	usr.BookCount-=1
+	bok.UserID=0
+	bok.Available=1
+	bok.ReturnTime=time.Time{}
+	bok.LendTime=time.Time{}
+	DB.Save(&usr)
+	DB.Save(&bok)
+	ctx.JSON(map[string]string{
+        "msg": "successful",
+	})
+	return 
+}
+
+func BookRenew(ctx iris.Context){
+	var data ReturnBook
+	var usr models.User
+	var bok models.Book
+	err:=ctx.ReadJSON(&data)
+	if err != nil{
+        ctx.StatusCode(iris.StatusBadRequest)
+        ctx.WriteString(err.Error())
+	}
+	if DB.Where("username=?",data.Username).First(&usr).RecordNotFound() || DB.Where("booknum=?",data.No).First(&bok).RecordNotFound(){
+		ctx.StatusCode(402)
+		ctx.JSON(map[string]string{
+            "msg": "user or book not found!",
+		})
+		return 
+	}
+	if bok.LendTime.Before(time.Now()) && bok.ReturnTime.After(time.Now()) {
+		bok.LendTime=time.Now()
+		DB.Save(&bok)
+		lendtime:=bok.UpdatedAt
+	    mm,_:=time.ParseDuration("1h")
+	    returntime:=lendtime.Add(720*mm)
+	    bok.ReturnTime=returntime
+	    DB.Save(&bok)
+	    ctx.JSON(map[string]string{
+            "msg": "successful!",
+	    })
+	    return
+	}else{
+		ctx.StatusCode(401)
+		ctx.JSON(map[string]string{
+            "msg": "you aren't reach the time!",
+		})
+		return
+	}
 }
 
 
