@@ -12,7 +12,12 @@ import (
 	"strings"
 	"time"
 	_ "encoding/json"
+	"fmt"
 )
+
+type MyBook struct {
+	Username string
+}
 
 type AddBook struct {
 	Kind int    //the kind of this book
@@ -40,6 +45,16 @@ type LResponse struct {
 	Realname   string    `json:"realname"`
 }
 
+type SResponse struct {
+	No         string    `json:"no"`
+	BookName   string       `json:"bookname"`
+	ReturnTime time.Time `json:"returntime"`
+}
+
+type MResponse struct {
+	Lend     []SResponse `json:"lend"`
+}
+
 func init(){
 	var err error
 	DB,err=gorm.Open("sqlite3","muxibook.db")
@@ -62,10 +77,10 @@ func Book (ctx iris.Context){
 		return
 	}
 	t=ctx.GetHeader("token")
-	if t=="" {
-		ctx.StatusCode(402) //means not confirm
+	if t == "" {
+		ctx.StatusCode(401) //confirm fail
 		ctx.JSON(map[string]string{
-			"msg": "who are you?",
+			"msg": "can't confirm!",
 		})
 		return
 	}else{
@@ -121,13 +136,14 @@ func BookLend (ctx iris.Context){
 		return
 	}
 	if bok.Available==0{
-		ctx.StatusCode(405)
+		ctx.StatusCode(407)
 		ctx.JSON(map[string]string{
 			"msg": "book not available!",
 		})
 	}
 	bok.Available=0
 	bok.UserID=usr.ID
+//	DB.Model(&usr).Related(&usr.Books)
 	bok.Realname=data.Realname
 	usr.BookCount++
 	DB.Save(&bok)
@@ -142,6 +158,7 @@ func BookLend (ctx iris.Context){
 //	lresponse,err:=json.Marshal(response)
 
 	ctx.JSON(response)
+//	fmt.Print(bok)
 	return
 }
 
@@ -161,8 +178,22 @@ func BookReturn(ctx iris.Context){
 		})
 		return
 	}
+	if bok.Available == 1{
+		ctx.StatusCode(403)
+		ctx.JSON(map[string]string{
+			"msg": "this book is available!",
+		})
+		return
+	}
+	if bok.UserID != usr.ID {
+		ctx.StatusCode(407)
+		ctx.JSON(map[string]string{
+			"msg": "you can't return other user's book!",
+		})
+	}
 	usr.BookCount-=1
 	bok.UserID=0
+//	DB.Model(&usr).Related(&usr.Books)
 	bok.Available=1
 	bok.ReturnTime=time.Time{}
 	bok.LendTime=time.Time{}
@@ -210,5 +241,38 @@ func BookRenew(ctx iris.Context){
 		return
 	}
 }
+
+func BookMy(ctx iris.Context){
+	var data MyBook
+	var usr models.User
+	var response MResponse
+	t:=ctx.GetHeader("token")
+	if !strings.Contains(t,data.Username) {
+		ctx.StatusCode(401) //confirm fail
+		ctx.JSON(map[string]string{
+			"msg": "can't confirm!",
+		})
+		return
+	}
+	ctx.ReadJSON(&data)
+	if DB.Where("username=?",data.Username).First(&usr).RecordNotFound(){
+		ctx.StatusCode(402)
+		ctx.JSON(map[string]string{
+			"msg": "user not found!",
+		})
+	}
+	var boks[] models.Book
+	DB.Model(&usr).Related(&boks)
+    for _,bok:=range boks{
+    	one:=SResponse{bok.Booknum,bok.Bookname,bok.ReturnTime}
+    	response.Lend=append(response.Lend,one)
+	}
+//	fmt.Print(usr.Books)
+//    fmt.Print(usr)
+	ctx.JSON(response)
+}
+
+
+
 
 

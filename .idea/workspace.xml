@@ -4,6 +4,10 @@
     <list default="true" id="9b55ff35-24ba-44fc-8785-692477b084c1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/muxibook/api/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/api/book.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/muxibook/change.md" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/change.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/muxibook/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/muxibook/models/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/models/models.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/muxibook/muxibook.db" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/muxibook.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +21,29 @@
       <file leaf-file-name="book.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="142" selection-start-line="142" selection-end-line="142" />
+            <state relative-caret-position="292">
+              <caret line="160" column="2" selection-start-line="160" selection-start-column="2" selection-end-line="160" selection-end-column="2" />
+              <folding>
+                <element signature="e#13#214#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/go/src/github.com/jinzhu/gorm/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="461" column="13" selection-start-line="461" selection-start-column="13" selection-end-line="461" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/muxibook/models/models.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="467">
+              <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -44,8 +69,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/muxibook/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+            <state relative-caret-position="196">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
               <folding>
                 <element signature="e#14#74#0" expanded="true" />
               </folding>
@@ -69,9 +94,9 @@
         <option value="$PROJECT_DIR$/gorm/main.go" />
         <option value="$PROJECT_DIR$/gorm/model.go" />
         <option value="$PROJECT_DIR$/gorm/muxibook_model.go" />
-        <option value="$PROJECT_DIR$/muxibook/models/models.go" />
-        <option value="$PROJECT_DIR$/muxibook/main.go" />
         <option value="$PROJECT_DIR$/muxibook/api/user.go" />
+        <option value="$PROJECT_DIR$/muxibook/main.go" />
+        <option value="$PROJECT_DIR$/muxibook/models/models.go" />
         <option value="$PROJECT_DIR$/muxibook/api/book.go" />
       </list>
     </option>
@@ -85,7 +110,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="960" />
     <option name="y" value="33" />
     <option name="width" value="960" />
@@ -97,6 +122,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,7 +144,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,11 +166,12 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="33" width="960" height="1023" extended-state="0" />
+    <frame x="960" y="33" width="960" height="1023" extended-state="4" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.019832985" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.33298537" side_tool="true" visible="true" weight="0.028835064" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.33298537" side_tool="true" visible="true" weight="0.028835064" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -168,6 +194,18 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/muxibook/models/models.go</url>
+          <line>9</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/muxibook/main.go">
@@ -466,10 +504,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/src/github.com/jinzhu/gorm/main.go">
+    <entry file="file://$PROJECT_DIR$/muxibook/api/user.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="521" column="13" selection-start-line="521" selection-start-column="13" selection-end-line="521" selection-end-column="13" />
+        <state relative-caret-position="776">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
         </state>
       </provider>
     </entry>
@@ -489,32 +527,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/muxibook/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        <state relative-caret-position="196">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="e#14#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/muxibook/models/models.go">
+    <entry file="file://$USER_HOME$/go/src/github.com/jinzhu/gorm/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        <state relative-caret-position="460">
+          <caret line="461" column="13" selection-start-line="461" selection-start-column="13" selection-end-line="461" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/muxibook/api/user.go">
+    <entry file="file://$PROJECT_DIR$/muxibook/models/models.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="467">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        <state relative-caret-position="292">
+          <caret line="160" column="2" selection-start-line="160" selection-start-column="2" selection-end-line="160" selection-end-column="2" />
+          <folding>
+            <element signature="e#13#214#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -15,13 +15,13 @@ type User struct {
 	Confirmed     bool        `gorm:"default:False"`
 	BookCount     int         `gorm:"default:False"`
 
-	Books         []Book
+	Books         [] Book      `gorm:"ForeignKey:UserID"`
 }
 
 type Kind struct {
 	//tablename auto-create to be "kinds"
 	ID            uint        `gorm:"primary_key"`
-	Books         []Book
+	Books         [] *Book      `gorm:"ForeignKey:KindID"`
 }
 
 type Book struct {
@@ -35,6 +35,8 @@ type Book struct {
 	ReturnTime    time.Time
 
 	KindID int
+//	Kind   Kind
 	UserID int
+//	User   User
 }
 

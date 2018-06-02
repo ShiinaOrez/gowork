@@ -8,6 +8,7 @@
 + url:"/lendbook" 添加了对book.available的检查
 + url:"/lendbook" 重置了StatusCode的标准
 + url:"/returnbook" 重置了StatusCode的标准
++ url:"/returnbook" 修复了无限还书bug
 + url:"/renewbook" 改变了对还书时间的赋值方式
 + url:"/renewbook" 重置了StatusCode的标准
 
