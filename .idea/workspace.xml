@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b55ff35-24ba-44fc-8785-692477b084c1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/muxibook/api/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/api/book.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/muxibook/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/muxibook/muxibook.db" beforeDir="false" afterPath="$PROJECT_DIR$/muxibook/muxibook.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +17,8 @@
       <file leaf-file-name="book.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="305" column="32" lean-forward="true" selection-start-line="305" selection-start-column="32" selection-end-line="305" selection-end-column="32" />
+            <state relative-caret-position="411">
+              <caret line="321" column="5" lean-forward="true" selection-start-line="321" selection-start-column="5" selection-end-line="321" selection-end-column="5" />
               <folding>
                 <element signature="e#13#221#0" expanded="true" />
               </folding>
@@ -544,8 +543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="305" column="32" lean-forward="true" selection-start-line="305" selection-start-column="32" selection-end-line="305" selection-end-column="32" />
+        <state relative-caret-position="411">
+          <caret line="321" column="5" lean-forward="true" selection-start-line="321" selection-start-column="5" selection-end-line="321" selection-end-column="5" />
           <folding>
             <element signature="e#13#221#0" expanded="true" />
           </folding>

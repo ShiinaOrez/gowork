@@ -208,7 +208,7 @@ func BookReturn(ctx iris.Context){
 		})
 	}
 	usr.BookCount-=1
-	bok.UserID=0
+	bok.UserID=-1
 //	DB.Model(&usr).Related(&usr.Books)
 	bok.Available=1
 	bok.ReturnTime=time.Time{}
@@ -298,11 +298,8 @@ func BookGet(ctx iris.Context){
 	kind,_:=strconv.Atoi(knd)
 	response.Page=page
     var kind_books[] models.Book
-//    N:=models.Book{}
     U:=models.User{}
-//    var B[] models.Book
     DB.Where(&models.Book{KindID:kind}).Find(&kind_books)
-//    fmt.Println(knd,pge,kind,page,kind_books)
 	response.Num=len(kind_books)
 	start:=(page-1)*10
 	now:=start
@@ -314,10 +311,8 @@ func BookGet(ctx iris.Context){
 		})
 		return
 	}
-/*	for i,N:=range kind_books{
-		fmt.Println(i,N)
-	}*/
 	for now<start+10 && now<len(kind_books){
+		return_time:=kind_books[now].ReturnTime
 		if DB.Where(&models.User{ID:kind_books[now].UserID}).First(&usr).RecordNotFound(){
 			usr=U
 		}
