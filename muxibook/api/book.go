@@ -26,6 +26,11 @@ type AddBook struct {
 	No   string //book's number
 }
 
+type SearchBook struct {
+	Partten  string
+	Page     int
+}
+
 type LendBook struct {
 	Book     string  //book name
 	Username string
@@ -312,11 +317,40 @@ func BookGet(ctx iris.Context){
 		return
 	}
 	for now<start+10 && now<len(kind_books){
-		return_time:=kind_books[now].ReturnTime
 		if DB.Where(&models.User{ID:kind_books[now].UserID}).First(&usr).RecordNotFound(){
 			usr=U
 		}
 		one:=Monomer{kind_books[now].Bookname,kind,kind_books[now].Available,usr.Username,kind_books[now].ReturnTime,kind_books[now].Realname}
+		response.Books=append(response.Books,one)
+		now+=1
+	}
+	ctx.JSON(response)
+	return
+}
+
+func Search(ctx iris.Context){
+	var response BResponse
+	data:=SearchBook{}
+	ctx.ReadJSON(&data)
+	var books[] models.Book
+	DB.Where("bookname LIKE ?","%"+data.Partten+"%").Find(&books)
+	if books==nil {
+		ctx.StatusCode(401)
+		ctx.JSON(map[string]string{
+			"msg": "No matching book!",
+		})
+		return
+	}
+	var usr models.User
+	U:=models.User{}
+	response.Num=len(books)
+	start:=(data.Page-1)*10
+	now:=start
+	for now<start+10 && now<len(books){
+		if DB.Where(&models.User{ID:books[now].UserID}).First(&usr).RecordNotFound(){
+			usr=U
+		}
+		one:=Monomer{books[now].Bookname,books[now].KindID,books[now].Available,usr.Username,books[now].ReturnTime,books[now].Realname}
 		response.Books=append(response.Books,one)
 		now+=1
 	}

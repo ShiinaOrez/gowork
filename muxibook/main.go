@@ -16,7 +16,7 @@ func main(){
     muxibook.Post("/returnbook",api.BookReturn)
     muxibook.Post("/renewbook",api.BookRenew)
     muxibook.Post("/mybook",api.BookMy)
-
+	muxibook.Post("/searchbook",api.Search)
 	muxibook.Get("/getbook",api.BookGet)
 
 	muxibook.Run(iris.Addr(":8080"))
