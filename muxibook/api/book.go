@@ -12,7 +12,8 @@ import (
 	"strings"
 	"time"
 	_ "encoding/json"
-	"fmt"
+	_ "fmt"
+	"strconv"
 )
 
 type MyBook struct {
@@ -36,6 +37,15 @@ type ReturnBook struct {
 	Username   string
 }
 
+type Monomer struct {
+	Book       string    `json:"book"`
+	Kind       int       `json:"kind"`
+	Available  uint       `json:"available"`
+	Who        string    `json:"who"`
+	When       time.Time `json:"when"`
+	Realname   string    `json:"realname"`
+}
+
 type LResponse struct {
 	Book       string    `json:"book"`
 	Kind       int       `json:"kind"`
@@ -53,6 +63,12 @@ type SResponse struct {
 
 type MResponse struct {
 	Lend     []SResponse `json:"lend"`
+}
+
+type BResponse struct {
+	Num        int        `json:"num"`
+	Page       int        `json:"page"`
+	Books      []Monomer  `json:"books"`
 }
 
 func init(){
@@ -270,8 +286,48 @@ func BookMy(ctx iris.Context){
 //	fmt.Print(usr.Books)
 //    fmt.Print(usr)
 	ctx.JSON(response)
+    return
 }
 
+
+func BookGet(ctx iris.Context){
+	var response BResponse
+	knd:=ctx.URLParam("kind")
+	pge:=ctx.URLParam("page")
+	page,_:=strconv.Atoi(pge)
+	kind,_:=strconv.Atoi(knd)
+	response.Page=page
+    var kind_books[] models.Book
+//    N:=models.Book{}
+    U:=models.User{}
+//    var B[] models.Book
+    DB.Where(&models.Book{KindID:kind}).Find(&kind_books)
+//    fmt.Println(knd,pge,kind,page,kind_books)
+	response.Num=len(kind_books)
+	start:=(page-1)*10
+	now:=start
+	var usr models.User
+	if kind_books==nil {
+		ctx.StatusCode(401)
+		ctx.JSON(map[string]string{
+			"msg": "No matching book!",
+		})
+		return
+	}
+/*	for i,N:=range kind_books{
+		fmt.Println(i,N)
+	}*/
+	for now<start+10 && now<len(kind_books){
+		if DB.Where(&models.User{ID:kind_books[now].UserID}).First(&usr).RecordNotFound(){
+			usr=U
+		}
+		one:=Monomer{kind_books[now].Bookname,kind,kind_books[now].Available,usr.Username,kind_books[now].ReturnTime,kind_books[now].Realname}
+		response.Books=append(response.Books,one)
+		now+=1
+	}
+	ctx.JSON(response)
+	return
+}
 
 
 
