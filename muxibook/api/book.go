@@ -117,7 +117,7 @@ func Book (ctx iris.Context){
 			return
 		}
 	}
-	ctx.StatusCode(401)
+	ctx.StatusCode(402)
 	ctx.JSON(map[string]string{
 		"msg": "can't re-add!",
 	})
