@@ -3,7 +3,6 @@ package api
 import (
 	"github.com/kataras/iris"
 	"gowork/muxibook/models"
-
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"log"
@@ -45,7 +44,7 @@ type ReturnBook struct {
 type Monomer struct {
 	Book       string    `json:"book"`
 	Kind       int       `json:"kind"`
-	Available  uint       `json:"available"`
+	Available  uint      `json:"available"`
 	Who        string    `json:"who"`
 	When       time.Time `json:"when"`
 	Realname   string    `json:"realname"`
@@ -62,7 +61,7 @@ type LResponse struct {
 
 type SResponse struct {
 	No         string    `json:"no"`
-	BookName   string       `json:"bookname"`
+	BookName   string    `json:"bookname"`
 	ReturnTime time.Time `json:"returntime"`
 }
 
@@ -71,8 +70,8 @@ type MResponse struct {
 }
 
 type BResponse struct {
-	Num        int        `json:"num"`
-	Page       int        `json:"page"`
+	Num        int       `json:"num"`
+	Page       int       `json:"page"`
 	Books      []Monomer  `json:"books"`
 }
 
@@ -164,7 +163,6 @@ func BookLend (ctx iris.Context){
 	}
 	bok.Available=0
 	bok.UserID=usr.ID
-//	DB.Model(&usr).Related(&usr.Books)
 	bok.Realname=data.Realname
 	usr.BookCount++
 	DB.Save(&bok)
@@ -176,10 +174,8 @@ func BookLend (ctx iris.Context){
 	bok.ReturnTime=returntime
 	DB.Save(&bok)
 	response:=LResponse{data.Book,bok.KindID,0,data.Username,returntime,data.Realname}
-//	lresponse,err:=json.Marshal(response)
 
 	ctx.JSON(response)
-//	fmt.Print(bok)
 	return
 }
 
