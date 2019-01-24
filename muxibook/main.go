@@ -13,9 +13,9 @@ func main(){
 
 	muxibook.Post("/addbook",api.Book)
 	muxibook.Post("/lendbook",api.BookLend)
-        muxibook.Post("/returnbook",api.BookReturn)
-        muxibook.Post("/renewbook",api.BookRenew)
-        muxibook.Post("/mybook",api.BookMy)
+	muxibook.Post("/returnbook",api.BookReturn)
+	muxibook.Post("/renewbook",api.BookRenew)
+	muxibook.Post("/mybook",api.BookMy)
 	muxibook.Post("/searchbook",api.Search)
 	muxibook.Get("/getbook",api.BookGet)
 
