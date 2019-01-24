@@ -3,8 +3,7 @@ package api
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/kataras/iris"
-	"gowork/to-gather/models"
-	"gowork/to-gather/data_structure2"
+	"github.com/ShiinaOrez/gowork/to-gather/models"
 	_"github.com/jinzhu/gorm/dialects/sqlite"
 	"log"
 	"strconv"
