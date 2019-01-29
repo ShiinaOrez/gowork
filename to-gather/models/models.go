@@ -1,7 +1,9 @@
 package models
 
 import (
+    "github.com/ShiinaOrez/gowork/muxibook/models"
     "github.com/jinzhu/gorm"
+    "log"
     "time"
 )
 
@@ -71,20 +73,4 @@ func (Activity) TableName() string {
 
 func (Picker2Activity) TableName() string {
     return "picker2activities"
-}
-
-func (this *Activity) Pick(picker *User) PickMethodReturnData {
-    var data PickMethodReturnData
-    if this.PosterID == picker.ID {
-        //can't pick yourself
-        data.Statu = False; data.Code = 407
-    }else if this.Pickable != True {
-        //can't pick it anymore
-        data.Statu = False; data.Code = 403
-    }else if this.PickerID == picker.ID {
-        //already picked before
-        data.Statu = False; data.Code = 405
-    }else {
-
-    }
 }

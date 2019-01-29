@@ -12,7 +12,7 @@ import (
 
 func init() {
 	var err error
-	DB, err = gorm.Open("sqlite3", "to-gather.db")
+	DB, err := gorm.Open("sqlite3", "to-gather.db")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -36,10 +36,9 @@ func Login(ctx iris.Context) {
 		usr.Name = data.Username
 		usr.StdNum = data.StdNum
 		DB.Create(&usr)
-
 	}
-	ReturnData := data_structure2.LoginReturnData {
-		strconv.Itoa(usr.ID) + usr.Name,
+	ReturnData := LoginReturnData {
+		strconv.Itoa(usr.ID) + "?" + usr.Name,
 		usr.ID,
 		usr.StdNum,
 	}

@@ -77,8 +77,8 @@ type BResponse struct {
 
 func init(){
 	var err error
-	DB,err=gorm.Open("sqlite3","muxibook.db")
-	if err!= nil{
+	DB,err = gorm.Open("sqlite3","muxibook.db")
+	if err != nil{
 		log.Fatalln(err)
 	}
 	DB.AutoMigrate(&models.Book{})

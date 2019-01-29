@@ -1,9 +1,5 @@
 package api
 
-import (
-	"time"
-)
-
 type LoginPostData struct {
 	Username      string      `json:"username"`
 	StdNum        string      `json:"std_num"`
@@ -19,7 +15,7 @@ type ActivityPostData struct {
 	Year          int         `json:"year"`
 	Month         int         `json:"month"`
 	Day           int         `json:"day"`
-	Time          time.Time   `json:"time"`
+	Time          string      `json:"time"`
 	Location      string      `json:"location"`
 	Event         string      `json:"event"`
 	Question      string      `json:"question"`
