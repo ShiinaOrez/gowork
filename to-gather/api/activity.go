@@ -34,7 +34,7 @@ func ActivityPost(ctx iris.Context) {
 	}
 
 	currentTime := myTime(time.Now())
-	if currentTime.Before(data.Year, data.Month, data.Day) {
+	if !currentTime.Before(data.Year, data.Month, data.Day) {
 		ctx.StatusCode(405)
 		ctx.JSON(map[string]string {
 			"msg": "date invalid",
@@ -43,11 +43,11 @@ func ActivityPost(ctx iris.Context) {
 	} 
 
 	act.PosterID = uid
-	(&act).Init(data)
+	actID := (&act).Init(data)
 
 	ctx.StatusCode(200)
 	ctx.JSON(map[string]ActivityPostReturnData{
-		"activityID": ActivityPostReturnData{act.ID},
+		"activityID": ActivityPostReturnData{actID},
 	})
 	return
 }

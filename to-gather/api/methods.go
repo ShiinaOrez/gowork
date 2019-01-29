@@ -6,16 +6,18 @@ import (
 
 type Act models.Activity
 
-func (act *Act) Init(data ActivityPostData) bool {
-	act.Date = GetDate(data.Year, data.Month, data.Day)
-	act.Time = data.Time
-	act.Event = data.Event
-	act.Location = data.Location
-	act.QQ = data.QQ
-	act.Question = data.Question
-	act.Tel = data.Tel
-	act.Close = false
-	act.Pickable = true
-	DB.Create(act)
-	return true
+func (act *Act) Init(data ActivityPostData) int {
+	var activity models.Activity
+	activity.Date = GetDate(data.Year, data.Month, data.Day)
+	activity.Time = data.Time
+	activity.Event = data.Event
+	activity.Location = data.Location
+	activity.QQ = data.QQ
+	activity.Question = data.Question
+	activity.Tel = data.Tel
+	activity.Close = false
+	activity.Pickable = true
+	activity.PosterID = act.PosterID
+	DB.Create(&activity)
+	return activity.ID
 }
