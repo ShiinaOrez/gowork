@@ -1,11 +1,13 @@
 package models
 
 import (
-    "github.com/ShiinaOrez/gowork/muxibook/models"
     "github.com/jinzhu/gorm"
+    _ "github.com/jinzhu/gorm/dialects/sqlite"
     "log"
     "time"
 )
+
+var DB *gorm.DB
 
 func init() {
     var err error
@@ -13,10 +15,10 @@ func init() {
     if err != nil {
         log.Fatalln(err)
     }
-    DB.AutoMigrate(&models.User{})
-    DB.AutoMigrate(&models.Activity{})
-    DB.AutoMigrate(&models.Message{})
-    DB.AutoMigrate(&models.Picker2Activity{})
+    DB.AutoMigrate(&User{})
+    DB.AutoMigrate(&Activity{})
+    DB.AutoMigrate(&Message{})
+    DB.AutoMigrate(&Picker2Activity{})
 }
 
 type User struct {

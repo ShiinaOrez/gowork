@@ -4,15 +4,17 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/kataras/iris"
 	"github.com/ShiinaOrez/gowork/to-gather/models"
-	_"github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"log"
 	"strconv"
-	_"fmt"
+	_ "fmt"
 )
+
+var DB *gorm.DB
 
 func init() {
 	var err error
-	DB, err := gorm.Open("sqlite3", "to-gather.db")
+	DB, err = gorm.Open("sqlite3", "to-gather.db")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -31,7 +33,7 @@ func Login(ctx iris.Context) {
 		ctx.WriteString(err.Error())
 		return
 	}
-	if DB.Where("stdnum=?", data.Username).First(&usr).RecordNotFound() {
+	if DB.Where("std_num=?", data.StdNum).First(&usr).RecordNotFound() {
 		//add a new record into User
 		usr.Name = data.Username
 		usr.StdNum = data.StdNum

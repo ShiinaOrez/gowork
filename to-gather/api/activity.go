@@ -2,7 +2,6 @@ package api
 
 import (
 	_ "fmt"
-	"github.com/ShiinaOrez/gowork/to-gather/models"
 	"github.com/kataras/iris"
 	"time"
 )
@@ -12,12 +11,13 @@ type Token string
 
 func ActivityPost(ctx iris.Context) {
 	var data ActivityPostData
-	var act models.Activity
+	var act Act
+	var uid int
 
 	token := Token(ctx.GetHeader("token"))
 	statu, code := token.LoginRequired()
 	if statu {
-		uid := code
+		uid = code
 	} else {
 		ctx.StatusCode(code)
 		ctx.JSON(map[string]string{
@@ -33,42 +33,23 @@ func ActivityPost(ctx iris.Context) {
 		return
 	}
 
-	currentTime = time.Now()
-	if currentTime.Before(data.year, data.month, data.day) {
+	currentTime := myTime(time.Now())
+	if currentTime.Before(data.Year, data.Month, data.Day) {
 		ctx.StatusCode(405)
 		ctx.JSON(map[string]string {
 			"msg": "date invalid",
 		})
+		return
 	} 
 
 	act.PosterID = uid
-	act.Date
-	act.Init(data)
-	/*var data LoginPostData
-	var usr models.User
-	err := ctx.ReadJSON(&data)
-	if err != nil {
-		ctx.StatusCode(iris.StatusBadRequest)
-		ctx.WriteString(err.Error())
-		return
-	}
-	if DB.Where("stdnum=?", data.Username).First(&usr).RecordNotFound() {
-		//add a new record into User
-		usr.Name = data.Username
-		usr.StdNum = data.StdNum
-		DB.Create(&usr)
+	(&act).Init(data)
 
-	}
-	ReturnData := data_structure2.LoginReturnData {
-		strconv.Itoa(usr.ID) + usr.Name,
-		usr.ID,
-		usr.StdNum,
-	}
 	ctx.StatusCode(200)
-	ctx.JSON(map[string]LoginReturnData {
-		"Data": ReturnData,
+	ctx.JSON(map[string]ActivityPostReturnData{
+		"activityID": ActivityPostReturnData{act.ID},
 	})
-	return*/
+	return
 }
 
 

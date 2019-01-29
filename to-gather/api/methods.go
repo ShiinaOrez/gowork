@@ -1,11 +1,13 @@
-package models
+package api
 
 import (
-	"github.com/ShiinaOrez/gowork/to-gather/api"
+	"github.com/ShiinaOrez/gowork/to-gather/models"
 )
 
-func (act *Activity) Init(data api.ActivityPostData) bool {
-	act.Date = api.GetDate(data.Year, data.Month, data.Day)
+type Act models.Activity
+
+func (act *Act) Init(data ActivityPostData) bool {
+	act.Date = GetDate(data.Year, data.Month, data.Day)
 	act.Time = data.Time
 	act.Event = data.Event
 	act.Location = data.Location
@@ -14,6 +16,6 @@ func (act *Activity) Init(data api.ActivityPostData) bool {
 	act.Tel = data.Tel
 	act.Close = false
 	act.Pickable = true
-	api.DB.create(act)
+	DB.Create(act)
 	return true
 }

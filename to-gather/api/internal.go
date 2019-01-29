@@ -7,6 +7,7 @@ import (
 	"github.com/ShiinaOrez/gowork/to-gather/models"
 )
 
+type myTime time.Time
 
 /*
 func LoginRequired:
@@ -15,7 +16,7 @@ func LoginRequired:
  */
 func (token Token) LoginRequired() (bool, int) {
 	var usr models.User
-	sli := strings.Split(token, "?")
+	sli := strings.Split(string(token), "?")
 	uid, err := strconv.Atoi(sli[0])
 	if err != nil {
 		return false, 401
@@ -37,10 +38,10 @@ func GetDate(year, month, day int) time.Time {
 	return time.Date(year, time.Month(month), day, 00, 0,0,0, beijing)
 }
 
-func (now time.Time) Before(year, month, day int) bool {
-	currentYear := now.Year()
-	currentMonth := int(now.Month())
-	currentDay := now.Day()
+func (now myTime) Before(year, month, day int) bool {
+	currentYear := time.Time(now).Year()
+	currentMonth := int(time.Time(now).Month())
+	currentDay := time.Time(now).Day()
 	if (currentYear > year) ||
 	   ((currentYear == year) && (currentMonth > month)) ||
 	   ((currentYear == year) && (currentMonth == month) && (currentDay > day)) {
