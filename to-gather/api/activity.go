@@ -199,3 +199,9 @@ func ActivityPick(ctx iris.Context) {
 		"msg": "pick the activity successful!",
 	})
 }
+
+func ActivityPut(ctx iris.Context) {
+	var data ActivityPutData
+	var act models.Activity
+	var usr models.User
+}

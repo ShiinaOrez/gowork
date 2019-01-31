@@ -48,3 +48,13 @@ type ActivityGetReturnData struct {
 type ActivityPickData struct {
 	Answer        string      `json:"answer"`
 }
+
+type ActivityPutData struct {
+	PickerID      int         `json:"picker_id"`
+	Atti          bool        `json:"atti"`
+}
+
+type ActivityPutReturnData struct {
+	Msg           string      `json:"msg"`
+	Pickable      bool        `json:"pickable"`
+}
