@@ -122,6 +122,7 @@ func ActivityPick(ctx iris.Context) {
     var uid int
 	var act models.Activity
 	var usr models.User
+	var record models.Picker2Activity
 
 	token := Token(ctx.GetHeader("token"))
 	statu, code := token.LoginRequired()
@@ -159,7 +160,13 @@ func ActivityPick(ctx iris.Context) {
 		return
 	}
 
-
+	if !DB.Where("aid=? AND picker_id=?", act.ID, usr.ID).First(&record).RecordNotFound() {
+		ctx.StatusCode(402)
+		ctx.JSON(map[string]string{
+			"msg": "Already picked it before!",
+		})
+		return
+	}
 
 	currentTime := myTime(time.Now())
 	if !currentTime.Before(act.Date.Year(), int(act.Date.Month()), act.Date.Day()) {
