@@ -160,6 +160,13 @@ func ActivityPick(ctx iris.Context) {
 		return
 	}
 
+	if act.PosterID == usr.ID {
+		ctx.StatusCode(407)
+		ctx.JSON(map[string]string{
+			"msg": "Can't pick yourself.",
+		})
+	}
+
 	if !DB.Where("aid=? AND picker_id=?", act.ID, usr.ID).First(&record).RecordNotFound() {
 		ctx.StatusCode(402)
 		ctx.JSON(map[string]string{
@@ -180,4 +187,15 @@ func ActivityPick(ctx iris.Context) {
 		return
 	}
 
+	//Ready to pick
+	record.PickerID = usr.ID
+	record.AID = act.ID
+	record.Answer = data.Answer
+	record.Fail = false
+	record.Waiting = true
+	DB.Create(&record)
+	ctx.StatusCode(iris.StatusOK)
+	ctx.JSON(map[string]string{
+		"msg": "pick the activity successful!",
+	})
 }
