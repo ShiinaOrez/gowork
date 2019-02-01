@@ -1,13 +1,26 @@
 package api
 
 import (
-	"time"
-	"strings"
-	"strconv"
 	"github.com/ShiinaOrez/gowork/to-gather/models"
+	_ "github.com/jinzhu/gorm"
+	"strconv"
+	"strings"
+	"time"
 )
 
 type myTime time.Time
+
+type DatabaseRecord interface {
+	TableName()
+}
+
+type GetPageData struct {
+	Data    []DatabaseRecord
+	PageNow  int
+	PageMax  int
+	HasNext  bool
+	RowsNum  int
+}
 
 /*
 func LoginRequired:
@@ -49,4 +62,33 @@ func (now myTime) Before(year, month, day int) bool {
 	} else {
 		return true
 	}
+}
+
+func GetPage(OriginData []DatabaseRecord, PageSize int, PageNow int) (GetPageData, bool) {
+	var has_next bool
+	rows_num := len(OriginData)
+	page_now := PageNow
+	page_max := (rows_num/PageSize) + 1
+	if page_now<page_max {
+		has_next = true
+	} else {
+		if page_now > page_max {
+			return GetPageData{}, false
+		}
+		has_next = false
+	}
+	var data []DatabaseRecord
+	for i := PageSize*(page_now - 1); i < PageSize*page_now; i++ {
+		if i == rows_num {
+			break
+		} else {
+			data = append(data, OriginData[i])
+		}
+	}
+	return GetPageData{
+		data,
+		page_now,
+		page_max,
+		has_next,
+		rows_num}, true
 }

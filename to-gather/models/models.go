@@ -69,10 +69,18 @@ type Picker2Activity struct {
     PickerID  int
 }
 
+func (User) TableName() string {
+    return "users"
+}
+
 func (Activity) TableName() string {
     return "activities"
 }
 
 func (Picker2Activity) TableName() string {
     return "picker2activities"
+}
+
+func (Message) TableName() string {
+    return "messages"
 }

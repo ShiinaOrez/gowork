@@ -5,6 +5,7 @@ import (
 	"github.com/ShiinaOrez/gowork/to-gather/models"
 	"github.com/kataras/iris"
 	"strings"
+	"strconv"
 	"time"
 )
 
@@ -60,7 +61,7 @@ func ActivityGet(ctx iris.Context) {
 	var usr, poster models.User
 	var uid int
 
-	aid := ctx.Params().Get("aid")
+	aid, _ := ctx.Params().GetInt("aid")
 
 	token := Token(ctx.GetHeader("token"))
 	statu, code := token.LoginRequired()
@@ -118,7 +119,7 @@ func ActivityGet(ctx iris.Context) {
 
 func ActivityPick(ctx iris.Context) {
 	var data ActivityPickData
-	aid := ctx.Params().Get("aid")
+	aid, err := ctx.Params().GetInt("aid")
     var uid int
 	var act models.Activity
 	var usr models.User
@@ -136,7 +137,7 @@ func ActivityPick(ctx iris.Context) {
 		return
 	}
 
-	err := ctx.ReadJSON(&data)
+	err = ctx.ReadJSON(&data)
 	if err != nil {
 		ctx.StatusCode(iris.StatusBadRequest)
 		ctx.WriteString(err.Error())
@@ -206,7 +207,7 @@ func ActivityPut(ctx iris.Context) {
 	var usr models.User
 	var uid int
 	var record models.Picker2Activity
-	aid := ctx.Params().Get("aid")
+	aid, err := ctx.Params().GetInt("aid")
 
 	token := Token(ctx.GetHeader("token"))
 	statu, code := token.LoginRequired()
@@ -220,7 +221,7 @@ func ActivityPut(ctx iris.Context) {
 		return
 	}
 
-	err := ctx.ReadJSON(&data)
+	err = ctx.ReadJSON(&data)
 	if err != nil {
 		ctx.StatusCode(iris.StatusBadRequest)
 		ctx.WriteString(err.Error())
@@ -295,5 +296,42 @@ func ActivityPut(ctx iris.Context) {
 		})
 		return
 	}
+}
 
+func ActivityPickableList(ctx iris.Context) {
+	var activities []DatabaseRecord
+	page_string := ctx.Params().Get("")
+    page, _ := strconv.Atoi(page_string)
+	DB.Where("pickable=?",true).Find(&activities)
+	getPage, statu := GetPage(activities, 10, page)
+	if !statu {
+		ctx.StatusCode(201)
+		ctx.JSON(map[string]string{
+			"msg": "Page out of Range",
+		})
+		return
+	} else {
+		if getPage.RowsNum == 0 {
+			ctx.StatusCode(201)
+			ctx.JSON(map[string]string{
+				"msg": "None pickable activity",
+			})
+			return
+		} else {
+			ctx.StatusCode(iris.StatusOK)
+			var finalData []ActivityInfo
+			for data, _ := range(getPage.Data) {
+
+			}
+			ctx.JSON(map[string]ActivityPickableListReturnData{
+				"List": ActivityPickableListReturnData{
+					getPage.Data,
+					getPage.PageNow,
+					getPage.PageMax,
+					getPage.HasNext,
+					getPage.RowsNum
+				},
+			})
+		}
+	}
 }

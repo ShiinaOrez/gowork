@@ -12,6 +12,7 @@ func main(){
     toGather.Get("/activity/{aid:int}/", api.ActivityGet)
     toGather.Post("/activity/{aid:int}/", api.ActivityPick)
     toGather.Put("/activity/{aid:int}/", api.ActivityPut)
+    toGather.Get("/activity/pickable/list/{page:path}", api.ActivityPickableList)
 
     toGather.Run(iris.Addr(":8080"))
 }

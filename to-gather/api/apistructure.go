@@ -58,3 +58,17 @@ type ActivityPutReturnData struct {
 	Msg           string      `json:"msg"`
 	Pickable      bool        `json:"pickable"`
 }
+
+type ActivityInfo struct {
+	ActivityID    int         `json:"activity_id"`
+	Datetime      string      `json:"datetime"`
+	Event         string      `json:"event"`
+}
+
+type ActivityPickableListReturnData struct {
+	ActivityList  []ActivityInfo `json:"activity_list"`
+	PageNum       int         `json:"page_num"`
+	PageMax       int         `json:"page_max"`
+	HasNext       bool        `json:"has_next"`
+	RowsNum       int         `json:"rows_num"`
+}
