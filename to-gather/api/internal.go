@@ -22,11 +22,6 @@ type GetPageData struct {
 	RowsNum  int
 }
 
-/*
-func LoginRequired:
-    return false, statusCode
-        or true, userID
- */
 func (token Token) LoginRequired() (bool, int) {
 	var usr models.User
 	sli := strings.Split(string(token), "?")

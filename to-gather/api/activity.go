@@ -5,7 +5,7 @@ import (
 	"github.com/ShiinaOrez/gowork/to-gather/models"
 	"github.com/kataras/iris"
 	"strings"
-	"strconv"
+	_ "strconv"
 	"time"
 )
 
@@ -15,19 +15,7 @@ type Token string
 func ActivityPost(ctx iris.Context) {
 	var data ActivityPostData
 	var act Act
-	var uid int
-
-	token := Token(ctx.GetHeader("token"))
-	statu, code := token.LoginRequired()
-	if statu {
-		uid = code
-	} else {
-		ctx.StatusCode(code)
-		ctx.JSON(map[string]string{
-			"msg": "token invalid",
-		})
-		return
-	}
+	uid, _ := ctx.Values().GetInt("uid")
 
 	err := ctx.ReadJSON(&data)
 	if err != nil {
@@ -59,21 +47,8 @@ func ActivityGet(ctx iris.Context) {
 	var returnData ActivityGetReturnData
 	var act models.Activity
 	var usr, poster models.User
-	var uid int
-
+	uid, _ := ctx.Values().GetInt("uid")
 	aid, _ := ctx.Params().GetInt("aid")
-
-	token := Token(ctx.GetHeader("token"))
-	statu, code := token.LoginRequired()
-	if statu {
-		uid = code
-	} else {
-		ctx.StatusCode(code)
-		ctx.JSON(map[string]string{
-			"msg": "token invalid",
-		})
-		return
-	}
 
 	DB.Where("id=?", uid).First(&usr)
 	if DB.Where("id=?", aid).First(&act).RecordNotFound() {
@@ -119,8 +94,8 @@ func ActivityGet(ctx iris.Context) {
 
 func ActivityPick(ctx iris.Context) {
 	var data ActivityPickData
-	aid, err := ctx.Params().GetInt("aid")
-    var uid int
+	aid, _ := ctx.Params().GetInt("aid")
+    uid, _ := ctx.Values().GetInt("uid")
 	var act models.Activity
 	var usr models.User
 	var record models.Picker2Activity
@@ -137,7 +112,7 @@ func ActivityPick(ctx iris.Context) {
 		return
 	}
 
-	err = ctx.ReadJSON(&data)
+	err := ctx.ReadJSON(&data)
 	if err != nil {
 		ctx.StatusCode(iris.StatusBadRequest)
 		ctx.WriteString(err.Error())
@@ -205,9 +180,9 @@ func ActivityPut(ctx iris.Context) {
 	var data ActivityPutData
 	var act models.Activity
 	var usr models.User
-	var uid int
 	var record models.Picker2Activity
 	aid, err := ctx.Params().GetInt("aid")
+	uid, _ := ctx.Values().GetInt("uid")
 
 	token := Token(ctx.GetHeader("token"))
 	statu, code := token.LoginRequired()
@@ -298,7 +273,7 @@ func ActivityPut(ctx iris.Context) {
 	}
 }
 
-func ActivityPickableList(ctx iris.Context) {
+/*func ActivityPickableList(ctx iris.Context) {
 	var activities []DatabaseRecord
 	page_string := ctx.Params().Get("")
     page, _ := strconv.Atoi(page_string)
@@ -335,3 +310,4 @@ func ActivityPickableList(ctx iris.Context) {
 		}
 	}
 }
+*/
