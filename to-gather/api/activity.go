@@ -131,7 +131,7 @@ func ActivityPick(ctx iris.Context) {
 	} else {
 		ctx.StatusCode(code)
 		ctx.JSON(map[string]string{
-			"msg": "token invalid",
+			"msg": "authenticate fail",
 		})
 		return
 	}
@@ -204,4 +204,96 @@ func ActivityPut(ctx iris.Context) {
 	var data ActivityPutData
 	var act models.Activity
 	var usr models.User
+	var uid int
+	var record models.Picker2Activity
+	aid := ctx.Params().Get("aid")
+
+	token := Token(ctx.GetHeader("token"))
+	statu, code := token.LoginRequired()
+	if statu {
+		uid = code
+	} else {
+		ctx.StatusCode(code)
+		ctx.JSON(map[string]string{
+			"msg": "authenticate fail",
+		})
+		return
+	}
+
+	err := ctx.ReadJSON(&data)
+	if err != nil {
+		ctx.StatusCode(iris.StatusBadRequest)
+		ctx.WriteString(err.Error())
+		return
+	}
+
+	currentTime := myTime(time.Now())
+	if !currentTime.Before(act.Date.Year(), int(act.Date.Month()), act.Date.Day()) {
+		act.Close = true
+		act.Pickable = false
+		DB.Save(&act)
+		ctx.StatusCode(403)
+		ctx.JSON(map[string]string {
+			"msg": "activity out of time range",
+		})
+		return
+	}
+
+	DB.Where("id=?", uid).First(&usr)
+	if DB.Where("id=?", aid).First(&act).RecordNotFound() {
+		ctx.StatusCode(406)
+		ctx.JSON(map[string]string{
+			"msg": "activity not found",
+		})
+		return
+	}
+
+	if act.Close {
+		ctx.StatusCode(405)
+		ctx.JSON(map[string]string{
+			"msg": "activity is over",
+		})
+		return
+	}
+
+	if data.PickerID == uid {
+		ctx.StatusCode(407)
+		ctx.JSON(map[string]string{
+			"msg": "Can't pick yourself.",
+		})
+	}
+
+	if !DB.Where("aid=? AND picker_id=?", act.ID, usr.ID).First(&record).RecordNotFound() {
+		ctx.StatusCode(402)
+		ctx.JSON(map[string]string{
+			"msg": "Already picked it before!",
+		})
+		return
+	}
+
+	if !DB.Where("aid=? AND picker_id=?", act.ID, data.PickerID).First(&record).RecordNotFound() {
+		if data.Atti {
+			record.Waiting = false
+			record.Fail = false
+			ctx.StatusCode(iris.StatusOK)
+			ctx.JSON(map[string]string{
+				"msg": "makesure successful!",
+			})
+		} else{
+			record.Waiting = false
+			record.Fail = true
+			ctx.StatusCode(201)
+			ctx.JSON(map[string]string{
+				"msg": "refuse succeddful!",
+			})
+		}
+		return
+	} else {
+		ctx.StatusCode(406)
+		ctx.JSON(map[string]string{
+			"msg": "User does not pick this activity!",
+		})
+		return
+	}
+
 }

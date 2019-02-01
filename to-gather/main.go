@@ -11,6 +11,7 @@ func main(){
     toGather.Post("/activity/post/", api.ActivityPost)
     toGather.Get("/activity/{aid:int}/", api.ActivityGet)
     toGather.Post("/activity/{aid:int}/", api.ActivityPick)
+    toGather.Put("/activity/{aid:int}/", api.ActivityPut)
 
     toGather.Run(iris.Addr(":8080"))
 }
