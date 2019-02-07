@@ -2,10 +2,24 @@ package main
 
 import (
     "github.com/ShiinaOrez/gowork/to-gather/api"
+    "github.com/ShiinaOrez/gowork/to-gather/config"
+
     "github.com/kataras/iris"
+    "github.com/ogier/pflag"
+)
+
+var (
+    // like: go run main.go -c confg/config.yaml
+    cfg = pflag.StringP("config", "c", "", "apiserver config file path.")
 )
 
 func main(){
+    pflag.Parse()
+
+    if err := config.Init(*cfg); err != nil {
+        panic(err)
+    }
+
     toGather := iris.New()
     toGather.Post("/auth/login/", api.Login)
 //    toGather.Post("/activity/post/", api.LoginRequired(api.ActivityPost))
