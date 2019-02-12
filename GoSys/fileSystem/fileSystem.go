@@ -1,11 +1,15 @@
 package fileSystem
 
 import (
+    "fmt"
     _ "fmt"
+    "github.com/ShiinaOrez/gowork/GoSys/typedefs"
 )
 
-type Dir struct {
-
+func init() {
+    fmt.Printf("You're now at ["+typedefs.ROOT+"], enjoy!\n")
 }
 
-type File string
+func OutputBasePath() {
+    fmt.Printf(typedefs.ROOT)
+}
