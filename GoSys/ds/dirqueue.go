@@ -4,59 +4,59 @@ import (
 	_ "fmt"
 )
 
-type QueueNode struct {
-	Next   *QueueNode
+type PathNode struct {
+	Next   *PathNode
 	Value  Dir
 }
 
-type Queue struct {
-	Head   *QueueNode
-	Tail   *QueueNode
+type Path struct {
+	Head   *PathNode
+	Tail   *PathNode
 	Size   int
 }
 
-func (queue *Queue) Push (value Dir) int {
-	newNode := new(QueueNode)
+func (path *Path) Push (value Dir) int {
+	newNode := new(PathNode)
 	newNode.Value = value
-	if (queue.Head == nil) || (queue.Tail == nil) {
-		queue.Head = newNode
-		queue.Tail = newNode
-		queue.Size = 1
+	if (path.Head == nil) || (path.Tail == nil) {
+		path.Head = newNode
+		path.Tail = newNode
+		path.Size = 1
 	}else{
-		queue.Tail.Next = newNode
-		queue.Tail = newNode
-		queue.Size += 1
+		path.Tail.Next = newNode
+		path.Tail = newNode
+		path.Size += 1
 	}
-	return queue.Size
+	return path.Size
 }
 
-func (queue *Queue) Pop () {
-	if (queue.Head == nil) || (queue.Size == 0) {
+func (path *Path) Pop () {
+	if (path.Head == nil) || (path.Size == 0) {
 		return 
 	}else{
-		if (queue.Head == queue.Tail) || (queue.Size == 1) {
-			queue.Head = nil
-			queue.Tail = nil
-			queue.Size = 0
+		if (path.Head == path.Tail) || (path.Size == 1) {
+			path.Head = nil
+			path.Tail = nil
+			path.Size = 0
 			return
 		}else{
-			queue.Head = queue.Head.Next
-			queue.Size -= 1
+			path.Head = path.Head.Next
+			path.Size -= 1
 		}
 	}
 	return
 }
 
-func (queue *Queue) Peek () Dir{
-	if (queue.Size > 0) && (queue.Head != nil) {
-		return queue.Head.Value
+func (path *Path) Peek () Dir{
+	if (path.Size > 0) && (path.Head != nil) {
+		return path.Head.Value
 	}else{
-		return new(QueueNode).Value
+		return new(PathNode).Value
 	}
 }
 
-func (queue *Queue) Empty () bool {
-	if (queue.Size == 0) || (queue.Head == nil) {
+func (path *Path) Empty () bool {
+	if (path.Size == 0) || (path.Head == nil) {
 		return true
 	}else{
 		return false

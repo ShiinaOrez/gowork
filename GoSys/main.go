@@ -5,3 +5,6 @@ import (
     _ "github.com/ShiinaOrez/gowork/GoSys/fileSystem"
 )
 
+func main() {
+    
+}

@@ -3,6 +3,7 @@ package ds
 type Dir struct {
 	FileTree  FileBSTree
 	DirTree   DirBSTree
+	Name      string
 }
 
 type DirBSTreeNode struct {
