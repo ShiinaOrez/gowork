@@ -1,0 +1,71 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Elite API",
+        "description": "Elite is a application which due to deal with the relationship between enterprises and students",
+        "version": "0.0.1",
+        "termsOfService": "http://www.muxixyz.com",
+        "contact": {
+            "email": "Shiinaorez@gmail.com"
+        }
+    },
+    "basePath": "/api/v1.0",
+    "paths": {
+        "/auth/user/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Account sign in.",
+                "operationId": "AuthController.UserSignIn",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "username",
+                        "description": "The username for login",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "password",
+                        "description": "The password for login",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} login success"
+                    },
+                    "403": {
+                        "description": "user not exist"
+                    }
+                }
+            }
+        },
+        "/auth/user/signup": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "AuthController.UserSignUp",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "auth",
+            "description": "Operations about Users\n"
+        }
+    ]
+}
