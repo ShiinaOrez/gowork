@@ -35,22 +35,22 @@ func init() {
 		),
 		beego.NSNamespace("/tag",
 			beego.NSInclude(
-				&controllers.AuthController{},
+				&controllers.TagController{},
 			),
 		),
 		beego.NSNamespace("/elite",
 			beego.NSInclude(
-				&controllers.AuthController{},
+				&controllers.EliteController{},
 			),
 		),
 		beego.NSNamespace("/missionList",
 			beego.NSInclude(
-				&controllers.AuthController{},
+				&controllers.MissionListController{},
 			),
 		),
 		beego.NSNamespace("/message",
 			beego.NSInclude(
-				&controllers.AuthController{},
+				&controllers.MessageController{},
 			),
 		),
 	)

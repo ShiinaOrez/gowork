@@ -9,7 +9,62 @@ info:
     email: Shiinaorez@gmail.com
 basePath: /api/v1.0
 paths:
-  /auth/user/login:
+  /auth/company/info:
+    post:
+      tags:
+      - auth
+      description: New user must sign up.
+      operationId: AuthController.ConfirmCompanyInformation
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /auth/company/signin:
+    post:
+      tags:
+      - auth
+      description: New user must sign up.
+      operationId: AuthController.CompanySignIn
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /auth/company/signup:
+    post:
+      tags:
+      - auth
+      description: New company must sign up.
+      operationId: AuthController.CompanySignUp
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /auth/reviewer/signin:
+    post:
+      tags:
+      - auth
+      description: New user must sign up.
+      operationId: AuthController.ReviewerSignIn
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /auth/reviewer/signup:
+    post:
+      tags:
+      - auth
+      description: New user must sign up.
+      operationId: AuthController.ReviewerSignUp
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /auth/user/signin:
     post:
       tags:
       - auth
@@ -42,7 +97,668 @@ paths:
           description: '{string} sign up successful'
         "401":
           description: '{string} sign up failed'
+  /company/{Cid}/info:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CompanyInformationByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/{Cid}/position/list:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.GetCompanyPositionListByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/attention:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CompanyPayAttentionToSomebody
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    delete:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CompanyCancelAttentionSomebody
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/attention/list:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.GetCompanyAttentionList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/category:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CreateAndPostCompanyCategory
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/category/{CateID}/tags:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.AddTagToCompanyCategory
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/email:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.UpdateCompanyEmailAddress
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/email/confirm:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.ConfirmCompanyEmailAddress
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/info:
+    put:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.EditCompanyInformation
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CompanyBaseInformationByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/logo:
+    put:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.UpdateCompanyLogo
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/mission/list:
+    get:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.GetCompanyMissionListByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/missionList:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CreateAndPostMissionList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/offer:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CreateAndPostCompanyOffer
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/offer/{Oid}:
+    get:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.GetCompanyOfferInformationByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    delete:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.DeleteCompanyOfferByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/position:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CreateAndPostPosition
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/position/{Pid}:
+    put:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.EditCompanyPositionByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    delete:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.DeleteCompanyPositionByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/position/{Pid}/resume:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.ResumeToCompanyPosition
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/position/{Pid}/search:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.SearchCompanyPositionByNormalWay
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/search/fast:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CompanySearchByFastWay
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/search/intelligent:
+    post:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.CompanySearchByIntelligent
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /company/tel:
+    put:
+      tags:
+      - company
+      description: New user must sign up.
+      operationId: CompanyController.UpdateCompanyTelephone
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.CreateAndPostMission
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{Mid}:
+    put:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.ModifyMissionByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.DeleteMissionByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    delete:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.GiveUpMission
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{Mid}/feedback:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.GetMissionFeedback
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{Mid}/file/upload:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.UploadFileOnlyZip
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{Mid}/info:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.MissionInformationByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{Mid}/statistics:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.MissionStatisticsByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{Mid}/status:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.GetMissionStatusByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{MlID}:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.DeleteMissionListByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{MlID}/getElite:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.MissionListGetElite
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/{MsgID}:
+    put:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.ReadMessage
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.GetMessageInformationByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/ability/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.TagAbilityList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/attention/{MlID}:
+    put:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.CancelMissionListAttention
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.PayAttentionToMissionList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/attention/{MlID}/status:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.GetUserToMissionListStatusByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/attention/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.GetMissionListAttentionList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/company/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.CompanyMessageList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/feedback/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.FeedbackMessageList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/industry/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.SearchEliteByIntelligentWay
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/platform/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.PlatformMessageList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/position/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.TagPositionList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/search:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.SearchForMission
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/tag/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.GetStaticMissionTagList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /mission/university/list:
+    post:
+      tags:
+      - mission
+      description: New user must sign up.
+      operationId: MissionController.TagUniversityList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/{Uid}/info:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.UserInformationByID
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/attention/{Cid}:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.UserCancelAttentionToCompany
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/attention/{Cid}/status:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.UserAttentionCompanyStatus
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/attention/list:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.UserAttentionList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/avatar:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.UpdateAvatar
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/company/suitability/list:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.CompanySuitabilityList
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/info:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.EditSetting
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/mission/info:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.UserMissionInformation
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
+  /user/platform/setting:
+    post:
+      tags:
+      - user
+      description: New user must sign up.
+      operationId: UserController.EditPlatformSetting
+      responses:
+        "200":
+          description: '{string} sign up successful'
+        "401":
+          description: '{string} sign up failed'
 tags:
 - name: auth
+  description: |
+    Operations about Users
+- name: user
+  description: |
+    Operations about Users
+- name: company
+  description: |
+    Operations about Users
+- name: mission
   description: |
     Operations about Users
