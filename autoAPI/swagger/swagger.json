@@ -52,12 +52,48 @@
                 ],
                 "description": "New company must sign up.",
                 "operationId": "AuthController.CompanySignUp",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "companyName",
+                        "description": "The company name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "password",
+                        "description": "The password of account",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "emailAddress",
+                        "description": "The email address of company account",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "confirmCode",
+                        "description": "The confirm code we send to email",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfCompanySignUp"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SignUpError"
+                        }
                     }
                 }
             }
@@ -103,12 +139,21 @@
                 ],
                 "description": "New user must sign up.",
                 "operationId": "AuthController.GetTelephoneConfirmCode",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "tel",
+                        "description": "The telephone number ready for confirm",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
                     },
-                    "401": {
-                        "description": "{string} sign up failed"
+                    "410": {
+                        "description": "{string} please wait for minute"
                     }
                 }
             }
@@ -265,7 +310,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfUserLogin"
+                        }
                     },
                     "401": {
                         "description": "{string} sign up failed"
@@ -1322,6 +1370,42 @@
                     "items": {
                         "$ref": "#/definitions/models.TagForUserModelID"
                     }
+                }
+            }
+        },
+        "models.ResultOfCompanySignUp": {
+            "title": "ResultOfCompanySignUp",
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.ResultOfUserLogin": {
+            "title": "ResultOfUserLogin",
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.SignUpError": {
+            "title": "SignUpError",
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "msg": {
+                    "type": "string"
                 }
             }
         },

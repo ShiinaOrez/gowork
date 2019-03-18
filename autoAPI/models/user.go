@@ -28,3 +28,22 @@ type TagForUserModelID int
 type AuthInitTags struct {
 	TagsList []TagForUserModelID `json:"tagsList"`
 }
+
+type ResultOfUserLogin struct {
+	UserID int     `json:"user_id"`
+	Token  string  `json:"token"`
+}
+
+type ResultOfCompanySignUp struct {
+	CompanyID int `json:"company_id"`
+}
+
+type SignUpError struct {
+	ErrorCode int `json:"error_code"`
+	Msg       string `json:"msg"`
+}
+
+type PostConfirmInformationError struct {
+	ErrorCode int `json:"error_code"`
+	Msg       string `json:"msg"`
+}
