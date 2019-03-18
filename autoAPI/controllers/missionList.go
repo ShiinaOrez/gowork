@@ -2,6 +2,7 @@ package controllers
 
 import "github.com/astaxie/beego"
 
+// Operations about MissionLists
 type MissionListController struct {
 	beego.Controller
 }
@@ -11,7 +12,7 @@ type MissionListController struct {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /:MlID [post]
-func (u *MissionController) GetMissionListInformation() {
+func (u *MissionListController) GetMissionListInformation() {
 }
 
 // @Title DeleteMissionListByID
@@ -19,7 +20,7 @@ func (u *MissionController) GetMissionListInformation() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /:MlID [post]
-func (u *MissionController) DelMissionList() {
+func (u *MissionListController) DelMissionList() {
 }
 
 // @Title GetUserToMissionListStatusByID
@@ -27,7 +28,7 @@ func (u *MissionController) DelMissionList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /attention/:MlID/status [post]
-func (u *MissionController) GetMissionListStatus() {
+func (u *MissionListController) GetMissionListStatus() {
 }
 
 // @Title PayAttentionToMissionList
@@ -35,7 +36,7 @@ func (u *MissionController) GetMissionListStatus() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /attention/:MlID [post]
-func (u *MissionController) AttentionMissionList() {
+func (u *MissionListController) AttentionMissionList() {
 }
 
 // @Title CancelMissionListAttention
@@ -43,7 +44,7 @@ func (u *MissionController) AttentionMissionList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /attention/:MlID [put]
-func (u *MissionController) CancelAttentionMissionList() {
+func (u *MissionListController) CancelAttentionMissionList() {
 }
 
 // @Title GetMissionListAttentionList
@@ -51,7 +52,7 @@ func (u *MissionController) CancelAttentionMissionList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /attention/list [post]
-func (u *MissionController) GetMissionListAttentionList() {
+func (u *MissionListController) GetMissionListAttentionList() {
 }
 
 // @Title MissionListGetElite
@@ -59,5 +60,5 @@ func (u *MissionController) GetMissionListAttentionList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /:MlID/getElite [post]
-func (u *MissionController) GetEliteByMissionList() {
+func (u *MissionListController) GetEliteByMissionList() {
 }

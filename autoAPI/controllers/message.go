@@ -2,6 +2,7 @@ package controllers
 
 import "github.com/astaxie/beego"
 
+// Operations about Messages
 type MessageController struct {
 	beego.Controller
 }
@@ -11,7 +12,7 @@ type MessageController struct {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /platform/list [post]
-func (u *MissionController) GetPlatformMessageList() {
+func (u *MessageController) GetPlatformMessageList() {
 }
 
 // @Title FeedbackMessageList
@@ -19,7 +20,7 @@ func (u *MissionController) GetPlatformMessageList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /feedback/list [post]
-func (u *MissionController) GetFeedbackMessageList() {
+func (u *MessageController) GetFeedbackMessageList() {
 }
 
 // @Title GetMessageInformationByID
@@ -27,7 +28,7 @@ func (u *MissionController) GetFeedbackMessageList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /:MsgID [post]
-func (u *MissionController) GetMessageInfo() {
+func (u *MessageController) GetMessageInfo() {
 }
 
 // @Title ReadMessage
@@ -35,7 +36,7 @@ func (u *MissionController) GetMessageInfo() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /:MsgID [put]
-func (u *MissionController) ReadMessage() {
+func (u *MessageController) ReadMessage() {
 }
 
 // @Title CompanyMessageList
@@ -43,5 +44,5 @@ func (u *MissionController) ReadMessage() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /company/list [post]
-func (u *MissionController) GetCompanyMessageList() {
+func (u *MessageController) GetCompanyMessageList() {
 }

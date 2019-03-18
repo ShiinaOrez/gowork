@@ -96,6 +96,23 @@
                 }
             }
         },
+        "/auth/telephone/confirm": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "AuthController.GetTelephoneConfirmCode",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
         "/auth/user/signin": {
             "post": {
                 "tags": [
@@ -106,8 +123,15 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "username",
-                        "description": "The username for login",
+                        "name": "email",
+                        "description": "The email for login",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "tel",
+                        "description": "The telephone number of login",
                         "required": true,
                         "type": "string"
                     },
@@ -117,14 +141,21 @@
                         "description": "The password for login",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "loginType",
+                        "description": "The login type is email or telephone",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "{string} login success"
                     },
-                    "403": {
-                        "description": "user not exist"
+                    "401": {
+                        "description": "{string}"
                     }
                 }
             }
@@ -136,6 +167,102 @@
                 ],
                 "description": "New user must sign up.",
                 "operationId": "AuthController.UserSignUp",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "realName",
+                        "description": "The real name of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "sex",
+                        "description": "The sex of user",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "birthYear",
+                        "description": "The birth year of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "birthMonth",
+                        "description": "The birth month of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "city",
+                        "description": "The city of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "university",
+                        "description": "The university of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "enrollYear",
+                        "description": "The enroll year of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "graduateYear",
+                        "description": "The graduate year of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "educationLevel",
+                        "description": "The education level of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "major",
+                        "description": "The major of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "status",
+                        "description": "The status of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "initTags",
+                        "description": "The initialize tags of user",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AuthInitTags"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "intro",
+                        "description": "The introduction of user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -563,13 +690,13 @@
                 }
             }
         },
-        "/mission/": {
+        "/elite/industry/list": {
             "post": {
                 "tags": [
-                    "mission"
+                    "elite"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.CreateAndPostMission",
+                "operationId": "EliteController.SearchEliteByIntelligentWay",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -580,13 +707,13 @@
                 }
             }
         },
-        "/mission/ability/list": {
+        "/elite/search": {
             "post": {
                 "tags": [
-                    "mission"
+                    "elite"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.TagAbilityList",
+                "operationId": "EliteController.SearchElite",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -597,13 +724,13 @@
                 }
             }
         },
-        "/mission/attention/list": {
+        "/message/company/list": {
             "post": {
                 "tags": [
-                    "mission"
+                    "message"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.GetMissionListAttentionList",
+                "operationId": "MessageController.CompanyMessageList",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -614,13 +741,47 @@
                 }
             }
         },
-        "/mission/attention/{MlID}": {
+        "/message/feedback/list": {
+            "post": {
+                "tags": [
+                    "message"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "MessageController.FeedbackMessageList",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/message/platform/list": {
+            "post": {
+                "tags": [
+                    "message"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "MessageController.PlatformMessageList",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/message/{MsgID}": {
             "put": {
                 "tags": [
-                    "mission"
+                    "message"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.CancelMissionListAttention",
+                "operationId": "MessageController.ReadMessage",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -632,10 +793,10 @@
             },
             "post": {
                 "tags": [
-                    "mission"
+                    "message"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.PayAttentionToMissionList",
+                "operationId": "MessageController.GetMessageInformationByID",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -646,98 +807,13 @@
                 }
             }
         },
-        "/mission/attention/{MlID}/status": {
+        "/mission/": {
             "post": {
                 "tags": [
                     "mission"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.GetUserToMissionListStatusByID",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/mission/company/list": {
-            "post": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.CompanyMessageList",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/mission/feedback/list": {
-            "post": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.FeedbackMessageList",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/mission/industry/list": {
-            "post": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.SearchEliteByIntelligentWay",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/mission/platform/list": {
-            "post": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.PlatformMessageList",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/mission/position/list": {
-            "post": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.TagPositionList",
+                "operationId": "MissionController.CreateAndPostMission",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -772,23 +848,6 @@
                 ],
                 "description": "New user must sign up.",
                 "operationId": "MissionController.GetStaticMissionTagList",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/mission/university/list": {
-            "post": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.TagUniversityList",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -931,13 +990,13 @@
                 }
             }
         },
-        "/mission/{MlID}": {
+        "/missionList/attention/list": {
             "post": {
                 "tags": [
-                    "mission"
+                    "missionList"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.DeleteMissionListByID",
+                "operationId": "MissionListController.GetMissionListAttentionList",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -948,30 +1007,13 @@
                 }
             }
         },
-        "/mission/{MlID}/getElite": {
-            "post": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.MissionListGetElite",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/mission/{MsgID}": {
+        "/missionList/attention/{MlID}": {
             "put": {
                 "tags": [
-                    "mission"
+                    "missionList"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.ReadMessage",
+                "operationId": "MissionListController.CancelMissionListAttention",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -983,10 +1025,129 @@
             },
             "post": {
                 "tags": [
-                    "mission"
+                    "missionList"
                 ],
                 "description": "New user must sign up.",
-                "operationId": "MissionController.GetMessageInformationByID",
+                "operationId": "MissionListController.PayAttentionToMissionList",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/missionList/attention/{MlID}/status": {
+            "post": {
+                "tags": [
+                    "missionList"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "MissionListController.GetUserToMissionListStatusByID",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/missionList/{MlID}": {
+            "post": {
+                "tags": [
+                    "missionList"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "MissionListController.DeleteMissionListByID",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/missionList/{MlID}/getElite": {
+            "post": {
+                "tags": [
+                    "missionList"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "MissionListController.MissionListGetElite",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/tag/ability/list": {
+            "post": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "TagController.TagAbilityList",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/tag/industry/list": {
+            "post": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "TagController.TagIndustryList",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/tag/position/list": {
+            "post": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "TagController.TagPositionList",
+                "responses": {
+                    "200": {
+                        "description": "{string} sign up successful"
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    }
+                }
+            }
+        },
+        "/tag/university/list": {
+            "post": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "New user must sign up.",
+                "operationId": "TagController.TagUniversityList",
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -1151,6 +1312,25 @@
             }
         }
     },
+    "definitions": {
+        "models.AuthInitTags": {
+            "title": "AuthInitTags",
+            "type": "object",
+            "properties": {
+                "tagsList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TagForUserModelID"
+                    }
+                }
+            }
+        },
+        "models.TagForUserModelID": {
+            "title": "TagForUserModelID",
+            "format": "int64",
+            "type": "integer"
+        }
+    },
     "tags": [
         {
             "name": "auth",
@@ -1162,11 +1342,27 @@
         },
         {
             "name": "company",
-            "description": "Operations about Users\n"
+            "description": "Operations about Companies\n"
         },
         {
             "name": "mission",
-            "description": "Operations about Users\n"
+            "description": "Operations about Missions\n"
+        },
+        {
+            "name": "tag",
+            "description": "Operations about Tags\n"
+        },
+        {
+            "name": "elite",
+            "description": "Operations about Elites\n"
+        },
+        {
+            "name": "missionList",
+            "description": "Operations about MissionLists\n"
+        },
+        {
+            "name": "message",
+            "description": "Operations about Messages\n"
         }
     ]
 }

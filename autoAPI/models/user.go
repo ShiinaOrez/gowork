@@ -22,3 +22,9 @@ type UserModel struct {
 	CanBeSearch bool `json:"canbesearch" gorm:"column:canbesearch"`
 	CanSendMail bool `json:"cansendmail" gorm:"column:cansendmail"`
 }
+
+type TagForUserModelID int
+
+type AuthInitTags struct {
+	TagsList []TagForUserModelID `json:"tagsList"`
+}

@@ -1,7 +1,10 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"github.com/astaxie/beego"
+)
 
+// Operations about Tags
 type TagController struct {
 	beego.Controller
 }
@@ -11,7 +14,7 @@ type TagController struct {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /industry/list [post]
-func (u *MissionController) TagIndustryList() {
+func (u *TagController) TagIndustryList() {
 }
 
 // @Title TagPositionList
@@ -19,7 +22,7 @@ func (u *MissionController) TagIndustryList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /position/list [post]
-func (u *MissionController) TagPositionList() {
+func (u *TagController) TagPositionList() {
 }
 
 // @Title TagUniversityList
@@ -27,7 +30,7 @@ func (u *MissionController) TagPositionList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /university/list [post]
-func (u *MissionController) TagUniversityList() {
+func (u *TagController) TagUniversityList() {
 }
 
 // @Title TagAbilityList
@@ -35,5 +38,5 @@ func (u *MissionController) TagUniversityList() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /ability/list [post]
-func (u *MissionController) TagAbilityList() {
+func (u *TagController) TagAbilityList() {
 }

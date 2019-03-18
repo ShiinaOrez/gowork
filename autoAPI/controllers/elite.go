@@ -2,6 +2,7 @@ package controllers
 
 import "github.com/astaxie/beego"
 
+// Operations about Elites
 type EliteController struct {
 	beego.Controller
 }
@@ -11,7 +12,7 @@ type EliteController struct {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /search [post]
-func (u *MissionController) SearchElite() {
+func (u *EliteController) SearchElite() {
 }
 
 // @Title SearchEliteByIntelligentWay
@@ -19,5 +20,5 @@ func (u *MissionController) SearchElite() {
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /industry/list [post]
-func (u *MissionController) SearchEliteIntelligent() {
+func (u *EliteController) SearchEliteIntelligent() {
 }
