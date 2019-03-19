@@ -11,23 +11,6 @@
     },
     "basePath": "/api/v1.0",
     "paths": {
-        "/auth/company/info": {
-            "post": {
-                "tags": [
-                    "auth"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "AuthController.ConfirmCompanyInformation",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
         "/auth/company/signin": {
             "post": {
                 "tags": [
@@ -35,12 +18,41 @@
                 ],
                 "description": "New user must sign up.",
                 "operationId": "AuthController.CompanySignIn",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "account",
+                        "description": "The company account telephone or email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "code",
+                        "description": "The confirm code",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "loginType",
+                        "description": "The type to login: tel or email",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfCompanyLogin"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyLoginError"
+                        }
                     }
                 }
             }
@@ -98,6 +110,95 @@
                 }
             }
         },
+        "/auth/company/{Cid}/info": {
+            "put": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Confirm request will be posted to reviewer.",
+                "operationId": "AuthController.StartConfirmCompanyInformation",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The company ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} confirm request post successful"
+                    },
+                    "401": {
+                        "description": "{string} confirm request post failed"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Post the company base information.",
+                "operationId": "AuthController.CompanyInformationPost",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "companyNature",
+                        "description": "The company nature",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "contactName",
+                        "description": "The contact person name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "contactTel",
+                        "description": "The contact person telephone number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "licenseLocation",
+                        "description": "The company license location",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "initTags",
+                        "description": "The company init tags(max = 6)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyInitTags"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The company ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} company information post successful"
+                    },
+                    "401": {
+                        "description": "{string} company information post failed"
+                    }
+                }
+            }
+        },
         "/auth/reviewer/signin": {
             "post": {
                 "tags": [
@@ -105,12 +206,34 @@
                 ],
                 "description": "New user must sign up.",
                 "operationId": "AuthController.ReviewerSignIn",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "name",
+                        "description": "The reviewer name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "password",
+                        "description": "The confirm code",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfReviewerLogin"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ReviewerLoginError"
+                        }
                     }
                 }
             }
@@ -122,9 +245,35 @@
                 ],
                 "description": "New user must sign up.",
                 "operationId": "AuthController.ReviewerSignUp",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "name",
+                        "description": "The reviewer name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "password",
+                        "description": "The reviewer account password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "intro",
+                        "description": "The reviewer introduction",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfReviewerSignUp"
+                        }
                     },
                     "401": {
                         "description": "{string} sign up failed"
@@ -188,7 +337,7 @@
                         "type": "string"
                     },
                     {
-                        "in": "path",
+                        "in": "query",
                         "name": "loginType",
                         "description": "The login type is email or telephone",
                         "required": true,
@@ -1291,7 +1440,83 @@
                 }
             }
         },
+        "/user/editPassword": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get user base information",
+                "operationId": "UserController.GetUserBaseInformation",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "oldPassword",
+                        "description": "The old password to change",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "newPassword",
+                        "description": "The new password want to change",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetUserBaseInformation"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed || old password confirm failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
+                    }
+                }
+            }
+        },
         "/user/info": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get user base information",
+                "operationId": "UserController.GetUserBaseInformation",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetUserBaseInformation"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "user"
@@ -1343,18 +1568,41 @@
             }
         },
         "/user/{Uid}/info": {
-            "post": {
+            "get": {
                 "tags": [
                     "user"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "UserController.UserInformationByID",
+                "description": "Get user's information by ID",
+                "operationId": "UserController.GetUserInformationByID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Uid",
+                        "description": "The user ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetUserInformation"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
                     }
                 }
             }
@@ -1365,11 +1613,185 @@
             "title": "AuthInitTags",
             "type": "object",
             "properties": {
-                "tagsList": {
+                "tags_list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.TagForUserModelID"
                     }
+                }
+            }
+        },
+        "models.BaseModel": {
+            "title": "BaseModel",
+            "type": "object"
+        },
+        "models.CompanyInitTags": {
+            "title": "CompanyInitTags",
+            "type": "object",
+            "properties": {
+                "tags_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TagForCompanyModel"
+                    }
+                }
+            }
+        },
+        "models.CompanyLoginError": {
+            "title": "CompanyLoginError",
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetUserBaseInformation": {
+            "title": "GetUserBaseInformation",
+            "type": "object",
+            "properties": {
+                "avatar_url": {
+                    "type": "string"
+                },
+                "birth_month": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "birth_year": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "education": {
+                    "type": "string"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "enroll_year": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "intro": {
+                    "type": "string"
+                },
+                "major": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tel": {
+                    "type": "string"
+                },
+                "university": {
+                    "type": "string"
+                },
+                "user_tags_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TagForUserModel"
+                    }
+                }
+            }
+        },
+        "models.GetUserInformation": {
+            "title": "GetUserInformation",
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "attention": {
+                    "type": "boolean"
+                },
+                "avatar_url": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "edu_time_range": {
+                    "type": "string"
+                },
+                "education": {
+                    "type": "string"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "intro": {
+                    "type": "string"
+                },
+                "major": {
+                    "type": "string"
+                },
+                "missions_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.MissionEntityToShow"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "star_level": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tel": {
+                    "type": "string"
+                },
+                "university": {
+                    "type": "string"
+                },
+                "user_tags_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TagForUserModel"
+                    }
+                }
+            }
+        },
+        "models.MissionEntityToShow": {
+            "title": "MissionEntityToShow",
+            "type": "object",
+            "properties": {
+                "mission_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statu": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.ResultOfCompanyLogin": {
+            "title": "ResultOfCompanyLogin",
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "token": {
+                    "type": "string"
                 }
             }
         },
@@ -1378,6 +1800,29 @@
             "type": "object",
             "properties": {
                 "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.ResultOfReviewerLogin": {
+            "title": "ResultOfReviewerLogin",
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.ResultOfReviewerSignUp": {
+            "title": "ResultOfReviewerSignUp",
+            "type": "object",
+            "properties": {
+                "reviewer_id": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -1396,6 +1841,19 @@
                 }
             }
         },
+        "models.ReviewerLoginError": {
+            "title": "ReviewerLoginError",
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
         "models.SignUpError": {
             "title": "SignUpError",
             "type": "object",
@@ -1406,6 +1864,38 @@
                 },
                 "msg": {
                     "type": "string"
+                }
+            }
+        },
+        "models.TagForCompanyModel": {
+            "title": "TagForCompanyModel",
+            "type": "object",
+            "properties": {
+                "companyid": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "tagid": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.TagForUserModel": {
+            "title": "TagForUserModel",
+            "type": "object",
+            "properties": {
+                "tagid": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "userid": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "value": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },

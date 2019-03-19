@@ -26,7 +26,7 @@ type UserModel struct {
 type TagForUserModelID int
 
 type AuthInitTags struct {
-	TagsList []TagForUserModelID `json:"tagsList"`
+	TagsList []TagForUserModelID `json:"tags_list"`
 }
 
 type ResultOfUserLogin struct {
@@ -46,4 +46,74 @@ type SignUpError struct {
 type PostConfirmInformationError struct {
 	ErrorCode int `json:"error_code"`
 	Msg       string `json:"msg"`
+}
+
+type CompanyInitTags struct {
+	TagsList []TagForCompanyModel `json:"tags_list"`
+}
+
+type ResultOfReviewerSignUp struct {
+	ReviewerID int `json:"reviewer_id"`
+}
+
+type ResultOfCompanyLogin struct {
+	CompanyID int     `json:"company_id"`
+	Token     string  `json:"token"` 
+}
+
+type CompanyLoginError struct {
+	ErrorCode int     `json:"error_code"`
+	Msg       string  `json:"msg"`
+}
+
+type ResultOfReviewerLogin struct {
+	CompanyID int     `json:"company_id"`
+	Token     string  `json:"token"`
+}
+
+type ReviewerLoginError struct {
+	ErrorCode int     `json:"error_code"`
+	Msg       string  `json:"msg"`
+}
+
+type MissionEntityToShow struct {
+	MissionID     int         `json:"mission_id"`
+	Statu         bool        `json:"statu"`
+}
+
+type GetUserInformation struct {
+	AvatarURL     string     `json:"avatar_url"`
+	Name          string     `json:"name"`
+	Status        string     `json:"status"`
+	Age           int        `json:"age"`
+	University    string     `json:"university"`
+	Attention     bool       `json:"attention"`
+	UserTagsList  []TagForUserModel `json:"user_tags_list"`
+	Education     string     `json:"education"`
+	Tel           string     `json:"tel"`
+	EmailAddress  string     `json:"email_address"`
+	StarLevel     int        `json:"star_level"`
+	Major         string     `json:"major"`
+	EduTimeRange  string     `json:"edu_time_range"`
+	City          string     `json:"city"`
+	Intro         string     `json:"intro"`
+	MissionsList  []MissionEntityToShow `json:"missions_list"`
+}
+
+type GetUserBaseInformation struct {
+	AvatarURL     string     `json:"avatar_url"`
+	Name          string     `json:"name"`
+	Sex           bool       `json:"sex"`
+	EmailAddress  string     `json:"email_address"`
+	Tel           string     `json:"tel"`
+    BirthYear     int        `json:"birth_year"`
+	BirthMonth    int        `json:"birth_month"`
+	City          string     `json:"city"`
+	University    string     `json:"university"`
+	EnrollYear    int        `json:"enroll_year"`
+	Education     string     `json:"education"`
+	Major         string     `json:"major"`
+	Status        string     `json:"status"`
+	UserTagsList  []TagForUserModel `json:"user_tags_list"`
+	Intro         string     `json:"intro"`
 }

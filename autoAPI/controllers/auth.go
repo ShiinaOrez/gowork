@@ -14,7 +14,7 @@ type AuthController struct {
 // @Param	email		body 	string	true		"The email for login"
 // @Param   tel         body    string  true        "The telephone number of login"
 // @Param	password	body 	string	true		"The password for login"
-// @Param   loginType   path    string  true        "The login type is email or telephone"
+// @Param   loginType   query   string  true        "The login type is email or telephone"
 // @Success 200 {string} login success
 // @Failure 401 {string}
 // @router /user/signin [post]
@@ -61,31 +61,42 @@ func (u *AuthController) CompanySignUp() {
 // @Param   cardImage         body    string              true        "The company legal ID card image"
 // @Param   legalName         body    string              true        "The legal body name"
 // @Param   legalNumber       body    string              true        "The legal body number"
-// @Success 200 {string} post information successfully
+// @Param   Cid               path    int                 true        "The company ID"
+// @Success 200 {string} post information successful
 // @Success 401 {object| models.PostConfirmInformationError
-// @router /company/info [post]
+// @router /company/:Cid/info [post]
 func (u *AuthController) CompanyInfoConfirm() {
 }
 
-// @Title CompanyInformation
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /company/info [post]
+// @Title CompanyInformationPost
+// @Description Post the company base information.
+// @Param   companyNature       body    string                    true        "The company nature"
+// @Param   contactName         body    string                    true        "The contact person name"
+// @Param   contactTel          body    string                    true        "The contact person telephone number"
+// @Param   licenseLocation     body    string                    true        "The company license location"
+// @Param   initTags            body    models.CompanyInitTags    true        "The company init tags(max = 6)"
+// @Param   Cid                 path    int                       true        "The company ID"
+// @Success 200 {string} company information post successful
+// @Failure 401 {string} company information post failed
+// @router /company/:Cid/info [post]
 func (u *AuthController) CompanyInfoPost() {
 }
 
-// @Title ConfirmCompanyInformation
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /company/info [post]
+// @Title StartConfirmCompanyInformation
+// @Description Confirm request will be posted to reviewer.
+// @Param   Cid               path    int                 true        "The company ID"
+// @Success 200 {string} confirm request post successful
+// @Failure 401 {string} confirm request post failed
+// @router /company/:Cid/info [put]
 func (u *AuthController) CompanyInfoPut() {
 }
 
 // @Title ReviewerSignUp
 // @Description New user must sign up.
-// @Success 200 {string} sign up successful
+// @Param   name               body    string             true        "The reviewer name"
+// @Param   password           body    string             true        "The reviewer account password"
+// @Param   intro              body    string             true        "The reviewer introduction"
+// @Success 200 {object} models.ResultOfReviewerSignUp
 // @Failure 401 {string} sign up failed
 // @router /reviewer/signup [post]
 func (u *AuthController) ReviewerSignUp() {
@@ -93,16 +104,21 @@ func (u *AuthController) ReviewerSignUp() {
 
 // @Title CompanySignIn
 // @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Param   account            body    string              true        "The company account telephone or email"
+// @Param   code               body    string              true        "The confirm code"
+// @Param   loginType          query   string              true        "The type to login: tel or email"
+// @Success 200 {object} models.ResultOfCompanyLogin
+// @Success 401 {object} models.CompanyLoginError
 // @router /company/signin [post]
 func (u *AuthController) CompanySignIn() {
 }
 
 // @Title ReviewerSignIn
 // @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Param   name               body    string              true        "The reviewer name"
+// @Param   password           body    string              true        "The confirm code"
+// @Success 200 {object} models.ResultOfReviewerLogin
+// @Success 401 {object} models.ReviewerLoginError
 // @router /reviewer/signin [post]
 func (u *AuthController) ReviewerSignIn() {
 }
