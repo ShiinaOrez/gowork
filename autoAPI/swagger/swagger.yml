@@ -947,7 +947,7 @@ paths:
         "401":
           description: '{string} auth failed'
         "402":
-          description: '{string} user not existed | haven''t attention'
+          description: '{string} user | company not existed | haven''t attention'
     post:
       tags:
       - user
@@ -970,20 +970,33 @@ paths:
         "401":
           description: '{string} auth failed'
         "402":
-          description: '{string} user not existed'
+          description: '{string} user | company not existed'
         "405":
           description: '{string} already attention'
   /user/attention/{Cid}/status:
-    post:
+    get:
       tags:
       - user
-      description: New user must sign up.
+      description: Query is a user-company attention relationship existed.
       operationId: UserController.UserAttentionCompanyStatus
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Cid
+        description: The company id
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{int}'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user | company not existed'
   /user/attention/list:
     get:
       tags:
@@ -1009,13 +1022,28 @@ paths:
     post:
       tags:
       - user
-      description: New user must sign up.
+      description: Update user's avatar
       operationId: UserController.UpdateAvatar
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: newAvatar
+        description: The avatar image
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} newAvatarURL'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user not existed'
+        "406":
+          description: '{string} avatar upload failed'
   /user/company/suitability/list:
     post:
       tags:

@@ -59,7 +59,7 @@ func (u *UserController) UserMissionInfo() {
 // @Param   Cid         path      string      true        "The company id"
 // @Success 200 {string} pay attention successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user not existed
+// @Failure 402 {string} user | company not existed
 // @Failure 405 {string} already attention
 // @router /attention/:Cid [post]
 func (u *UserController) UserAttentionCompany() {
@@ -71,7 +71,7 @@ func (u *UserController) UserAttentionCompany() {
 // @Param   Cid         path      string      true        "The company id"
 // @Success 200 {string} cancel successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user not existed | haven't attention
+// @Failure 402 {string} user | company not existed | haven't attention
 // @router /attention/:Cid [put]
 func (u *UserController) UserCancelAttentionCompany() {
 }
@@ -87,17 +87,24 @@ func (u *UserController) UserAttentionList() {
 }
 
 // @Title UserAttentionCompanyStatus
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /attention/:Cid/status [post]
+// @Description Query is a user-company attention relationship existed.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Cid         path      string      true        "The company id"
+// @Success 200 {int}
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} user | company not existed
+// @router /attention/:Cid/status [get]
 func (u *UserController) AttentionCompanyStatu() {
 }
 
 // @Title UpdateAvatar
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Description Update user's avatar
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   newAvatar   body      string      true        "The avatar image"
+// @Success 200 {string} newAvatarURL
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} user not existed
+// @Failure 406 {string} avatar upload failed
 // @router /avatar [post]
 func (u *UserController) UpdateAvatar() {
 }

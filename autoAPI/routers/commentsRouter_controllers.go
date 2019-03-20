@@ -632,7 +632,7 @@ func init() {
         beego.ControllerComments{
             Method: "AttentionCompanyStatu",
             Router: `/attention/:Cid/status`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
