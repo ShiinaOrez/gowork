@@ -623,7 +623,7 @@ func init() {
         beego.ControllerComments{
             Method: "UserCancelAttentionCompany",
             Router: `/attention/:Cid`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -641,7 +641,7 @@ func init() {
         beego.ControllerComments{
             Method: "UserAttentionList",
             Router: `/attention/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -695,7 +695,7 @@ func init() {
         beego.ControllerComments{
             Method: "UserMissionInfo",
             Router: `/mission/info`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

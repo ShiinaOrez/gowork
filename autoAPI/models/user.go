@@ -117,3 +117,29 @@ type GetUserBaseInformation struct {
 	UserTagsList  []TagForUserModel `json:"user_tags_list"`
 	Intro         string     `json:"intro"`
 }
+
+type Mission struct {
+	ID            int        `json:"id"`
+	MissionName   string     `json:"mission_name"`
+	Status        bool       `json:"status"`
+	CompanyName   string     `json:"company_name"`
+	CompanyAvatar string     `json:"company_avatar"`
+	StartTime     string     `json:"start_time"`
+	EndTime       string     `json:"end_time"`
+}
+
+type UserMissionInformation struct {
+	MissionList   []Mission  `json:"mission_list"`
+	AverageStar   float32    `json:"average_star"`
+}
+
+type CompanySimpleInformation struct {
+	CompanyID     int        `json:"company_id"`
+	CompanyName   string     `json:"company_name"`
+	CompanyAvatar string     `json:"company_avatar"`
+}
+
+type UserAttentionCompanyList struct {
+	CompanyList   []CompanySimpleInformation  `json:"company_list"`
+	Length        int                         `json:"length"`
+}

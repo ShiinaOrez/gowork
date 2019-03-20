@@ -1356,35 +1356,106 @@
             }
         },
         "/user/attention/list": {
-            "post": {
+            "get": {
                 "tags": [
                     "user"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get user's attention list",
                 "operationId": "UserController.UserAttentionList",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserAttentionCompanyList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
                     }
                 }
             }
         },
         "/user/attention/{Cid}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "User cancel pay attention to a company by id.",
+                "operationId": "UserController.UserCancelAttentionToCompany",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The company id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} cancel successful"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed | haven't attention"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "user"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "UserController.UserCancelAttentionToCompany",
+                "description": "Pay attention to a company by Cid",
+                "operationId": "UserController.UserPayAttentionToCompany",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The company id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} pay attention successful"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
+                    },
+                    "405": {
+                        "description": "{string} already attention"
                     }
                 }
             }
@@ -1445,8 +1516,8 @@
                 "tags": [
                     "user"
                 ],
-                "description": "Get user base information",
-                "operationId": "UserController.GetUserBaseInformation",
+                "description": "User edit password.",
+                "operationId": "UserController.UserEditPassword",
                 "parameters": [
                     {
                         "in": "header",
@@ -1534,18 +1605,40 @@
             }
         },
         "/user/mission/info": {
-            "post": {
+            "get": {
                 "tags": [
                     "user"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get user's mission information",
                 "operationId": "UserController.UserMissionInformation",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "Type",
+                        "description": "query mode: all, doing, finish",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserMissionInformation"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
                     }
                 }
             }
@@ -1646,6 +1739,22 @@
                     "format": "int64"
                 },
                 "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CompanySimpleInformation": {
+            "title": "CompanySimpleInformation",
+            "type": "object",
+            "properties": {
+                "company_avatar": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "company_name": {
                     "type": "string"
                 }
             }
@@ -1766,6 +1875,34 @@
                     "items": {
                         "$ref": "#/definitions/models.TagForUserModel"
                     }
+                }
+            }
+        },
+        "models.Mission": {
+            "title": "Mission",
+            "type": "object",
+            "properties": {
+                "company_avatar": {
+                    "type": "string"
+                },
+                "company_name": {
+                    "type": "string"
+                },
+                "end_time": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "mission_name": {
+                    "type": "string"
+                },
+                "start_time": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "boolean"
                 }
             }
         },
@@ -1903,6 +2040,38 @@
             "title": "TagForUserModelID",
             "format": "int64",
             "type": "integer"
+        },
+        "models.UserAttentionCompanyList": {
+            "title": "UserAttentionCompanyList",
+            "type": "object",
+            "properties": {
+                "company_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.CompanySimpleInformation"
+                    }
+                },
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.UserMissionInformation": {
+            "title": "UserMissionInformation",
+            "type": "object",
+            "properties": {
+                "average_star": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "mission_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Mission"
+                    }
+                }
+            }
         }
     },
     "tags": [
