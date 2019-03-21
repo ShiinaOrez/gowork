@@ -92,7 +92,7 @@ func (u *AuthController) CompanyInfoPut() {
 }
 
 // @Title ReviewerSignUp
-// @Description New user must sign up.
+// @Description New reviewer must sign up.
 // @Param   name               body    string             true        "The reviewer name"
 // @Param   password           body    string             true        "The reviewer account password"
 // @Param   intro              body    string             true        "The reviewer introduction"
@@ -103,7 +103,7 @@ func (u *AuthController) ReviewerSignUp() {
 }
 
 // @Title CompanySignIn
-// @Description New user must sign up.
+// @Description Company login.
 // @Param   account            body    string              true        "The company account telephone or email"
 // @Param   code               body    string              true        "The confirm code"
 // @Param   loginType          query   string              true        "The type to login: tel or email"
@@ -114,7 +114,7 @@ func (u *AuthController) CompanySignIn() {
 }
 
 // @Title ReviewerSignIn
-// @Description New user must sign up.
+// @Description Reviewer login
 // @Param   name               body    string              true        "The reviewer name"
 // @Param   password           body    string              true        "The confirm code"
 // @Success 200 {object} models.ResultOfReviewerLogin
@@ -124,10 +124,19 @@ func (u *AuthController) ReviewerSignIn() {
 }
 
 // @Title GetTelephoneConfirmCode
-// @Description New user must sign up.
-// @Param   tel         body    string  true        "The telephone number ready for confirm"
-// @Success 200 {string} sign up successful
+// @Description Get telephone confirm code
+// @Param   tel        query    string  true        "The telephone number ready for confirm"
+// @Success 200 {string} send code successful
 // @Failure 410 {string} please wait for minute
-// @router /telephone/confirm [post]
+// @router /telephone/confirm [get]
 func (u *AuthController) GetTelephoneConfirmCode() {
+}
+
+// @Title GetEmailConfirmCode
+// @Description Get email confirm code.
+// @Param   email        query    string  true        "The telephone number ready for confirm"
+// @Success 200 {string} send code successful
+// @Failure 410 {string} please wait for minute
+// @router /email/confirm [get]
+func (u *AuthController) GetEamilConfirmCode() {
 }

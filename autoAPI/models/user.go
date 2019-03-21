@@ -143,3 +143,22 @@ type UserAttentionCompanyList struct {
 	CompanyList   []CompanySimpleInformation  `json:"company_list"`
 	Length        int                         `json:"length"`
 }
+
+type EditSettingBody struct {
+	Name          string     `json:"name"`
+	Sex           bool       `json:"sex"`
+	BirthYear     int        `json:"birth_year"`
+	BirthMonth    int        `json:"birth_month"`
+	City          string     `json:"city"`
+	University    string     `json:"university"`
+	EnrollYear    int        `json:"enroll_year"`
+	Education     string     `json:"education"`
+	Major         string     `json:"major"`
+	Status        string     `json:"status"`
+	UserTagsList  []TagForUserModel `json:"user_tags_list"`
+	Intro         string     `json:"intro"`
+}
+
+type GetUserPlatformSetting struct {
+
+}

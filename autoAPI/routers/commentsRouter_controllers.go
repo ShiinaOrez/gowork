@@ -54,6 +54,15 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:AuthController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:AuthController"],
         beego.ControllerComments{
+            Method: "GetEamilConfirmCode",
+            Router: `/email/confirm`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:AuthController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:AuthController"],
+        beego.ControllerComments{
             Method: "ReviewerSignIn",
             Router: `/reviewer/signin`,
             AllowHTTPMethods: []string{"post"},
@@ -74,7 +83,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetTelephoneConfirmCode",
             Router: `/telephone/confirm`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -675,6 +684,15 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
+            Method: "ConfirmEmail",
+            Router: `/email/edit`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
+        beego.ControllerComments{
             Method: "UserBaseInfo",
             Router: `/info`,
             AllowHTTPMethods: []string{"get"},
@@ -713,6 +731,15 @@ func init() {
         beego.ControllerComments{
             Method: "EditPlatformSetting",
             Router: `/platform/setting`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
+        beego.ControllerComments{
+            Method: "ConfirmTel",
+            Router: `/tel/edit`,
             AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,

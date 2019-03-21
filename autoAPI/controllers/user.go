@@ -110,17 +110,46 @@ func (u *UserController) UpdateAvatar() {
 }
 
 // @Title EditSetting
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Description Edit personal information
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   RequestBody {object}  models.EditSettingBody  true   "The request body for edit setting"
+// @Success 200 {string} edit successful
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} user not existed
 // @router /info [post]
 func (u *UserController) EditSetting() {
 }
 
+// @Title ConfirmEmailAddress
+// @Description Confirm email address by code and change it
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Email       body      string      true        "The email address you want to change"
+// @Param   Code        body      string      true        "The confirm code sent by server"
+// @Success 200 {string} confirm successful
+// @Failure 401 {string} auth | confirm failed
+// @Failure 402 {string} user not existed
+// @router /email/edit [post]
+func (u *UserController) ConfirmEmail() {
+}
+
+// @Title ConfirmTelephoneNumber
+// @Description Confirm telephone number by code and change it
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Tel         body      string      true        "The telephone number you want to change"
+// @Param   Code        body      string      true        "The confirm code sent by server"
+// @Success 200 {string} confirm successful
+// @Failure 401 {string} auth | confirm failed
+// @Failure 402 {string} user not existed
+// @router /tel/edit [post]
+func (u *UserController) ConfirmTel() {
+}
+
 // @Title PlatformInformation
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Description Get user's platform setting information
+// @Param   Token       header    string      true        "The token to conform"
+// @Success 200 {object} models.GetUserPlatformSetting
+// @Failure 401 {string} auth | confirm failed
+// @Failure 402 {string} user not existed
 // @router /platform/setting [post]
 func (u *UserController) PlatformSetting() {
 }

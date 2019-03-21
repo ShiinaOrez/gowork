@@ -74,7 +74,7 @@ paths:
     post:
       tags:
       - auth
-      description: New user must sign up.
+      description: Company login.
       operationId: AuthController.CompanySignIn
       parameters:
       - in: body
@@ -137,11 +137,28 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.SignUpError'
+  /auth/email/confirm:
+    get:
+      tags:
+      - auth
+      description: Get email confirm code.
+      operationId: AuthController.GetEmailConfirmCode
+      parameters:
+      - in: query
+        name: email
+        description: The telephone number ready for confirm
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} send code successful'
+        "410":
+          description: '{string} please wait for minute'
   /auth/reviewer/signin:
     post:
       tags:
       - auth
-      description: New user must sign up.
+      description: Reviewer login
       operationId: AuthController.ReviewerSignIn
       parameters:
       - in: body
@@ -167,7 +184,7 @@ paths:
     post:
       tags:
       - auth
-      description: New user must sign up.
+      description: New reviewer must sign up.
       operationId: AuthController.ReviewerSignUp
       parameters:
       - in: body
@@ -193,20 +210,20 @@ paths:
         "401":
           description: '{string} sign up failed'
   /auth/telephone/confirm:
-    post:
+    get:
       tags:
       - auth
-      description: New user must sign up.
+      description: Get telephone confirm code
       operationId: AuthController.GetTelephoneConfirmCode
       parameters:
-      - in: body
+      - in: query
         name: tel
         description: The telephone number ready for confirm
         required: true
         type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} send code successful'
         "410":
           description: '{string} please wait for minute'
   /auth/user/signin:
@@ -1086,6 +1103,35 @@ paths:
           description: '{string} auth failed || old password confirm failed'
         "402":
           description: '{string} user not existed'
+  /user/email/edit:
+    post:
+      tags:
+      - user
+      description: Confirm email address by code and change it
+      operationId: UserController.ConfirmEmailAddress
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Email
+        description: The email address you want to change
+        required: true
+        type: string
+      - in: body
+        name: Code
+        description: The confirm code sent by server
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} confirm successful'
+        "401":
+          description: '{string} auth | confirm failed'
+        "402":
+          description: '{string} user not existed'
   /user/info:
     get:
       tags:
@@ -1110,13 +1156,27 @@ paths:
     post:
       tags:
       - user
-      description: New user must sign up.
+      description: Edit personal information
       operationId: UserController.EditSetting
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: '{object}'
+        name: RequestBody
+        description: The request body for edit setting
+        required: true
+        schema:
+          $ref: '#/definitions/models.EditSettingBody'
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} edit successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user not existed'
   /user/mission/info:
     get:
       tags:
@@ -1154,6 +1214,35 @@ paths:
           description: '{string} sign up successful'
         "401":
           description: '{string} sign up failed'
+  /user/tel/edit:
+    post:
+      tags:
+      - user
+      description: Confirm telephone number by code and change it
+      operationId: UserController.ConfirmTelephoneNumber
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Tel
+        description: The telephone number you want to change
+        required: true
+        type: string
+      - in: body
+        name: Code
+        description: The confirm code sent by server
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} confirm successful'
+        "401":
+          description: '{string} auth | confirm failed'
+        "402":
+          description: '{string} user not existed'
 definitions:
   models.AuthInitTags:
     title: AuthInitTags
@@ -1194,6 +1283,39 @@ definitions:
         format: int64
       company_name:
         type: string
+  models.EditSettingBody:
+    title: EditSettingBody
+    type: object
+    properties:
+      birth_month:
+        type: integer
+        format: int64
+      birth_year:
+        type: integer
+        format: int64
+      city:
+        type: string
+      education:
+        type: string
+      enroll_year:
+        type: integer
+        format: int64
+      intro:
+        type: string
+      major:
+        type: string
+      name:
+        type: string
+      sex:
+        type: boolean
+      status:
+        type: string
+      university:
+        type: string
+      user_tags_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.TagForUserModel'
   models.GetUserBaseInformation:
     title: GetUserBaseInformation
     type: object
@@ -1275,6 +1397,9 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.TagForUserModel'
+  models.GetUserPlatformSetting:
+    title: GetUserPlatformSetting
+    type: object
   models.Mission:
     title: Mission
     type: object
