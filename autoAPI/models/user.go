@@ -159,6 +159,29 @@ type EditSettingBody struct {
 	Intro         string     `json:"intro"`
 }
 
-type GetUserPlatformSetting struct {
+type UserPlatformSetting struct {
 
+}
+
+type CompanySuitability struct {
+	CompanyID     int        `json:"company_id"`
+	CompanyName   string     `json:"company_name"`
+	CompanyAvatar string     `json:"company_avatar"`
+	Suitability   float32    `json:"suitability"`
+}
+
+type GetCompanySuitabilityList struct {
+	RespBody      []CompanySuitability  `json:"resp_body"`
+	Length        int        `json:"length"`
+}
+
+type Tag struct {
+	TagID         int        `json:"tag_id"`
+	TagName       string     `json:"tag_name"`
+}
+
+type TagList struct {
+	CategoryID    int        `json:"category_id"`
+	CategoryName  string     `json:"category_name"`
+	TagsList      []Tag      `json:"tags_list"`
 }

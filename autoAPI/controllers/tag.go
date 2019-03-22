@@ -10,33 +10,33 @@ type TagController struct {
 }
 
 // @Title TagIndustryList
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /industry/list [post]
+// @Description Get industry tag list.
+// @Success 200 {object} models.TagList
+// @Success 201 {string} none tag exist
+// @router /industry/list [get]
 func (u *TagController) TagIndustryList() {
 }
 
 // @Title TagPositionList
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /position/list [post]
+// @Description Get position tag list.
+// @Success 200 {object} models.TagList
+// @Success 201 {object} none tag exist
+// @router /position/list [get]
 func (u *TagController) TagPositionList() {
 }
 
 // @Title TagUniversityList
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /university/list [post]
+// @Description Get university tags list.
+// @Success 200 {object} models.TagList
+// @Success 201 {string} none tag exist
+// @router /university/list [get]
 func (u *TagController) TagUniversityList() {
 }
 
 // @Title TagAbilityList
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /ability/list [post]
+// @Description Get ability tags list.
+// @Success 200 {object} models.TagList
+// @Success 201 {string} none tag exist
+// @router /ability/list [get]
 func (u *TagController) TagAbilityList() {
 }

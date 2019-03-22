@@ -578,7 +578,7 @@ func init() {
         beego.ControllerComments{
             Method: "TagAbilityList",
             Router: `/ability/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -587,7 +587,7 @@ func init() {
         beego.ControllerComments{
             Method: "TagIndustryList",
             Router: `/industry/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -596,7 +596,7 @@ func init() {
         beego.ControllerComments{
             Method: "TagPositionList",
             Router: `/position/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -605,7 +605,7 @@ func init() {
         beego.ControllerComments{
             Method: "TagUniversityList",
             Router: `/university/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -668,7 +668,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetSuitabilityList",
             Router: `/company/suitability/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -722,7 +722,7 @@ func init() {
         beego.ControllerComments{
             Method: "PlatformSetting",
             Router: `/platform/setting`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

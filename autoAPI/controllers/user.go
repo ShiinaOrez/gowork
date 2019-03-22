@@ -147,25 +147,29 @@ func (u *UserController) ConfirmTel() {
 // @Title PlatformInformation
 // @Description Get user's platform setting information
 // @Param   Token       header    string      true        "The token to conform"
-// @Success 200 {object} models.GetUserPlatformSetting
-// @Failure 401 {string} auth | confirm failed
+// @Success 200 {object} models.UserPlatformSetting
+// @Failure 401 {string} auth failed
 // @Failure 402 {string} user not existed
-// @router /platform/setting [post]
+// @router /platform/setting [get]
 func (u *UserController) PlatformSetting() {
 }
 
 // @Title EditPlatformSetting
 // @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   RequestBody body      object      models.UserPlatformSetting
+// @Success 200 {string} edit successful
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} user not existed
 // @router /platform/setting [post]
 func (u *UserController) EditPlatformSetting() {
 }
 
 // @Title CompanySuitabilityList
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /company/suitability/list [post]
+// @Description Get the user-company suitability list.
+// @Success 200 {object} models.GetCompanySuitabilityList
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} user not existed
+// @router /company/suitability/list [get]
 func (u *UserController) GetSuitabilityList() {
 }
