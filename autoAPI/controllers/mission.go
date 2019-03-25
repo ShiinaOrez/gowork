@@ -150,7 +150,8 @@ func (u *MissionController) MissionStaticTagList() {
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Mid         path      int         true        "The mission id to get"
 // @Success 200 {object} models.MissionStatistics
-// @Failure 401 {string} sign up failed
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} mission not existed
 // @router /:Mid/statistics [get]
 func (u *MissionController) MissionStatistics() {
 }

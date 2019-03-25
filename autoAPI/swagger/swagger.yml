@@ -909,7 +909,9 @@ paths:
           schema:
             $ref: '#/definitions/models.MissionStatistics'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} mission not existed'
   /mission/{Mid}/status:
     get:
       tags:
