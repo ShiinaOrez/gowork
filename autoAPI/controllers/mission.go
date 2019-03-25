@@ -10,15 +10,20 @@ type MissionController struct {
 }
 
 // @Title MissionInformationByID
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /:Mid/info [post]
+// @Description Mission information.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Mid         path      int         true        "The mission id to get"
+// @Success 200 {object} models.MissionInformation
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} user | mission not existed
+// @router /:Mid/info [get]
 func (u *MissionController) MissionInfo() {
 }
 
 // @Title SearchForMission
-// @Description New user must sign up.
+// @Description Search mission.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Payload     body      object      models.SearchPayload
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /search [post]

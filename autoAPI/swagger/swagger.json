@@ -918,14 +918,39 @@
                 "tags": [
                     "elite"
                 ],
-                "description": "New user must sign up.",
+                "description": "Search elite by intelligent way.",
                 "operationId": "EliteController.SearchEliteByIntelligentWay",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "Search payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        },
+                        "default": "models.SearchPayload"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EliteList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
                     }
                 }
             }
@@ -935,14 +960,39 @@
                 "tags": [
                     "elite"
                 ],
-                "description": "New user must sign up.",
+                "description": "Search elite by normal way.",
                 "operationId": "EliteController.SearchElite",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "Search payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        },
+                        "default": "models.SearchPayload"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.EliteList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
                     }
                 }
             }
@@ -1052,8 +1102,25 @@
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
+                "description": "Search mission.",
                 "operationId": "MissionController.SearchForMission",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "models.SearchPayload",
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"
@@ -1163,18 +1230,41 @@
             }
         },
         "/mission/{Mid}/info": {
-            "post": {
+            "get": {
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
+                "description": "Mission information.",
                 "operationId": "MissionController.MissionInformationByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Mid",
+                        "description": "The mission id to get",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MissionInformation"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | mission not existed"
                     }
                 }
             }
@@ -2072,6 +2162,66 @@
                 }
             }
         },
+        "models.Elite": {
+            "title": "Elite",
+            "type": "object",
+            "properties": {
+                "elite_age": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "elite_avatar": {
+                    "type": "string"
+                },
+                "elite_edu": {
+                    "type": "string"
+                },
+                "elite_email": {
+                    "type": "string"
+                },
+                "elite_name": {
+                    "type": "string"
+                },
+                "elite_star_level": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "elite_status": {
+                    "type": "string"
+                },
+                "elite_tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Tag"
+                    }
+                },
+                "elite_tel": {
+                    "type": "string"
+                },
+                "elite_university": {
+                    "type": "string"
+                },
+                "is_attention": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "models.EliteList": {
+            "title": "EliteList",
+            "type": "object",
+            "properties": {
+                "elites_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Elite"
+                    }
+                },
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
         "models.GetCompanySuitabilityList": {
             "title": "GetCompanySuitabilityList",
             "type": "object",
@@ -2248,6 +2398,43 @@
                 }
             }
         },
+        "models.MissionInformation": {
+            "title": "MissionInformation",
+            "type": "object",
+            "properties": {
+                "mission_detail": {
+                    "type": "string"
+                },
+                "mission_end_time": {
+                    "type": "string"
+                },
+                "mission_file": {
+                    "type": "string"
+                },
+                "mission_intro": {
+                    "type": "string"
+                },
+                "mission_member": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "mission_name": {
+                    "type": "string"
+                },
+                "mission_online": {
+                    "type": "boolean"
+                },
+                "mission_start_time": {
+                    "type": "string"
+                },
+                "mission_tag_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Tag"
+                    }
+                }
+            }
+        },
         "models.ResultOfCompanyLogin": {
             "title": "ResultOfCompanyLogin",
             "type": "object",
@@ -2393,6 +2580,10 @@
                 },
                 "category_name": {
                     "type": "string"
+                },
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "tags_list": {
                     "type": "array",

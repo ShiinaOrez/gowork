@@ -184,4 +184,46 @@ type TagList struct {
 	CategoryID    int        `json:"category_id"`
 	CategoryName  string     `json:"category_name"`
 	TagsList      []Tag      `json:"tags_list"`
+	Length        int        `json:"length"`
+}
+
+type Elite struct {
+	EliteAvatar   string      `json:"elite_avatar"`
+	EliteName     string      `json:"elite_name"`
+	EliteStatus   string      `json:"elite_status"`
+	EliteAge      int         `json:"elite_age"`
+	EliteUniversity string    `json:"elite_university"`
+	EliteTags     []Tag       `json:"elite_tags"`
+	EliteEdu      string      `json:"elite_edu"`
+	EliteTel      string      `json:"elite_tel"`
+	EliteEmail    string      `json:"elite_email"`
+	EliteStarLevel float32    `json:"elite_star_level"`
+	IsAttention   bool        `json:"is_attention"`
+}
+
+type EliteList struct {
+	ElitesList    []Elite     `json:"elites_list"`
+	Length        int         `json:"length"`
+}
+
+type MissionInformation struct {
+	MissionName   string      `json:"mission_name"`
+	MissionStartTime  string  `json:"mission_start_time"`
+	MissionEndTime string     `json:"mission_end_time"`
+	MissionOnline bool        `json:"mission_online"`
+	MissionMember int         `json:"mission_member"`
+	MissionTagList []Tag      `json:"mission_tag_list"`
+	MissionIntro  string      `json:"mission_intro"`
+	MissionDetail string      `json:"mission_detail"`
+	MissionFile   string      `json:"mission_file"`
+}
+
+type TagPayload struct {
+	TagID         int         `json:"tag_id"`
+	CategoryID    int         `json:"category_id"`
+}
+
+type SearchPayload struct {
+	Pattern       string      `json:"pattern"`
+	TagList       []TagPayload `json:"tag_list"`
 }
