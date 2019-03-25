@@ -405,9 +405,18 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"],
         beego.ControllerComments{
+            Method: "GiveUpMission",
+            Router: `/:Mid`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"],
+        beego.ControllerComments{
             Method: "DeleteMission",
             Router: `/:Mid`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"delete"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -441,27 +450,9 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"],
         beego.ControllerComments{
-            Method: "GiveUpMission",
-            Router: `/:Mid`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"],
-        beego.ControllerComments{
             Method: "MissionFeedback",
             Router: `/:Mid/feedback`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"],
-        beego.ControllerComments{
-            Method: "MissionUploadFile",
-            Router: `/:Mid/file/upload`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -479,7 +470,7 @@ func init() {
         beego.ControllerComments{
             Method: "MissionStatistics",
             Router: `/:Mid/statistics`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -488,6 +479,15 @@ func init() {
         beego.ControllerComments{
             Method: "MissionStatus",
             Router: `/:Mid/status`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MissionController"],
+        beego.ControllerComments{
+            Method: "MissionUploadFile",
+            Router: `/file/upload`,
             AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
@@ -506,7 +506,7 @@ func init() {
         beego.ControllerComments{
             Method: "MissionStaticTagList",
             Router: `/tag/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

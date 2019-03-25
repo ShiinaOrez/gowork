@@ -188,6 +188,7 @@ type TagList struct {
 }
 
 type Elite struct {
+	EliteID       int         `json:"elite_id"`
 	EliteAvatar   string      `json:"elite_avatar"`
 	EliteName     string      `json:"elite_name"`
 	EliteStatus   string      `json:"elite_status"`
@@ -226,4 +227,49 @@ type TagPayload struct {
 type SearchPayload struct {
 	Pattern       string      `json:"pattern"`
 	TagList       []TagPayload `json:"tag_list"`
+}
+
+type MissionEntity struct {
+	MissionID     int         `json:"mission_id"`
+	MissionName   string      `json:"mission_name"`
+	IsOnline      bool        `json:"is_online"`
+	TagList       []Tag       `json:"tag_list"`
+	StartTime     string      `json:"start_time"`
+	EndTime       string      `json:"end_time"`
+	JoinEndTime   string      `json:"join_end_time"`
+	CompanyID     int         `json:"company_id"`
+	CompanyName   string      `json:"company_name"`
+}
+
+type MissionList struct {
+	MissionsList  []MissionEntity `json:"missions_list"`
+	Length        int         `json:"length"`
+}
+
+type SubmitMissionPayload struct {
+	Intro         string      `json:"intro"`
+	FileURL       string      `json:"file_url"`
+}
+
+type CompanyFeedback struct {
+	Feedback      string      `json:"feedback"`
+	StarLevel     float32     `json:"star_level"`
+}
+
+type CreateMissionPayload struct {
+	MissionName   string      `json:"mission_name"`
+	TogetherCompanyList []int `json:"together_company_list"`
+	JoinEndTime   string      `json:"join_end_time"`
+	EndTime       string      `json:"end_time"`
+	IsOnline      bool        `json:"is_online"`
+	MemberCount   int         `json:"member_count"`
+	MissionAddress string     `json:"address"`
+	MissionDetail string      `json:"mission_detail"`
+	MissionLists  []int       `json:"mission_lists"`
+	FileURL       string      `json:"file_url"`
+	TagList       []TagPayload `json:"tag_list"`
+}
+
+type MissionStatistics struct {
+	Member        int         `json:"member"`
 }

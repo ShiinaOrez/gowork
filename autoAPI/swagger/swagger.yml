@@ -724,66 +724,140 @@ paths:
     post:
       tags:
       - mission
-      description: New user must sign up.
+      description: Create a mission and post it.
       operationId: MissionController.CreateAndPostMission
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Payload
+        description: models.CreateMissionPayload
+        schema:
+          $ref: '#/definitions/object'
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{int} MissionID'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company not existed'
   /mission/{Mid}:
     put:
       tags:
       - mission
-      description: New user must sign up.
+      description: Company modify mission information.
       operationId: MissionController.ModifyMissionByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Mid
+        description: The mission id to modify
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: Payload
+        description: models.CreateMissionPayload
+        schema:
+          $ref: '#/definitions/object'
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} modify successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} mission not existed'
     post:
       tags:
       - mission
-      description: New user must sign up.
-      operationId: MissionController.DeleteMissionByID
+      description: Submit the works for mission
+      operationId: MissionController.SubmitMissionByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Mid
+        description: The mission id to submit
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: Payload
+        description: models.SubmitMissionPayload
+        schema:
+          $ref: '#/definitions/object'
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} submit successfully!'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user | mission not existed'
+        "406":
+          description: '{string} File error'
+        "407":
+          description: '{string} submit failed'
     delete:
       tags:
       - mission
-      description: New user must sign up.
-      operationId: MissionController.GiveUpMission
+      description: Delete a mission by ID.
+      operationId: MissionController.DeleteMissionByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Mid
+        description: The mission id to delete
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} delete successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} mission not existed'
   /mission/{Mid}/feedback:
-    post:
+    get:
       tags:
       - mission
-      description: New user must sign up.
+      description: Get the mission feedback.
       operationId: MissionController.GetMissionFeedback
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Mid
+        description: The mission id to give up
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CompanyFeedback'
         "401":
-          description: '{string} sign up failed'
-  /mission/{Mid}/file/upload:
-    post:
-      tags:
-      - mission
-      description: New user must sign up.
-      operationId: MissionController.UploadFileOnlyZip
-      responses:
-        "200":
-          description: '{string} sign up successful'
-        "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user | mission not existed'
   /mission/{Mid}/info:
     get:
       tags:
@@ -812,27 +886,81 @@ paths:
         "402":
           description: '{string} user | mission not existed'
   /mission/{Mid}/statistics:
-    post:
+    get:
       tags:
       - mission
       description: New user must sign up.
       operationId: MissionController.MissionStatisticsByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Mid
+        description: The mission id to get
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MissionStatistics'
         "401":
           description: '{string} sign up failed'
   /mission/{Mid}/status:
+    get:
+      tags:
+      - mission
+      description: Get the status between user and mission.
+      operationId: MissionController.GetMissionStatusByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Mid
+        description: The mission id to Gain
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: '{int} 1 for gained, 0 for not'
+        "401":
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user | mission not existed'
+  /mission/file/upload:
     post:
       tags:
       - mission
-      description: New user must sign up.
-      operationId: MissionController.GetMissionStatusByID
+      description: Upload the file.
+      operationId: MissionController.UploadFileOnlyZip
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: File
+        description: The file you want to upload
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} File URL'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user | mission not existed'
+        "406":
+          description: '{string} File error'
   /mission/search:
     post:
       tags:
@@ -852,20 +980,26 @@ paths:
           $ref: '#/definitions/object'
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MissionList'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user not existed'
   /mission/tag/list:
-    post:
+    get:
       tags:
       - mission
-      description: New user must sign up.
+      description: Get the mission tags list.
       operationId: MissionController.GetStaticMissionTagList
       responses:
         "200":
-          description: '{string} sign up successful'
-        "401":
-          description: '{string} sign up failed'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TagList'
+        "407":
+          description: '{string} something wrong'
   /missionList/{MlID}:
     post:
       tags:
@@ -1363,6 +1497,15 @@ definitions:
   models.BaseModel:
     title: BaseModel
     type: object
+  models.CompanyFeedback:
+    title: CompanyFeedback
+    type: object
+    properties:
+      feedback:
+        type: string
+      star_level:
+        type: number
+        format: float
   models.CompanyInitTags:
     title: CompanyInitTags
     type: object
@@ -1451,6 +1594,9 @@ definitions:
         type: string
       elite_email:
         type: string
+      elite_id:
+        type: integer
+        format: int64
       elite_name:
         type: string
       elite_star_level:
@@ -1590,6 +1736,32 @@ definitions:
         type: string
       status:
         type: boolean
+  models.MissionEntity:
+    title: MissionEntity
+    type: object
+    properties:
+      company_id:
+        type: integer
+        format: int64
+      company_name:
+        type: string
+      end_time:
+        type: string
+      is_online:
+        type: boolean
+      join_end_time:
+        type: string
+      mission_id:
+        type: integer
+        format: int64
+      mission_name:
+        type: string
+      start_time:
+        type: string
+      tag_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.Tag'
   models.MissionEntityToShow:
     title: MissionEntityToShow
     type: object
@@ -1624,6 +1796,24 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.Tag'
+  models.MissionList:
+    title: MissionList
+    type: object
+    properties:
+      length:
+        type: integer
+        format: int64
+      missions_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.MissionEntity'
+  models.MissionStatistics:
+    title: MissionStatistics
+    type: object
+    properties:
+      member:
+        type: integer
+        format: int64
   models.ResultOfCompanyLogin:
     title: ResultOfCompanyLogin
     type: object

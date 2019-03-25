@@ -1085,14 +1085,73 @@
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
+                "description": "Create a mission and post it.",
                 "operationId": "MissionController.CreateAndPostMission",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "models.CreateMissionPayload",
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{int} MissionID"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/mission/file/upload": {
+            "post": {
+                "tags": [
+                    "mission"
+                ],
+                "description": "Upload the file.",
+                "operationId": "MissionController.UploadFileOnlyZip",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "File",
+                        "description": "The file you want to upload",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} File URL"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | mission not existed"
+                    },
+                    "406": {
+                        "description": "{string} File error"
                     }
                 }
             }
@@ -1123,27 +1182,36 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MissionList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
                     }
                 }
             }
         },
         "/mission/tag/list": {
-            "post": {
+            "get": {
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get the mission tags list.",
                 "operationId": "MissionController.GetStaticMissionTagList",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TagList"
+                        }
                     },
-                    "401": {
-                        "description": "{string} sign up failed"
+                    "407": {
+                        "description": "{string} something wrong"
                     }
                 }
             }
@@ -1153,14 +1221,42 @@
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
+                "description": "Company modify mission information.",
                 "operationId": "MissionController.ModifyMissionByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Mid",
+                        "description": "The mission id to modify",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "models.CreateMissionPayload",
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} modify successful"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} mission not existed"
                     }
                 }
             },
@@ -1168,14 +1264,48 @@
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.DeleteMissionByID",
+                "description": "Submit the works for mission",
+                "operationId": "MissionController.SubmitMissionByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Mid",
+                        "description": "The mission id to submit",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "models.SubmitMissionPayload",
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} submit successfully!"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | mission not existed"
+                    },
+                    "406": {
+                        "description": "{string} File error"
+                    },
+                    "407": {
+                        "description": "{string} submit failed"
                     }
                 }
             },
@@ -1183,48 +1313,74 @@
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.GiveUpMission",
+                "description": "Delete a mission by ID.",
+                "operationId": "MissionController.DeleteMissionByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Mid",
+                        "description": "The mission id to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} delete successful"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} mission not existed"
                     }
                 }
             }
         },
         "/mission/{Mid}/feedback": {
-            "post": {
+            "get": {
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get the mission feedback.",
                 "operationId": "MissionController.GetMissionFeedback",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
                     },
-                    "401": {
-                        "description": "{string} sign up failed"
+                    {
+                        "in": "path",
+                        "name": "Mid",
+                        "description": "The mission id to give up",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
-                }
-            }
-        },
-        "/mission/{Mid}/file/upload": {
-            "post": {
-                "tags": [
-                    "mission"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "MissionController.UploadFileOnlyZip",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyFeedback"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | mission not existed"
                     }
                 }
             }
@@ -1270,15 +1426,35 @@
             }
         },
         "/mission/{Mid}/statistics": {
-            "post": {
+            "get": {
                 "tags": [
                     "mission"
                 ],
                 "description": "New user must sign up.",
                 "operationId": "MissionController.MissionStatisticsByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Mid",
+                        "description": "The mission id to get",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MissionStatistics"
+                        }
                     },
                     "401": {
                         "description": "{string} sign up failed"
@@ -1287,18 +1463,38 @@
             }
         },
         "/mission/{Mid}/status": {
-            "post": {
+            "get": {
                 "tags": [
                     "mission"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get the status between user and mission.",
                 "operationId": "MissionController.GetMissionStatusByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Mid",
+                        "description": "The mission id to Gain",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{int} 1 for gained, 0 for not"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | mission not existed"
                     }
                 }
             }
@@ -2053,6 +2249,19 @@
             "title": "BaseModel",
             "type": "object"
         },
+        "models.CompanyFeedback": {
+            "title": "CompanyFeedback",
+            "type": "object",
+            "properties": {
+                "feedback": {
+                    "type": "string"
+                },
+                "star_level": {
+                    "type": "number",
+                    "format": "float"
+                }
+            }
+        },
         "models.CompanyInitTags": {
             "title": "CompanyInitTags",
             "type": "object",
@@ -2178,6 +2387,10 @@
                 },
                 "elite_email": {
                     "type": "string"
+                },
+                "elite_id": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "elite_name": {
                     "type": "string"
@@ -2385,6 +2598,44 @@
                 }
             }
         },
+        "models.MissionEntity": {
+            "title": "MissionEntity",
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "company_name": {
+                    "type": "string"
+                },
+                "end_time": {
+                    "type": "string"
+                },
+                "is_online": {
+                    "type": "boolean"
+                },
+                "join_end_time": {
+                    "type": "string"
+                },
+                "mission_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "mission_name": {
+                    "type": "string"
+                },
+                "start_time": {
+                    "type": "string"
+                },
+                "tag_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Tag"
+                    }
+                }
+            }
+        },
         "models.MissionEntityToShow": {
             "title": "MissionEntityToShow",
             "type": "object",
@@ -2432,6 +2683,32 @@
                     "items": {
                         "$ref": "#/definitions/models.Tag"
                     }
+                }
+            }
+        },
+        "models.MissionList": {
+            "title": "MissionList",
+            "type": "object",
+            "properties": {
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "missions_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.MissionEntity"
+                    }
+                }
+            }
+        },
+        "models.MissionStatistics": {
+            "title": "MissionStatistics",
+            "type": "object",
+            "properties": {
+                "member": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
