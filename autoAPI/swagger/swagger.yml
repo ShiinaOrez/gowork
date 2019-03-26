@@ -1056,16 +1056,32 @@ paths:
         "407":
           description: '{string} delete failed'
   /missionList/{MlID}/getElite:
-    post:
+    get:
       tags:
       - missionList
       description: New user must sign up.
       operationId: MissionListController.MissionListGetElite
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: MlID
+        description: The missionList ID to get
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EliteList'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} mission list  not existed'
   /missionList/attention/{MlID}:
     put:
       tags:
@@ -1145,7 +1161,7 @@ paths:
         "402":
           description: '{string} missionList not existed'
   /missionList/attention/list:
-    post:
+    get:
       tags:
       - missionList
       description: Get a user's attention missionList.
@@ -1156,19 +1172,15 @@ paths:
         description: The token to conform
         required: true
         type: string
-      - in: path
-        name: MlID
-        description: The missionList ID to get
-        required: true
-        type: integer
-        format: int64
       responses:
         "200":
           description: ""
           schema:
             $ref: '#/definitions/models.MissionListList'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user not existed'
   /tag/ability/list:
     get:
       tags:

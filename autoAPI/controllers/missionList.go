@@ -68,17 +68,20 @@ func (u *MissionListController) CancelAttentionMissionList() {
 // @Title GetMissionListAttentionList
 // @Description Get a user's attention missionList.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   MlID        path      int         true        "The missionList ID to get"
 // @Success 200 {object} models.MissionListList
-// @Failure 401 {string} sign up failed
-// @router /attention/list [post]
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} user not existed
+// @router /attention/list [get]
 func (u *MissionListController) GetMissionListAttentionList() {
 }
 
 // @Title MissionListGetElite
 // @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /:MlID/getElite [post]
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   MlID        path      int         true        "The missionList ID to get"
+// @Success 200 {object} models.EliteList
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} mission list  not existed
+// @router /:MlID/getElite [get]
 func (u *MissionListController) GetEliteByMissionList() {
 }

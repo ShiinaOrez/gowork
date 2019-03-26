@@ -533,7 +533,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetEliteByMissionList",
             Router: `/:MlID/getElite`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -569,7 +569,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetMissionListAttentionList",
             Router: `/attention/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
