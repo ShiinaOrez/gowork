@@ -273,3 +273,36 @@ type CreateMissionPayload struct {
 type MissionStatistics struct {
 	Member        int         `json:"member"`
 }
+
+type MissionInMissionList struct {
+	MissionName   string      `json:"mission_name"`
+	MissionStatus bool        `json:"mission_status"`
+	MissionEndTime string     `json:"mission_end_time"`
+	MissionMemberCount int    `json:"mission_member_count"`
+	MissionMemberLimit int    `json:"mission_member_limit"`
+	MissionStartTime string   `json:"mission_start_time"`
+}
+
+type MissionListInformation struct {
+	MissionListName          string       `json:"mission_list_name"`
+	MissionListCreateTime    string       `json:"mission_list_create_time"`
+	MissionListIntro         string       `json:"mission_list_intro"`
+	MissionList              []MissionInMissionList `json:"mission_list"`
+	Length                   int          `json:"length"`
+}
+
+type MissionListEntity struct {
+	MissionListID            int          `json:"mission_list_id"`
+	MissionListName          string       `json:"mission_list_name"`
+	MissionListCreateTime    string       `json:"mission_list_create_time"`
+	CompanyID                int          `json:"company_id"`
+	CompanyName              string       `json:"company_name"`
+	CompanyLogo              string       `json:"company_logo"`
+	MissionListCount         int          `json:"mission_list_count"`
+	FinishMissionCount       int          `json:"finish_mission_count"`
+}
+
+type MissionListList struct {
+	MissionLists             []MissionListEntity `json:"mission_lists"`
+	Length                   int          `json:"length"`
+}

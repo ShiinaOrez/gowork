@@ -515,7 +515,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetMissionListInformation",
             Router: `/:MlID`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -524,7 +524,7 @@ func init() {
         beego.ControllerComments{
             Method: "DelMissionList",
             Router: `/:MlID`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"delete"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -560,7 +560,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetMissionListStatus",
             Router: `/attention/:MlID/status`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

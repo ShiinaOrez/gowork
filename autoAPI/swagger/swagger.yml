@@ -1003,16 +1003,58 @@ paths:
         "407":
           description: '{string} something wrong'
   /missionList/{MlID}:
-    post:
+    get:
       tags:
       - missionList
-      description: New user must sign up.
-      operationId: MissionListController.DeleteMissionListByID
+      description: Get missionList information by ID.
+      operationId: MissionListController.GetMissionListInformationByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: MlID
+        description: The missionList ID to get information
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MissionListInformation'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} missionList not existed'
+    delete:
+      tags:
+      - missionList
+      description: Delete a missionList by ID.
+      operationId: MissionListController.DeleteMissionListByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: MlID
+        description: The missionList ID to delete it
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: '{string} delete successful'
+        "401":
+          description: '{string} auth failed'
+        "402":
+          description: '{string} missionList not existed'
+        "407":
+          description: '{string} delete failed'
   /missionList/{MlID}/getElite:
     post:
       tags:
@@ -1028,43 +1070,103 @@ paths:
     put:
       tags:
       - missionList
-      description: New user must sign up.
+      description: Cancel attention.
       operationId: MissionListController.CancelMissionListAttention
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: MlID
+        description: The missionList ID to get
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: '{string} sign up successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} missionList not existed'
+        "407":
+          description: '{string} haven''t pay attention'
     post:
       tags:
       - missionList
-      description: New user must sign up.
+      description: User pay attention to a mission list.
       operationId: MissionListController.PayAttentionToMissionList
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: MlID
+        description: The missionList ID to get
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} missionList not existed'
+        "407":
+          description: '{string} already pay attention'
   /missionList/attention/{MlID}/status:
-    post:
+    get:
       tags:
       - missionList
-      description: New user must sign up.
+      description: Get a user pay attention to a missionList or not.
       operationId: MissionListController.GetUserToMissionListStatusByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: MlID
+        description: The missionList ID to get
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{int} the status'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} missionList not existed'
   /missionList/attention/list:
     post:
       tags:
       - missionList
-      description: New user must sign up.
+      description: Get a user's attention missionList.
       operationId: MissionListController.GetMissionListAttentionList
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: MlID
+        description: The missionList ID to get
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MissionListList'
         "401":
           description: '{string} sign up failed'
   /tag/ability/list:
@@ -1773,6 +1875,24 @@ definitions:
         format: int64
       statu:
         type: boolean
+  models.MissionInMissionList:
+    title: MissionInMissionList
+    type: object
+    properties:
+      mission_end_time:
+        type: string
+      mission_member_count:
+        type: integer
+        format: int64
+      mission_member_limit:
+        type: integer
+        format: int64
+      mission_name:
+        type: string
+      mission_start_time:
+        type: string
+      mission_status:
+        type: boolean
   models.MissionInformation:
     title: MissionInformation
     type: object
@@ -1809,6 +1929,58 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.MissionEntity'
+  models.MissionListEntity:
+    title: MissionListEntity
+    type: object
+    properties:
+      company_id:
+        type: integer
+        format: int64
+      company_logo:
+        type: string
+      company_name:
+        type: string
+      finish_mission_count:
+        type: integer
+        format: int64
+      mission_list_count:
+        type: integer
+        format: int64
+      mission_list_create_time:
+        type: string
+      mission_list_id:
+        type: integer
+        format: int64
+      mission_list_name:
+        type: string
+  models.MissionListInformation:
+    title: MissionListInformation
+    type: object
+    properties:
+      length:
+        type: integer
+        format: int64
+      mission_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.MissionInMissionList'
+      mission_list_create_time:
+        type: string
+      mission_list_intro:
+        type: string
+      mission_list_name:
+        type: string
+  models.MissionListList:
+    title: MissionListList
+    type: object
+    properties:
+      length:
+        type: integer
+        format: int64
+      mission_lists:
+        type: array
+        items:
+          $ref: '#/definitions/models.MissionListEntity'
   models.MissionStatistics:
     title: MissionStatistics
     type: object
