@@ -64,7 +64,7 @@ func (u *AuthController) CompanySignUp() {
 // @Param   Cid               path    int                 true        "The company ID"
 // @Success 200 {string} post information successful
 // @Success 401 {object| models.PostConfirmInformationError
-// @router /company/:Cid/confirmInfo []
+// @router /company/:Cid/confirmInfo [post]
 func (u *AuthController) CompanyInfoConfirm() {
 }
 

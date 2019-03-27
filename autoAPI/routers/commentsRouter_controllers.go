@@ -11,7 +11,7 @@ func init() {
         beego.ControllerComments{
             Method: "CompanyInfoConfirm",
             Router: `/company/:Cid/confirmInfo`,
-            AllowHTTPMethods: []string{"get"},
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

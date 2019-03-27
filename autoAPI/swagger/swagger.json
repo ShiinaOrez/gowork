@@ -110,7 +110,68 @@
                 }
             }
         },
-        "/auth/company/{Cid}/confirmInfo": {},
+        "/auth/company/{Cid}/confirmInfo": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Company account must be comfirmed",
+                "operationId": "AuthController.CompanyInformationConfirm",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "licenseImage",
+                        "description": "The company license image",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "organizationCode",
+                        "description": "The company organization code",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "cardImage",
+                        "description": "The company legal ID card image",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "legalName",
+                        "description": "The legal body name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "legalNumber",
+                        "description": "The legal body number",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The company ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} post information successful"
+                    },
+                    "401": {
+                        "description": "{object| models.PostConfirmInformationError"
+                    }
+                }
+            }
+        },
         "/auth/company/{Cid}/info": {
             "put": {
                 "tags": [
