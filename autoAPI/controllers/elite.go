@@ -10,7 +10,7 @@ type EliteController struct {
 // @Title SearchElite
 // @Description Search elite by normal way.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object    models.SearchPayload  true  "Search payload"
+// @Param   Payload     body      object      models.SearchPayload
 // @Success 200 {object} models.EliteList
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} user not existed

@@ -398,7 +398,7 @@ paths:
         "401":
           description: '{string} sign up failed'
   /company/{Cid}/info:
-    post:
+    get:
       tags:
       - company
       description: Get company information by id. (information less)
@@ -409,54 +409,146 @@ paths:
         description: The token to conform
         required: true
         type: string
+      - in: path
+        name: Cid
+        description: The company ID for get
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CompanyInformation'
         "401":
-          description: '{string} sign up failed'
-  /company/{Cid}/position/list:
-    post:
+          description: '{string} user | company not existed'
+  /company/{Cid}/mission/list:
+    get:
       tags:
       - company
-      description: New user must sign up.
-      operationId: CompanyController.GetCompanyPositionListByID
+      description: Get a company mission list by company ID.
+      operationId: CompanyController.GetCompanyMissionListByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Cid
+        description: The company ID for get mission list
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} models.MissionList'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company not existed'
+  /company/{Cid}/position/list:
+    get:
+      tags:
+      - company
+      description: Get a company's position list
+      operationId: CompanyController.GetCompanyPositionListByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: Cid
+        description: The company ID for get position list
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PositionsList'
+        "401":
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company not existed'
   /company/attention:
     post:
       tags:
       - company
-      description: New user must sign up.
+      description: Pay attention to a elite.
       operationId: CompanyController.CompanyPayAttentionToSomebody
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: EliteID
+        description: The elite ID for attention
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} pay attention successful!'
         "401":
-          description: '{string} sign up failed'
-    delete:
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company | elite not existed'
+        "407":
+          description: '{string} already pay attention to it'
+  /company/attention/{Uid}:
+    put:
       tags:
       - company
-      description: New user must sign up.
+      description: Cancel to pay attention to a elite
       operationId: CompanyController.CompanyCancelAttentionSomebody
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: UiD
+        description: The elite ID for attention
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} cancel successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company | user not existed'
+        "407":
+          description: '{string} never pay attention to it'
   /company/attention/list:
-    post:
+    get:
       tags:
       - company
-      description: New user must sign up.
+      description: Get company's attention elites list
       operationId: CompanyController.GetCompanyAttentionList
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ElitesList'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company not existed'
   /company/category:
     post:
       tags:
@@ -480,16 +572,27 @@ paths:
         "401":
           description: '{string} sign up failed'
   /company/email:
-    post:
+    put:
       tags:
       - company
-      description: New user must sign up.
+      description: update company email
       operationId: CompanyController.UpdateCompanyEmailAddress
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Email
+        description: The email address to update
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} update successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} company not existed'
   /company/email/confirm:
     post:
       tags:
@@ -502,48 +605,68 @@ paths:
         "401":
           description: '{string} sign up failed'
   /company/info:
+    get:
+      tags:
+      - company
+      description: Get company base information.
+      operationId: CompanyController.CompanyBaseInformationByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CompanyBaseInformation'
+        "401":
+          description: '{string} company not existed'
     put:
       tags:
       - company
-      description: New user must sign up.
+      description: Edit company information
       operationId: CompanyController.EditCompanyInformation
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} models.CompanyInformation'
         "401":
-          description: '{string} sign up failed'
-    post:
-      tags:
-      - company
-      description: New user must sign up.
-      operationId: CompanyController.CompanyBaseInformationByID
-      responses:
-        "200":
-          description: '{string} sign up successful'
-        "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company not existed'
+        "406":
+          description: '{string} image error'
   /company/logo:
     put:
       tags:
       - company
-      description: New user must sign up.
+      description: Update company logo.
       operationId: CompanyController.UpdateCompanyLogo
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Logo
+        description: The company new logo.
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} new logo URL'
         "401":
-          description: '{string} sign up failed'
-  /company/mission/list:
-    get:
-      tags:
-      - company
-      description: New user must sign up.
-      operationId: CompanyController.GetCompanyMissionListByID
-      responses:
-        "200":
-          description: '{string} sign up successful'
-        "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company not existed'
   /company/missionList:
     post:
       tags:
@@ -591,34 +714,68 @@ paths:
     post:
       tags:
       - company
-      description: New user must sign up.
+      description: Company create a position.
       operationId: CompanyController.CreateAndPostPosition
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Payload
+        description: models.PositionPayload
+        schema:
+          $ref: '#/definitions/object'
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{int} positionID'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company not existed'
   /company/position/{Pid}:
     put:
       tags:
       - company
-      description: New user must sign up.
+      description: Edit the position information
       operationId: CompanyController.EditCompanyPositionByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Payload
+        description: models.PositionPayload
+        schema:
+          $ref: '#/definitions/object'
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} edit successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company | position not existed'
     delete:
       tags:
       - company
-      description: New user must sign up.
+      description: Delete position by ID
       operationId: CompanyController.DeleteCompanyPositionByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} delete successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} company | position not existed'
   /company/position/{Pid}/resume:
     post:
       tags:
@@ -653,27 +810,48 @@ paths:
         "401":
           description: '{string} sign up failed'
   /company/search/intelligent:
-    post:
+    get:
       tags:
       - company
-      description: New user must sign up.
+      description: Search company by intelligent way.
       operationId: CompanyController.CompanySearchByIntelligent
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CompanySearchList'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} auth failed'
+        "402":
+          description: '{string} user not existed'
   /company/tel:
     put:
       tags:
       - company
-      description: New user must sign up.
+      description: update the company telephone number.
       operationId: CompanyController.UpdateCompanyTelephone
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Tel
+        description: The telephone number to update
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} sign up successful'
+          description: '{string} update successful'
         "401":
-          description: '{string} sign up failed'
+          description: '{string} company not existed'
   /elite/industry/list:
     post:
       tags:
@@ -716,11 +894,9 @@ paths:
         type: string
       - in: body
         name: Payload
-        description: Search payload
-        required: true
+        description: models.SearchPayload
         schema:
           $ref: '#/definitions/object'
-        default: models.SearchPayload
       responses:
         "200":
           description: ""
@@ -1677,6 +1853,48 @@ definitions:
   models.BaseModel:
     title: BaseModel
     type: object
+  models.ComapanyInformation:
+    title: ComapanyInformation
+    type: object
+    properties:
+      company_address:
+        type: string
+      company_avatar:
+        type: string
+      company_email:
+        type: string
+      company_intro:
+        type: string
+      company_name:
+        type: string
+      company_tel:
+        type: string
+      tag_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.Tag'
+  models.CompanyBaseInformation:
+    title: CompanyBaseInformation
+    type: object
+    properties:
+      comapany_legal_name:
+        type: string
+      company_address:
+        type: string
+      company_avatar:
+        type: string
+      company_email:
+        type: string
+      company_intro:
+        type: string
+      company_name:
+        type: string
+      company_tel:
+        type: string
+      tag_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.Tag'
   models.CompanyFeedback:
     title: CompanyFeedback
     type: object
@@ -1686,6 +1904,9 @@ definitions:
       star_level:
         type: number
         format: float
+  models.CompanyInformation:
+    title: CompanyInformation
+    type: object
   models.CompanyInitTags:
     title: CompanyInitTags
     type: object
@@ -1703,6 +1924,17 @@ definitions:
         format: int64
       msg:
         type: string
+  models.CompanySearchList:
+    title: CompanySearchList
+    type: object
+    properties:
+      company_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.CompanySimpleInformation'
+      length:
+        type: integer
+        format: int64
   models.CompanySimpleInformation:
     title: CompanySimpleInformation
     type: object
@@ -1802,6 +2034,31 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.Elite'
+      length:
+        type: integer
+        format: int64
+  models.EliteSimpleInformation:
+    title: EliteSimpleInformation
+    type: object
+    properties:
+      elite_age:
+        type: integer
+        format: int64
+      elite_avatar:
+        type: string
+      elite_id:
+        type: integer
+        format: int64
+      elite_name:
+        type: string
+  models.ElitesList:
+    title: ElitesList
+    type: object
+    properties:
+      elite_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.EliteSimpleInformation'
       length:
         type: integer
         format: int64
@@ -2064,6 +2321,30 @@ definitions:
       member:
         type: integer
         format: int64
+  models.PositionSimple:
+    title: PositionSimple
+    type: object
+    properties:
+      education:
+        type: string
+      person_number:
+        type: string
+      position_id:
+        type: integer
+        format: int64
+      position_name:
+        type: string
+  models.PositionsList:
+    title: PositionsList
+    type: object
+    properties:
+      length:
+        type: integer
+        format: int64
+      position_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.PositionSimple'
   models.ResultOfCompanyLogin:
     title: ResultOfCompanyLogin
     type: object

@@ -306,3 +306,59 @@ type MissionListList struct {
 	MissionLists             []MissionListEntity `json:"mission_lists"`
 	Length                   int          `json:"length"`
 }
+
+type ComapanyInformation struct {
+	CompanyAvatar        string        `json:"company_avatar"`
+	CompanyName          string        `json:"company_name"`
+	CompanyIntro         string        `json:"company_intro"`
+	CompanyEmail         string        `json:"company_email"`
+	CompanyTel           string        `json:"company_tel"`
+	CompanyAddress       string        `json:"company_address"`
+	TagList              []Tag         `json:"tag_list"`
+}
+
+type CompanyBaseInformation struct {
+	ComapanyLegalName    string        `json:"comapany_legal_name"`
+	ComapanyInformation
+}
+
+type CompanySearchList struct {
+	Length               int           `json:"length"`
+	CompanyList          []CompanySimpleInformation `json:"company_list"`
+}
+
+type EliteSimpleInformation struct {
+	EliteName            string        `json:"elite_name"`
+	EliteID              int           `json:"elite_id"`
+	EliteAvatar          string        `json:"elite_avatar"`
+	EliteAge             int           `json:"elite_age"`
+}
+
+type ElitesList struct {
+	Length               int           `json:"length"`
+    EliteList            []EliteSimpleInformation `json:"elite_list"`
+}
+
+type PositionSimple struct {
+	PositionID           int           `json:"position_id"`
+	PositionName         string        `json:"position_name"`
+	PersonNumber         string        `json:"person_number"`
+	Education            string        `json:"education"`
+}
+
+type PositionsList struct {
+	Length               int           `json:"length"`
+	PositionList         []PositionSimple `json:"position_list"`
+}
+
+type PositionPayload struct {
+	PositionName         string        `json:"position_name"`
+	PositionDescription  string        `json:"position_description"`
+	PositionSalary       string        `json:"position_salary"`
+	PositionPersonNumber int           `json:"position_person_number"`
+	PositionExperience   string        `json:"position_experience"`
+	PositionEducation    string        `json:"position_education"`
+	PositionTreatment    string        `json:"position_treatment"`
+	PositionInformation  string        `json:"position_information"`
+	BindMissionListID    int           `json:"bind_mission_list_id"`
+}

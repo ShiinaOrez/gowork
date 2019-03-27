@@ -110,7 +110,16 @@ func init() {
         beego.ControllerComments{
             Method: "CompanyInfo",
             Router: `/:Cid/info`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
+        beego.ControllerComments{
+            Method: "GetCompanyMissionList",
+            Router: `/:Cid/mission/list`,
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -119,7 +128,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetCompanyPositionList",
             Router: `/:Cid/position/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -136,8 +145,8 @@ func init() {
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
             Method: "CompanyCancelAttention",
-            Router: `/attention`,
-            AllowHTTPMethods: []string{"delete"},
+            Router: `/attention/:Uid`,
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -146,7 +155,7 @@ func init() {
         beego.ControllerComments{
             Method: "CompanyAttentionList",
             Router: `/attention/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -173,7 +182,7 @@ func init() {
         beego.ControllerComments{
             Method: "UpdateCompanyEmail",
             Router: `/email`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -191,7 +200,7 @@ func init() {
         beego.ControllerComments{
             Method: "CompanyBaseInfo",
             Router: `/info`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -210,15 +219,6 @@ func init() {
             Method: "UpdateCompanyLogo",
             Router: `/logo`,
             AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
-        beego.ControllerComments{
-            Method: "GetCompanyMissionList",
-            Router: `/mission/list`,
-            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -317,7 +317,7 @@ func init() {
         beego.ControllerComments{
             Method: "CompanySearchIntelligent",
             Router: `/search/intelligent`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
