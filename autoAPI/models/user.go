@@ -362,3 +362,34 @@ type PositionPayload struct {
 	PositionInformation  string        `json:"position_information"`
 	BindMissionListID    int           `json:"bind_mission_list_id"`
 }
+
+type CompanyVerySimpleInfo struct {
+	CompanyID            int           `json:"company_id"`
+	CompanyName          string        `json:"company_name"`
+}
+
+type CompanyVerySimpleInfoList struct {
+	Length               int           `json:"length"`
+	CompanyList          []CompanyVerySimpleInfo `json:"company_list"`
+}
+
+type MissionListCreateInformation struct {
+    MissionListName      string        `json:"mission_list_name"`
+    MissionIDList        []int         `json:"mission_id_list"`
+    MissionListIntro     string        `json:"mission_list_intro"`
+}
+
+type PositionEntity struct {
+	PositionID           int           `json:"position_id"`
+	PositionName         string        `json:"position_name"`
+	CompanyID            int           `json:"company_id"`
+	CompanyName          string        `json:"company_name"`
+	CompanyAvatar        string        `json:"company_avatar"`
+	PositionPersonNumber int           `json:"position_person_number"`
+	PositionEducation    string        `json:"position_education"`
+}
+
+type Positions struct {
+	Length               int           `json:"length"`
+	PositionList         []PositionEntity `json:"position_list"`
+}

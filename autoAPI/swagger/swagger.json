@@ -696,14 +696,38 @@
                 "tags": [
                     "company"
                 ],
-                "description": "New user must sign up.",
+                "description": "Create a category for company.",
                 "operationId": "CompanyController.CreateAndPostCompanyCategory",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Name",
+                        "description": "The new category name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{int} category ID"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} company not existed"
+                    },
+                    "407": {
+                        "description": "{string} already exist a same category"
                     }
                 }
             }
@@ -713,14 +737,41 @@
                 "tags": [
                     "company"
                 ],
-                "description": "New user must sign up.",
+                "description": "Create a tag and join it to category",
                 "operationId": "CompanyController.AddTagToCompanyCategory",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "CateID",
+                        "description": "The category ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "TagName",
+                        "description": "The new tag name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} create successful"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} company | category not existed"
                     }
                 }
             }
@@ -754,23 +805,6 @@
                     },
                     "401": {
                         "description": "{string} company not existed"
-                    }
-                }
-            }
-        },
-        "/company/email/confirm": {
-            "post": {
-                "tags": [
-                    "company"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "CompanyController.ConfirmCompanyEmailAddress",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
                     }
                 }
             }
@@ -875,63 +909,34 @@
                 "tags": [
                     "company"
                 ],
-                "description": "New user must sign up.",
+                "description": "Create and post a missionList.",
                 "operationId": "CompanyController.CreateAndPostMissionList",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
                     },
-                    "401": {
-                        "description": "{string} sign up failed"
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "models.MissionListCreateInformation",
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        }
                     }
-                }
-            }
-        },
-        "/company/offer": {
-            "post": {
-                "tags": [
-                    "company"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "CompanyController.CreateAndPostCompanyOffer",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{int} missionList ID"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
-        "/company/offer/{Oid}": {
-            "get": {
-                "tags": [
-                    "company"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "CompanyController.GetCompanyOfferInformationByID",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} auth failed"
                     },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "company"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "CompanyController.DeleteCompanyOfferByID",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
+                    "402": {
+                        "description": "{string} company not existed"
                     }
                 }
             }
@@ -1037,33 +1042,35 @@
                 }
             }
         },
-        "/company/position/{Pid}/resume": {
-            "post": {
-                "tags": [
-                    "company"
-                ],
-                "description": "New user must sign up.",
-                "operationId": "CompanyController.ResumeToCompanyPosition",
-                "responses": {
-                    "200": {
-                        "description": "{string} sign up successful"
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    }
-                }
-            }
-        },
         "/company/position/{Pid}/search": {
-            "post": {
+            "get": {
                 "tags": [
                     "company"
                 ],
-                "description": "New user must sign up.",
+                "description": "Search company positions.",
                 "operationId": "CompanyController.SearchCompanyPositionByNormalWay",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "Pattern",
+                        "description": "The pattern string",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Positions"
+                        }
                     },
                     "401": {
                         "description": "{string} sign up failed"
@@ -1076,14 +1083,36 @@
                 "tags": [
                     "company"
                 ],
-                "description": "New user must sign up.",
+                "description": "Search company by very fast way",
                 "operationId": "CompanyController.CompanySearchByFastWay",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Pattern",
+                        "description": "The pattern to make a fast search",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyVerySimpleInfoList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} company not existed"
                     }
                 }
             }
@@ -2926,6 +2955,35 @@
                 }
             }
         },
+        "models.CompanyVerySimpleInfo": {
+            "title": "CompanyVerySimpleInfo",
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "company_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CompanyVerySimpleInfoList": {
+            "title": "CompanyVerySimpleInfoList",
+            "type": "object",
+            "properties": {
+                "company_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.CompanyVerySimpleInfo"
+                    }
+                },
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
         "models.EditSettingBody": {
             "title": "EditSettingBody",
             "type": "object",
@@ -3452,6 +3510,36 @@
                 }
             }
         },
+        "models.PositionEntity": {
+            "title": "PositionEntity",
+            "type": "object",
+            "properties": {
+                "company_avatar": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "company_name": {
+                    "type": "string"
+                },
+                "position_education": {
+                    "type": "string"
+                },
+                "position_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "position_name": {
+                    "type": "string"
+                },
+                "position_person_number": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
         "models.PositionSimple": {
             "title": "PositionSimple",
             "type": "object",
@@ -3468,6 +3556,22 @@
                 },
                 "position_name": {
                     "type": "string"
+                }
+            }
+        },
+        "models.Positions": {
+            "title": "Positions",
+            "type": "object",
+            "properties": {
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "position_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.PositionEntity"
+                    }
                 }
             }
         },

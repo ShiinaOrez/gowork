@@ -172,82 +172,58 @@ func (u *CompanyController) UpdateCompanyTel() {
 func (u *CompanyController) UpdateCompanyEmail() {
 }
 
-// @Title ConfirmCompanyEmailAddress
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /email/confirm [post]
-func (u *CompanyController) ConfirmCompanyEmail() {
-}
-
 // @Title CompanySearchByFastWay
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Description Search company by very fast way
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Pattern     body      string      true        "The pattern to make a fast search"
+// @Success 200 {object} models.CompanyVerySimpleInfoList
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} company not existed
 // @router /search/fast [post]
 func (u *CompanyController) CompanySearchFast() {
 }
 
-// @Title CreateAndPostCompanyOffer
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /offer [post]
-func (u *CompanyController) CreateCompanyOffer() {
-}
-
-// @Title GetCompanyOfferInformationByID
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /offer/:Oid [get]
-func (u *CompanyController) GetCompanyOfferInfo() {
-}
-
-// @Title DeleteCompanyOfferByID
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /offer/:Oid [delete]
-func (u *CompanyController) DeleteCompanyOffer() {
-}
-
 // @Title CreateAndPostMissionList
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Description Create and post a missionList.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Payload     body      object      models.MissionListCreateInformation
+// @Success 200 {int} missionList ID
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} company not existed
 // @router /missionList [post]
 func (u *CompanyController) CreateCompanyMissionList() {
 }
 
 // @Title CreateAndPostCompanyCategory
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Description Create a category for company.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Name        body      object      true        "The new category name"
+// @Success 200 {int} category ID
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} company not existed
+// @Failure 407 {string} already exist a same category
 // @router /category [post]
 func (u *CompanyController) CreateCompanyCategory() {
 }
 
 // @Title AddTagToCompanyCategory
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
+// @Description Create a tag and join it to category
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   CateID      path      int         true        "The category ID"
+// @Param   TagName     body      string      true        "The new tag name"
+// @Success 200 {string} create successful
+// @Failure 401 {string} auth failed
+// @Failure 402 {string} company | category not existed
 // @router /category/:CateID/tags [post]
 func (u *CompanyController) CompanyCategoryAddTag() {
 }
 
-// @Title ResumeToCompanyPosition
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
-// @Failure 401 {string} sign up failed
-// @router /position/:Pid/resume [post]
-func (u *CompanyController) ResumeToCompanyPosition() {
-}
-
 // @Title SearchCompanyPositionByNormalWay
-// @Description New user must sign up.
-// @Success 200 {string} sign up successful
+// @Description Search company positions.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Pattern     query     string      true        "The pattern string"
+// @Success 200 {object} models.Positions
 // @Failure 401 {string} sign up failed
-// @router /position/:Pid/search [post]
+// @router /position/:Pid/search [get]
 func (u *CompanyController) CompanyPositionSearch() {
 }
