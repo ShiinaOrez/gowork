@@ -110,6 +110,7 @@
                 }
             }
         },
+        "/auth/company/{Cid}/confirmInfo": {},
         "/auth/company/{Cid}/info": {
             "put": {
                 "tags": [
@@ -200,7 +201,7 @@
             }
         },
         "/auth/email/confirm": {
-            "get": {
+            "post": {
                 "tags": [
                     "auth"
                 ],
@@ -208,7 +209,7 @@
                 "operationId": "AuthController.GetEmailConfirmCode",
                 "parameters": [
                     {
-                        "in": "query",
+                        "in": "body",
                         "name": "email",
                         "description": "The telephone number ready for confirm",
                         "required": true,
@@ -884,8 +885,17 @@
                 "tags": [
                     "company"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get company information by id. (information less)",
                 "operationId": "CompanyController.CompanyInformationByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "{string} sign up successful"

@@ -10,7 +10,8 @@ type CompanyController struct {
 }
 
 // @Title CompanyInformationByID
-// @Description New user must sign up.
+// @Description Get company information by id. (information less)
+// @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} sign up failed
 // @router /:Cid/info [post]

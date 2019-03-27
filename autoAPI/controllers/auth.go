@@ -64,7 +64,7 @@ func (u *AuthController) CompanySignUp() {
 // @Param   Cid               path    int                 true        "The company ID"
 // @Success 200 {string} post information successful
 // @Success 401 {object| models.PostConfirmInformationError
-// @router /company/:Cid/info [post]
+// @router /company/:Cid/confirmInfo []
 func (u *AuthController) CompanyInfoConfirm() {
 }
 
@@ -134,9 +134,9 @@ func (u *AuthController) GetTelephoneConfirmCode() {
 
 // @Title GetEmailConfirmCode
 // @Description Get email confirm code.
-// @Param   email        query    string  true        "The telephone number ready for confirm"
+// @Param   email       body    string  true        "The telephone number ready for confirm"
 // @Success 200 {string} send code successful
 // @Failure 410 {string} please wait for minute
-// @router /email/confirm [get]
+// @router /email/confirm [post]
 func (u *AuthController) GetEamilConfirmCode() {
 }
