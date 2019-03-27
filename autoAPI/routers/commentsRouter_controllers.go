@@ -83,7 +83,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetTelephoneConfirmCode",
             Router: `/telephone/confirm`,
-            AllowHTTPMethods: []string{"get"},
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

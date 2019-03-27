@@ -56,8 +56,11 @@ func (u *AuthController) CompanySignUp() {
 
 // @Title CompanyInformationConfirm
 // @Description Company account must be comfirmed
+// @Param   companyName       body    string              true        "The company name"
 // @Param   licenseImage      body    string              true        "The company license image"
 // @Param   organizationCode  body    string              true        "The company organization code"
+// @Param   originImage       body    string              true        "The company organization origin image"
+// @Param   legalIdentify     body    string              true        "The company legal's identify"
 // @Param   cardImage         body    string              true        "The company legal ID card image"
 // @Param   legalName         body    string              true        "The legal body name"
 // @Param   legalNumber       body    string              true        "The legal body number"
@@ -125,10 +128,10 @@ func (u *AuthController) ReviewerSignIn() {
 
 // @Title GetTelephoneConfirmCode
 // @Description Get telephone confirm code
-// @Param   tel        query    string  true        "The telephone number ready for confirm"
+// @Param   tel        body    string  true        "The telephone number ready for confirm"
 // @Success 200 {string} send code successful
 // @Failure 410 {string} please wait for minute
-// @router /telephone/confirm [get]
+// @router /telephone/confirm [post]
 func (u *AuthController) GetTelephoneConfirmCode() {
 }
 

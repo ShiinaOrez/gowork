@@ -17,6 +17,11 @@ paths:
       operationId: AuthController.CompanyInformationConfirm
       parameters:
       - in: body
+        name: companyName
+        description: The company name
+        required: true
+        type: string
+      - in: body
         name: licenseImage
         description: The company license image
         required: true
@@ -24,6 +29,16 @@ paths:
       - in: body
         name: organizationCode
         description: The company organization code
+        required: true
+        type: string
+      - in: body
+        name: originImage
+        description: The company organization origin image
+        required: true
+        type: string
+      - in: body
+        name: legalIdentify
+        description: The company legal's identify
         required: true
         type: string
       - in: body
@@ -253,13 +268,13 @@ paths:
         "401":
           description: '{string} sign up failed'
   /auth/telephone/confirm:
-    get:
+    post:
       tags:
       - auth
       description: Get telephone confirm code
       operationId: AuthController.GetTelephoneConfirmCode
       parameters:
-      - in: query
+      - in: body
         name: tel
         description: The telephone number ready for confirm
         required: true
