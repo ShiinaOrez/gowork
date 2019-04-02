@@ -40,3 +40,11 @@ func (u *TagController) TagUniversityList() {
 // @router /ability/list [get]
 func (u *TagController) TagAbilityList() {
 }
+
+// @Title TagCharacterList
+// @Description Get character tags list.
+// @Success 200 {object} models.TagList
+// @Success 201 {string} none tag exist
+// @router /character/list [get]
+func (u *TagController) TagCharacterList() {
+}

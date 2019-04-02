@@ -308,7 +308,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetMessageInfo",
             Router: `/:MsgID`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -324,9 +324,18 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MessageController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MessageController"],
         beego.ControllerComments{
+            Method: "DeleteMessage",
+            Router: `/:MsgID`,
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MessageController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:MessageController"],
+        beego.ControllerComments{
             Method: "GetCompanyMessageList",
             Router: `/company/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -335,7 +344,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetFeedbackMessageList",
             Router: `/feedback/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -344,7 +353,7 @@ func init() {
         beego.ControllerComments{
             Method: "GetPlatformMessageList",
             Router: `/platform/list`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -533,6 +542,15 @@ func init() {
         beego.ControllerComments{
             Method: "TagAbilityList",
             Router: `/ability/list`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"],
+        beego.ControllerComments{
+            Method: "TagCharacterList",
+            Router: `/character/list`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,

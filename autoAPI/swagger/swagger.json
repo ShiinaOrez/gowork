@@ -1379,84 +1379,129 @@
             }
         },
         "/message/company/list": {
-            "post": {
+            "get": {
                 "tags": [
                     "message"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get message not from platform, might from another company or a user",
                 "operationId": "MessageController.CompanyMessageList",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyMessageList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} company not existed"
                     }
                 }
             }
         },
         "/message/feedback/list": {
-            "post": {
+            "get": {
                 "tags": [
                     "message"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get feedback message list.",
                 "operationId": "MessageController.FeedbackMessageList",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.FeedbackMessageList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user not existed"
                     }
                 }
             }
         },
         "/message/platform/list": {
-            "post": {
+            "get": {
                 "tags": [
                     "message"
                 ],
-                "description": "New user must sign up.",
+                "description": "Get platform message list.",
                 "operationId": "MessageController.PlatformMessageList",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.PlatformMessageList"
+                        }
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | company not existed"
                     }
                 }
             }
         },
         "/message/{MsgID}": {
+            "get": {
+                "tags": [
+                    "message"
+                ],
+                "description": "Get the message information",
+                "operationId": "MessageController.GetMessageInformationByID",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MessageEntity"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | message not existed"
+                    }
+                }
+            },
             "put": {
                 "tags": [
                     "message"
                 ],
-                "description": "New user must sign up.",
+                "description": "Read a message, but it might be done by backend.",
                 "operationId": "MessageController.ReadMessage",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} ok"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | message not existed"
                     }
                 }
             },
-            "post": {
+            "delete": {
                 "tags": [
                     "message"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "MessageController.GetMessageInformationByID",
+                "description": "Delete a message.",
+                "operationId": "MessageController.DeleteMessage",
                 "responses": {
                     "200": {
-                        "description": "{string} sign up successful"
+                        "description": "{string} delete successful"
                     },
                     "401": {
-                        "description": "{string} sign up failed"
+                        "description": "{string} auth failed"
+                    },
+                    "402": {
+                        "description": "{string} user | message not existed"
                     }
                 }
             }
@@ -2155,6 +2200,26 @@
                 ],
                 "description": "Get ability tags list.",
                 "operationId": "TagController.TagAbilityList",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TagList"
+                        }
+                    },
+                    "201": {
+                        "description": "{string} none tag exist"
+                    }
+                }
+            }
+        },
+        "/tag/character/list": {
+            "get": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "Get character tags list.",
+                "operationId": "TagController.TagCharacterList",
                 "responses": {
                     "200": {
                         "description": "",
@@ -2903,6 +2968,53 @@
                 }
             }
         },
+        "models.CompanyMessage": {
+            "title": "CompanyMessage",
+            "type": "object",
+            "properties": {
+                "from_avatar": {
+                    "type": "string"
+                },
+                "from_id": {
+                    "type": "string"
+                },
+                "from_name": {
+                    "type": "string"
+                },
+                "is_company": {
+                    "type": "boolean"
+                },
+                "message_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "message_text": {
+                    "type": "string"
+                },
+                "readed": {
+                    "type": "boolean"
+                },
+                "time": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CompanyMessageList": {
+            "title": "CompanyMessageList",
+            "type": "object",
+            "properties": {
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "message_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.CompanyMessage"
+                    }
+                }
+            }
+        },
         "models.CompanySearchList": {
             "title": "CompanySearchList",
             "type": "object",
@@ -3132,6 +3244,51 @@
                 }
             }
         },
+        "models.FeedbackMessage": {
+            "title": "FeedbackMessage",
+            "type": "object",
+            "properties": {
+                "MessageID": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "company_avatar": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "company_name": {
+                    "type": "string"
+                },
+                "message_text": {
+                    "type": "string"
+                },
+                "readed": {
+                    "type": "boolean"
+                },
+                "time": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.FeedbackMessageList": {
+            "title": "FeedbackMessageList",
+            "type": "object",
+            "properties": {
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "message_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.FeedbackMessage"
+                    }
+                }
+            }
+        },
         "models.GetCompanySuitabilityList": {
             "title": "GetCompanySuitabilityList",
             "type": "object",
@@ -3264,6 +3421,38 @@
                     "items": {
                         "$ref": "#/definitions/models.TagForUserModel"
                     }
+                }
+            }
+        },
+        "models.MessageEntity": {
+            "title": "MessageEntity",
+            "type": "object",
+            "properties": {
+                "from_avatar": {
+                    "type": "string"
+                },
+                "from_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "from_name": {
+                    "type": "string"
+                },
+                "is_platform": {
+                    "type": "boolean"
+                },
+                "is_user": {
+                    "type": "boolean"
+                },
+                "message_readed": {
+                    "type": "boolean"
+                },
+                "message_text": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "message_time": {
+                    "type": "string"
                 }
             }
         },
@@ -3507,6 +3696,51 @@
                 "member": {
                     "type": "integer",
                     "format": "int64"
+                }
+            }
+        },
+        "models.PlatformMessage": {
+            "title": "PlatformMessage",
+            "type": "object",
+            "properties": {
+                "MessageID": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "is_recommand": {
+                    "type": "boolean"
+                },
+                "message_text": {
+                    "type": "string"
+                },
+                "readed": {
+                    "type": "boolean"
+                },
+                "recommand_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "recommand_type": {
+                    "type": "boolean"
+                },
+                "time": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PlatformMessageList": {
+            "title": "PlatformMessageList",
+            "type": "object",
+            "properties": {
+                "length": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "message_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.PlatformMessage"
+                    }
                 }
             }
         },

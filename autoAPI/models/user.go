@@ -393,3 +393,60 @@ type Positions struct {
 	Length               int           `json:"length"`
 	PositionList         []PositionEntity `json:"position_list"`
 }
+
+type PlatformMessage struct {
+	MessageID            int           `json: message_id`
+	MessageText          string        `json:"message_text"`
+	Time                 string        `json:"time"`
+	IsRecommand          bool          `json:"is_recommand"`
+	RecommandType        bool          `json:"recommand_type"`
+	RecommandID          int           `json:"recommand_id"`
+	Readed               bool          `json:"readed"`
+}
+
+type PlatformMessageList struct {
+	Length               int           `json:"length"`
+	MessageList          []PlatformMessage `json:"message_list"`
+}
+
+type FeedbackMessage struct {
+	MessageID            int           `json: message_id`
+	CompanyID            int           `json:"company_id"`
+	CompanyName          string        `json:"company_name"`
+	CompanyAvatar        string        `json:"company_avatar"`
+	MessageText          string        `json:"message_text"`
+	Time                 string        `json:"time"`
+	Readed               bool          `json:"readed"`
+}
+
+type FeedbackMessageList struct {
+	Length               int           `json:"length"`
+	MessageList          []FeedbackMessage `json:"message_list"`
+}
+
+type MessageEntity struct {
+	MessageText          int           `json:"message_text"`
+	IsPlatform           bool          `json:"is_platform"`
+	IsUser               bool          `json:"is_user"`
+	FromID               int           `json:"from_id"`
+	FromName             string        `json:"from_name"`
+	FromAvatar           string        `json:"from_avatar"`
+	MessageReaded        bool          `json:"message_readed"`
+	MessageTime          string        `json:"message_time"`
+}
+
+type CompanyMessage struct {
+	MessageID            int           `json:"message_id"`
+	IsCompany            bool          `json:"is_company"`
+	FromName             string        `json:"from_name"`
+	FromID               string        `json:"from_id"`
+	FromAvatar           string        `json:"from_avatar"`
+	MessageText          string        `json:"message_text"`
+	Readed               bool          `json:"readed"`
+	Time                 string        `json:"time"`
+}
+
+type CompanyMessageList struct {
+	Length               int           `json:"length"`
+	MessageList          []CompanyMessage `json:"message_list"`
+}
