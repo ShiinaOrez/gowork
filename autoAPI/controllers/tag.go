@@ -48,3 +48,27 @@ func (u *TagController) TagAbilityList() {
 // @router /character/list [get]
 func (u *TagController) TagCharacterList() {
 }
+
+// @Title TagGradeList
+// @Description Get grade tags list.
+// @Success 200 {object} models.TagList
+// @Success 201 {string} none tag exist
+// @router /grade/list [get]
+func (u *TagController) TagGradeList() {
+}
+
+// @Title TagAddressList
+// @Description Get address tags list.
+// @Success 200 {object} models.TagList
+// @Success 201 {string} none tag exist
+// @router /address/list [get]
+func (u *TagController) TagAddressList() {
+}
+
+// @Title TagWelfareList
+// @Description Get welfare tags list.
+// @Success 200 {object} models.TagList
+// @Success 201 {string} none tag exist
+// @router /welfare/list [get]
+func (u *TagController) TagWelfareList() {
+}

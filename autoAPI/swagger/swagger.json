@@ -1074,6 +1074,9 @@
                     },
                     "401": {
                         "description": "{string} sign up failed"
+                    },
+                    "402": {
+                        "description": "{string} user | position not existed"
                     }
                 }
             }
@@ -1252,6 +1255,38 @@
                     },
                     "402": {
                         "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/{Cid}/missionList/all": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Get a company all mission list.",
+                "operationId": "CompanyController.GetAllMissionListForCompany",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MissionListList"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    },
+                    "402": {
+                        "description": "{string} user | company not existed"
                     }
                 }
             }
@@ -2213,6 +2248,26 @@
                 }
             }
         },
+        "/tag/address/list": {
+            "get": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "Get address tags list.",
+                "operationId": "TagController.TagAddressList",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TagList"
+                        }
+                    },
+                    "201": {
+                        "description": "{string} none tag exist"
+                    }
+                }
+            }
+        },
         "/tag/character/list": {
             "get": {
                 "tags": [
@@ -2220,6 +2275,26 @@
                 ],
                 "description": "Get character tags list.",
                 "operationId": "TagController.TagCharacterList",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TagList"
+                        }
+                    },
+                    "201": {
+                        "description": "{string} none tag exist"
+                    }
+                }
+            }
+        },
+        "/tag/grade/list": {
+            "get": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "Get grade tags list.",
+                "operationId": "TagController.TagGradeList",
                 "responses": {
                     "200": {
                         "description": "",
@@ -2283,6 +2358,26 @@
                 ],
                 "description": "Get university tags list.",
                 "operationId": "TagController.TagUniversityList",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TagList"
+                        }
+                    },
+                    "201": {
+                        "description": "{string} none tag exist"
+                    }
+                }
+            }
+        },
+        "/tag/welfare/list": {
+            "get": {
+                "tags": [
+                    "tag"
+                ],
+                "description": "Get welfare tags list.",
+                "operationId": "TagController.TagWelfareList",
                 "responses": {
                     "200": {
                         "description": "",

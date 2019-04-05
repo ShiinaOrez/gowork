@@ -126,6 +126,15 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
+            Method: "CompanyAllMissionList",
+            Router: `/:Cid/missionList/all`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
+        beego.ControllerComments{
             Method: "GetCompanyPositionList",
             Router: `/:Cid/position/list`,
             AllowHTTPMethods: []string{"get"},
@@ -234,18 +243,18 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
-            Method: "EditCompanyPosition",
+            Method: "DeleteCompanyPosition",
             Router: `/position/:Pid`,
-            AllowHTTPMethods: []string{"put"},
+            AllowHTTPMethods: []string{"delete"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
-            Method: "DeleteCompanyPosition",
+            Method: "EditCompanyPosition",
             Router: `/position/:Pid`,
-            AllowHTTPMethods: []string{"delete"},
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -549,8 +558,26 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"],
         beego.ControllerComments{
+            Method: "TagAddressList",
+            Router: `/address/list`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"],
+        beego.ControllerComments{
             Method: "TagCharacterList",
             Router: `/character/list`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"],
+        beego.ControllerComments{
+            Method: "TagGradeList",
+            Router: `/grade/list`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
@@ -578,6 +605,15 @@ func init() {
         beego.ControllerComments{
             Method: "TagUniversityList",
             Router: `/university/list`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:TagController"],
+        beego.ControllerComments{
+            Method: "TagWelfareList",
+            Router: `/welfare/list`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,

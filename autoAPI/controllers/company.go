@@ -224,6 +224,17 @@ func (u *CompanyController) CompanyCategoryAddTag() {
 // @Param   Pattern     query     string      true        "The pattern string"
 // @Success 200 {object} models.Positions
 // @Failure 401 {string} sign up failed
+// @Failure 402 {string} user | position not existed
 // @router /position/:Pid/search [get]
 func (u *CompanyController) CompanyPositionSearch() {
+}
+
+// @Title GetAllMissionListForCompany
+// @Description Get a company all mission list.
+// @Param   Token       header    string      true        "The token to conform"
+// @Success 200 {object} models.MissionListList
+// @Failure 401 {string} sign up failed
+// @Failure 402 {string} user | company not existed
+// @router /:Cid/missionList/all [get]
+func (u *CompanyController) CompanyAllMissionList() {
 }
