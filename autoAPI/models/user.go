@@ -141,7 +141,7 @@ type CompanySimpleInformation struct {
 
 type UserAttentionCompanyList struct {
 	CompanyList   []CompanySimpleInformation  `json:"company_list"`
-	Length        int                         `json:"length"`
+	Pagination
 }
 
 type EditSettingBody struct {
@@ -172,7 +172,7 @@ type CompanySuitability struct {
 
 type GetCompanySuitabilityList struct {
 	RespBody      []CompanySuitability  `json:"resp_body"`
-	Length        int        `json:"length"`
+	Pagination
 }
 
 type Tag struct {
@@ -184,7 +184,7 @@ type TagList struct {
 	CategoryID    int        `json:"category_id"`
 	CategoryName  string     `json:"category_name"`
 	TagsList      []Tag      `json:"tags_list"`
-	Length        int        `json:"length"`
+	Pagination
 }
 
 type Elite struct {
@@ -204,7 +204,7 @@ type Elite struct {
 
 type EliteList struct {
 	ElitesList    []Elite     `json:"elites_list"`
-	Length        int         `json:"length"`
+	Pagination
 }
 
 type MissionInformation struct {
@@ -243,7 +243,7 @@ type MissionEntity struct {
 
 type MissionList struct {
 	MissionsList  []MissionEntity `json:"missions_list"`
-	Length        int         `json:"length"`
+	Pagination
 }
 
 type SubmitMissionPayload struct {
@@ -288,7 +288,7 @@ type MissionListInformation struct {
 	MissionListCreateTime    string       `json:"mission_list_create_time"`
 	MissionListIntro         string       `json:"mission_list_intro"`
 	MissionList              []MissionInMissionList `json:"mission_list"`
-	Length                   int          `json:"length"`
+	Pagination
 }
 
 type MissionListEntity struct {
@@ -304,7 +304,7 @@ type MissionListEntity struct {
 
 type MissionListList struct {
 	MissionLists             []MissionListEntity `json:"mission_lists"`
-	Length                   int          `json:"length"`
+	Pagination
 }
 
 type ComapanyInformation struct {
@@ -323,7 +323,7 @@ type CompanyBaseInformation struct {
 }
 
 type CompanySearchList struct {
-	Length               int           `json:"length"`
+	Pagination
 	CompanyList          []CompanySimpleInformation `json:"company_list"`
 }
 
@@ -335,7 +335,7 @@ type EliteSimpleInformation struct {
 }
 
 type ElitesList struct {
-	Length               int           `json:"length"`
+	Pagination
     EliteList            []EliteSimpleInformation `json:"elite_list"`
 }
 
@@ -347,7 +347,7 @@ type PositionSimple struct {
 }
 
 type PositionsList struct {
-	Length               int           `json:"length"`
+	Pagination
 	PositionList         []PositionSimple `json:"position_list"`
 }
 
@@ -369,7 +369,7 @@ type CompanyVerySimpleInfo struct {
 }
 
 type CompanyVerySimpleInfoList struct {
-	Length               int           `json:"length"`
+	Pagination
 	CompanyList          []CompanyVerySimpleInfo `json:"company_list"`
 }
 
@@ -390,7 +390,7 @@ type PositionEntity struct {
 }
 
 type Positions struct {
-	Length               int           `json:"length"`
+	Pagination
 	PositionList         []PositionEntity `json:"position_list"`
 }
 
@@ -405,7 +405,7 @@ type PlatformMessage struct {
 }
 
 type PlatformMessageList struct {
-	Length               int           `json:"length"`
+	Pagination
 	MessageList          []PlatformMessage `json:"message_list"`
 }
 
@@ -420,7 +420,7 @@ type FeedbackMessage struct {
 }
 
 type FeedbackMessageList struct {
-	Length               int           `json:"length"`
+	Pagination
 	MessageList          []FeedbackMessage `json:"message_list"`
 }
 
@@ -447,6 +447,13 @@ type CompanyMessage struct {
 }
 
 type CompanyMessageList struct {
-	Length               int           `json:"length"`
+	Pagination
 	MessageList          []CompanyMessage `json:"message_list"`
+}
+
+type Pagination struct {
+	PageNow              int           `json:"page_now"`
+	HasNext              bool          `json:"has_next"`
+	PageSize             int           `json:"page_size"`
+	RowsNum              int           `json:"rows_num"`
 }

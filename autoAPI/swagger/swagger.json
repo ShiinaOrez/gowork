@@ -3098,15 +3098,26 @@
             "title": "CompanyMessageList",
             "type": "object",
             "properties": {
-                "length": {
-                    "type": "integer",
-                    "format": "int64"
+                "has_next": {
+                    "type": "boolean"
                 },
                 "message_list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.CompanyMessage"
                     }
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3120,7 +3131,18 @@
                         "$ref": "#/definitions/models.CompanySimpleInformation"
                     }
                 },
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -3185,7 +3207,18 @@
                         "$ref": "#/definitions/models.CompanyVerySimpleInfo"
                     }
                 },
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -3297,7 +3330,18 @@
                         "$ref": "#/definitions/models.Elite"
                     }
                 },
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -3333,7 +3377,18 @@
                         "$ref": "#/definitions/models.EliteSimpleInformation"
                     }
                 },
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -3372,15 +3427,26 @@
             "title": "FeedbackMessageList",
             "type": "object",
             "properties": {
-                "length": {
-                    "type": "integer",
-                    "format": "int64"
+                "has_next": {
+                    "type": "boolean"
                 },
                 "message_list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.FeedbackMessage"
                     }
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3388,7 +3454,14 @@
             "title": "GetCompanySuitabilityList",
             "type": "object",
             "properties": {
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -3397,6 +3470,10 @@
                     "items": {
                         "$ref": "#/definitions/models.CompanySuitability"
                     }
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3697,15 +3774,26 @@
             "title": "MissionList",
             "type": "object",
             "properties": {
-                "length": {
-                    "type": "integer",
-                    "format": "int64"
+                "has_next": {
+                    "type": "boolean"
                 },
                 "missions_list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.MissionEntity"
                     }
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3747,9 +3835,8 @@
             "title": "MissionListInformation",
             "type": "object",
             "properties": {
-                "length": {
-                    "type": "integer",
-                    "format": "int64"
+                "has_next": {
+                    "type": "boolean"
                 },
                 "mission_list": {
                     "type": "array",
@@ -3765,6 +3852,18 @@
                 },
                 "mission_list_name": {
                     "type": "string"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3772,15 +3871,26 @@
             "title": "MissionListList",
             "type": "object",
             "properties": {
-                "length": {
-                    "type": "integer",
-                    "format": "int64"
+                "has_next": {
+                    "type": "boolean"
                 },
                 "mission_lists": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.MissionListEntity"
                     }
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3789,6 +3899,27 @@
             "type": "object",
             "properties": {
                 "member": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.Pagination": {
+            "title": "Pagination",
+            "type": "object",
+            "properties": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -3827,15 +3958,26 @@
             "title": "PlatformMessageList",
             "type": "object",
             "properties": {
-                "length": {
-                    "type": "integer",
-                    "format": "int64"
+                "has_next": {
+                    "type": "boolean"
                 },
                 "message_list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.PlatformMessage"
                     }
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3892,7 +4034,14 @@
             "title": "Positions",
             "type": "object",
             "properties": {
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -3901,6 +4050,10 @@
                     "items": {
                         "$ref": "#/definitions/models.PositionEntity"
                     }
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3908,7 +4061,14 @@
             "title": "PositionsList",
             "type": "object",
             "properties": {
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -3917,6 +4077,10 @@
                     "items": {
                         "$ref": "#/definitions/models.PositionSimple"
                     }
+                },
+                "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -4066,7 +4230,18 @@
                 "category_name": {
                     "type": "string"
                 },
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -4088,7 +4263,18 @@
                         "$ref": "#/definitions/models.CompanySimpleInformation"
                     }
                 },
-                "length": {
+                "has_next": {
+                    "type": "boolean"
+                },
+                "page_now": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "page_size": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rows_num": {
                     "type": "integer",
                     "format": "int64"
                 }

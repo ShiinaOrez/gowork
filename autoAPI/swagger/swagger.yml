@@ -2077,13 +2077,21 @@ definitions:
     title: CompanyMessageList
     type: object
     properties:
-      length:
-        type: integer
-        format: int64
+      has_next:
+        type: boolean
       message_list:
         type: array
         items:
           $ref: '#/definitions/models.CompanyMessage'
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
+        type: integer
+        format: int64
   models.CompanySearchList:
     title: CompanySearchList
     type: object
@@ -2092,7 +2100,15 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.CompanySimpleInformation'
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
         type: integer
         format: int64
   models.CompanySimpleInformation:
@@ -2137,7 +2153,15 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.CompanyVerySimpleInfo'
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
         type: integer
         format: int64
   models.EditSettingBody:
@@ -2214,7 +2238,15 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.Elite'
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
         type: integer
         format: int64
   models.EliteSimpleInformation:
@@ -2239,7 +2271,15 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.EliteSimpleInformation'
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
         type: integer
         format: int64
   models.FeedbackMessage:
@@ -2266,24 +2306,40 @@ definitions:
     title: FeedbackMessageList
     type: object
     properties:
-      length:
-        type: integer
-        format: int64
+      has_next:
+        type: boolean
       message_list:
         type: array
         items:
           $ref: '#/definitions/models.FeedbackMessage'
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
+        type: integer
+        format: int64
   models.GetCompanySuitabilityList:
     title: GetCompanySuitabilityList
     type: object
     properties:
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
         type: integer
         format: int64
       resp_body:
         type: array
         items:
           $ref: '#/definitions/models.CompanySuitability'
+      rows_num:
+        type: integer
+        format: int64
   models.GetUserBaseInformation:
     title: GetUserBaseInformation
     type: object
@@ -2488,13 +2544,21 @@ definitions:
     title: MissionList
     type: object
     properties:
-      length:
-        type: integer
-        format: int64
+      has_next:
+        type: boolean
       missions_list:
         type: array
         items:
           $ref: '#/definitions/models.MissionEntity'
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
+        type: integer
+        format: int64
   models.MissionListEntity:
     title: MissionListEntity
     type: object
@@ -2523,9 +2587,8 @@ definitions:
     title: MissionListInformation
     type: object
     properties:
-      length:
-        type: integer
-        format: int64
+      has_next:
+        type: boolean
       mission_list:
         type: array
         items:
@@ -2536,22 +2599,54 @@ definitions:
         type: string
       mission_list_name:
         type: string
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
+        type: integer
+        format: int64
   models.MissionListList:
     title: MissionListList
     type: object
     properties:
-      length:
-        type: integer
-        format: int64
+      has_next:
+        type: boolean
       mission_lists:
         type: array
         items:
           $ref: '#/definitions/models.MissionListEntity'
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
+        type: integer
+        format: int64
   models.MissionStatistics:
     title: MissionStatistics
     type: object
     properties:
       member:
+        type: integer
+        format: int64
+  models.Pagination:
+    title: Pagination
+    type: object
+    properties:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
         type: integer
         format: int64
   models.PlatformMessage:
@@ -2578,13 +2673,21 @@ definitions:
     title: PlatformMessageList
     type: object
     properties:
-      length:
-        type: integer
-        format: int64
+      has_next:
+        type: boolean
       message_list:
         type: array
         items:
           $ref: '#/definitions/models.PlatformMessage'
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
+        type: integer
+        format: int64
   models.PositionEntity:
     title: PositionEntity
     type: object
@@ -2623,24 +2726,40 @@ definitions:
     title: Positions
     type: object
     properties:
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
         type: integer
         format: int64
       position_list:
         type: array
         items:
           $ref: '#/definitions/models.PositionEntity'
+      rows_num:
+        type: integer
+        format: int64
   models.PositionsList:
     title: PositionsList
     type: object
     properties:
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
         type: integer
         format: int64
       position_list:
         type: array
         items:
           $ref: '#/definitions/models.PositionSimple'
+      rows_num:
+        type: integer
+        format: int64
   models.ResultOfCompanyLogin:
     title: ResultOfCompanyLogin
     type: object
@@ -2745,7 +2864,15 @@ definitions:
         format: int64
       category_name:
         type: string
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
         type: integer
         format: int64
       tags_list:
@@ -2760,7 +2887,15 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.CompanySimpleInformation'
-      length:
+      has_next:
+        type: boolean
+      page_now:
+        type: integer
+        format: int64
+      page_size:
+        type: integer
+        format: int64
+      rows_num:
         type: integer
         format: int64
   models.UserMissionInformation:
