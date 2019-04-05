@@ -121,7 +121,7 @@ func (u *CompanyController) DeleteCompanyPosition() {
 // @Description Get a company mission list by company ID.
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Cid         path      int         true        "The company ID for get mission list"
-// @Success 200 {string} models.MissionList
+// @Success 200 {object} models.MissionList
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} company not existed
 // @router /:Cid/mission/list [get]

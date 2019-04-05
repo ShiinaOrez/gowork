@@ -307,7 +307,7 @@ type MissionListList struct {
 	Pagination
 }
 
-type ComapanyInformation struct {
+type CompanyInformation struct {
 	CompanyAvatar        string        `json:"company_avatar"`
 	CompanyName          string        `json:"company_name"`
 	CompanyIntro         string        `json:"company_intro"`

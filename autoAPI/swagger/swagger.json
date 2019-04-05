@@ -1248,7 +1248,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} models.MissionList"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MissionList"
+                        }
                     },
                     "401": {
                         "description": "{string} auth failed"
@@ -2960,33 +2963,7 @@
         },
         "models.ComapanyInformation": {
             "title": "ComapanyInformation",
-            "type": "object",
-            "properties": {
-                "company_address": {
-                    "type": "string"
-                },
-                "company_avatar": {
-                    "type": "string"
-                },
-                "company_email": {
-                    "type": "string"
-                },
-                "company_intro": {
-                    "type": "string"
-                },
-                "company_name": {
-                    "type": "string"
-                },
-                "company_tel": {
-                    "type": "string"
-                },
-                "tag_list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.Tag"
-                    }
-                }
-            }
+            "type": "object"
         },
         "models.CompanyBaseInformation": {
             "title": "CompanyBaseInformation",
@@ -2994,30 +2971,6 @@
             "properties": {
                 "comapany_legal_name": {
                     "type": "string"
-                },
-                "company_address": {
-                    "type": "string"
-                },
-                "company_avatar": {
-                    "type": "string"
-                },
-                "company_email": {
-                    "type": "string"
-                },
-                "company_intro": {
-                    "type": "string"
-                },
-                "company_name": {
-                    "type": "string"
-                },
-                "company_tel": {
-                    "type": "string"
-                },
-                "tag_list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.Tag"
-                    }
                 }
             }
         },
@@ -3036,7 +2989,33 @@
         },
         "models.CompanyInformation": {
             "title": "CompanyInformation",
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "company_address": {
+                    "type": "string"
+                },
+                "company_avatar": {
+                    "type": "string"
+                },
+                "company_email": {
+                    "type": "string"
+                },
+                "company_intro": {
+                    "type": "string"
+                },
+                "company_name": {
+                    "type": "string"
+                },
+                "company_tel": {
+                    "type": "string"
+                },
+                "tag_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Tag"
+                    }
+                }
+            }
         },
         "models.CompanyInitTags": {
             "title": "CompanyInitTags",
