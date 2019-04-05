@@ -318,8 +318,8 @@ type CompanyInformation struct {
 }
 
 type CompanyBaseInformation struct {
-	ComapanyLegalName    string        `json:"comapany_legal_name"`
-	ComapanyInformation
+	CompanyLegalName    string        `json:"comapany_legal_name"`
+	CompanyInformation
 }
 
 type CompanySearchList struct {
