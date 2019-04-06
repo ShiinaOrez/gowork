@@ -422,6 +422,8 @@ paths:
           schema:
             $ref: '#/definitions/models.CompanyInformation'
         "401":
+          description: '{string} auth failed'
+        "404":
           description: '{string} user | company not existed'
   /company/{Cid}/mission/list/{PageId}:
     get:
@@ -454,7 +456,7 @@ paths:
             $ref: '#/definitions/models.MissionList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /company/{Cid}/missionList/all/{PageId}:
     get:
@@ -481,9 +483,9 @@ paths:
             $ref: '#/definitions/models.MissionListList'
         "401":
           description: '{string} sign up failed'
-        "402":
+        "404":
           description: '{string} user | company not existed'
-  /company/{Cid}/position/list:
+  /company/{Cid}/position/list/{PageId}:
     get:
       tags:
       - company
@@ -501,6 +503,12 @@ paths:
         required: true
         type: integer
         format: int64
+      - in: path
+        name: PageId
+        description: 页码
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -508,7 +516,7 @@ paths:
             $ref: '#/definitions/models.PositionsList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /company/attention:
     post:
@@ -533,7 +541,7 @@ paths:
           description: '{string} pay attention successful!'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company | elite not existed'
         "407":
           description: '{string} already pay attention to it'
@@ -560,7 +568,7 @@ paths:
           description: '{string} cancel successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company | user not existed'
         "407":
           description: '{string} never pay attention to it'
@@ -583,7 +591,7 @@ paths:
             $ref: '#/definitions/models.ElitesList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /company/category:
     post:
@@ -608,7 +616,7 @@ paths:
           description: '{int} category ID'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
         "407":
           description: '{string} already exist a same category'
@@ -640,7 +648,7 @@ paths:
           description: '{string} create successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company | category not existed'
   /company/email:
     put:
@@ -663,6 +671,8 @@ paths:
         "200":
           description: '{string} update successful'
         "401":
+          description: '{string} auth failed'
+        "404":
           description: '{string} company not existed'
   /company/info:
     get:
@@ -682,6 +692,8 @@ paths:
           schema:
             $ref: '#/definitions/models.CompanyBaseInformation'
         "401":
+          description: '{string} auth failed'
+        "404":
           description: '{string} company not existed'
     put:
       tags:
@@ -699,7 +711,7 @@ paths:
           description: '{string} models.CompanyInformation'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
         "406":
           description: '{string} image error'
@@ -725,7 +737,7 @@ paths:
           description: '{string} new logo URL'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /company/missionList:
     post:
@@ -749,7 +761,7 @@ paths:
           description: '{int} missionList ID'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /company/position:
     post:
@@ -773,7 +785,7 @@ paths:
           description: '{int} positionID'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /company/position/{Pid}:
     put:
@@ -797,7 +809,7 @@ paths:
           description: '{string} edit successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company | position not existed'
     delete:
       tags:
@@ -815,7 +827,7 @@ paths:
           description: '{string} delete successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company | position not existed'
   /company/position/{Pid}/search:
     get:
@@ -841,7 +853,7 @@ paths:
             $ref: '#/definitions/models.Positions'
         "401":
           description: '{string} sign up failed'
-        "402":
+        "404":
           description: '{string} user | position not existed'
   /company/search/fast:
     post:
@@ -867,7 +879,7 @@ paths:
             $ref: '#/definitions/models.CompanyVerySimpleInfoList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /company/search/intelligent:
     get:
@@ -888,7 +900,7 @@ paths:
             $ref: '#/definitions/models.CompanySearchList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user not existed'
   /company/tel:
     put:
@@ -911,6 +923,8 @@ paths:
         "200":
           description: '{string} update successful'
         "401":
+          description: '{string} auth failed'
+        "404":
           description: '{string} company not existed'
   /elite/industry/list:
     post:
@@ -2102,6 +2116,22 @@ definitions:
         type: integer
         format: int64
       rows_num:
+        type: integer
+        format: int64
+  models.CompanyMissionNumberOverview:
+    title: CompanyMissionNumberOverview
+    type: object
+    properties:
+      applying_number:
+        type: integer
+        format: int64
+      finished_number:
+        type: integer
+        format: int64
+      mission_number:
+        type: integer
+        format: int64
+      submitting_number:
         type: integer
         format: int64
   models.CompanySearchList:
