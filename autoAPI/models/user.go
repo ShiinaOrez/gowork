@@ -458,6 +458,10 @@ type CompanyMessageList struct {
 	MessageList          []CompanyMessage `json:"message_list"`
 }
 
+type CompanyLogoPUTBody struct {
+
+}
+
 type Pagination struct {
 	PageNow              int           `json:"page_now"`
 	HasNext              bool          `json:"has_next"`
