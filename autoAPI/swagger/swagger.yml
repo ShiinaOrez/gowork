@@ -359,12 +359,14 @@ paths:
         name: enrollYear
         description: The enroll year of user
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: graduateYear
         description: The graduate year of user
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: educationLevel
         description: The education level of user
