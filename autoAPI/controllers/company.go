@@ -244,12 +244,12 @@ func (u *CompanyController) CompanyAllMissionList() {
 
 // @Title CompanyMissionNumberOverview
 // @Description 公司任务数目概览，包括结束，报名中，任务提交中
+// @Param   Cid         path      int         true        "The company ID for get"
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   PageId      path      int  		  true 		  "页码"
 // @Success 200 {object} models.CompanyMissionNumberOverview
 // @Failure 401 {string} sign up failed
 // @Failure 404 {string} user | company not existed
-// @router /mission/overview [get]
+// @router /:Cid/mission/overview [get]
 func (u *CompanyController) CompanyMissionNumberOverview() {
-
 }

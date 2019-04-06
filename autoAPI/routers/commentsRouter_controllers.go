@@ -126,6 +126,15 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
+            Method: "CompanyMissionNumberOverview",
+            Router: `/:Cid/mission/overview`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
+        beego.ControllerComments{
             Method: "CompanyAllMissionList",
             Router: `/:Cid/missionList/all/:PageId`,
             AllowHTTPMethods: []string{"get"},
@@ -198,15 +207,6 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
-            Method: "EditCompanyInfo",
-            Router: `/info`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
-        beego.ControllerComments{
             Method: "CompanyBaseInfo",
             Router: `/info`,
             AllowHTTPMethods: []string{"get"},
@@ -216,8 +216,8 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
-            Method: "UpdateCompanyLogo",
-            Router: `/logo`,
+            Method: "EditCompanyInfo",
+            Router: `/info`,
             AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
@@ -225,9 +225,9 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
-            Method: "CompanyMissionNumberOverview",
-            Router: `/mission/overview`,
-            AllowHTTPMethods: []string{"get"},
+            Method: "UpdateCompanyLogo",
+            Router: `/logo`,
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
