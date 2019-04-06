@@ -249,6 +249,7 @@ func (u *CompanyController) CompanyAllMissionList() {
 // @Success 200 {object} models.CompanyMissionNumberOverview
 // @Failure 401 {string} sign up failed
 // @Failure 404 {string} user | company not existed
+// @router /mission/overview [get]
 func (u *CompanyController) CompanyMissionNumberOverview() {
 
 }

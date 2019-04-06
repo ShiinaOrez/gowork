@@ -739,6 +739,33 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} company not existed'
+  /company/mission/overview:
+    get:
+      tags:
+      - company
+      description: 公司任务数目概览，包括结束，报名中，任务提交中
+      operationId: CompanyController.CompanyMissionNumberOverview
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: PageId
+        description: 页码
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CompanyMissionNumberOverview'
+        "401":
+          description: '{string} sign up failed'
+        "404":
+          description: '{string} user | company not existed'
   /company/missionList:
     post:
       tags:
