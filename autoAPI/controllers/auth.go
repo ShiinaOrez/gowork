@@ -24,13 +24,13 @@ func (u *AuthController) UserSignIn() {
 // @Title UserSignUp
 // @Description New user must sign up.
 // @Param   realName       body    string              true        "The real name of user"
-// @Param   sex            body    int                 true        "The sex of user"
+// @Param   sex            body    bool                true        "The sex of user"
 // @Param   birthYear      body    string              true        "The birth year of user"
 // @Param   birthMonth     body    string              true        "The birth month of user"
 // @Param   city           body    string              true        "The city of user"
 // @Param   university     body    string              true        "The university of user"
 // @Param   enrollYear     body    string              true        "The enroll year of user"
-// @Param   graduateYear   body    string  	           true        "The graduate year of user"
+// @Param   graduateYear   body    string  	       true        "The graduate year of user"
 // @Param   educationLevel body    string              true        "The education level of user"
 // @Param   major          body    string              true        "The major of user"
 // @Param   status         body    string              true        "The status of user"

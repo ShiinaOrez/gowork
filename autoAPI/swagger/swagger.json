@@ -483,8 +483,7 @@
                         "name": "sex",
                         "description": "The sex of user",
                         "required": true,
-                        "type": "integer",
-                        "format": "int64"
+                        "type": "boolean"
                     },
                     {
                         "in": "body",
