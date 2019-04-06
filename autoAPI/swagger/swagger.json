@@ -490,14 +490,16 @@
                         "name": "birthYear",
                         "description": "The birth year of user",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
                         "name": "birthMonth",
                         "description": "The birth month of user",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
                     },
                     {
                         "in": "body",
