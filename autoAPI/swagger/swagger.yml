@@ -746,12 +746,10 @@ paths:
         description: edit company info body
         required: true
         schema:
-          $ref: '#/definitions/models.CompanyInformation'
+          $ref: '#/definitions/models.CompanyInfoModify'
       responses:
         "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.CompanyInformation'
+          description: '{string} edit ok'
         "401":
           description: '{string} auth failed'
         "404":
@@ -774,10 +772,11 @@ paths:
         name: Logo
         description: The company new logo.
         required: true
-        type: string
+        schema:
+          $ref: '#/definitions/models.CompanyLogoModify'
       responses:
         "200":
-          description: '{string} new logo URL'
+          description: '{string} ok'
         "401":
           description: '{string} auth failed'
         "404":
@@ -2090,6 +2089,22 @@ definitions:
       star_level:
         type: number
         format: float
+  models.CompanyInfoModify:
+    title: CompanyInfoModify
+    type: object
+    properties:
+      company_address:
+        type: string
+      company_contact_name:
+        type: string
+      company_contact_phone_number:
+        type: string
+      company_intro:
+        type: string
+      company_legal_body_name:
+        type: string
+      company_name:
+        type: string
   models.CompanyInformation:
     title: CompanyInformation
     type: object
@@ -2126,6 +2141,12 @@ definitions:
         type: integer
         format: int64
       msg:
+        type: string
+  models.CompanyLogoModify:
+    title: CompanyLogoModify
+    type: object
+    properties:
+      logo:
         type: string
   models.CompanyMessage:
     title: CompanyMessage

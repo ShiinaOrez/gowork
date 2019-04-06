@@ -133,8 +133,8 @@ func (u *CompanyController) GetCompanyMissionList() {
 // @Title UpdateCompanyLogo
 // @Description Update company logo.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Logo        body      string      true        "The company new logo."
-// @Success 200 {string} new logo URL
+// @Param   Logo        body      models.CompanyLogoModify      true        "The company new logo."
+// @Success 200 {string} ok
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
 // @router /logo [put]
@@ -144,8 +144,8 @@ func (u *CompanyController) UpdateCompanyLogo() {
 // @Title EditCompanyInformation
 // @Description Edit company information
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      models.CompanyInformation   true   "edit company info body"
-// @Success 200 {object} models.CompanyInformation
+// @Param   Payload     body      models.CompanyInfoModify   true   "edit company info body"
+// @Success 200 {string} edit ok
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
 // @Failure 406 {string} image error

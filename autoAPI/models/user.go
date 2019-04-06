@@ -317,6 +317,20 @@ type CompanyInformation struct {
 	TagList              []Tag         `json:"tag_list"`
 }
 
+type CompanyInfoModify struct {
+	CompanyName          string        `json:"company_name"`
+	CompanyIntro         string        `json:"company_intro"`
+	CompanyAddress       string        `json:"company_address"`
+	CompanyLegalBodyName string 	   `json:"company_legal_body_name"`
+	CompanyContactName 	 string 		`json:"company_contact_name"`
+	CompanyContactPhoneNumber string   `json:"company_contact_phone_number"`
+}
+
+type CompanyLogoModify struct {
+	Logo 				string 			`json:"logo"`
+}
+
+
 type CompanyBaseInformation struct {
 	CompanyLegalName    string        `json:"comapany_legal_name"`
 	CompanyInformation
@@ -459,7 +473,6 @@ type CompanyMessageList struct {
 }
 
 type CompanyLogoPUTBody struct {
-
 }
 
 type Pagination struct {
