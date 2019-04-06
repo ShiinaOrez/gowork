@@ -2833,7 +2833,7 @@
                         "type": "string"
                     },
                     {
-                        "in": "{object}",
+                        "in": "body",
                         "name": "RequestBody",
                         "description": "The request body for edit setting",
                         "required": true,
@@ -2942,9 +2942,10 @@
                     {
                         "in": "body",
                         "name": "RequestBody",
-                        "description": "models.UserPlatformSetting",
+                        "description": "test",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.UserPlatformSetting"
                         }
                     }
                 ],

@@ -112,7 +112,7 @@ func (u *UserController) UpdateAvatar() {
 // @Title EditSetting
 // @Description Edit personal information
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   RequestBody {object}  models.EditSettingBody  true   "The request body for edit setting"
+// @Param   RequestBody body      models.EditSettingBody  true   "The request body for edit setting"
 // @Success 200 {string} edit successful
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} user not existed
@@ -157,7 +157,7 @@ func (u *UserController) PlatformSetting() {
 // @Title EditPlatformSetting
 // @Description New user must sign up.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   RequestBody body      object      models.UserPlatformSetting
+// @Param   RequestBody body      models.UserPlatformSetting true "test"
 // @Success 200 {string} edit successful
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} user not existed
