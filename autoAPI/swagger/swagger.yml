@@ -422,11 +422,11 @@ paths:
             $ref: '#/definitions/models.CompanyInformation'
         "401":
           description: '{string} user | company not existed'
-  /company/{Cid}/mission/list:
+  /company/{Cid}/mission/list/{PageId}:
     get:
       tags:
       - company
-      description: Get a company mission list by company ID.
+      description: Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）
       operationId: CompanyController.GetCompanyMissionListByID
       parameters:
       - in: header
@@ -440,6 +440,12 @@ paths:
         required: true
         type: integer
         format: int64
+      - in: path
+        name: PageId
+        description: 页码
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -449,11 +455,11 @@ paths:
           description: '{string} auth failed'
         "402":
           description: '{string} company not existed'
-  /company/{Cid}/missionList/all:
+  /company/{Cid}/missionList/all/{PageId}:
     get:
       tags:
       - company
-      description: Get a company all mission list.
+      description: Get a company all mission list. 获取一个公司的全部选材清单
       operationId: CompanyController.GetAllMissionListForCompany
       parameters:
       - in: header
@@ -461,6 +467,12 @@ paths:
         description: The token to conform
         required: true
         type: string
+      - in: path
+        name: PageId
+        description: 页码
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""

@@ -118,13 +118,14 @@ func (u *CompanyController) DeleteCompanyPosition() {
 }
 
 // @Title GetCompanyMissionListByID
-// @Description Get a company mission list by company ID.
+// @Description Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Cid         path      int         true        "The company ID for get mission list"
+// @Param   PageId      path      int  		  true 		  "页码"
 // @Success 200 {object} models.MissionList
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} company not existed
-// @router /:Cid/mission/list [get]
+// @router /:Cid/mission/list/:PageId [get]
 func (u *CompanyController) GetCompanyMissionList() {
 }
 
@@ -230,11 +231,12 @@ func (u *CompanyController) CompanyPositionSearch() {
 }
 
 // @Title GetAllMissionListForCompany
-// @Description Get a company all mission list.
+// @Description Get a company all mission list. 获取一个公司的全部选材清单
 // @Param   Token       header    string      true        "The token to conform"
+// @Param   PageId      path      int  		  true 		  "页码"
 // @Success 200 {object} models.MissionListList
 // @Failure 401 {string} sign up failed
 // @Failure 402 {string} user | company not existed
-// @router /:Cid/missionList/all [get]
+// @router /:Cid/missionList/all/:PageId [get]
 func (u *CompanyController) CompanyAllMissionList() {
 }
