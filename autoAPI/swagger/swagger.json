@@ -715,7 +715,7 @@
                         "description": "The new category name",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/body"
                         }
                     }
                 ],
@@ -863,9 +863,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.CompanyInformation",
+                        "description": "edit company info body",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.CompanyInformation"
                         }
                     }
                 ],
@@ -942,9 +943,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.MissionListCreateInformation",
+                        "description": "PositionPayload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.MissionListCreateInformation"
                         }
                     }
                 ],
@@ -979,9 +981,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.PositionPayload",
+                        "description": "PositionPayload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.PositionPayload"
                         }
                     }
                 ],
@@ -1016,9 +1019,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.PositionPayload",
+                        "description": "PositionPayload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.PositionPayload"
                         }
                     }
                 ],
@@ -3043,6 +3047,10 @@
         }
     },
     "definitions": {
+        "body": {
+            "title": "body",
+            "type": "object"
+        },
         "models.AuthInitTags": {
             "title": "AuthInitTags",
             "type": "object",
@@ -3916,6 +3924,25 @@
                 }
             }
         },
+        "models.MissionListCreateInformation": {
+            "title": "MissionListCreateInformation",
+            "type": "object",
+            "properties": {
+                "mission_id_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "mission_list_intro": {
+                    "type": "string"
+                },
+                "mission_list_name": {
+                    "type": "string"
+                }
+            }
+        },
         "models.MissionListEntity": {
             "title": "MissionListEntity",
             "type": "object",
@@ -4127,6 +4154,41 @@
                 "position_person_number": {
                     "type": "integer",
                     "format": "int64"
+                }
+            }
+        },
+        "models.PositionPayload": {
+            "title": "PositionPayload",
+            "type": "object",
+            "properties": {
+                "bind_mission_list_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "position_description": {
+                    "type": "string"
+                },
+                "position_education": {
+                    "type": "string"
+                },
+                "position_experience": {
+                    "type": "string"
+                },
+                "position_information": {
+                    "type": "string"
+                },
+                "position_name": {
+                    "type": "string"
+                },
+                "position_person_number": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "position_salary": {
+                    "type": "string"
+                },
+                "position_treatment": {
+                    "type": "string"
                 }
             }
         },

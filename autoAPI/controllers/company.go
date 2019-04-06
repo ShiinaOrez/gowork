@@ -89,7 +89,7 @@ func (u *CompanyController) GetCompanyPositionList() {
 // @Title CreateAndPostPosition
 // @Description Company create a position.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object      models.PositionPayload
+// @Param   Payload     body      models.PositionPayload  true   "PositionPayload "
 // @Success 200 {int} positionID
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
@@ -100,7 +100,7 @@ func (u *CompanyController) CreateCompanyPosition() {
 // @Title EditCompanyPositionByID
 // @Description Edit the position information
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object      models.PositionPayload
+// @Param   Payload     body      models.PositionPayload   true   "PositionPayload "
 // @Success 200 {string} edit successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company | position not existed
@@ -144,7 +144,7 @@ func (u *CompanyController) UpdateCompanyLogo() {
 // @Title EditCompanyInformation
 // @Description Edit company information
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object      models.CompanyInformation
+// @Param   Payload     body      models.CompanyInformation   true   "edit company info body"
 // @Success 200 {object} models.CompanyInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
@@ -189,7 +189,7 @@ func (u *CompanyController) CompanySearchFast() {
 // @Title CreateAndPostMissionList
 // @Description Create and post a missionList.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object      models.MissionListCreateInformation
+// @Param   Payload     body      models.MissionListCreateInformation  true   "PositionPayload "
 // @Success 200 {int} missionList ID
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
@@ -200,7 +200,7 @@ func (u *CompanyController) CreateCompanyMissionList() {
 // @Title CreateAndPostCompanyCategory
 // @Description Create a category for company.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Name        body      object      true        "The new category name"
+// @Param   Name        body      body      true        "The new category name"
 // @Success 200 {int} category ID
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
