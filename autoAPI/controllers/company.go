@@ -144,7 +144,7 @@ func (u *CompanyController) UpdateCompanyLogo() {
 // @Title EditCompanyInformation
 // @Description Edit company information
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object      models.CompanyInformation
+// @Param   Payload     body      object      models.CompanyInformation true "test"
 // @Success 200 {object} models.CompanyInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed

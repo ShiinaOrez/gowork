@@ -743,9 +743,11 @@ paths:
         type: string
       - in: body
         name: Payload
-        description: models.CompanyInformation
+        description: test
+        required: true
         schema:
           $ref: '#/definitions/object'
+        default: models.CompanyInformation
       responses:
         "200":
           description: ""
@@ -1928,7 +1930,7 @@ paths:
         description: The token to conform
         required: true
         type: string
-      - in: '{object}'
+      - in: body
         name: RequestBody
         description: The request body for edit setting
         required: true
@@ -2001,9 +2003,10 @@ paths:
         type: string
       - in: body
         name: RequestBody
-        description: models.UserPlatformSetting
+        description: test
+        required: true
         schema:
-          $ref: '#/definitions/object'
+          $ref: '#/definitions/models.UserPlatformSetting'
       responses:
         "200":
           description: '{string} edit successful'
