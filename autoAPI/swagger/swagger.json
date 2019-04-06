@@ -861,7 +861,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} models.CompanyInformation"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyInformation"
+                        }
                     },
                     "401": {
                         "description": "{string} auth failed"
