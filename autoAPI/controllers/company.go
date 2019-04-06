@@ -65,7 +65,7 @@ func (u *CompanyController) CompanyPayAttention() {
 // @Title CompanyCancelAttentionSomebody
 // @Description Cancel to pay attention to a elite
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   UiD         path      int         true        "The elite ID for attention"
+// @Param   Uid         path      int         true        "The elite ID for attention"
 // @Success 200 {string} cancel successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company | user not existed
@@ -144,7 +144,8 @@ func (u *CompanyController) UpdateCompanyLogo() {
 // @Title EditCompanyInformation
 // @Description Edit company information
 // @Param   Token       header    string      true        "The token to conform"
-// @Success 200 {string} models.CompanyInformation
+// @Param   Payload     body      object      models.CompanyInformation
+// @Success 200 {object} models.CompanyInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
 // @Failure 406 {string} image error

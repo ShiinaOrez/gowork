@@ -671,7 +671,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "UiD",
+                        "name": "Uid",
                         "description": "The elite ID for attention",
                         "required": true,
                         "type": "integer",
@@ -859,11 +859,22 @@
                         "description": "The token to conform",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "models.CompanyInformation",
+                        "schema": {
+                            "$ref": "#/definitions/object"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} models.CompanyInformation"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyInformation"
+                        }
                     },
                     "401": {
                         "description": "{string} auth failed"
