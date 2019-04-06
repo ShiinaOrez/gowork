@@ -613,7 +613,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company | elite not existed"
                     },
                     "407": {
@@ -648,7 +648,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -685,7 +685,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company | user not existed"
                     },
                     "407": {
@@ -726,7 +726,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     },
                     "407": {
@@ -773,7 +773,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company | category not existed"
                     }
                 }
@@ -807,6 +807,9 @@
                         "description": "{string} update successful"
                     },
                     "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -836,6 +839,9 @@
                         }
                     },
                     "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -862,7 +868,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     },
                     "406": {
@@ -901,7 +907,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -938,7 +944,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -975,7 +981,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -1012,7 +1018,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company | position not existed"
                     }
                 }
@@ -1039,7 +1045,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company | position not existed"
                     }
                 }
@@ -1078,7 +1084,7 @@
                     "401": {
                         "description": "{string} sign up failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | position not existed"
                     }
                 }
@@ -1117,7 +1123,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -1149,7 +1155,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -1183,6 +1189,9 @@
                         "description": "{string} update successful"
                     },
                     "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -1220,17 +1229,20 @@
                         }
                     },
                     "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
                         "description": "{string} user | company not existed"
                     }
                 }
             }
         },
-        "/company/{Cid}/mission/list": {
+        "/company/{Cid}/mission/list/{PageId}": {
             "get": {
                 "tags": [
                     "company"
                 ],
-                "description": "Get a company mission list by company ID.",
+                "description": "Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）",
                 "operationId": "CompanyController.GetCompanyMissionListByID",
                 "parameters": [
                     {
@@ -1247,6 +1259,14 @@
                         "required": true,
                         "type": "integer",
                         "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "PageId",
+                        "description": "页码",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -1259,18 +1279,66 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
             }
         },
-        "/company/{Cid}/missionList/all": {
+        "/company/{Cid}/mission/overview": {
             "get": {
                 "tags": [
                     "company"
                 ],
-                "description": "Get a company all mission list.",
+                "description": "公司任务数目概览，包括结束，报名中，任务提交中",
+                "operationId": "CompanyController.CompanyMissionNumberOverview",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The company ID for get",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "PageId",
+                        "description": "页码",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyMissionNumberOverview"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
+        "/company/{Cid}/missionList/all/{PageId}": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Get a company all mission list. 获取一个公司的全部选材清单",
                 "operationId": "CompanyController.GetAllMissionListForCompany",
                 "parameters": [
                     {
@@ -1279,6 +1347,14 @@
                         "description": "The token to conform",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "PageId",
+                        "description": "页码",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -1291,13 +1367,13 @@
                     "401": {
                         "description": "{string} sign up failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | company not existed"
                     }
                 }
             }
         },
-        "/company/{Cid}/position/list": {
+        "/company/{Cid}/position/list/{PageId}": {
             "get": {
                 "tags": [
                     "company"
@@ -1319,6 +1395,14 @@
                         "required": true,
                         "type": "integer",
                         "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "PageId",
+                        "description": "页码",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -1331,7 +1415,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -3118,6 +3202,28 @@
                     "format": "int64"
                 },
                 "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.CompanyMissionNumberOverview": {
+            "title": "CompanyMissionNumberOverview",
+            "type": "object",
+            "properties": {
+                "applying_number": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "finished_number": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "mission_number": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "submitting_number": {
                     "type": "integer",
                     "format": "int64"
                 }

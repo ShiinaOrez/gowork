@@ -15,7 +15,7 @@ type CompanyController struct {
 // @Param   Cid         path      int         true        "The company ID for get"
 // @Success 200 {object} models.CompanyInformation
 // @Failure 401 {string} auth failed
-// @Failure 401 {string} user | company not existed
+// @Failure 404 {string} user | company not existed
 // @router /:Cid/info [get]
 func (u *CompanyController) CompanyInfo() {
 }
@@ -25,7 +25,7 @@ func (u *CompanyController) CompanyInfo() {
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {object} models.CompanyBaseInformation
 // @Failure 401 {string} auth failed
-// @Failure 401 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /info [get]
 func (u *CompanyController) CompanyBaseInfo() {
 }
@@ -35,7 +35,7 @@ func (u *CompanyController) CompanyBaseInfo() {
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {object} models.CompanySearchList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user not existed
+// @Failure 404 {string} user not existed
 // @router /search/intelligent [get]
 func (u *CompanyController) CompanySearchIntelligent() {
 }
@@ -45,7 +45,7 @@ func (u *CompanyController) CompanySearchIntelligent() {
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {object} models.ElitesList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /attention/list [get]
 func (u *CompanyController) CompanyAttentionList() {
 }
@@ -56,7 +56,7 @@ func (u *CompanyController) CompanyAttentionList() {
 // @Param   EliteID     body      int         true        "The elite ID for attention"
 // @Success 200 {string} pay attention successful!
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company | elite not existed
+// @Failure 404 {string} company | elite not existed
 // @Failure 407 {string} already pay attention to it
 // @router /attention [post]
 func (u *CompanyController) CompanyPayAttention() {
@@ -68,7 +68,7 @@ func (u *CompanyController) CompanyPayAttention() {
 // @Param   UiD         path      int         true        "The elite ID for attention"
 // @Success 200 {string} cancel successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company | user not existed
+// @Failure 404 {string} company | user not existed
 // @Failure 407 {string} never pay attention to it
 // @router /attention/:Uid [put]
 func (u *CompanyController) CompanyCancelAttention() {
@@ -78,10 +78,11 @@ func (u *CompanyController) CompanyCancelAttention() {
 // @Description Get a company's position list
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Cid         path      int         true        "The company ID for get position list"
+// @Param   PageId      path      int  		  true 		  "页码"
 // @Success 200 {object} models.PositionsList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
-// @router /:Cid/position/list [get]
+// @Failure 404 {string} company not existed
+// @router /:Cid/position/list/:PageId [get]
 func (u *CompanyController) GetCompanyPositionList() {
 }
 
@@ -91,7 +92,7 @@ func (u *CompanyController) GetCompanyPositionList() {
 // @Param   Payload     body      object      models.PositionPayload
 // @Success 200 {int} positionID
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /position [post]
 func (u *CompanyController) CreateCompanyPosition() {
 }
@@ -102,7 +103,7 @@ func (u *CompanyController) CreateCompanyPosition() {
 // @Param   Payload     body      object      models.PositionPayload
 // @Success 200 {string} edit successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company | position not existed
+// @Failure 404 {string} company | position not existed
 // @router /position/:Pid [put]
 func (u *CompanyController) EditCompanyPosition() {
 }
@@ -112,19 +113,20 @@ func (u *CompanyController) EditCompanyPosition() {
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {string} delete successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company | position not existed
+// @Failure 404 {string} company | position not existed
 // @router /position/:Pid [delete]
 func (u *CompanyController) DeleteCompanyPosition() {
 }
 
 // @Title GetCompanyMissionListByID
-// @Description Get a company mission list by company ID.
+// @Description Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Cid         path      int         true        "The company ID for get mission list"
+// @Param   PageId      path      int  		  true 		  "页码"
 // @Success 200 {object} models.MissionList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
-// @router /:Cid/mission/list [get]
+// @Failure 404 {string} company not existed
+// @router /:Cid/mission/list/:PageId [get]
 func (u *CompanyController) GetCompanyMissionList() {
 }
 
@@ -134,7 +136,7 @@ func (u *CompanyController) GetCompanyMissionList() {
 // @Param   Logo        body      string      true        "The company new logo."
 // @Success 200 {string} new logo URL
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /logo [put]
 func (u *CompanyController) UpdateCompanyLogo() {
 }
@@ -144,7 +146,7 @@ func (u *CompanyController) UpdateCompanyLogo() {
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {string} models.CompanyInformation
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @Failure 406 {string} image error
 // @router /info [put]
 func (u *CompanyController) EditCompanyInfo() {
@@ -156,7 +158,7 @@ func (u *CompanyController) EditCompanyInfo() {
 // @Param   Tel         body      string      true        "The telephone number to update"
 // @Success 200 {string} update successful
 // @Failure 401 {string} auth failed
-// @Failure 401 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /tel [put]
 func (u *CompanyController) UpdateCompanyTel() {
 }
@@ -167,7 +169,7 @@ func (u *CompanyController) UpdateCompanyTel() {
 // @Param   Email       body      string      true        "The email address to update"
 // @Success 200 {string} update successful
 // @Failure 401 {string} auth failed
-// @Failure 401 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /email [put]
 func (u *CompanyController) UpdateCompanyEmail() {
 }
@@ -178,7 +180,7 @@ func (u *CompanyController) UpdateCompanyEmail() {
 // @Param   Pattern     body      string      true        "The pattern to make a fast search"
 // @Success 200 {object} models.CompanyVerySimpleInfoList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /search/fast [post]
 func (u *CompanyController) CompanySearchFast() {
 }
@@ -189,7 +191,7 @@ func (u *CompanyController) CompanySearchFast() {
 // @Param   Payload     body      object      models.MissionListCreateInformation
 // @Success 200 {int} missionList ID
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router /missionList [post]
 func (u *CompanyController) CreateCompanyMissionList() {
 }
@@ -200,7 +202,7 @@ func (u *CompanyController) CreateCompanyMissionList() {
 // @Param   Name        body      object      true        "The new category name"
 // @Success 200 {int} category ID
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @Failure 407 {string} already exist a same category
 // @router /category [post]
 func (u *CompanyController) CreateCompanyCategory() {
@@ -213,7 +215,7 @@ func (u *CompanyController) CreateCompanyCategory() {
 // @Param   TagName     body      string      true        "The new tag name"
 // @Success 200 {string} create successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company | category not existed
+// @Failure 404 {string} company | category not existed
 // @router /category/:CateID/tags [post]
 func (u *CompanyController) CompanyCategoryAddTag() {
 }
@@ -224,17 +226,30 @@ func (u *CompanyController) CompanyCategoryAddTag() {
 // @Param   Pattern     query     string      true        "The pattern string"
 // @Success 200 {object} models.Positions
 // @Failure 401 {string} sign up failed
-// @Failure 402 {string} user | position not existed
+// @Failure 404 {string} user | position not existed
 // @router /position/:Pid/search [get]
 func (u *CompanyController) CompanyPositionSearch() {
 }
 
 // @Title GetAllMissionListForCompany
-// @Description Get a company all mission list.
+// @Description Get a company all mission list. 获取一个公司的全部选材清单
 // @Param   Token       header    string      true        "The token to conform"
+// @Param   PageId      path      int  		  true 		  "页码"
 // @Success 200 {object} models.MissionListList
 // @Failure 401 {string} sign up failed
-// @Failure 402 {string} user | company not existed
-// @router /:Cid/missionList/all [get]
+// @Failure 404 {string} user | company not existed
+// @router /:Cid/missionList/all/:PageId [get]
 func (u *CompanyController) CompanyAllMissionList() {
+}
+
+// @Title CompanyMissionNumberOverview
+// @Description 公司任务数目概览，包括结束，报名中，任务提交中
+// @Param   Cid         path      int         true        "The company ID for get"
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   PageId      path      int  		  true 		  "页码"
+// @Success 200 {object} models.CompanyMissionNumberOverview
+// @Failure 401 {string} sign up failed
+// @Failure 404 {string} user | company not existed
+// @router /:Cid/mission/overview [get]
+func (u *CompanyController) CompanyMissionNumberOverview() {
 }

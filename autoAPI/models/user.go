@@ -446,6 +446,13 @@ type CompanyMessage struct {
 	Time                 string        `json:"time"`
 }
 
+type CompanyMissionNumberOverview struct {
+	MissionNumber 		int 	`json:"mission_number"`		// 任务总数
+	FinishedNumber 		int 	`json:"finished_number"`  	// 已结束
+	SubmittingNumber 	int 	`json:"submitting_number"`  // 提交中
+	ApplyingNumber		int 	`json:"applying_number"`	// 申请中
+}
+
 type CompanyMessageList struct {
 	Pagination
 	MessageList          []CompanyMessage `json:"message_list"`
