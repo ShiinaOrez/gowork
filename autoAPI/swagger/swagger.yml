@@ -128,7 +128,7 @@ paths:
           description: '{string} company information post successful'
         "401":
           description: '{string} company information post failed'
-  /auth/company/signin:
+  /auth/company/signin/email:
     post:
       tags:
       - auth
@@ -136,8 +136,8 @@ paths:
       operationId: AuthController.CompanySignIn
       parameters:
       - in: body
-        name: account
-        description: The company account telephone or email
+        name: email
+        description: The company account email
         required: true
         type: string
       - in: body
@@ -145,9 +145,30 @@ paths:
         description: The confirm code
         required: true
         type: string
-      - in: query
-        name: loginType
-        description: 'The type to login: tel or email'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResultOfCompanyLogin'
+        "401":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CompanyLoginError'
+  /auth/company/signin/tel:
+    post:
+      tags:
+      - auth
+      description: Company login.
+      operationId: AuthController.CompanySignIn
+      parameters:
+      - in: body
+        name: tel
+        description: The company account telephone
+        required: true
+        type: string
+      - in: body
+        name: code
+        description: The confirm code
         required: true
         type: string
       responses:
@@ -267,7 +288,7 @@ paths:
             $ref: '#/definitions/models.ResultOfReviewerSignUp'
         "401":
           description: '{string} sign up failed'
-  /auth/telephone/confirm:
+  /auth/tel/confirm:
     post:
       tags:
       - auth

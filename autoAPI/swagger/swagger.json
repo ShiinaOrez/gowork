@@ -11,7 +11,7 @@
     },
     "basePath": "/api/v1.0",
     "paths": {
-        "/auth/company/signin": {
+        "/auth/company/signin/email": {
             "post": {
                 "tags": [
                     "auth"
@@ -21,8 +21,8 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "account",
-                        "description": "The company account telephone or email",
+                        "name": "email",
+                        "description": "The company account email",
                         "required": true,
                         "type": "string"
                     },
@@ -32,11 +32,43 @@
                         "description": "The confirm code",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfCompanyLogin"
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyLoginError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/company/signin/tel": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Company login.",
+                "operationId": "AuthController.CompanySignIn",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "tel",
+                        "description": "The company account telephone",
+                        "required": true,
+                        "type": "string"
                     },
                     {
-                        "in": "query",
-                        "name": "loginType",
-                        "description": "The type to login: tel or email",
+                        "in": "body",
+                        "name": "code",
+                        "description": "The confirm code",
                         "required": true,
                         "type": "string"
                     }
@@ -390,7 +422,7 @@
                 }
             }
         },
-        "/auth/telephone/confirm": {
+        "/auth/tel/confirm": {
             "post": {
                 "tags": [
                     "auth"

@@ -115,13 +115,22 @@ func (u *AuthController) ReviewerSignUp() {
 
 // @Title CompanySignIn
 // @Description Company login.
-// @Param   account            body    string              true        "The company account telephone or email"
+// @Param   email              body    string              true        "The company account email"
 // @Param   code               body    string              true        "The confirm code"
-// @Param   loginType          query   string              true        "The type to login: tel or email"
 // @Success 200 {object} models.ResultOfCompanyLogin
 // @Success 401 {object} models.CompanyLoginError
-// @router /company/signin [post]
-func (u *AuthController) CompanySignIn() {
+// @router /company/signin/email [post]
+func (u *AuthController) CompanySignInByEmail() {
+}
+
+// @Title CompanySignIn
+// @Description Company login.
+// @Param   tel                body    string              true        "The company account telephone"
+// @Param   code               body    string              true        "The confirm code"
+// @Success 200 {object} models.ResultOfCompanyLogin
+// @Success 401 {object} models.CompanyLoginError
+// @router /company/signin/tel [post]
+func (u *AuthController) CompanySignInByTel() {
 }
 
 // @Title ReviewerSignIn
@@ -139,7 +148,7 @@ func (u *AuthController) ReviewerSignIn() {
 // @Param   tel        body    string  true        "The telephone number ready for confirm"
 // @Success 200 {string} send code successful
 // @Failure 410 {string} please wait for minute
-// @router /telephone/confirm [post]
+// @router /tel/confirm [post]
 func (u *AuthController) GetTelephoneConfirmCode() {
 }
 
