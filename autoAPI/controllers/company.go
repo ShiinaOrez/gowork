@@ -9,6 +9,7 @@ type CompanyController struct {
 	beego.Controller
 }
 
+
 // @Title CompanyInformationByID
 // @Description Get company information by id. (information less)
 // @Param   Token       header    string      true        "The token to conform"
@@ -20,6 +21,7 @@ type CompanyController struct {
 func (u *CompanyController) CompanyInfo() {
 }
 
+// TODO
 // @Title CompanyBaseInformationByID
 // @Description Get company base information.
 // @Param   Token       header    string      true        "The token to conform"
@@ -30,6 +32,7 @@ func (u *CompanyController) CompanyInfo() {
 func (u *CompanyController) CompanyBaseInfo() {
 }
 
+// TODO
 // @Title CompanySearchByIntelligent
 // @Description Search company by intelligent way.
 // @Param   Token       header    string      true        "The token to conform"
@@ -40,6 +43,7 @@ func (u *CompanyController) CompanyBaseInfo() {
 func (u *CompanyController) CompanySearchIntelligent() {
 }
 
+// TODO
 // @Title GetCompanyAttentionList
 // @Description Get company's attention elites list
 // @Param   Token       header    string      true        "The token to conform"
@@ -50,10 +54,11 @@ func (u *CompanyController) CompanySearchIntelligent() {
 func (u *CompanyController) CompanyAttentionList() {
 }
 
+// TODO
 // @Title CompanyPayAttentionToSomebody
 // @Description Pay attention to a elite.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   EliteID     body      int         true        "The elite ID for attention"
+// @Param   EliteID     body      models.CompanyPayAttentionBody         true        "The elite ID for attention"
 // @Success 200 {string} pay attention successful!
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company | elite not existed
@@ -62,6 +67,7 @@ func (u *CompanyController) CompanyAttentionList() {
 func (u *CompanyController) CompanyPayAttention() {
 }
 
+// TODO
 // @Title CompanyCancelAttentionSomebody
 // @Description Cancel to pay attention to a elite
 // @Param   Token       header    string      true        "The token to conform"
@@ -74,6 +80,7 @@ func (u *CompanyController) CompanyPayAttention() {
 func (u *CompanyController) CompanyCancelAttention() {
 }
 
+// TODO
 // @Title GetCompanyPositionListByID
 // @Description Get a company's position list
 // @Param   Token       header    string      true        "The token to conform"
@@ -86,6 +93,7 @@ func (u *CompanyController) CompanyCancelAttention() {
 func (u *CompanyController) GetCompanyPositionList() {
 }
 
+// TODO
 // @Title CreateAndPostPosition
 // @Description Company create a position.
 // @Param   Token       header    string      true        "The token to conform"
@@ -97,6 +105,7 @@ func (u *CompanyController) GetCompanyPositionList() {
 func (u *CompanyController) CreateCompanyPosition() {
 }
 
+// TODO
 // @Title EditCompanyPositionByID
 // @Description Edit the position information
 // @Param   Token       header    string      true        "The token to conform"
@@ -108,6 +117,7 @@ func (u *CompanyController) CreateCompanyPosition() {
 func (u *CompanyController) EditCompanyPosition() {
 }
 
+// TODO
 // @Title DeleteCompanyPositionByID
 // @Description Delete position by ID
 // @Param   Token       header    string      true        "The token to conform"
@@ -118,6 +128,7 @@ func (u *CompanyController) EditCompanyPosition() {
 func (u *CompanyController) DeleteCompanyPosition() {
 }
 
+// TODO
 // @Title GetCompanyMissionListByID
 // @Description Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）
 // @Param   Token       header    string      true        "The token to conform"
@@ -153,6 +164,7 @@ func (u *CompanyController) UpdateCompanyLogo() {
 func (u *CompanyController) EditCompanyInfo() {
 }
 
+// TODO
 // @Title UpdateCompanyTelephone
 // @Description update the company telephone number.
 // @Param   Token       header    string      true        "The token to conform"
@@ -164,6 +176,7 @@ func (u *CompanyController) EditCompanyInfo() {
 func (u *CompanyController) UpdateCompanyTel() {
 }
 
+// TODO
 // @Title UpdateCompanyEmailAddress
 // @Description update company email
 // @Param   Token       header    string      true        "The token to conform"
@@ -175,6 +188,7 @@ func (u *CompanyController) UpdateCompanyTel() {
 func (u *CompanyController) UpdateCompanyEmail() {
 }
 
+// TODO
 // @Title CompanySearchByFastWay
 // @Description Search company by very fast way
 // @Param   Token       header    string      true        "The token to conform"
@@ -186,6 +200,7 @@ func (u *CompanyController) UpdateCompanyEmail() {
 func (u *CompanyController) CompanySearchFast() {
 }
 
+// TODO
 // @Title CreateAndPostMissionList
 // @Description Create and post a missionList.
 // @Param   Token       header    string      true        "The token to conform"
@@ -197,6 +212,7 @@ func (u *CompanyController) CompanySearchFast() {
 func (u *CompanyController) CreateCompanyMissionList() {
 }
 
+// TODO
 // @Title CreateAndPostCompanyCategory
 // @Description Create a category for company.
 // @Param   Token       header    string      true        "The token to conform"
@@ -209,6 +225,7 @@ func (u *CompanyController) CreateCompanyMissionList() {
 func (u *CompanyController) CreateCompanyCategory() {
 }
 
+// TODO
 // @Title AddTagToCompanyCategory
 // @Description Create a tag and join it to category
 // @Param   Token       header    string      true        "The token to conform"
@@ -221,6 +238,7 @@ func (u *CompanyController) CreateCompanyCategory() {
 func (u *CompanyController) CompanyCategoryAddTag() {
 }
 
+// TODO
 // @Title SearchCompanyPositionByNormalWay
 // @Description Search company positions.
 // @Param   Token       header    string      true        "The token to conform"
@@ -232,6 +250,7 @@ func (u *CompanyController) CompanyCategoryAddTag() {
 func (u *CompanyController) CompanyPositionSearch() {
 }
 
+// TODO
 // @Title GetAllMissionListForCompany
 // @Description Get a company all mission list. 获取一个公司的全部选材清单
 // @Param   Token       header    string      true        "The token to conform"

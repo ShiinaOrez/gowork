@@ -569,8 +569,8 @@ paths:
         name: EliteID
         description: The elite ID for attention
         required: true
-        type: integer
-        format: int64
+        schema:
+          $ref: '#/definitions/models.CompanyPayAttentionBody'
       responses:
         "200":
           description: '{string} pay attention successful!'
@@ -2203,6 +2203,13 @@ definitions:
         type: integer
         format: int64
       submitting_number:
+        type: integer
+        format: int64
+  models.CompanyPayAttentionBody:
+    title: CompanyPayAttentionBody
+    type: object
+    properties:
+      uid:
         type: integer
         format: int64
   models.CompanySearchList:

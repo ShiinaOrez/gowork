@@ -330,6 +330,9 @@ type CompanyLogoModify struct {
 	Logo 				string 			`json:"logo"`
 }
 
+type CompanyPayAttentionBody struct {
+	Uid 				uint64 			`json:"uid"`
+}
 
 type CompanyBaseInformation struct {
 	CompanyLegalName    string        `json:"comapany_legal_name"`
@@ -472,8 +475,6 @@ type CompanyMessageList struct {
 	MessageList          []CompanyMessage `json:"message_list"`
 }
 
-type CompanyLogoPUTBody struct {
-}
 
 type Pagination struct {
 	PageNow              int           `json:"page_now"`
