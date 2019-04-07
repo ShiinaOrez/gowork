@@ -65,7 +65,16 @@ func (u *CompanyController) EditCompanyInfo() {
 ```
 这是一个Header中有Token, 请求体为 `models.CompanyInfoModify` 的方法，注意 `@Param   Payload ` 这一行的行尾的true 和 描述字符串不可掉。
 
+**关于返回值**
 
+返回值分为**Success**和**Failure**两种，每一种都可以有任意个。
+其中Success可以为任意类型：string，int，bool都可以，也可以是**object类型**。
+而Failure有所不同，仅允许**string**类型，因此对于错误情况仅在最后用字符串描述情况。
+例子：
+```
+// @Success 200 {object} models.GetUserInformationResponse
+// @Failure 401 {string} auth failed
+```
 
 ### 5. 格式规范
 因为前期的一些疏漏，导致API格式有很多不对的地方。 被分配到各个部分的同学要负责相应API文档的修改。
@@ -73,6 +82,5 @@ func (u *CompanyController) EditCompanyInfo() {
 格式要求：
 
 * POST PUT 等携带 json requests body 的API，都要变成 json的格式（类似上文PUT方法中的`models.CompanyInfoModify` ），现有文档很多是 string 类型。  
-* 所有函数的返回体中携带response body的，都要改成json格式。因为有些返回的body类型误写成了{string},正确应为 {object}。
 * 注意状态码的修改。现有API很多状态码不正确，如很多不存在使用的为402状态码。
 
