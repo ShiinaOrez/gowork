@@ -1456,9 +1456,8 @@
                         "description": "Search payload",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
-                        },
-                        "default": "models.SearchPayload"
+                            "$ref": "#/definitions/models.SearchPayload"
+                        }
                     }
                 ],
                 "responses": {
@@ -1495,9 +1494,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.SearchPayload",
+                        "description": "The payload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.SearchPayload"
                         }
                     }
                 ],
@@ -1663,9 +1663,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.CreateMissionPayload",
+                        "description": "The payload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.CreateMissionPayload"
                         }
                     }
                 ],
@@ -1739,9 +1740,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.SearchPayload",
+                        "description": "The payload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.SearchPayload"
                         }
                     }
                 ],
@@ -1807,9 +1809,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.CreateMissionPayload",
+                        "description": "The payload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.CreateMissionPayload"
                         }
                     }
                 ],
@@ -1850,9 +1853,10 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "models.SubmitMissionPayload",
+                        "description": "The payload",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/object"
+                            "$ref": "#/definitions/models.SubmitMissionPayload"
                         }
                     }
                 ],
@@ -3384,6 +3388,57 @@
                 }
             }
         },
+        "models.CreateMissionPayload": {
+            "title": "CreateMissionPayload",
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "end_time": {
+                    "type": "string"
+                },
+                "file_url": {
+                    "type": "string"
+                },
+                "is_online": {
+                    "type": "boolean"
+                },
+                "join_end_time": {
+                    "type": "string"
+                },
+                "member_count": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "mission_detail": {
+                    "type": "string"
+                },
+                "mission_lists": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "mission_name": {
+                    "type": "string"
+                },
+                "tag_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TagPayload"
+                    }
+                },
+                "together_company_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            }
+        },
         "models.EditSettingBody": {
             "title": "EditSettingBody",
             "type": "object",
@@ -4370,6 +4425,21 @@
                 }
             }
         },
+        "models.SearchPayload": {
+            "title": "SearchPayload",
+            "type": "object",
+            "properties": {
+                "pattern": {
+                    "type": "string"
+                },
+                "tag_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TagPayload"
+                    }
+                }
+            }
+        },
         "models.SignUpError": {
             "title": "SignUpError",
             "type": "object",
@@ -4379,6 +4449,18 @@
                     "format": "int64"
                 },
                 "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SubmitMissionPayload": {
+            "title": "SubmitMissionPayload",
+            "type": "object",
+            "properties": {
+                "file_url": {
+                    "type": "string"
+                },
+                "intro": {
                     "type": "string"
                 }
             }
@@ -4467,6 +4549,20 @@
                 }
             }
         },
+        "models.TagPayload": {
+            "title": "TagPayload",
+            "type": "object",
+            "properties": {
+                "category_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "tag_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
         "models.UserAttentionCompanyList": {
             "title": "UserAttentionCompanyList",
             "type": "object",
@@ -4516,10 +4612,6 @@
         },
         "none": {
             "title": "none",
-            "type": "object"
-        },
-        "object": {
-            "title": "object",
             "type": "object"
         }
     },
