@@ -284,7 +284,7 @@ paths:
           description: '{string} send code successful'
         "410":
           description: '{string} please wait for minute'
-  /auth/user/signin:
+  /auth/user/signin/email:
     post:
       tags:
       - auth
@@ -297,6 +297,23 @@ paths:
         required: true
         type: string
       - in: body
+        name: password
+        description: The password for login
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "401":
+          description: '{string}'
+  /auth/user/signin/tel:
+    post:
+      tags:
+      - auth
+      description: Account sign in.
+      operationId: AuthController.UserSignIn
+      parameters:
+      - in: body
         name: tel
         description: The telephone number of login
         required: true
@@ -304,11 +321,6 @@ paths:
       - in: body
         name: password
         description: The password for login
-        required: true
-        type: string
-      - in: query
-        name: loginType
-        description: The login type is email or telephone
         required: true
         type: string
       responses:

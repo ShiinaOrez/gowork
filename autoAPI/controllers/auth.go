@@ -12,13 +12,21 @@ type AuthController struct {
 // @Title UserSignIn
 // @Description Account sign in.
 // @Param	email		body 	string	true		"The email for login"
-// @Param   tel         body    string  true        "The telephone number of login"
 // @Param	password	body 	string	true		"The password for login"
-// @Param   loginType   query   string  true        "The login type is email or telephone"
 // @Success 200 {string} login success
 // @Failure 401 {string}
-// @router /user/signin [post]
-func (u *AuthController) UserSignIn() {
+// @router /user/signin/email [post]
+func (u *AuthController) UserSignInByEmail() {
+}
+
+// @Title UserSignIn
+// @Description Account sign in.
+// @Param   tel         body    string  true        "The telephone number of login"
+// @Param	password	body 	string	true		"The password for login"
+// @Success 200 {string} login success
+// @Failure 401 {string}
+// @router /user/signin/tel [post]
+func (u *AuthController) UserSignInByTel() {
 }
 
 // @Title UserSignUp
