@@ -20,6 +20,8 @@ bee run -downdoc=true -gendoc=true
 
 在运行 `bee run -downdoc=true -gendoc=true` 状态时，如果修改了文件，beego会自动重新生成文档并重新启动。
 
+  事实上应该一直处于运行状态，这样一旦对于源文件的操作导致API文档自动生成失败，都可以发现。
+
 ### 3.修改文档
 
 所有文档的注释源文件都在 `/autoAPI/controllers/` 文件夹下的对应文件中。
