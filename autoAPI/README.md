@@ -28,7 +28,7 @@ bee run -downdoc=true -gendoc=true
 
 修改文档后，注意重新生成查看无误后再推。
 
-### 4.格式
+### 4.文档注释介绍
 
 **GET方法**
 
@@ -67,7 +67,7 @@ func (u *CompanyController) EditCompanyInfo() {
 
 
 
-### 5. 格式修改
+### 5. 格式规范
 因为前期的一些疏漏，导致API格式有很多不对的地方。 被分配到各个部分的同学要负责相应API文档的修改。
 
 格式要求：
