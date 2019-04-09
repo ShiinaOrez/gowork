@@ -128,7 +128,7 @@ paths:
           description: '{string} company information post successful'
         "401":
           description: '{string} company information post failed'
-  /auth/company/signin:
+  /auth/company/signin/email:
     post:
       tags:
       - auth
@@ -136,8 +136,8 @@ paths:
       operationId: AuthController.CompanySignIn
       parameters:
       - in: body
-        name: account
-        description: The company account telephone or email
+        name: email
+        description: The company account email
         required: true
         type: string
       - in: body
@@ -145,9 +145,30 @@ paths:
         description: The confirm code
         required: true
         type: string
-      - in: query
-        name: loginType
-        description: 'The type to login: tel or email'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ResultOfCompanyLogin'
+        "401":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CompanyLoginError'
+  /auth/company/signin/tel:
+    post:
+      tags:
+      - auth
+      description: Company login.
+      operationId: AuthController.CompanySignIn
+      parameters:
+      - in: body
+        name: tel
+        description: The company account telephone
+        required: true
+        type: string
+      - in: body
+        name: code
+        description: The confirm code
         required: true
         type: string
       responses:
@@ -267,7 +288,7 @@ paths:
             $ref: '#/definitions/models.ResultOfReviewerSignUp'
         "401":
           description: '{string} sign up failed'
-  /auth/telephone/confirm:
+  /auth/tel/confirm:
     post:
       tags:
       - auth
@@ -284,7 +305,7 @@ paths:
           description: '{string} send code successful'
         "410":
           description: '{string} please wait for minute'
-  /auth/user/signin:
+  /auth/user/signin/email:
     post:
       tags:
       - auth
@@ -297,6 +318,23 @@ paths:
         required: true
         type: string
       - in: body
+        name: password
+        description: The password for login
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "401":
+          description: '{string}'
+  /auth/user/signin/tel:
+    post:
+      tags:
+      - auth
+      description: Account sign in.
+      operationId: AuthController.UserSignIn
+      parameters:
+      - in: body
         name: tel
         description: The telephone number of login
         required: true
@@ -304,11 +342,6 @@ paths:
       - in: body
         name: password
         description: The password for login
-        required: true
-        type: string
-      - in: query
-        name: loginType
-        description: The login type is email or telephone
         required: true
         type: string
       responses:
@@ -988,8 +1021,7 @@ paths:
         description: Search payload
         required: true
         schema:
-          $ref: '#/definitions/object'
-        default: models.SearchPayload
+          $ref: '#/definitions/models.SearchPayload'
       responses:
         "200":
           description: ""
@@ -1013,9 +1045,10 @@ paths:
         type: string
       - in: body
         name: Payload
-        description: models.SearchPayload
+        description: The payload
+        required: true
         schema:
-          $ref: '#/definitions/object'
+          $ref: '#/definitions/models.SearchPayload'
       responses:
         "200":
           description: ""
@@ -1124,9 +1157,10 @@ paths:
         type: string
       - in: body
         name: Payload
-        description: models.CreateMissionPayload
+        description: The payload
+        required: true
         schema:
-          $ref: '#/definitions/object'
+          $ref: '#/definitions/models.CreateMissionPayload'
       responses:
         "200":
           description: '{int} MissionID'
@@ -1154,9 +1188,10 @@ paths:
         format: int64
       - in: body
         name: Payload
-        description: models.CreateMissionPayload
+        description: The payload
+        required: true
         schema:
-          $ref: '#/definitions/object'
+          $ref: '#/definitions/models.CreateMissionPayload'
       responses:
         "200":
           description: '{string} modify successful'
@@ -1183,9 +1218,10 @@ paths:
         format: int64
       - in: body
         name: Payload
-        description: models.SubmitMissionPayload
+        description: The payload
+        required: true
         schema:
-          $ref: '#/definitions/object'
+          $ref: '#/definitions/models.SubmitMissionPayload'
       responses:
         "200":
           description: '{string} submit successfully!'
@@ -1367,9 +1403,10 @@ paths:
         type: string
       - in: body
         name: Payload
-        description: models.SearchPayload
+        description: The payload
+        required: true
         schema:
-          $ref: '#/definitions/object'
+          $ref: '#/definitions/models.SearchPayload'
       responses:
         "200":
           description: ""
@@ -2284,6 +2321,41 @@ definitions:
       rows_num:
         type: integer
         format: int64
+  models.CreateMissionPayload:
+    title: CreateMissionPayload
+    type: object
+    properties:
+      address:
+        type: string
+      end_time:
+        type: string
+      file_url:
+        type: string
+      is_online:
+        type: boolean
+      join_end_time:
+        type: string
+      member_count:
+        type: integer
+        format: int64
+      mission_detail:
+        type: string
+      mission_lists:
+        type: array
+        items:
+          type: integer
+          format: int64
+      mission_name:
+        type: string
+      tag_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.TagPayload'
+      together_company_list:
+        type: array
+        items:
+          type: integer
+          format: int64
   models.EditSettingBody:
     title: EditSettingBody
     type: object
@@ -2967,6 +3039,16 @@ definitions:
         format: int64
       msg:
         type: string
+  models.SearchPayload:
+    title: SearchPayload
+    type: object
+    properties:
+      pattern:
+        type: string
+      tag_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.TagPayload'
   models.SignUpError:
     title: SignUpError
     type: object
@@ -2975,6 +3057,14 @@ definitions:
         type: integer
         format: int64
       msg:
+        type: string
+  models.SubmitMissionPayload:
+    title: SubmitMissionPayload
+    type: object
+    properties:
+      file_url:
+        type: string
+      intro:
         type: string
   models.Tag:
     title: Tag
@@ -3036,6 +3126,16 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.Tag'
+  models.TagPayload:
+    title: TagPayload
+    type: object
+    properties:
+      category_id:
+        type: integer
+        format: int64
+      tag_id:
+        type: integer
+        format: int64
   models.UserAttentionCompanyList:
     title: UserAttentionCompanyList
     type: object
@@ -3071,9 +3171,6 @@ definitions:
     type: object
   none:
     title: none
-    type: object
-  object:
-    title: object
     type: object
 tags:
 - name: auth

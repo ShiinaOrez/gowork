@@ -23,7 +23,7 @@ func (u *MissionController) MissionInfo() {
 // @Title SearchForMission
 // @Description Search mission.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object      models.SearchPayload
+// @Param   Payload     body      models.SearchPayload    true     "The payload"
 // @Success 200 {object} models.MissionList
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} user not existed
@@ -58,7 +58,7 @@ func (u *MissionController) MissionStatus() {
 // @Description Submit the works for mission
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Mid         path      int         true        "The mission id to submit"
-// @Param   Payload     body      object      models.SubmitMissionPayload
+// @Param   Payload     body      models.SubmitMissionPayload    true    "The payload"
 // @Success 200 {string} submit successfully!
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} user | mission not existed
@@ -106,7 +106,7 @@ func (u *MissionController) MissionFeedback() {
 // @Title CreateAndPostMission
 // @Description Create a mission and post it.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Payload     body      object      models.CreateMissionPayload
+// @Param   Payload     body      models.CreateMissionPayload    true     "The payload"
 // @Success 200 {int} MissionID
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} company not existed
@@ -118,7 +118,7 @@ func (u *MissionController) CreateMission() {
 // @Description Company modify mission information.
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Mid         path      int         true        "The mission id to modify"
-// @Param   Payload     body      object      models.CreateMissionPayload
+// @Param   Payload     body      models.CreateMissionPayload     true    "The payload"
 // @Success 200 {string} modify successful
 // @Failure 401 {string} auth failed
 // @Failure 402 {string} mission not existed
