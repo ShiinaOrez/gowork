@@ -135,6 +135,15 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
         beego.ControllerComments{
+            Method: "CompanyMessageSetting",
+            Router: `/:Cid/message/setting`,
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CompanyController"],
+        beego.ControllerComments{
             Method: "GetCompanyMissionList",
             Router: `/:Cid/mission/list/:PageId`,
             AllowHTTPMethods: []string{"get"},
@@ -642,6 +651,15 @@ func init() {
             Method: "TagWelfareList",
             Router: `/welfare/list`,
             AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
+        beego.ControllerComments{
+            Method: "CompanyChangePassword",
+            Router: `/:Cid/password`,
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

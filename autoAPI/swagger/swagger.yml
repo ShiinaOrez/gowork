@@ -464,6 +464,39 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user | company not existed'
+  /company/{Cid}/message/setting:
+    put:
+      tags:
+      - company
+      description: If company want to change message setting.
+      operationId: CompanyController.ChangeMessageSetting
+      parameters:
+      - in: path
+        name: Cid
+        description: The company ID for change message setting
+        required: true
+        type: integer
+        format: int64
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: body
+        name: Payload
+        description: The new message setting.
+        required: true
+        schema:
+          $ref: '#/definitions/models.CompanyMessagePayload'
+      responses:
+        "200":
+          description: successful!
+          schema:
+            $ref: '#/definitions/change'
+        "401":
+          description: '{string} sign up failed'
+        "404":
+          description: '{string} company not existed'
   /company/{Cid}/mission/list/{PageId}:
     get:
       tags:
@@ -1033,7 +1066,7 @@ paths:
             $ref: '#/definitions/models.EliteList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user not existed'
   /elite/search:
     post:
@@ -1060,7 +1093,7 @@ paths:
             $ref: '#/definitions/models.EliteList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user not existed'
   /message/{MsgID}:
     get:
@@ -1075,7 +1108,7 @@ paths:
             $ref: '#/definitions/models.MessageEntity'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | message not existed'
     put:
       tags:
@@ -1087,7 +1120,7 @@ paths:
           description: '{string} ok'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | message not existed'
     delete:
       tags:
@@ -1099,7 +1132,7 @@ paths:
           description: '{string} delete successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | message not existed'
   /message/company/list:
     get:
@@ -1115,7 +1148,7 @@ paths:
             $ref: '#/definitions/models.CompanyMessageList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /message/feedback/list:
     get:
@@ -1130,7 +1163,7 @@ paths:
             $ref: '#/definitions/models.FeedbackMessageList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user not existed'
   /message/platform/list:
     get:
@@ -1145,7 +1178,7 @@ paths:
             $ref: '#/definitions/models.PlatformMessageList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | company not existed'
   /mission/:
     post:
@@ -1170,7 +1203,7 @@ paths:
           description: '{int} MissionID'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} company not existed'
   /mission/{Mid}:
     put:
@@ -1201,7 +1234,7 @@ paths:
           description: '{string} modify successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} mission not existed'
     post:
       tags:
@@ -1231,7 +1264,7 @@ paths:
           description: '{string} submit successfully!'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | mission not existed'
         "406":
           description: '{string} File error'
@@ -1259,7 +1292,7 @@ paths:
           description: '{string} delete successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} mission not existed'
   /mission/{Mid}/feedback:
     get:
@@ -1286,7 +1319,7 @@ paths:
             $ref: '#/definitions/models.CompanyFeedback'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | mission not existed'
   /mission/{Mid}/info:
     get:
@@ -1313,7 +1346,7 @@ paths:
             $ref: '#/definitions/models.MissionInformation'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | mission not existed'
   /mission/{Mid}/statistics:
     get:
@@ -1340,7 +1373,7 @@ paths:
             $ref: '#/definitions/models.MissionStatistics'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} mission not existed'
   /mission/{Mid}/status:
     get:
@@ -1365,7 +1398,7 @@ paths:
           description: '{int} 1 for gained, 0 for not'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | mission not existed'
   /mission/file/upload:
     post:
@@ -1389,7 +1422,7 @@ paths:
           description: '{string} File URL'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user | mission not existed'
         "406":
           description: '{string} File error'
@@ -1418,7 +1451,7 @@ paths:
             $ref: '#/definitions/models.MissionList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user not existed'
   /mission/tag/list:
     get:
@@ -1458,7 +1491,7 @@ paths:
             $ref: '#/definitions/models.MissionListInformation'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} missionList not existed'
     delete:
       tags:
@@ -1482,7 +1515,7 @@ paths:
           description: '{string} delete successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} missionList not existed'
         "407":
           description: '{string} delete failed'
@@ -1511,7 +1544,7 @@ paths:
             $ref: '#/definitions/models.EliteList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} mission list  not existed'
   /missionList/attention/{MlID}:
     put:
@@ -1536,7 +1569,7 @@ paths:
           description: '{string} sign up successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} missionList not existed'
         "407":
           description: '{string} haven''t pay attention'
@@ -1562,7 +1595,7 @@ paths:
           description: '{string} successful'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} missionList not existed'
         "407":
           description: '{string} already pay attention'
@@ -1589,7 +1622,7 @@ paths:
           description: '{int} the status'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} missionList not existed'
   /missionList/attention/list:
     get:
@@ -1610,7 +1643,7 @@ paths:
             $ref: '#/definitions/models.MissionListList'
         "401":
           description: '{string} auth failed'
-        "402":
+        "404":
           description: '{string} user not existed'
   /tag/ability/list:
     get:
@@ -1718,6 +1751,37 @@ paths:
             $ref: '#/definitions/models.TagList'
         "201":
           description: '{string} none tag exist'
+  /user/{Cid}/password:
+    put:
+      tags:
+      - user
+      description: If company want to change password.
+      operationId: UserController.ComapnyChangePassword
+      parameters:
+      - in: header
+        name: Token
+        description: The token.
+        required: true
+        type: string
+      - in: path
+        name: Cid
+        description: The user id to get user.
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: Payload
+        description: The change password payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.ChangePasswordPayload'
+      responses:
+        "200":
+          description: '{string} change successful'
+        "401":
+          description: '{string} cofirm code incorrect'
+        "404":
+          description: '{string} company not found'
   /user/{Uid}/info:
     get:
       tags:
@@ -2185,6 +2249,9 @@ definitions:
   body:
     title: body
     type: object
+  change:
+    title: change
+    type: object
   models.AuthInitTags:
     title: AuthInitTags
     type: object
@@ -2334,6 +2401,12 @@ definitions:
       rows_num:
         type: integer
         format: int64
+  models.CompanyMessagePayload:
+    title: CompanyMessagePayload
+    type: object
+    properties:
+      message:
+        type: string
   models.CompanyMissionNumberOverview:
     title: CompanyMissionNumberOverview
     type: object
@@ -3257,6 +3330,39 @@ definitions:
   models.UserAccountSetting:
     title: UserAccountSetting
     type: object
+    properties:
+      birth_month:
+        type: integer
+        format: int64
+      birth_year:
+        type: integer
+        format: int64
+      city:
+        type: string
+      education:
+        type: string
+      enroll_year:
+        type: integer
+        format: int64
+      graduate_year:
+        type: integer
+        format: int64
+      intro:
+        type: string
+      major:
+        type: string
+      name:
+        type: string
+      sex:
+        type: boolean
+      status:
+        type: string
+      tag_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.Tag'
+      university:
+        type: string
   models.UserAttentionCompanyList:
     title: UserAttentionCompanyList
     type: object
@@ -3290,6 +3396,9 @@ definitions:
   models.UserPersonalSetting:
     title: UserPersonalSetting
     type: object
+    properties:
+      allowed:
+        type: boolean
   none:
     title: none
     type: object

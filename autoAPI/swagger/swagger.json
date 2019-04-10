@@ -1309,6 +1309,55 @@
                 }
             }
         },
+        "/company/{Cid}/message/setting": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "If company want to change message setting.",
+                "operationId": "CompanyController.ChangeMessageSetting",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The company ID for change message setting",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The new message setting.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyMessagePayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful!",
+                        "schema": {
+                            "$ref": "#/definitions/change"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    },
+                    "404": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
         "/company/{Cid}/mission/list/{PageId}": {
             "get": {
                 "tags": [
@@ -1528,7 +1577,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -1569,7 +1618,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -1592,7 +1641,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -1615,7 +1664,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -1638,7 +1687,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | company not existed"
                     }
                 }
@@ -1661,7 +1710,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | message not existed"
                     }
                 }
@@ -1679,7 +1728,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | message not existed"
                     }
                 }
@@ -1697,7 +1746,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | message not existed"
                     }
                 }
@@ -1735,7 +1784,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} company not existed"
                     }
                 }
@@ -1771,7 +1820,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | mission not existed"
                     },
                     "406": {
@@ -1815,7 +1864,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -1881,7 +1930,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} mission not existed"
                     }
                 }
@@ -1925,7 +1974,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | mission not existed"
                     },
                     "406": {
@@ -1966,7 +2015,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} mission not existed"
                     }
                 }
@@ -2006,7 +2055,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | mission not existed"
                     }
                 }
@@ -2046,7 +2095,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | mission not existed"
                     }
                 }
@@ -2086,7 +2135,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} mission not existed"
                     }
                 }
@@ -2123,7 +2172,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | mission not existed"
                     }
                 }
@@ -2155,7 +2204,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -2192,7 +2241,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} missionList not existed"
                     },
                     "407": {
@@ -2230,7 +2279,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} missionList not existed"
                     },
                     "407": {
@@ -2270,7 +2319,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} missionList not existed"
                     }
                 }
@@ -2310,7 +2359,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} missionList not existed"
                     }
                 }
@@ -2345,7 +2394,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} missionList not existed"
                     },
                     "407": {
@@ -2388,7 +2437,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} mission list  not existed"
                     }
                 }
@@ -3166,6 +3215,52 @@
                 }
             }
         },
+        "/user/{Cid}/password": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "If company want to change password.",
+                "operationId": "UserController.ComapnyChangePassword",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The user id to get user.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The change password payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ChangePasswordPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} change successful"
+                    },
+                    "401": {
+                        "description": "{string} cofirm code incorrect"
+                    },
+                    "404": {
+                        "description": "{string} company not found"
+                    }
+                }
+            }
+        },
         "/user/{Uid}/info": {
             "get": {
                 "tags": [
@@ -3256,6 +3351,10 @@
     "definitions": {
         "body": {
             "title": "body",
+            "type": "object"
+        },
+        "change": {
+            "title": "change",
             "type": "object"
         },
         "models.AuthInitTags": {
@@ -3475,6 +3574,15 @@
                 "rows_num": {
                     "type": "integer",
                     "format": "int64"
+                }
+            }
+        },
+        "models.CompanyMessagePayload": {
+            "title": "CompanyMessagePayload",
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
                 }
             }
         },
@@ -4805,7 +4913,55 @@
         },
         "models.UserAccountSetting": {
             "title": "UserAccountSetting",
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "birth_month": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "birth_year": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "education": {
+                    "type": "string"
+                },
+                "enroll_year": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "graduate_year": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "intro": {
+                    "type": "string"
+                },
+                "major": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tag_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Tag"
+                    }
+                },
+                "university": {
+                    "type": "string"
+                }
+            }
         },
         "models.UserAttentionCompanyList": {
             "title": "UserAttentionCompanyList",
@@ -4852,7 +5008,12 @@
         },
         "models.UserPersonalSetting": {
             "title": "UserPersonalSetting",
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "allowed": {
+                    "type": "boolean"
+                }
+            }
         },
         "none": {
             "title": "none",

@@ -273,3 +273,27 @@ func (u *CompanyController) CompanyAllMissionList() {
 // @router /:Cid/mission/overview [get]
 func (u *CompanyController) CompanyMissionNumberOverview() {
 }
+
+// @Title ChangeMessageSetting
+// @Description If company want to change message setting.
+// @Param   Cid         path      int         true        "The company ID for change message setting"
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   Payload     body      models.CompanyMessagePayload true "The new message setting."
+// @Success 200 {object} change successful!
+// @Failure 401 {string} sign up failed
+// @Failure 404 {string} company not existed
+// @router /:Cid/message/setting [put]
+func (u *CompanyController) CompanyMessageSetting() {
+}
+
+// @Title ComapnyChangePassword
+// @Description If company want to change password.
+// @Param   Token     header     string    true    "The token."
+// @Param   Cid       path       int       true    "The user id to get user."
+// @Param   Payload   body   models.ChangePasswordPayload  true  "The change password payload"
+// @Success 200 {string} change successful
+// @Failure 401 {string} cofirm code incorrect
+// @Failure 404 {string} company not found
+// @router /:Cid/password [put]
+func (u *UserController) CompanyChangePassword() {
+}

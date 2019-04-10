@@ -15,7 +15,7 @@ type MissionController struct {
 // @Param   Mid         path      int         true        "The mission id to get"
 // @Success 200 {object} models.MissionInformation
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user | mission not existed
+// @Failure 404 {string} user | mission not existed
 // @router /:Mid/info [get]
 func (u *MissionController) MissionInfo() {
 }
@@ -26,7 +26,7 @@ func (u *MissionController) MissionInfo() {
 // @Param   Payload     body      models.SearchPayload    true     "The payload"
 // @Success 200 {object} models.MissionList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user not existed
+// @Failure 404 {string} user not existed
 // @router /search [post]
 func (u *MissionController) MissionSearch() {
 }
@@ -37,7 +37,7 @@ func (u *MissionController) MissionSearch() {
 // @Param   Mid         path      int         true        "The mission id to Gain"
 // @Success 200 {string} Join successful.
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user | mission not existed
+// @Failure 404 {string} user | mission not existed
 // @Failure 407 {string} gain failed
 // @router /:Mid [put]
 func (u *MissionController) GainMission() {
@@ -49,7 +49,7 @@ func (u *MissionController) GainMission() {
 // @Param   Mid         path      int         true        "The mission id to Gain"
 // @Success 200 {int} 1 for gained, 0 for not
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user | mission not existed
+// @Failure 404 {string} user | mission not existed
 // @router /:Mid/status [get]
 func (u *MissionController) MissionStatus() {
 }
@@ -61,7 +61,7 @@ func (u *MissionController) MissionStatus() {
 // @Param   Payload     body      models.SubmitMissionPayload    true    "The payload"
 // @Success 200 {string} submit successfully!
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user | mission not existed
+// @Failure 404 {string} user | mission not existed
 // @Failure 406 {string} File error
 // @Failure 407 {string} submit failed
 // @router /:Mid [post]
@@ -74,7 +74,7 @@ func (u *MissionController) SubmitMission() {
 // @Param   File        body      string      true        "The file you want to upload"
 // @Success 200 {string} File URL
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user | mission not existed
+// @Failure 404 {string} user | mission not existed
 // @Failure 406 {string} File error
 // @router /file/upload [post]
 func (u *MissionController) MissionUploadFile() {
@@ -86,7 +86,7 @@ func (u *MissionController) MissionUploadFile() {
 // @Param   Mid         path      int         true        "The mission id to give up"
 // @Success 200 {string} give up successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user | mission not existed
+// @Failure 404 {string} user | mission not existed
 // @Failure 407 {string} never gain this mission
 // @router /:Mid [delete]
 func (u *MissionController) GiveUpMission() {
@@ -98,7 +98,7 @@ func (u *MissionController) GiveUpMission() {
 // @Param   Mid         path      int         true        "The mission id to give up"
 // @Success 200 {object} models.CompanyFeedback
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user | mission not existed
+// @Failure 404 {string} user | mission not existed
 // @router /:Mid/feedback [get]
 func (u *MissionController) MissionFeedback() {
 }
@@ -109,7 +109,7 @@ func (u *MissionController) MissionFeedback() {
 // @Param   Payload     body      models.CreateMissionPayload    true     "The payload"
 // @Success 200 {int} MissionID
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} company not existed
+// @Failure 404 {string} company not existed
 // @router / [post]
 func (u *MissionController) CreateMission() {
 }
@@ -121,7 +121,7 @@ func (u *MissionController) CreateMission() {
 // @Param   Payload     body      models.CreateMissionPayload     true    "The payload"
 // @Success 200 {string} modify successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} mission not existed
+// @Failure 404 {string} mission not existed
 // @router /:Mid [put]
 func (u *MissionController) ModifyMission() {
 }
@@ -132,7 +132,7 @@ func (u *MissionController) ModifyMission() {
 // @Param   Mid         path      int         true        "The mission id to delete"
 // @Success 200 {string} delete successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} mission not existed
+// @Failure 404 {string} mission not existed
 // @router /:Mid [delete]
 func (u *MissionController) DeleteMission() {
 }
@@ -151,7 +151,7 @@ func (u *MissionController) MissionStaticTagList() {
 // @Param   Mid         path      int         true        "The mission id to get"
 // @Success 200 {object} models.MissionStatistics
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} mission not existed
+// @Failure 404 {string} mission not existed
 // @router /:Mid/statistics [get]
 func (u *MissionController) MissionStatistics() {
 }

@@ -13,7 +13,7 @@ type EliteController struct {
 // @Param   Payload     body      models.SearchPayload    true    "The payload"
 // @Success 200 {object} models.EliteList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user not existed
+// @Failure 404 {string} user not existed
 // @router /search [post]
 func (u *EliteController) SearchElite() {
 }
@@ -24,7 +24,7 @@ func (u *EliteController) SearchElite() {
 // @Param   Payload     body      models.SearchPayload    true  "Search payload"
 // @Success 200 {object} models.EliteList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user not existed
+// @Failure 404 {string} user not existed
 // @router /industry/list [post]
 func (u *EliteController) SearchEliteIntelligent() {
 }

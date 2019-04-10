@@ -13,7 +13,7 @@ type MissionListController struct {
 // @Param   MlID        path      int         true        "The missionList ID to get information"
 // @Success 200 {object} models.MissionListInformation
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} missionList not existed
+// @Failure 404 {string} missionList not existed
 // @router /:MlID [get]
 func (u *MissionListController) GetMissionListInformation() {
 }
@@ -24,7 +24,7 @@ func (u *MissionListController) GetMissionListInformation() {
 // @Param   MlID        path      int         true        "The missionList ID to delete it"
 // @Success 200 {string} delete successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} missionList not existed
+// @Failure 404 {string} missionList not existed
 // @Failure 407 {string} delete failed
 // @router /:MlID [delete]
 func (u *MissionListController) DelMissionList() {
@@ -36,7 +36,7 @@ func (u *MissionListController) DelMissionList() {
 // @Param   MlID        path      int         true        "The missionList ID to get"
 // @Success 200 {int} the status
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} missionList not existed
+// @Failure 404 {string} missionList not existed
 // @router /attention/:MlID/status [get]
 func (u *MissionListController) GetMissionListStatus() {
 }
@@ -47,7 +47,7 @@ func (u *MissionListController) GetMissionListStatus() {
 // @Param   MlID        path      int         true        "The missionList ID to get"
 // @Success 200 {string} successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} missionList not existed
+// @Failure 404 {string} missionList not existed
 // @Failure 407 {string} already pay attention
 // @router /attention/:MlID [post]
 func (u *MissionListController) AttentionMissionList() {
@@ -59,7 +59,7 @@ func (u *MissionListController) AttentionMissionList() {
 // @Param   MlID        path      int         true        "The missionList ID to get"
 // @Success 200 {string} sign up successful
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} missionList not existed
+// @Failure 404 {string} missionList not existed
 // @Failure 407 {string} haven't pay attention
 // @router /attention/:MlID [put]
 func (u *MissionListController) CancelAttentionMissionList() {
@@ -70,7 +70,7 @@ func (u *MissionListController) CancelAttentionMissionList() {
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {object} models.MissionListList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} user not existed
+// @Failure 404 {string} user not existed
 // @router /attention/list [get]
 func (u *MissionListController) GetMissionListAttentionList() {
 }
@@ -81,7 +81,7 @@ func (u *MissionListController) GetMissionListAttentionList() {
 // @Param   MlID        path      int         true        "The missionList ID to get"
 // @Success 200 {object} models.EliteList
 // @Failure 401 {string} auth failed
-// @Failure 402 {string} mission list  not existed
+// @Failure 404 {string} mission list  not existed
 // @router /:MlID/getElite [get]
 func (u *MissionListController) GetEliteByMissionList() {
 }

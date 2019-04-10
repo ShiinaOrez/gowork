@@ -160,11 +160,23 @@ type EditSettingBody struct {
 }
 
 type UserAccountSetting struct {
-
+	Name          string     `json:"name"`
+	Sex           bool       `json:"sex"`
+	BirthMonth    int        `json:"birth_month"`
+	BirthYear     int        `json:"birth_year"`
+	City          string     `json:"city"`
+	University    string     `json:"university"`
+	EnrollYear    int        `json:"enroll_year"`
+	GraduateYear  int        `json:"graduate_year"`
+	Education     string     `json:"education"`
+	Major         string     `json:"major"`
+	Status        string     `json:"status"`
+	TagList       []Tag      `json:"tag_list"`
+	Intro         string     `json:"intro"`
 }
 
 type UserPersonalSetting struct {
-	
+	Allowed       bool       `json:"allowed"`
 }
 
 type CompanySuitability struct {
@@ -496,4 +508,8 @@ type ResetPasswordPayload struct {
 type ChangePasswordPayload struct {
 	OldPassword          string        `json:"old_password"`
 	NewPassword          string        `json:"new_password"`
+}
+
+type CompanyMessagePayload struct {
+	Message              string        `json:"message"`
 }
