@@ -159,8 +159,12 @@ type EditSettingBody struct {
 	Intro         string     `json:"intro"`
 }
 
-type UserPlatformSetting struct {
+type UserAccountSetting struct {
 
+}
+
+type UserPersonalSetting struct {
+	
 }
 
 type CompanySuitability struct {

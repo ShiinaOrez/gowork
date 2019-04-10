@@ -144,25 +144,46 @@ func (u *UserController) ConfirmEmail() {
 func (u *UserController) ConfirmTel() {
 }
 
-// @Title PlatformInformation
-// @Description Get user's platform setting information
+// @Title AccountSettingInformation
+// @Description Get user's account setting information
 // @Param   Token       header    string      true        "The token to conform"
-// @Success 200 {object} models.UserPlatformSetting
+// @Success 200 {object} models.UserAccountSetting
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed
-// @router /platform/setting [get]
-func (u *UserController) PlatformSetting() {
+// @router /account/setting [get]
+func (u *UserController) AccountSetting() {
 }
 
-// @Title EditPlatformSetting
-// @Description New user must sign up.
+// @Title PersonalSettingInformation
+// @Description Get user's personal setting information
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   RequestBody body      models.UserPlatformSetting true "test"
+// @Success 200 {object} models.UserPersonalSetting
+// @Failure 401 {string} auth failed
+// @Failure 404 {string} user not existed
+// @router /personal/setting [get]
+func (u *UserController) PersonalSetting() {
+}
+
+// @Title EditAccountSetting
+// @Description Edit the account setting.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   RequestBody body      models.UserAccountSetting true "test"
 // @Success 200 {string} edit successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed
-// @router /platform/setting [post]
-func (u *UserController) EditPlatformSetting() {
+// @router /account/setting [post]
+func (u *UserController) EditAccountSetting() {
+}
+
+// @Title EditPersonalSetting
+// @Description Edit the personal setting.
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   RequestBody body      models.UserPersonalSetting true "test"
+// @Success 200 {string} edit successful
+// @Failure 401 {string} auth failed
+// @Failure 404 {string} user not existed
+// @router /personal/setting [post]
+func (u *UserController) EditPersonalSetting() {
 }
 
 // @Title CompanySuitabilityList

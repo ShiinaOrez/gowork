@@ -2557,6 +2557,74 @@
                 }
             }
         },
+        "/user/account/setting": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get user's account setting information",
+                "operationId": "UserController.AccountSettingInformation",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserAccountSetting"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user not existed"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Edit the account setting.",
+                "operationId": "UserController.EditAccountSetting",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "RequestBody",
+                        "description": "test",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserAccountSetting"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} edit successful"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user not existed"
+                    }
+                }
+            }
+        },
         "/user/attention/list": {
             "get": {
                 "tags": [
@@ -2987,13 +3055,13 @@
                 }
             }
         },
-        "/user/platform/setting": {
+        "/user/personal/setting": {
             "get": {
                 "tags": [
                     "user"
                 ],
-                "description": "Get user's platform setting information",
-                "operationId": "UserController.PlatformInformation",
+                "description": "Get user's personal setting information",
+                "operationId": "UserController.PersonalSettingInformation",
                 "parameters": [
                     {
                         "in": "header",
@@ -3007,7 +3075,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.UserPlatformSetting"
+                            "$ref": "#/definitions/models.UserPersonalSetting"
                         }
                     },
                     "401": {
@@ -3022,8 +3090,8 @@
                 "tags": [
                     "user"
                 ],
-                "description": "New user must sign up.",
-                "operationId": "UserController.EditPlatformSetting",
+                "description": "Edit the personal setting.",
+                "operationId": "UserController.EditPersonalSetting",
                 "parameters": [
                     {
                         "in": "header",
@@ -3038,7 +3106,7 @@
                         "description": "test",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.UserPlatformSetting"
+                            "$ref": "#/definitions/models.UserPersonalSetting"
                         }
                     }
                 ],
@@ -4735,6 +4803,10 @@
                 }
             }
         },
+        "models.UserAccountSetting": {
+            "title": "UserAccountSetting",
+            "type": "object"
+        },
         "models.UserAttentionCompanyList": {
             "title": "UserAttentionCompanyList",
             "type": "object",
@@ -4778,8 +4850,8 @@
                 }
             }
         },
-        "models.UserPlatformSetting": {
-            "title": "UserPlatformSetting",
+        "models.UserPersonalSetting": {
+            "title": "UserPersonalSetting",
             "type": "object"
         },
         "none": {
