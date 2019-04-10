@@ -482,3 +482,14 @@ type Pagination struct {
 	PageSize             int           `json:"page_size"`
 	RowsNum              int           `json:"rows_num"`
 }
+
+type ResetPasswordPayload struct {
+	EmailAddress         string        `json:"email_address"`
+	Code                 string        `json:"code`
+	NewPassword          string        `json:"new_password"`
+}
+
+type ChangePasswordPayload struct {
+	OldPassword          string        `json:"old_password"`
+	NewPassword          string        `json:"new_password"`
+}

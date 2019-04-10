@@ -99,7 +99,7 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "companyName",
+                        "name": "company_name",
                         "description": "The company name",
                         "required": true,
                         "type": "string"
@@ -113,14 +113,14 @@
                     },
                     {
                         "in": "body",
-                        "name": "emailAddress",
+                        "name": "email_address",
                         "description": "The email address of company account",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "confirmCode",
+                        "name": "confirm_code",
                         "description": "The confirm code we send to email",
                         "required": true,
                         "type": "string"
@@ -152,56 +152,56 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "companyName",
+                        "name": "company_name",
                         "description": "The company name",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "licenseImage",
+                        "name": "license_image",
                         "description": "The company license image",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "organizationCode",
+                        "name": "organization_code",
                         "description": "The company organization code",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "originImage",
+                        "name": "origin_image",
                         "description": "The company organization origin image",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "legalIdentify",
+                        "name": "legal_identify",
                         "description": "The company legal's identify",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "cardImage",
+                        "name": "card_image",
                         "description": "The company legal ID card image",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "legalName",
+                        "name": "legal_name",
                         "description": "The legal body name",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "legalNumber",
+                        "name": "legal_number",
                         "description": "The legal body number",
                         "required": true,
                         "type": "string"
@@ -260,35 +260,35 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "companyNature",
+                        "name": "company_nature",
                         "description": "The company nature",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "contactName",
+                        "name": "contact_name",
                         "description": "The contact person name",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "contactTel",
+                        "name": "contact_tel",
                         "description": "The contact person telephone number",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "licenseLocation",
+                        "name": "license_location",
                         "description": "The company license location",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
-                        "name": "initTags",
+                        "name": "init_tags",
                         "description": "The company init tags(max = 6)",
                         "required": true,
                         "schema": {
@@ -473,7 +473,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} login success"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfUserLogin"
+                        }
                     },
                     "401": {
                         "description": "{string}"
@@ -498,15 +501,18 @@
                     },
                     {
                         "in": "body",
-                        "name": "password",
-                        "description": "The password for login",
+                        "name": "code",
+                        "description": "The confirm code",
                         "required": true,
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} login success"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ResultOfUserLogin"
+                        }
                     },
                     "401": {
                         "description": "{string}"
@@ -524,7 +530,7 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "realName",
+                        "name": "real_name",
                         "description": "The real name of user",
                         "required": true,
                         "type": "string"
@@ -538,7 +544,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "birthYear",
+                        "name": "birth_year",
                         "description": "The birth year of user",
                         "required": true,
                         "type": "integer",
@@ -546,7 +552,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "birthMonth",
+                        "name": "birth_month",
                         "description": "The birth month of user",
                         "required": true,
                         "type": "integer",
@@ -568,7 +574,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "enrollYear",
+                        "name": "enroll_year",
                         "description": "The enroll year of user",
                         "required": true,
                         "type": "integer",
@@ -576,7 +582,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "graduateYear",
+                        "name": "graduate_year",
                         "description": "The graduate year of user",
                         "required": true,
                         "type": "integer",
@@ -584,7 +590,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "educationLevel",
+                        "name": "education_level",
                         "description": "The education level of user",
                         "required": true,
                         "type": "string"
@@ -605,7 +611,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "initTags",
+                        "name": "init_tags",
                         "description": "The initialize tags of user",
                         "required": true,
                         "schema": {
@@ -2577,7 +2583,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -2613,7 +2619,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | company not existed | haven't attention"
                     }
                 }
@@ -2647,7 +2653,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | company not existed"
                     },
                     "405": {
@@ -2686,7 +2692,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user | company not existed"
                     }
                 }
@@ -2722,7 +2728,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     },
                     "406": {
@@ -2748,7 +2754,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -2794,7 +2800,7 @@
                     "401": {
                         "description": "{string} auth failed || old password confirm failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -2837,7 +2843,7 @@
                     "401": {
                         "description": "{string} auth | confirm failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -2869,7 +2875,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -2905,7 +2911,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -2944,8 +2950,39 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
+                    }
+                }
+            }
+        },
+        "/user/password": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "If user forget password. Get email and confirm code.",
+                "operationId": "UserController.UserResetPassword",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The reset password payload.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ResetPasswordPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} change successful"
+                    },
+                    "401": {
+                        "description": "{string} cofirm code incorrect"
+                    },
+                    "404": {
+                        "description": "{string} user not found"
                     }
                 }
             }
@@ -2976,7 +3013,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -3012,7 +3049,7 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -3055,7 +3092,7 @@
                     "401": {
                         "description": "{string} auth | confirm failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
                     }
                 }
@@ -3095,8 +3132,54 @@
                     "401": {
                         "description": "{string} auth failed"
                     },
-                    "402": {
+                    "404": {
                         "description": "{string} user not existed"
+                    }
+                }
+            }
+        },
+        "/user/{Uid}/password": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "If user want to change password.",
+                "operationId": "UserController.UserChangePassword",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Uid",
+                        "description": "The user id to get user.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The change password payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ChangePasswordPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} change successful"
+                    },
+                    "401": {
+                        "description": "{string} cofirm code incorrect"
+                    },
+                    "404": {
+                        "description": "{string} user not found"
                     }
                 }
             }
@@ -3122,6 +3205,18 @@
         "models.BaseModel": {
             "title": "BaseModel",
             "type": "object"
+        },
+        "models.ChangePasswordPayload": {
+            "title": "ChangePasswordPayload",
+            "type": "object",
+            "properties": {
+                "new_password": {
+                    "type": "string"
+                },
+                "old_password": {
+                    "type": "string"
+                }
+            }
         },
         "models.CompanyBaseInformation": {
             "title": "CompanyBaseInformation",
@@ -4412,6 +4507,21 @@
                 "rows_num": {
                     "type": "integer",
                     "format": "int64"
+                }
+            }
+        },
+        "models.ResetPasswordPayload": {
+            "title": "ResetPasswordPayload",
+            "type": "object",
+            "properties": {
+                "Code": {
+                    "type": "string"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "new_password": {
+                    "type": "string"
                 }
             }
         },

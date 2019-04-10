@@ -13,7 +13,7 @@ type AuthController struct {
 // @Description Account sign in.
 // @Param	email		body 	string	true		"The email for login"
 // @Param	password	body 	string	true		"The password for login"
-// @Success 200 {string} login success
+// @Success 200 {object} models.ResultOfUserLogin 
 // @Failure 401 {string}
 // @router /user/signin/email [post]
 func (u *AuthController) UserSignInByEmail() {
@@ -22,8 +22,8 @@ func (u *AuthController) UserSignInByEmail() {
 // @Title UserSignIn
 // @Description Account sign in.
 // @Param   tel         body    string  true        "The telephone number of login"
-// @Param	password	body 	string	true		"The password for login"
-// @Success 200 {string} login success
+// @Param	code	    body 	string	true		"The confirm code"
+// @Success 200 {object} models.ResultOfUserLogin 
 // @Failure 401 {string}
 // @router /user/signin/tel [post]
 func (u *AuthController) UserSignInByTel() {
@@ -31,18 +31,18 @@ func (u *AuthController) UserSignInByTel() {
 
 // @Title UserSignUp
 // @Description New user must sign up.
-// @Param   realName       body    string              true        "The real name of user"
+// @Param   real_name       body    string              true        "The real name of user"
 // @Param   sex            body    bool                true        "The sex of user"
-// @Param   birthYear      body    int                 true        "The birth year of user"
-// @Param   birthMonth     body    int                 true        "The birth month of user"
+// @Param   birth_year      body    int                 true        "The birth year of user"
+// @Param   birth_month     body    int                 true        "The birth month of user"
 // @Param   city           body    string              true        "The city of user"
 // @Param   university     body    string              true        "The university of user"
-// @Param   enrollYear     body    int                 true        "The enroll year of user"
-// @Param   graduateYear   body    int   	       true        "The graduate year of user"
-// @Param   educationLevel body    string              true        "The education level of user"
+// @Param   enroll_year     body    int                 true        "The enroll year of user"
+// @Param   graduate_year   body    int   	       true        "The graduate year of user"
+// @Param   education_level body    string              true        "The education level of user"
 // @Param   major          body    string              true        "The major of user"
 // @Param   status         body    string              true        "The status of user"
-// @Param   initTags       body    models.AuthInitTags true        "The initialize tags of user"
+// @Param   init_tags       body    models.AuthInitTags true        "The initialize tags of user"
 // @Param   intro          body    string              true        "The introduction of user"
 // @Success 200            {object}      models.ResultOfUserLogin
 // @Failure 401 {string} sign up failed
@@ -52,10 +52,10 @@ func (u *AuthController) UserSignUp() {
 
 // @Title CompanySignUp
 // @Description New company must sign up.
-// @Param   companyName       body    string              true        "The company name"
-// @Param   password          body    string              true        "The password of account"
-// @Param   emailAddress      body    string              true        "The email address of company account"
-// @Param   confirmCode       body    string              true        "The confirm code we send to email"
+// @Param   company_name       body    string              true        "The company name"
+// @Param   password           body    string              true        "The password of account"
+// @Param   email_address      body    string              true        "The email address of company account"
+// @Param   confirm_code       body    string              true        "The confirm code we send to email"
 // @Success 200 {object}      models.ResultOfCompanySignUp
 // @Success 401 {object}      models.SignUpError
 // @router /company/signup [post]
@@ -64,15 +64,15 @@ func (u *AuthController) CompanySignUp() {
 
 // @Title CompanyInformationConfirm
 // @Description Company account must be comfirmed
-// @Param   companyName       body    string              true        "The company name"
-// @Param   licenseImage      body    string              true        "The company license image"
-// @Param   organizationCode  body    string              true        "The company organization code"
-// @Param   originImage       body    string              true        "The company organization origin image"
-// @Param   legalIdentify     body    string              true        "The company legal's identify"
-// @Param   cardImage         body    string              true        "The company legal ID card image"
-// @Param   legalName         body    string              true        "The legal body name"
-// @Param   legalNumber       body    string              true        "The legal body number"
-// @Param   Cid               path    int                 true        "The company ID"
+// @Param   company_name       body    string              true        "The company name"
+// @Param   license_image      body    string              true        "The company license image"
+// @Param   organization_code  body    string              true        "The company organization code"
+// @Param   origin_image       body    string              true        "The company organization origin image"
+// @Param   legal_identify     body    string              true        "The company legal's identify"
+// @Param   card_image         body    string              true        "The company legal ID card image"
+// @Param   legal_name         body    string              true        "The legal body name"
+// @Param   legal_number       body    string              true        "The legal body number"
+// @Param   Cid                path    int                 true        "The company ID"
 // @Success 200 {string} post information successful
 // @Success 401 {object| models.PostConfirmInformationError
 // @router /company/:Cid/confirmInfo [post]
@@ -81,12 +81,12 @@ func (u *AuthController) CompanyInfoConfirm() {
 
 // @Title CompanyInformationPost
 // @Description Post the company base information.
-// @Param   companyNature       body    string                    true        "The company nature"
-// @Param   contactName         body    string                    true        "The contact person name"
-// @Param   contactTel          body    string                    true        "The contact person telephone number"
-// @Param   licenseLocation     body    string                    true        "The company license location"
-// @Param   initTags            body    models.CompanyInitTags    true        "The company init tags(max = 6)"
-// @Param   Cid                 path    int                       true        "The company ID"
+// @Param   company_nature       body    string                    true        "The company nature"
+// @Param   contact_name         body    string                    true        "The contact person name"
+// @Param   contact_tel          body    string                    true        "The contact person telephone number"
+// @Param   license_location     body    string                    true        "The company license location"
+// @Param   init_tags            body    models.CompanyInitTags    true        "The company init tags(max = 6)"
+// @Param   Cid                  path    int                       true        "The company ID"
 // @Success 200 {string} company information post successful
 // @Failure 401 {string} company information post failed
 // @router /company/:Cid/info [post]
