@@ -675,7 +675,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "ChangePassword",
+            Method: "UserChangePassword",
             Router: `/:Uid/password`,
             AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),

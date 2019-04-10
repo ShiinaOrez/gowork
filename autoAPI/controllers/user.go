@@ -214,5 +214,5 @@ func (u *UserController) ResetPassword() {
 // @Failure 401 {string} cofirm code incorrect
 // @Failure 404 {string} user not found
 // @router /:Uid/password [put]
-func (u *UserController) ChangePassword() {
+func (u *UserController) UserChangePassword() {
 }
