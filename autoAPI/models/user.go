@@ -67,8 +67,8 @@ type CompanyLoginError struct {
 }
 
 type ResultOfReviewerLogin struct {
-	CompanyID int     `json:"company_id"`
-	Token     string  `json:"token"`
+	ReviewerID int     `json:"reviewer_id"`
+	Token      string  `json:"token"`
 }
 
 type ReviewerLoginError struct {

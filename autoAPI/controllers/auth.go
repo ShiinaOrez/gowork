@@ -105,6 +105,7 @@ func (u *AuthController) CompanyInfoPut() {
 // @Title ReviewerSignUp
 // @Description New reviewer must sign up.
 // @Param   name               body    string             true        "The reviewer name"
+// @Param   email              body    string             true        "The reviewer email"
 // @Param   password           body    string             true        "The reviewer account password"
 // @Param   intro              body    string             true        "The reviewer introduction"
 // @Success 200 {object} models.ResultOfReviewerSignUp
@@ -135,7 +136,7 @@ func (u *AuthController) CompanySignInByTel() {
 
 // @Title ReviewerSignIn
 // @Description Reviewer login
-// @Param   name               body    string              true        "The reviewer name"
+// @Param   email              body    string              true        "The reviewer email"
 // @Param   password           body    string              true        "The confirm code"
 // @Success 200 {object} models.ResultOfReviewerLogin
 // @Success 401 {object} models.ReviewerLoginError
