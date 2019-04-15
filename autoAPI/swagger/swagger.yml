@@ -241,8 +241,8 @@ paths:
       operationId: AuthController.ReviewerSignIn
       parameters:
       - in: body
-        name: name
-        description: The reviewer name
+        name: email
+        description: The reviewer email
         required: true
         type: string
       - in: body
@@ -269,6 +269,11 @@ paths:
       - in: body
         name: name
         description: The reviewer name
+        required: true
+        type: string
+      - in: body
+        name: email
+        description: The reviewer email
         required: true
         type: string
       - in: body
@@ -1723,6 +1728,13 @@ paths:
       - tag
       description: Get ability tags list.
       operationId: TagController.TagAbilityList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1736,6 +1748,13 @@ paths:
       - tag
       description: Get address tags list.
       operationId: TagController.TagAddressList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1749,6 +1768,13 @@ paths:
       - tag
       description: Get character tags list.
       operationId: TagController.TagCharacterList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1762,6 +1788,13 @@ paths:
       - tag
       description: Get grade tags list.
       operationId: TagController.TagGradeList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1775,6 +1808,13 @@ paths:
       - tag
       description: Get industry tag list.
       operationId: TagController.TagIndustryList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1788,6 +1828,13 @@ paths:
       - tag
       description: Get position tag list.
       operationId: TagController.TagPositionList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1803,6 +1850,13 @@ paths:
       - tag
       description: Get university tags list.
       operationId: TagController.TagUniversityList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -1816,6 +1870,13 @@ paths:
       - tag
       description: Get welfare tags list.
       operationId: TagController.TagWelfareList
+      parameters:
+      - in: query
+        name: page
+        description: The page number.
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -3309,7 +3370,7 @@ definitions:
     title: ResultOfReviewerLogin
     type: object
     properties:
-      company_id:
+      reviewer_id:
         type: integer
         format: int64
       token:
