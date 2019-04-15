@@ -513,3 +513,27 @@ type ChangePasswordPayload struct {
 type CompanyMessagePayload struct {
 	Message              string        `json:"message"`
 }
+
+type CreateCompanyCategoryBody struct {
+	Name 				 string 		`json:"name"`
+}
+
+type CategoryCreateResponse struct {
+	Id 					uint64 			`json:"id"`
+}
+
+type CreateTagForCompanyBody struct {
+	TagName				string 			`json:"tag_name"`
+}
+
+type CreateMissionListResponse struct {
+	Id 					uint64 			`json:"id"`
+}
+
+type AddMissionToMissionListRequest struct {
+	MissionId			uint64 			`json:"mission_id"`
+}
+
+type RemoveMissionInListRequest struct {
+	MissionId 			uint64 			`json:"mission_id"`
+}

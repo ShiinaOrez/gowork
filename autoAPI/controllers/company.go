@@ -47,10 +47,11 @@ func (u *CompanyController) CompanySearchIntelligent() {
 // @Title GetCompanyAttentionList
 // @Description Get company's attention elites list
 // @Param   Token       header    string      true        "The token to conform"
+// @Param 	PageId		path 	  int 		  true 		  "页码，从1开始"
 // @Success 200 {object} models.ElitesList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
-// @router /attention/list [get]
+// @router /attention/list/:PageId [get]
 func (u *CompanyController) CompanyAttentionList() {
 }
 
@@ -201,11 +202,11 @@ func (u *CompanyController) CompanySearchFast() {
 }
 
 // TODO
-// @Title CreateAndPostMissionList
+// @Title CreateMissionList
 // @Description Create and post a missionList.
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Payload     body      models.MissionListCreateInformation  true   "PositionPayload "
-// @Success 200 {int} missionList ID
+// @Success 200 {object} models.CreateMissionListResponse
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
 // @router /missionList [post]
@@ -213,11 +214,39 @@ func (u *CompanyController) CreateCompanyMissionList() {
 }
 
 // TODO
-// @Title CreateAndPostCompanyCategory
+// @Title AddMissionToMissionList
+// @Description 向一个MissionList中增加一个Mission
+// @Param Token       header    string      true        "公司用户Token"
+// @Param Payload		body 	models.AddMissionToMissionListRequest true "Mission Id"
+// @Param MlID			path    int         true 		"Mission List ID"
+// @Success 200 {} create successful
+// @Failure 401 {string} auth failed
+// @Failure 404 {string} company | category not existed
+// @router /missionList/:MlID [post]
+func (u *CompanyController) AddMissionToMissionList() {
+
+}
+
+// TOOD
+// @Title RemoveMissionInMissionList
+// @Description 删除一个MissionList中的Mission
+// @Param Token       header    string      true        "公司用户Token"
+// @Param Payload     body      models.RemoveMissionInListRequest true "Mission Id"
+// @Param MlID			path    int         true 		"Mission List ID"
+// @Success 200 {} delete successful
+// @Failure 401 {} auth failed
+// @Failure 404 {} company | category not existed
+// @router /missionList/:MlID [delete]
+func (u *CompanyController) RemoveMissionInMissionList() {
+
+}
+
+// TODO
+// @Title CreateCompanyCategory
 // @Description Create a category for company.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Name        body      body      true        "The new category name"
-// @Success 200 {int} category ID
+// @Param   Name        body      models.CreateCompanyCategoryBody      true        "The new category name"
+// @Success 200 {object} models.CategoryCreateResponse
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
 // @Failure 407 {string} already exist a same category
@@ -230,7 +259,7 @@ func (u *CompanyController) CreateCompanyCategory() {
 // @Description Create a tag and join it to category
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   CateID      path      int         true        "The category ID"
-// @Param   TagName     body      string      true        "The new tag name"
+// @Param   TagName     body      models.CreateTagForCompanyBody      true        "tag name"
 // @Success 200 {string} create successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company | category not existed

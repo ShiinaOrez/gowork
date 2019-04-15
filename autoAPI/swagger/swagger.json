@@ -680,7 +680,7 @@
                 }
             }
         },
-        "/company/attention/list": {
+        "/company/attention/list/{PageId}": {
             "get": {
                 "tags": [
                     "company"
@@ -694,6 +694,14 @@
                         "description": "The token to conform",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "PageId",
+                        "description": "页码，从1开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -758,7 +766,7 @@
                     "company"
                 ],
                 "description": "Create a category for company.",
-                "operationId": "CompanyController.CreateAndPostCompanyCategory",
+                "operationId": "CompanyController.CreateCompanyCategory",
                 "parameters": [
                     {
                         "in": "header",
@@ -773,13 +781,16 @@
                         "description": "The new category name",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/body"
+                            "$ref": "#/definitions/models.CreateCompanyCategoryBody"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "{int} category ID"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoryCreateResponse"
+                        }
                     },
                     "401": {
                         "description": "{string} auth failed"
@@ -819,9 +830,11 @@
                     {
                         "in": "body",
                         "name": "TagName",
-                        "description": "The new tag name",
+                        "description": "tag name",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateTagForCompanyBody"
+                        }
                     }
                 ],
                 "responses": {
@@ -988,7 +1001,7 @@
                     "company"
                 ],
                 "description": "Create and post a missionList.",
-                "operationId": "CompanyController.CreateAndPostMissionList",
+                "operationId": "CompanyController.CreateMissionList",
                 "parameters": [
                     {
                         "in": "header",
@@ -1009,13 +1022,106 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{int} missionList ID"
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateMissionListResponse"
+                        }
                     },
                     "401": {
                         "description": "{string} auth failed"
                     },
                     "404": {
                         "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/missionList/{MlID}": {
+            "post": {
+                "tags": [
+                    "company"
+                ],
+                "description": "向一个MissionList中增加一个Mission",
+                "operationId": "CompanyController.AddMissionToMissionList",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "公司用户Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "Mission Id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AddMissionToMissionListRequest"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "MlID",
+                        "description": "Mission List ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{} create successful"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company | category not existed"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "company"
+                ],
+                "description": "删除一个MissionList中的Mission",
+                "operationId": "CompanyController.RemoveMissionInMissionList",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "公司用户Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "Mission Id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RemoveMissionInListRequest"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "MlID",
+                        "description": "Mission List ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{} delete successful"
+                    },
+                    "401": {
+                        "description": "{} auth failed"
+                    },
+                    "404": {
+                        "description": "{} company | category not existed"
                     }
                 }
             }
@@ -3349,13 +3455,19 @@
         }
     },
     "definitions": {
-        "body": {
-            "title": "body",
-            "type": "object"
-        },
         "change": {
             "title": "change",
             "type": "object"
+        },
+        "models.AddMissionToMissionListRequest": {
+            "title": "AddMissionToMissionListRequest",
+            "type": "object",
+            "properties": {
+                "mission_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
         },
         "models.AuthInitTags": {
             "title": "AuthInitTags",
@@ -3372,6 +3484,16 @@
         "models.BaseModel": {
             "title": "BaseModel",
             "type": "object"
+        },
+        "models.CategoryCreateResponse": {
+            "title": "CategoryCreateResponse",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
         },
         "models.ChangePasswordPayload": {
             "title": "ChangePasswordPayload",
@@ -3721,6 +3843,25 @@
                 }
             }
         },
+        "models.CreateCompanyCategoryBody": {
+            "title": "CreateCompanyCategoryBody",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateMissionListResponse": {
+            "title": "CreateMissionListResponse",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
         "models.CreateMissionPayload": {
             "title": "CreateMissionPayload",
             "type": "object",
@@ -3769,6 +3910,15 @@
                         "type": "integer",
                         "format": "int64"
                     }
+                }
+            }
+        },
+        "models.CreateTagForCompanyBody": {
+            "title": "CreateTagForCompanyBody",
+            "type": "object",
+            "properties": {
+                "tag_name": {
+                    "type": "string"
                 }
             }
         },
@@ -4681,6 +4831,16 @@
                     }
                 },
                 "rows_num": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.RemoveMissionInListRequest": {
+            "title": "RemoveMissionInListRequest",
+            "type": "object",
+            "properties": {
+                "mission_id": {
                     "type": "integer",
                     "format": "int64"
                 }
