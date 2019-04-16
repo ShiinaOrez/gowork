@@ -532,8 +532,10 @@ type CreateMissionListResponse struct {
 
 type AddMissionToMissionListRequest struct {
 	MissionId			uint64 			`json:"mission_id"`
+	MissionListId 		uint64			`json:"mission_list_id"`
 }
 
 type RemoveMissionInListRequest struct {
 	MissionId 			uint64 			`json:"mission_id"`
+	MissionListId 		uint64 			`json:"mission_list_id"`
 }

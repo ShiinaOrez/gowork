@@ -3553,6 +3553,10 @@
                 "mission_id": {
                     "type": "integer",
                     "format": "int64"
+                },
+                "mission_list_id": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -4928,6 +4932,10 @@
             "type": "object",
             "properties": {
                 "mission_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "mission_list_id": {
                     "type": "integer",
                     "format": "int64"
                 }

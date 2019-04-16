@@ -2389,6 +2389,9 @@ definitions:
       mission_id:
         type: integer
         format: int64
+      mission_list_id:
+        type: integer
+        format: int64
   models.AuthInitTags:
     title: AuthInitTags
     type: object
@@ -3338,6 +3341,9 @@ definitions:
     type: object
     properties:
       mission_id:
+        type: integer
+        format: int64
+      mission_list_id:
         type: integer
         format: int64
   models.ResetPasswordPayload:

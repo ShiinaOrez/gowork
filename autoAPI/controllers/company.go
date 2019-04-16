@@ -267,7 +267,8 @@ func (u *CompanyController) CreateCompanyCategory() {
 func (u *CompanyController) CompanyCategoryAddTag() {
 }
 
-// TODO
+
+
 // @Title SearchCompanyPositionByNormalWay
 // @Description Search company positions.
 // @Param   Token       header    string      true        "The token to conform"
@@ -278,6 +279,7 @@ func (u *CompanyController) CompanyCategoryAddTag() {
 // @router /position/:Pid/search [get]
 func (u *CompanyController) CompanyPositionSearch() {
 }
+
 
 // TODO
 // @Title GetAllMissionListForCompany
