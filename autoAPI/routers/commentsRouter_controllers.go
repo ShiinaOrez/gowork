@@ -720,18 +720,18 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "UserAttentionCompany",
+            Method: "UserCancelAttentionCompany",
             Router: `/attention/:Cid`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "UserCancelAttentionCompany",
+            Method: "UserAttentionCompany",
             Router: `/attention/:Cid`,
-            AllowHTTPMethods: []string{"put"},
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
@@ -792,18 +792,18 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "EditSetting",
+            Method: "UserBaseInfo",
             Router: `/info`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "UserBaseInfo",
+            Method: "EditSetting",
             Router: `/info`,
-            AllowHTTPMethods: []string{"get"},
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
