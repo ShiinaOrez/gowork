@@ -308,14 +308,14 @@ type MissionListInformation struct {
 }
 
 type MissionListEntity struct {
-	MissionListID            int          `json:"mission_list_id"`
-	MissionListName          string       `json:"mission_list_name"`
-	MissionListCreateTime    string       `json:"mission_list_create_time"`
-	CompanyID                int          `json:"company_id"`
-	CompanyName              string       `json:"company_name"`
-	CompanyLogo              string       `json:"company_logo"`
-	MissionListCount         int          `json:"mission_list_count"`
-	FinishMissionCount       int          `json:"finish_mission_count"`
+	MissionListID            int          	`json:"mission_list_id"`
+	MissionListName          string       	`json:"mission_list_name"`
+	MissionListCreateTime    string       	`json:"mission_list_create_time"`
+	CompanyID                int          	`json:"company_id"`
+	CompanyName              string       	`json:"company_name"`
+	CompanyLogo              string       	`json:"company_logo"`
+	MissionCount         int          		`json:"mission_count"`
+	FinishMissionCount       int          	`json:"finish_mission_count"`
 }
 
 type MissionListList struct {
@@ -347,6 +347,10 @@ type CompanyLogoModify struct {
 }
 
 type CompanyPayAttentionBody struct {
+	Uid 				uint64 			`json:"uid"`
+}
+
+type CompanyCancelAttentionBody struct {
 	Uid 				uint64 			`json:"uid"`
 }
 
@@ -510,6 +514,10 @@ type ChangePasswordPayload struct {
 	NewPassword          string        `json:"new_password"`
 }
 
+type CompanyAllowSendEmailPayload struct {
+	IfAllow		   		bool 			`json:"if_allow"`
+}
+
 type CompanyMessagePayload struct {
 	Message              string        `json:"message"`
 }
@@ -538,4 +546,20 @@ type AddMissionToMissionListRequest struct {
 type RemoveMissionInListRequest struct {
 	MissionId 			uint64 			`json:"mission_id"`
 	MissionListId 		uint64 			`json:"mission_list_id"`
+}
+
+type UpdateTelStep1Payload struct {
+	Tel 			string 			`json:"tel"`
+}
+
+type UpdateTelStep2Payload struct {
+	Code			string 			`json:"code"`
+}
+
+type UpdateEmailStep1Payload struct {
+	Email				string 			`json:"email"`
+}
+
+type UpdateEmailStep2Payload struct {
+	Code 			string			`json:"code"`
 }

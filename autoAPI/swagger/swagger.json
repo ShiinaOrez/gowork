@@ -647,6 +647,45 @@
             }
         },
         "/company/attention": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Cancel to pay attention to a elite",
+                "operationId": "CompanyController.CompanyCancelAttentionSomebody",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "被关注的精英的ID",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyCancelAttentionBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} cancel successful"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company | user not existed"
+                    },
+                    "407": {
+                        "description": "{string} never pay attention to it"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "company"
@@ -663,7 +702,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "EliteID",
+                        "name": "Payload",
                         "description": "The elite ID for attention",
                         "required": true,
                         "schema": {
@@ -687,7 +726,7 @@
                 }
             }
         },
-        "/company/attention/list/{PageId}": {
+        "/company/attention/list": {
             "get": {
                 "tags": [
                     "company"
@@ -703,7 +742,7 @@
                         "type": "string"
                     },
                     {
-                        "in": "path",
+                        "in": "query",
                         "name": "PageId",
                         "description": "页码，从1开始",
                         "required": true,
@@ -723,46 +762,6 @@
                     },
                     "404": {
                         "description": "{string} company not existed"
-                    }
-                }
-            }
-        },
-        "/company/attention/{Uid}": {
-            "put": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Cancel to pay attention to a elite",
-                "operationId": "CompanyController.CompanyCancelAttentionSomebody",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Uid",
-                        "description": "The elite ID for attention",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} cancel successful"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company | user not existed"
-                    },
-                    "407": {
-                        "description": "{string} never pay attention to it"
                     }
                 }
             }
@@ -811,7 +810,7 @@
                 }
             }
         },
-        "/company/category/{CateID}/tags": {
+        "/company/category/{id}/tags": {
             "post": {
                 "tags": [
                     "company"
@@ -828,7 +827,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "CateID",
+                        "name": "id",
                         "description": "The category ID",
                         "required": true,
                         "type": "integer",
@@ -853,42 +852,6 @@
                     },
                     "404": {
                         "description": "{string} company | category not existed"
-                    }
-                }
-            }
-        },
-        "/company/email": {
-            "put": {
-                "tags": [
-                    "company"
-                ],
-                "description": "update company email",
-                "operationId": "CompanyController.UpdateCompanyEmailAddress",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "Email",
-                        "description": "The email address to update",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} update successful"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company not existed"
                     }
                 }
             }
@@ -964,7 +927,133 @@
                 }
             }
         },
-        "/company/logo": {
+        "/company/info/email/allow": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "If company want to change message setting.",
+                "operationId": "CompanyController.ChangeAllowSendEmail",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "是否允许发送邮件",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyAllowSendEmailPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful!",
+                        "schema": {
+                            "$ref": "#/definitions/change"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    },
+                    "404": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/info/email/step1": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "前端发送一个邮箱地址，给相应邮箱发送一个验证码（6位长数字）。",
+                "operationId": "CompanyController.UpdateCompanyEmailAddressStep1",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The email address to update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateEmailStep1Payload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateEmailStep2Payload"
+                        }
+                    },
+                    "400": {
+                        "description": "{} 验证码不正确或失效"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/info/email/step2": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "填写6位长验证码，若正确则更改",
+                "operationId": "CompanyController.UpdateCompanyEmailAddressStep2",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The email address to update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateEmailStep2Payload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{} update successful"
+                    },
+                    "400": {
+                        "description": "{} 验证码不正确或失效"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/info/logo": {
             "put": {
                 "tags": [
                     "company"
@@ -1002,6 +1091,227 @@
                 }
             }
         },
+        "/company/info/tel/step1": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "获取手机号，给相应手机号发验证码（长6位的数字）",
+                "operationId": "CompanyController.UpdateCompanyTelephoneStep1",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "手机号",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateTelStep1Payload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateTelStep2Payload"
+                        }
+                    },
+                    "400": {
+                        "description": "{} 验证码不正确或失效"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/info/tel/step2": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "获取验证码(长6位的数字)，如果验证码正确，则更改手机号",
+                "operationId": "CompanyController.UpdateCompanyTelephoneStep2",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The telephone number to update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateTelStep2Payload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{} update successful"
+                    },
+                    "400": {
+                        "description": "{} 验证码不正确或失效"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/info/{id}/": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Get company information by id. (information less)",
+                "operationId": "CompanyController.CompanyInformationByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The company ID for get",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyInformation"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
+        "/company/mission/{id}/list": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "description": "Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）",
+                "operationId": "CompanyController.GetCompanyMissionListByID",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The company ID for get mission list",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "PageId",
+                        "description": "页码",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MissionList"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company not existed"
+                    }
+                }
+            }
+        },
+        "/company/mission/{id}/overview": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "description": "公司任务数目概览，包括结束，报名中，任务提交中.",
+                "operationId": "CompanyController.CompanyMissionNumberOverview",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The company ID for get",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "PageId",
+                        "description": "页码",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanyMissionNumberOverview"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} sign up failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
         "/company/missionList": {
             "post": {
                 "tags": [
@@ -1020,7 +1330,7 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "PositionPayload",
+                        "description": "mission list Payload",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.MissionListCreateInformation"
@@ -1043,7 +1353,44 @@
                 }
             }
         },
-        "/company/missionList/{MlID}": {
+        "/company/missionList/": {
+            "delete": {
+                "tags": [
+                    "company"
+                ],
+                "description": "删除一个选材清单",
+                "operationId": "CompanyController.DeleteMissionList",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "mlid",
+                        "description": "Mission List ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{} create successful"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} company | category not existed"
+                    }
+                }
+            }
+        },
+        "/company/missionList/mission": {
             "post": {
                 "tags": [
                     "company"
@@ -1061,19 +1408,11 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "Mission Id",
+                        "description": "Mission Id and missionList ID",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.AddMissionToMissionListRequest"
                         }
-                    },
-                    {
-                        "in": "path",
-                        "name": "MlID",
-                        "description": "Mission List ID",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -1105,19 +1444,11 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "Mission Id",
+                        "description": "Mission Id and missionList ID",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.RemoveMissionInListRequest"
                         }
-                    },
-                    {
-                        "in": "path",
-                        "name": "MlID",
-                        "description": "Mission List ID",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -1133,116 +1464,13 @@
                 }
             }
         },
-        "/company/position": {
-            "post": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Company create a position.",
-                "operationId": "CompanyController.CreateAndPostPosition",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "Payload",
-                        "description": "PositionPayload",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.PositionPayload"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{int} positionID"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company not existed"
-                    }
-                }
-            }
-        },
-        "/company/position/{Pid}": {
-            "put": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Edit the position information",
-                "operationId": "CompanyController.EditCompanyPositionByID",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "Payload",
-                        "description": "PositionPayload",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.PositionPayload"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} edit successful"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company | position not existed"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Delete position by ID",
-                "operationId": "CompanyController.DeleteCompanyPositionByID",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete successful"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company | position not existed"
-                    }
-                }
-            }
-        },
-        "/company/position/{Pid}/search": {
+        "/company/missionList/{id}/list/": {
             "get": {
                 "tags": [
                     "company"
                 ],
-                "description": "Search company positions.",
-                "operationId": "CompanyController.SearchCompanyPositionByNormalWay",
+                "description": "Get a company all mission list. 获取一个公司的全部选材清单",
+                "operationId": "CompanyController.GetAllMissionListOfCompany",
                 "parameters": [
                     {
                         "in": "header",
@@ -1252,25 +1480,34 @@
                         "type": "string"
                     },
                     {
-                        "in": "query",
-                        "name": "Pattern",
-                        "description": "The pattern string",
+                        "in": "path",
+                        "name": "id",
+                        "description": "想查看的公司的ID",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "PageId",
+                        "description": "页码",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.Positions"
+                            "$ref": "#/definitions/models.MissionListList"
                         }
                     },
                     "401": {
                         "description": "{string} sign up failed"
                     },
                     "404": {
-                        "description": "{string} user | position not existed"
+                        "description": "{string} user | company not existed"
                     }
                 }
             }
@@ -1342,315 +1579,6 @@
                     },
                     "404": {
                         "description": "{string} user not existed"
-                    }
-                }
-            }
-        },
-        "/company/tel": {
-            "put": {
-                "tags": [
-                    "company"
-                ],
-                "description": "update the company telephone number.",
-                "operationId": "CompanyController.UpdateCompanyTelephone",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "Tel",
-                        "description": "The telephone number to update",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} update successful"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company not existed"
-                    }
-                }
-            }
-        },
-        "/company/{Cid}/info": {
-            "get": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Get company information by id. (information less)",
-                "operationId": "CompanyController.CompanyInformationByID",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company ID for get",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.CompanyInformation"
-                        }
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} user | company not existed"
-                    }
-                }
-            }
-        },
-        "/company/{Cid}/message/setting": {
-            "put": {
-                "tags": [
-                    "company"
-                ],
-                "description": "If company want to change message setting.",
-                "operationId": "CompanyController.ChangeMessageSetting",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company ID for change message setting",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "Payload",
-                        "description": "The new message setting.",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.CompanyMessagePayload"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful!",
-                        "schema": {
-                            "$ref": "#/definitions/change"
-                        }
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    },
-                    "404": {
-                        "description": "{string} company not existed"
-                    }
-                }
-            }
-        },
-        "/company/{Cid}/mission/list/{PageId}": {
-            "get": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）",
-                "operationId": "CompanyController.GetCompanyMissionListByID",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company ID for get mission list",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "in": "path",
-                        "name": "PageId",
-                        "description": "页码",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MissionList"
-                        }
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company not existed"
-                    }
-                }
-            }
-        },
-        "/company/{Cid}/mission/overview": {
-            "get": {
-                "tags": [
-                    "company"
-                ],
-                "description": "公司任务数目概览，包括结束，报名中，任务提交中",
-                "operationId": "CompanyController.CompanyMissionNumberOverview",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company ID for get",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "PageId",
-                        "description": "页码",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.CompanyMissionNumberOverview"
-                        }
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    },
-                    "404": {
-                        "description": "{string} user | company not existed"
-                    }
-                }
-            }
-        },
-        "/company/{Cid}/missionList/all/{PageId}": {
-            "get": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Get a company all mission list. 获取一个公司的全部选材清单",
-                "operationId": "CompanyController.GetAllMissionListForCompany",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "PageId",
-                        "description": "页码",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.MissionListList"
-                        }
-                    },
-                    "401": {
-                        "description": "{string} sign up failed"
-                    },
-                    "404": {
-                        "description": "{string} user | company not existed"
-                    }
-                }
-            }
-        },
-        "/company/{Cid}/position/list/{PageId}": {
-            "get": {
-                "tags": [
-                    "company"
-                ],
-                "description": "Get a company's position list",
-                "operationId": "CompanyController.GetCompanyPositionListByID",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company ID for get position list",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "in": "path",
-                        "name": "PageId",
-                        "description": "页码",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.PositionsList"
-                        }
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} company not existed"
                     }
                 }
             }
@@ -3297,6 +3225,52 @@
                 }
             }
         },
+        "/user/password/{id}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "If company want to change password.",
+                "operationId": "UserController.ComapnyChangePassword",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The user id to get user.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The change password payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ChangePasswordPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} change successful"
+                    },
+                    "401": {
+                        "description": "{string} cofirm code incorrect"
+                    },
+                    "404": {
+                        "description": "{string} company not found"
+                    }
+                }
+            }
+        },
         "/user/personal/setting": {
             "get": {
                 "tags": [
@@ -3404,52 +3378,6 @@
                     },
                     "404": {
                         "description": "{string} user not existed"
-                    }
-                }
-            }
-        },
-        "/user/{Cid}/password": {
-            "put": {
-                "tags": [
-                    "user"
-                ],
-                "description": "If company want to change password.",
-                "operationId": "UserController.ComapnyChangePassword",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The user id to get user.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "in": "body",
-                        "name": "Payload",
-                        "description": "The change password payload",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.ChangePasswordPayload"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} change successful"
-                    },
-                    "401": {
-                        "description": "{string} cofirm code incorrect"
-                    },
-                    "404": {
-                        "description": "{string} company not found"
                     }
                 }
             }
@@ -3598,6 +3526,15 @@
                 }
             }
         },
+        "models.CompanyAllowSendEmailPayload": {
+            "title": "CompanyAllowSendEmailPayload",
+            "type": "object",
+            "properties": {
+                "if_allow": {
+                    "type": "boolean"
+                }
+            }
+        },
         "models.CompanyBaseInformation": {
             "title": "CompanyBaseInformation",
             "type": "object",
@@ -3628,6 +3565,16 @@
                     "items": {
                         "$ref": "#/definitions/models.Tag"
                     }
+                }
+            }
+        },
+        "models.CompanyCancelAttentionBody": {
+            "title": "CompanyCancelAttentionBody",
+            "type": "object",
+            "properties": {
+                "uid": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3787,15 +3734,6 @@
                 "rows_num": {
                     "type": "integer",
                     "format": "int64"
-                }
-            }
-        },
-        "models.CompanyMessagePayload": {
-            "title": "CompanyMessagePayload",
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string"
                 }
             }
         },
@@ -4623,7 +4561,7 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "mission_list_count": {
+                "mission_count": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -4782,144 +4720,6 @@
                 "page_size": {
                     "type": "integer",
                     "format": "int64"
-                },
-                "rows_num": {
-                    "type": "integer",
-                    "format": "int64"
-                }
-            }
-        },
-        "models.PositionEntity": {
-            "title": "PositionEntity",
-            "type": "object",
-            "properties": {
-                "company_avatar": {
-                    "type": "string"
-                },
-                "company_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "company_name": {
-                    "type": "string"
-                },
-                "position_education": {
-                    "type": "string"
-                },
-                "position_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "position_name": {
-                    "type": "string"
-                },
-                "position_person_number": {
-                    "type": "integer",
-                    "format": "int64"
-                }
-            }
-        },
-        "models.PositionPayload": {
-            "title": "PositionPayload",
-            "type": "object",
-            "properties": {
-                "bind_mission_list_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "position_description": {
-                    "type": "string"
-                },
-                "position_education": {
-                    "type": "string"
-                },
-                "position_experience": {
-                    "type": "string"
-                },
-                "position_information": {
-                    "type": "string"
-                },
-                "position_name": {
-                    "type": "string"
-                },
-                "position_person_number": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "position_salary": {
-                    "type": "string"
-                },
-                "position_treatment": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.PositionSimple": {
-            "title": "PositionSimple",
-            "type": "object",
-            "properties": {
-                "education": {
-                    "type": "string"
-                },
-                "person_number": {
-                    "type": "string"
-                },
-                "position_id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "position_name": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.Positions": {
-            "title": "Positions",
-            "type": "object",
-            "properties": {
-                "has_next": {
-                    "type": "boolean"
-                },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "position_list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.PositionEntity"
-                    }
-                },
-                "rows_num": {
-                    "type": "integer",
-                    "format": "int64"
-                }
-            }
-        },
-        "models.PositionsList": {
-            "title": "PositionsList",
-            "type": "object",
-            "properties": {
-                "has_next": {
-                    "type": "boolean"
-                },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "position_list": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.PositionSimple"
-                    }
                 },
                 "rows_num": {
                     "type": "integer",
@@ -5163,6 +4963,42 @@
                 "tag_id": {
                     "type": "integer",
                     "format": "int64"
+                }
+            }
+        },
+        "models.UpdateEmailStep1Payload": {
+            "title": "UpdateEmailStep1Payload",
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateEmailStep2Payload": {
+            "title": "UpdateEmailStep2Payload",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateTelStep1Payload": {
+            "title": "UpdateTelStep1Payload",
+            "type": "object",
+            "properties": {
+                "tel": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateTelStep2Payload": {
+            "title": "UpdateTelStep2Payload",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
                 }
             }
         },
