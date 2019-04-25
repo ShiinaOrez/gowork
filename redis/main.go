@@ -1,13 +1,26 @@
 package main
 
 import (
+    "os"
     "fmt"
     "time"
     "github.com/garyburd/redigo/redis"
 )
 
+func Dial() (redis.Conn, error) {
+    conn, err := redis.Dial("tcp", os.Getenv("Elite_RedisServer"))
+    if err != nil {
+        return nil, err
+    }
+    if _, err := conn.Do("AUTH", os.Getenv("Elite_RedisPassword")); err != nil {
+        conn.Close()
+        return nil, err
+    }
+    return conn, nil
+}
+
 func main() {
-    c, err := redis.Dial("tcp", "127.0.0.1:6379")
+    c, err := Dial()
     if err != nil {
         fmt.Println("Connection failed.", err.Error())
     }

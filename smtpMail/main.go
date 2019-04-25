@@ -6,17 +6,20 @@ import (
     "strings"
 )
 
-func main() {
-    auth := smtp.PlainAuth("", "shiina_orez@qq.com", "", "smtp.qq.com")
-    to := []string{""}
-    nickname := "Test"
-    user := "shiina_orez@qq.com"
-    subject := "Test Mail"
-    contentType := "Content-Type: text/plain; charset=UTF-8"
-    body := "This is a test email~"
-    msg := []byte("To: " + strings.Join(to, ",") + "\r\nFrom: " + nickname + "<" + user + ">\r\nSubject: " + subject + "\r\n" + contentType + "\r\n\r\n" + body)
+type Content struct {
+    NickName     string
+    User         string
+    Subject      string
+    Body         string
+    ContentType  string
+}
+
+func SendMail(from, authCode string, to []string, content Content) error {
+    auth := smtp.PlainAuth("", from, authCode, "smtp.qq.com")
+    msg := []byte("To: " + strings.Join(to, ",") + "\r\nFrom: " + content.NickName + "<" + content.User + ">\r\nSubject: " + content.Subject + "\r\n" + content.ContentType + "\r\n\r\n" + content.Body)
     err := smtp.SendMail("smtp.qq.com:25", auth, user, to, msg)
     if err != nil {
-        fmt.Println("Send mail error:", err.Error())
+        return err
     }
+    return nil
 }
