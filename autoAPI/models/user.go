@@ -81,6 +81,12 @@ type MissionEntityToShow struct {
 	Statu         bool        `json:"statu"`
 }
 
+type TagForGetUserInformation struct {
+	TagID         int        `json:"tag_id"`
+	TagName       string     `json:"tag_name"`
+	Value         int        `json:"value"`
+}
+
 type GetUserInformation struct {
 	AvatarURL     string     `json:"avatar_url"`
 	Name          string     `json:"name"`
@@ -88,7 +94,7 @@ type GetUserInformation struct {
 	Age           int        `json:"age"`
 	University    string     `json:"university"`
 	Attention     bool       `json:"attention"`
-	UserTagsList  []TagForUserModel `json:"user_tags_list"`
+	UserTagsList  []TagForGetUserInformation `json:"user_tags_list"`
 	Education     string     `json:"education"`
 	Tel           string     `json:"tel"`
 	EmailAddress  string     `json:"email_address"`
@@ -111,10 +117,11 @@ type GetUserBaseInformation struct {
 	City          string     `json:"city"`
 	University    string     `json:"university"`
 	EnrollYear    int        `json:"enroll_year"`
+	GraduateYear  int        `json:"graduate_year"`
 	Education     string     `json:"education"`
 	Major         string     `json:"major"`
 	Status        string     `json:"status"`
-	UserTagsList  []TagForUserModel `json:"user_tags_list"`
+	UserTagsList  []TagForGetUserInformation `json:"user_tags_list"`
 	Intro         string     `json:"intro"`
 }
 
@@ -152,10 +159,11 @@ type EditSettingBody struct {
 	City          string     `json:"city"`
 	University    string     `json:"university"`
 	EnrollYear    int        `json:"enroll_year"`
+	GraduateYear  int        `json:"graduate_year"`
 	Education     string     `json:"education"`
 	Major         string     `json:"major"`
 	Status        string     `json:"status"`
-	UserTagsList  []TagForUserModel `json:"user_tags_list"`
+	UserTagsList  []int      `json:"user_tags_list"`
 	Intro         string     `json:"intro"`
 }
 
@@ -176,7 +184,8 @@ type UserAccountSetting struct {
 }
 
 type UserPersonalSetting struct {
-	Allowed       bool       `json:"allowed"`
+	CanBeSearch  bool   `json:"can_be_search"`
+	CanSendMail  bool   `json:"can_send_mail"`
 }
 
 type CompanySuitability struct {

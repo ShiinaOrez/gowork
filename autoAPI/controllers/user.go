@@ -11,12 +11,12 @@ type UserController struct {
 
 // @Title GetUserInformationByID
 // @Description Get user's information by ID
-// @Param   Uid           path    int            true        "The user ID"
+// @Param   id           path    int            true        "The user ID"
 // @Param   Token         header  string         true        "The token to conform"
 // @Success 200 {object} models.GetUserInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed
-// @router /:Uid/info [Get]
+// @router /:id/info [Get]
 func (u *UserController) UserInfo() {
 }
 
@@ -28,18 +28,6 @@ func (u *UserController) UserInfo() {
 // @Failure 404 {string} user not existed
 // @router /info [get]
 func (u *UserController) UserBaseInfo() {
-}
-
-// @Title UserEditPassword
-// @Description User edit password.
-// @Param   Token         header  string         true        "The token to conform"
-// @Param   oldPassword   body    string         true        "The old password to change"
-// @Param   newPassword   body    string         true        "The new password want to change"
-// @Success 200 {object} models.GetUserBaseInformation
-// @Failure 401 {string} auth failed || old password confirm failed
-// @Failure 404 {string} user not existed
-// @router /editPassword [post]
-func (u *UserController) UserEditPassword() {
 }
 
 // @Title UserMissionInformation
@@ -79,6 +67,7 @@ func (u *UserController) UserCancelAttentionCompany() {
 // @Title UserAttentionList
 // @Description Get user's attention list
 // @Param   Token       header    string      true        "The token to conform"
+// @Param   Page        query     string      true        "The page you want."
 // @Success 200 {object} models.UserAttentionCompanyList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed
@@ -144,16 +133,6 @@ func (u *UserController) ConfirmEmail() {
 func (u *UserController) ConfirmTel() {
 }
 
-// @Title AccountSettingInformation
-// @Description Get user's account setting information
-// @Param   Token       header    string      true        "The token to conform"
-// @Success 200 {object} models.UserAccountSetting
-// @Failure 401 {string} auth failed
-// @Failure 404 {string} user not existed
-// @router /account/setting [get]
-func (u *UserController) AccountSetting() {
-}
-
 // @Title PersonalSettingInformation
 // @Description Get user's personal setting information
 // @Param   Token       header    string      true        "The token to conform"
@@ -162,17 +141,6 @@ func (u *UserController) AccountSetting() {
 // @Failure 404 {string} user not existed
 // @router /personal/setting [get]
 func (u *UserController) PersonalSetting() {
-}
-
-// @Title EditAccountSetting
-// @Description Edit the account setting.
-// @Param   Token       header    string      true        "The token to conform"
-// @Param   RequestBody body      models.UserAccountSetting true "test"
-// @Success 200 {string} edit successful
-// @Failure 401 {string} auth failed
-// @Failure 404 {string} user not existed
-// @router /account/setting [post]
-func (u *UserController) EditAccountSetting() {
 }
 
 // @Title EditPersonalSetting
@@ -203,16 +171,4 @@ func (u *UserController) GetSuitabilityList() {
 // @Failure 404 {string} user not found
 // @router /password [put]
 func (u *UserController) ResetPassword() {
-}
-
-// @Title UserChangePassword
-// @Description If user want to change password.
-// @Param   Token     header     string    true    "The token."
-// @Param   Uid       path       int       true    "The user id to get user."
-// @Param   Payload   body   models.ChangePasswordPayload  true  "The change password payload"
-// @Success 200 {string} change successful
-// @Failure 401 {string} cofirm code incorrect
-// @Failure 404 {string} user not found
-// @router /:Uid/password [put]
-func (u *UserController) UserChangePassword() {
 }

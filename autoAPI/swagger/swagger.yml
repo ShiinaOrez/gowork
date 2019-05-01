@@ -1833,7 +1833,7 @@ paths:
             $ref: '#/definitions/models.TagList'
         "201":
           description: '{string} none tag exist'
-  /user/{Uid}/info:
+  /user/{id}/info:
     get:
       tags:
       - user
@@ -1841,7 +1841,7 @@ paths:
       operationId: UserController.GetUserInformationByID
       parameters:
       - in: path
-        name: Uid
+        name: id
         description: The user ID
         required: true
         type: integer
@@ -1856,82 +1856,6 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.GetUserInformation'
-        "401":
-          description: '{string} auth failed'
-        "404":
-          description: '{string} user not existed'
-  /user/{Uid}/password:
-    put:
-      tags:
-      - user
-      description: If user want to change password.
-      operationId: UserController.UserChangePassword
-      parameters:
-      - in: header
-        name: Token
-        description: The token.
-        required: true
-        type: string
-      - in: path
-        name: Uid
-        description: The user id to get user.
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: Payload
-        description: The change password payload
-        required: true
-        schema:
-          $ref: '#/definitions/models.ChangePasswordPayload'
-      responses:
-        "200":
-          description: '{string} change successful'
-        "401":
-          description: '{string} cofirm code incorrect'
-        "404":
-          description: '{string} user not found'
-  /user/account/setting:
-    get:
-      tags:
-      - user
-      description: Get user's account setting information
-      operationId: UserController.AccountSettingInformation
-      parameters:
-      - in: header
-        name: Token
-        description: The token to conform
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.UserAccountSetting'
-        "401":
-          description: '{string} auth failed'
-        "404":
-          description: '{string} user not existed'
-    post:
-      tags:
-      - user
-      description: Edit the account setting.
-      operationId: UserController.EditAccountSetting
-      parameters:
-      - in: header
-        name: Token
-        description: The token to conform
-        required: true
-        type: string
-      - in: body
-        name: RequestBody
-        description: test
-        required: true
-        schema:
-          $ref: '#/definitions/models.UserAccountSetting'
-      responses:
-        "200":
-          description: '{string} edit successful'
         "401":
           description: '{string} auth failed'
         "404":
@@ -2021,6 +1945,11 @@ paths:
         description: The token to conform
         required: true
         type: string
+      - in: query
+        name: Page
+        description: The page you want.
+        required: true
+        type: string
       responses:
         "200":
           description: ""
@@ -2069,37 +1998,6 @@ paths:
             $ref: '#/definitions/models.GetCompanySuitabilityList'
         "401":
           description: '{string} auth failed'
-        "404":
-          description: '{string} user not existed'
-  /user/editPassword:
-    post:
-      tags:
-      - user
-      description: User edit password.
-      operationId: UserController.UserEditPassword
-      parameters:
-      - in: header
-        name: Token
-        description: The token to conform
-        required: true
-        type: string
-      - in: body
-        name: oldPassword
-        description: The old password to change
-        required: true
-        type: string
-      - in: body
-        name: newPassword
-        description: The new password want to change
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.GetUserBaseInformation'
-        "401":
-          description: '{string} auth failed || old password confirm failed'
         "404":
           description: '{string} user not existed'
   /user/email/edit:
@@ -2676,6 +2574,9 @@ definitions:
       enroll_year:
         type: integer
         format: int64
+      graduate_year:
+        type: integer
+        format: int64
       intro:
         type: string
       major:
@@ -2691,7 +2592,8 @@ definitions:
       user_tags_list:
         type: array
         items:
-          $ref: '#/definitions/models.TagForUserModel'
+          type: integer
+          format: int64
   models.Elite:
     title: Elite
     type: object
@@ -2856,6 +2758,9 @@ definitions:
       enroll_year:
         type: integer
         format: int64
+      graduate_year:
+        type: integer
+        format: int64
       intro:
         type: string
       major:
@@ -2873,7 +2778,7 @@ definitions:
       user_tags_list:
         type: array
         items:
-          $ref: '#/definitions/models.TagForUserModel'
+          $ref: '#/definitions/models.TagForGetUserInformation'
   models.GetUserInformation:
     title: GetUserInformation
     type: object
@@ -2915,7 +2820,7 @@ definitions:
       user_tags_list:
         type: array
         items:
-          $ref: '#/definitions/models.TagForUserModel'
+          $ref: '#/definitions/models.TagForGetUserInformation'
   models.MessageEntity:
     title: MessageEntity
     type: object
@@ -3312,16 +3217,15 @@ definitions:
       tagid:
         type: integer
         format: int64
-  models.TagForUserModel:
-    title: TagForUserModel
+  models.TagForGetUserInformation:
+    title: TagForGetUserInformation
     type: object
     properties:
-      tagid:
+      tag_id:
         type: integer
         format: int64
-      userid:
-        type: integer
-        format: int64
+      tag_name:
+        type: string
       value:
         type: integer
         format: int64
@@ -3387,42 +3291,6 @@ definitions:
     properties:
       code:
         type: string
-  models.UserAccountSetting:
-    title: UserAccountSetting
-    type: object
-    properties:
-      birth_month:
-        type: integer
-        format: int64
-      birth_year:
-        type: integer
-        format: int64
-      city:
-        type: string
-      education:
-        type: string
-      enroll_year:
-        type: integer
-        format: int64
-      graduate_year:
-        type: integer
-        format: int64
-      intro:
-        type: string
-      major:
-        type: string
-      name:
-        type: string
-      sex:
-        type: boolean
-      status:
-        type: string
-      tag_list:
-        type: array
-        items:
-          $ref: '#/definitions/models.Tag'
-      university:
-        type: string
   models.UserAttentionCompanyList:
     title: UserAttentionCompanyList
     type: object
@@ -3457,7 +3325,9 @@ definitions:
     title: UserPersonalSetting
     type: object
     properties:
-      allowed:
+      can_be_search:
+        type: boolean
+      can_send_mail:
         type: boolean
   none:
     title: none
