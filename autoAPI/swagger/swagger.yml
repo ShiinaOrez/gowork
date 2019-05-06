@@ -1121,12 +1121,18 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user not existed'
-  /message/{MsgID}:
+  /message/{id}:
     get:
       tags:
       - message
       description: Get the message information
       operationId: MessageController.GetMessageInformationByID
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
           description: ""
@@ -1141,6 +1147,12 @@ paths:
       - message
       description: Read a message, but it might be done by backend.
       operationId: MessageController.ReadMessage
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
           description: '{string} ok'
@@ -1153,6 +1165,12 @@ paths:
       - message
       description: Delete a message.
       operationId: MessageController.DeleteMessage
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
           description: '{string} delete successful'
@@ -1167,6 +1185,12 @@ paths:
       description: Get message not from platform, might from another company or a
         user
       operationId: MessageController.CompanyMessageList
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
           description: ""
@@ -1182,6 +1206,12 @@ paths:
       - message
       description: Get feedback message list.
       operationId: MessageController.FeedbackMessageList
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       responses:
         "200":
           description: ""
@@ -1197,6 +1227,18 @@ paths:
       - message
       description: Get platform message list.
       operationId: MessageController.PlatformMessageList
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: Query
+        name: Page
+        description: The page number
+        required: true
+        type: integer
+        format: int64
       responses:
         "200":
           description: ""
@@ -3066,22 +3108,15 @@ definitions:
     title: PlatformMessage
     type: object
     properties:
-      MessageID:
+      message_id:
         type: integer
         format: int64
-      is_recommand:
-        type: boolean
       message_text:
+        type: string
+      message_time:
         type: string
       readed:
         type: boolean
-      recommand_id:
-        type: integer
-        format: int64
-      recommand_type:
-        type: boolean
-      time:
-        type: string
   models.PlatformMessageList:
     title: PlatformMessageList
     type: object
