@@ -743,8 +743,16 @@
                     },
                     {
                         "in": "query",
-                        "name": "PageId",
-                        "description": "页码，从1开始",
+                        "name": "page",
+                        "description": "页码，从0开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit 可以理解为每页有多少",
                         "required": true,
                         "type": "integer",
                         "format": "int64"
@@ -995,10 +1003,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.UpdateEmailStep2Payload"
-                        }
+                        "description": "{}"
                     },
                     "400": {
                         "description": "{} 验证码不正确或失效"
@@ -1118,10 +1123,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.UpdateTelStep2Payload"
-                        }
+                        "description": "{}"
                     },
                     "400": {
                         "description": "{} 验证码不正确或失效"
@@ -1241,8 +1243,16 @@
                     },
                     {
                         "in": "query",
-                        "name": "PageId",
-                        "description": "页码",
+                        "name": "page",
+                        "description": "页码，从0开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit 可以视为每一页有多少",
                         "required": true,
                         "type": "integer",
                         "format": "int64"
@@ -1286,14 +1296,6 @@
                         "description": "The token to conform",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "PageId",
-                        "description": "页码",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -1489,8 +1491,16 @@
                     },
                     {
                         "in": "query",
-                        "name": "PageId",
-                        "description": "页码",
+                        "name": "page",
+                        "description": "页码 从0开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit, 每页的尺寸",
                         "required": true,
                         "type": "integer",
                         "format": "int64"
@@ -3950,24 +3960,13 @@
             "title": "ElitesList",
             "type": "object",
             "properties": {
-                "elite_list": {
+                "list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.EliteSimpleInformation"
                     }
                 },
-                "has_next": {
-                    "type": "boolean"
-                },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
+                "total": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -4357,24 +4356,13 @@
             "title": "MissionList",
             "type": "object",
             "properties": {
-                "has_next": {
-                    "type": "boolean"
-                },
-                "missions_list": {
+                "list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.MissionEntity"
                     }
                 },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
+                "total": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -4473,24 +4461,13 @@
             "title": "MissionListList",
             "type": "object",
             "properties": {
-                "has_next": {
-                    "type": "boolean"
-                },
-                "mission_lists": {
+                "list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.MissionListEntity"
                     }
                 },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
+                "total": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -4836,6 +4813,9 @@
             "properties": {
                 "code": {
                     "type": "string"
+                },
+                "email": {
+                    "type": "string"
                 }
             }
         },
@@ -4853,6 +4833,9 @@
             "type": "object",
             "properties": {
                 "code": {
+                    "type": "string"
+                },
+                "tel": {
                     "type": "string"
                 }
             }

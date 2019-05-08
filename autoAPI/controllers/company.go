@@ -44,7 +44,8 @@ func (u *CompanyController) CompanySearchIntelligent() {
 // @Title GetCompanyAttentionList
 // @Description Get company's attention elites list
 // @Param   Token       header    string      true        "The token to conform"
-// @Param 	PageId		query 	  int 		  true 		  "页码，从1开始"
+// @Param 	page		query 	  int 		  true 		  "页码，从0开始"
+// @Param 	limit		query 	  int 		  true 		  "limit 可以理解为每页有多少"
 // @Success 200 {object} models.ElitesList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
@@ -81,7 +82,8 @@ func (u *CompanyController) CompanyCancelAttention() {
 // @Description Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   id         path      int         true        "The company ID for get mission list"
-// @Param   PageId      query      int  		  true 		  "页码"
+// @Param   page       query      int  		  true 		  "页码，从0开始"
+// @Param 	limit 	   query	 int 		  true 		  "limit 可以视为每一页有多少"
 // @Success 200 {object} models.MissionList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
@@ -117,7 +119,7 @@ func (u *CompanyController) EditCompanyInfo() {
 // @Description 获取手机号，给相应手机号发验证码（长6位的数字）
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Payload         body      models.UpdateTelStep1Payload      true        "手机号"
-// @Success 200 {object} 	models.UpdateTelStep2Payload
+// @Success 200 {}
 // @Failure 400 {} 验证码不正确或失效
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
@@ -143,7 +145,7 @@ func (u *CompanyController) UpdateCompanyTelStep2() {
 // @Description 前端发送一个邮箱地址，给相应邮箱发送一个验证码（6位长数字）。
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Payload       body      models.UpdateEmailStep1Payload      true        "The email address to update"
-// @Success 200 {object} models.UpdateEmailStep2Payload
+// @Success 200 {}
 // @Failure 400 {} 验证码不正确或失效
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
@@ -247,12 +249,13 @@ func (u *CompanyController) CompanyCategoryAddTag() {
 }
 
 
-// TODO
+
 // @Title GetAllMissionListOfCompany
 // @Description Get a company all mission list. 获取一个公司的全部选材清单
 // @Param   Token       header    string      true        "The token to conform"
 // @Param 	id 			path 	 	int 		true 		"想查看的公司的ID"
-// @Param   PageId      query      int  		  true 		  "页码"
+// @Param   page      query      int  		  true 		  "页码 从0开始"
+// @Param   limit 		query    int  			true  	  "limit, 每页的尺寸"
 // @Success 200 {object} models.MissionListList
 // @Failure 401 {string} sign up failed
 // @Failure 404 {string} user | company not existed
@@ -264,7 +267,6 @@ func (u *CompanyController) CompanyAllMissionList() {
 // @Description 公司任务数目概览，包括结束，报名中，任务提交中.
 // @Param   id         path      int         true        "The company ID for get"
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   PageId      path      int  		  true 		  "页码"
 // @Success 200 {object} models.CompanyMissionNumberOverview
 // @Failure 401 {string} sign up failed
 // @Failure 404 {string} user | company not existed

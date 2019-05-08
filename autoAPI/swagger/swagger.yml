@@ -508,8 +508,14 @@ paths:
         required: true
         type: string
       - in: query
-        name: PageId
-        description: 页码，从1开始
+        name: page
+        description: 页码，从0开始
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: limit
+        description: limit 可以理解为每页有多少
         required: true
         type: integer
         format: int64
@@ -703,9 +709,7 @@ paths:
           $ref: '#/definitions/models.UpdateEmailStep1Payload'
       responses:
         "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.UpdateEmailStep2Payload'
+          description: '{}'
         "400":
           description: '{} 验证码不正确或失效'
         "401":
@@ -784,9 +788,7 @@ paths:
           $ref: '#/definitions/models.UpdateTelStep1Payload'
       responses:
         "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.UpdateTelStep2Payload'
+          description: '{}'
         "400":
           description: '{} 验证码不正确或失效'
         "401":
@@ -839,8 +841,14 @@ paths:
         type: integer
         format: int64
       - in: query
-        name: PageId
-        description: 页码
+        name: page
+        description: 页码，从0开始
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: limit
+        description: limit 可以视为每一页有多少
         required: true
         type: integer
         format: int64
@@ -871,12 +879,6 @@ paths:
         description: The token to conform
         required: true
         type: string
-      - in: path
-        name: PageId
-        description: 页码
-        required: true
-        type: integer
-        format: int64
       responses:
         "200":
           description: ""
@@ -957,8 +959,14 @@ paths:
         type: integer
         format: int64
       - in: query
-        name: PageId
-        description: 页码
+        name: page
+        description: 页码 从0开始
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: limit
+        description: limit, 每页的尺寸
         required: true
         type: integer
         format: int64
@@ -2664,19 +2672,11 @@ definitions:
     title: ElitesList
     type: object
     properties:
-      elite_list:
+      list:
         type: array
         items:
           $ref: '#/definitions/models.EliteSimpleInformation'
-      has_next:
-        type: boolean
-      page_now:
-        type: integer
-        format: int64
-      page_size:
-        type: integer
-        format: int64
-      rows_num:
+      total:
         type: integer
         format: int64
   models.FeedbackMessage:
@@ -2944,19 +2944,11 @@ definitions:
     title: MissionList
     type: object
     properties:
-      has_next:
-        type: boolean
-      missions_list:
+      list:
         type: array
         items:
           $ref: '#/definitions/models.MissionEntity'
-      page_now:
-        type: integer
-        format: int64
-      page_size:
-        type: integer
-        format: int64
-      rows_num:
+      total:
         type: integer
         format: int64
   models.MissionListCreateInformation:
@@ -3025,19 +3017,11 @@ definitions:
     title: MissionListList
     type: object
     properties:
-      has_next:
-        type: boolean
-      mission_lists:
+      list:
         type: array
         items:
           $ref: '#/definitions/models.MissionListEntity'
-      page_now:
-        type: integer
-        format: int64
-      page_size:
-        type: integer
-        format: int64
-      rows_num:
+      total:
         type: integer
         format: int64
   models.MissionStatistics:
@@ -3279,6 +3263,8 @@ definitions:
     properties:
       code:
         type: string
+      email:
+        type: string
   models.UpdateTelStep1Payload:
     title: UpdateTelStep1Payload
     type: object
@@ -3290,6 +3276,8 @@ definitions:
     type: object
     properties:
       code:
+        type: string
+      tel:
         type: string
   models.UserAttentionCompanyList:
     title: UserAttentionCompanyList

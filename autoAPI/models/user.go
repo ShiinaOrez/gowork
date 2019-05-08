@@ -267,8 +267,8 @@ type MissionEntity struct {
 }
 
 type MissionList struct {
-	MissionsList  []MissionEntity `json:"missions_list"`
-	Pagination
+	List  	[]MissionEntity `json:"list"`
+	Total 	int 			`json:"total"`
 }
 
 type SubmitMissionPayload struct {
@@ -328,8 +328,8 @@ type MissionListEntity struct {
 }
 
 type MissionListList struct {
-	MissionLists             []MissionListEntity `json:"mission_lists"`
-	Pagination
+	List             []MissionListEntity 	`json:"list"`
+	Total 			 int 					`json:"total"`
 }
 
 type CompanyInformation struct {
@@ -381,8 +381,8 @@ type EliteSimpleInformation struct {
 }
 
 type ElitesList struct {
-	Pagination
-    EliteList            []EliteSimpleInformation `json:"elite_list"`
+	Total 			int 					 `json:"total"`
+    List            []EliteSimpleInformation `json:"list"`
 }
 
 type PositionSimple struct {
@@ -562,6 +562,7 @@ type UpdateTelStep1Payload struct {
 }
 
 type UpdateTelStep2Payload struct {
+	Tel 			string 			`json:"tel"`
 	Code			string 			`json:"code"`
 }
 
@@ -570,5 +571,6 @@ type UpdateEmailStep1Payload struct {
 }
 
 type UpdateEmailStep2Payload struct {
+	Email 			string 			`json:"email"`
 	Code 			string			`json:"code"`
 }
