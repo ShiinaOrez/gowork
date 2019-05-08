@@ -441,12 +441,12 @@ type Positions struct {
 }
 
 type PlatformMessage struct {
-	MessageID            int           `json: message_id`
+	MessageID            int           `json:"message_id"`
 	MessageText          string        `json:"message_text"`
-	Time                 string        `json:"time"`
-	IsRecommand          bool          `json:"is_recommand"`
-	RecommandType        bool          `json:"recommand_type"`
-	RecommandID          int           `json:"recommand_id"`
+	MessageTime          string        `json:"message_time"`
+//	IsRecommand          bool          `json:"is_recommand"`
+//	RecommandType        bool          `json:"recommand_type"`
+//	RecommandID          int           `json:"recommand_id"`
 	Readed               bool          `json:"readed"`
 }
 
