@@ -1689,6 +1689,22 @@
                         "description": "The token to conform",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "页码 从0开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit, 每页的尺寸",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -1983,27 +1999,7 @@
                 }
             }
         },
-        "/mission/tag/list": {
-            "get": {
-                "tags": [
-                    "mission"
-                ],
-                "description": "Get the mission tags list.",
-                "operationId": "MissionController.GetStaticMissionTagList",
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.TagList"
-                        }
-                    },
-                    "407": {
-                        "description": "{string} something wrong"
-                    }
-                }
-            }
-        },
-        "/mission/{Mid}": {
+        "/mission/{id}": {
             "put": {
                 "tags": [
                     "mission"
@@ -2020,7 +2016,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "Mid",
+                        "name": "id",
                         "description": "The mission id to modify",
                         "required": true,
                         "type": "integer",
@@ -2064,7 +2060,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "Mid",
+                        "name": "id",
                         "description": "The mission id to submit",
                         "required": true,
                         "type": "integer",
@@ -2114,7 +2110,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "Mid",
+                        "name": "id",
                         "description": "The mission id to delete",
                         "required": true,
                         "type": "integer",
@@ -2134,7 +2130,7 @@
                 }
             }
         },
-        "/mission/{Mid}/feedback": {
+        "/mission/{id}/feedback": {
             "get": {
                 "tags": [
                     "mission"
@@ -2151,7 +2147,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "Mid",
+                        "name": "id",
                         "description": "The mission id to give up",
                         "required": true,
                         "type": "integer",
@@ -2174,7 +2170,7 @@
                 }
             }
         },
-        "/mission/{Mid}/info": {
+        "/mission/{id}/info": {
             "get": {
                 "tags": [
                     "mission"
@@ -2191,7 +2187,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "Mid",
+                        "name": "id",
                         "description": "The mission id to get",
                         "required": true,
                         "type": "integer",
@@ -2214,7 +2210,7 @@
                 }
             }
         },
-        "/mission/{Mid}/statistics": {
+        "/mission/{id}/statistics": {
             "get": {
                 "tags": [
                     "mission"
@@ -2231,7 +2227,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "Mid",
+                        "name": "id",
                         "description": "The mission id to get",
                         "required": true,
                         "type": "integer",
@@ -2254,7 +2250,7 @@
                 }
             }
         },
-        "/mission/{Mid}/status": {
+        "/mission/{id}/status": {
             "get": {
                 "tags": [
                     "mission"
@@ -2271,7 +2267,7 @@
                     },
                     {
                         "in": "path",
-                        "name": "Mid",
+                        "name": "id",
                         "description": "The mission id to Gain",
                         "required": true,
                         "type": "integer",
@@ -2287,6 +2283,52 @@
                     },
                     "404": {
                         "description": "{string} user | mission not existed"
+                    }
+                }
+            }
+        },
+        "/mission/{id}/tag/list": {
+            "get": {
+                "tags": [
+                    "mission"
+                ],
+                "description": "Get the mission tags list.",
+                "operationId": "MissionController.GetStaticMissionTagList",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The mission id to get",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "页码 从0开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit, 每页的尺寸",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TagList"
+                        }
+                    },
+                    "407": {
+                        "description": "{string} something wrong"
                     }
                 }
             }
@@ -2460,6 +2502,22 @@
                         "required": true,
                         "type": "integer",
                         "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "页码 从0开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit, 每页的尺寸",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -2563,16 +2621,6 @@
                 ],
                 "description": "Get ability tags list.",
                 "operationId": "TagController.TagAbilityList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2593,16 +2641,6 @@
                 ],
                 "description": "Get address tags list.",
                 "operationId": "TagController.TagAddressList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2623,16 +2661,6 @@
                 ],
                 "description": "Get character tags list.",
                 "operationId": "TagController.TagCharacterList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2653,16 +2681,6 @@
                 ],
                 "description": "Get grade tags list.",
                 "operationId": "TagController.TagGradeList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2683,16 +2701,6 @@
                 ],
                 "description": "Get industry tag list.",
                 "operationId": "TagController.TagIndustryList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2713,16 +2721,6 @@
                 ],
                 "description": "Get position tag list.",
                 "operationId": "TagController.TagPositionList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2746,16 +2744,6 @@
                 ],
                 "description": "Get university tags list.",
                 "operationId": "TagController.TagUniversityList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2776,16 +2764,6 @@
                 ],
                 "description": "Get welfare tags list.",
                 "operationId": "TagController.TagWelfareList",
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page number.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -2816,10 +2794,19 @@
                     },
                     {
                         "in": "query",
-                        "name": "Page",
-                        "description": "The page you want.",
+                        "name": "page",
+                        "description": "页码 从0开始",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit, 每页的尺寸",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
                     }
                 ],
                 "responses": {
@@ -3633,24 +3620,13 @@
             "title": "CompanyMessageList",
             "type": "object",
             "properties": {
-                "has_next": {
-                    "type": "boolean"
-                },
-                "message_list": {
+                "list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.CompanyMessage"
                     }
                 },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
+                "total": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -3975,26 +3951,11 @@
             "title": "EliteList",
             "type": "object",
             "properties": {
-                "elites_list": {
+                "list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.Elite"
                     }
-                },
-                "has_next": {
-                    "type": "boolean"
-                },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
-                    "type": "integer",
-                    "format": "int64"
                 }
             }
         },
@@ -4487,9 +4448,6 @@
             "title": "MissionListInformation",
             "type": "object",
             "properties": {
-                "has_next": {
-                    "type": "boolean"
-                },
                 "mission_list": {
                     "type": "array",
                     "items": {
@@ -4505,15 +4463,7 @@
                 "mission_list_name": {
                     "type": "string"
                 },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
+                "total": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -4813,22 +4763,7 @@
                 "category_name": {
                     "type": "string"
                 },
-                "has_next": {
-                    "type": "boolean"
-                },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "tags_list": {
+                "list": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.Tag"
@@ -4902,18 +4837,7 @@
                         "$ref": "#/definitions/models.CompanySimpleInformation"
                     }
                 },
-                "has_next": {
-                    "type": "boolean"
-                },
-                "page_now": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "page_size": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "rows_num": {
+                "total": {
                     "type": "integer",
                     "format": "int64"
                 }

@@ -67,7 +67,8 @@ func (u *UserController) UserCancelAttentionCompany() {
 // @Title UserAttentionList
 // @Description Get user's attention list
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Page        query     string      true        "The page you want."
+// @Param   page      query      int  		  true 		  "页码 从0开始"
+// @Param   limit 		query    int  			true  	  "limit, 每页的尺寸"
 // @Success 200 {object} models.UserAttentionCompanyList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed

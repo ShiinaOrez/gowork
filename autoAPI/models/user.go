@@ -147,8 +147,8 @@ type CompanySimpleInformation struct {
 }
 
 type UserAttentionCompanyList struct {
-	CompanyList   []CompanySimpleInformation  `json:"company_list"`
-	Pagination
+	List   []CompanySimpleInformation  `json:"company_list"`
+	Total 			int 					`json:"total"`
 }
 
 type EditSettingBody struct {
@@ -208,8 +208,7 @@ type Tag struct {
 type TagList struct {
 	CategoryID    int        `json:"category_id"`
 	CategoryName  string     `json:"category_name"`
-	TagsList      []Tag      `json:"tags_list"`
-	Pagination
+	TagsList      []Tag      `json:"list"`
 }
 
 type Elite struct {
@@ -228,8 +227,7 @@ type Elite struct {
 }
 
 type EliteList struct {
-	ElitesList    []Elite     `json:"elites_list"`
-	Pagination
+	List    		[]*Elite       	`json:"list"`
 }
 
 type MissionInformation struct {
@@ -309,11 +307,11 @@ type MissionInMissionList struct {
 }
 
 type MissionListInformation struct {
-	MissionListName          string       `json:"mission_list_name"`
-	MissionListCreateTime    string       `json:"mission_list_create_time"`
-	MissionListIntro         string       `json:"mission_list_intro"`
-	MissionList              []MissionInMissionList `json:"mission_list"`
-	Pagination
+	MissionListName          string       			`json:"mission_list_name"`
+	MissionListCreateTime    string       			`json:"mission_list_create_time"`
+	MissionListIntro         string       			`json:"mission_list_intro"`
+	List              		[]MissionInMissionList  `json:"mission_list"`
+	Total 					int 					`json:"total"`
 }
 
 type MissionListEntity struct {
@@ -500,8 +498,8 @@ type CompanyMissionNumberOverview struct {
 }
 
 type CompanyMessageList struct {
-	Pagination
-	MessageList          []CompanyMessage `json:"message_list"`
+	Total 		  int 				`json:"total"`
+	List          []CompanyMessage  `json:"list"`
 }
 
 

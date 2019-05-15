@@ -12,11 +12,11 @@ type MissionController struct {
 // @Title MissionInformationByID
 // @Description Mission information.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to get"
+// @Param   id         path      int         true        "The mission id to get"
 // @Success 200 {object} models.MissionInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
-// @router /:Mid/info [get]
+// @router /:id/info [get]
 func (u *MissionController) MissionInfo() {
 }
 
@@ -34,37 +34,37 @@ func (u *MissionController) MissionSearch() {
 // @Title GainMission
 // @Description Join a mission if permitted.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to Gain"
+// @Param   id         path      int         true        "The mission id to Gain"
 // @Success 200 {string} Join successful.
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
 // @Failure 407 {string} gain failed
-// @router /:Mid [put]
+// @router /:id [put]
 func (u *MissionController) GainMission() {
 }
 
 // @Title GetMissionStatusByID
 // @Description Get the status between user and mission.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to Gain"
+// @Param   id         path      int         true        "The mission id to Gain"
 // @Success 200 {int} 1 for gained, 0 for not
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
-// @router /:Mid/status [get]
+// @router /:id/status [get]
 func (u *MissionController) MissionStatus() {
 }
 
 // @Title SubmitMissionByID
 // @Description Submit the works for mission
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to submit"
+// @Param   id         path      int         true        "The mission id to submit"
 // @Param   Payload     body      models.SubmitMissionPayload    true    "The payload"
 // @Success 200 {string} submit successfully!
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
 // @Failure 406 {string} File error
 // @Failure 407 {string} submit failed
-// @router /:Mid [post]
+// @router /:id [post]
 func (u *MissionController) SubmitMission() {
 }
 
@@ -83,23 +83,23 @@ func (u *MissionController) MissionUploadFile() {
 // @Title GiveUpMission
 // @Description If you want to give up mission...
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to give up"
+// @Param   id         path      int         true        "The mission id to give up"
 // @Success 200 {string} give up successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
 // @Failure 407 {string} never gain this mission
-// @router /:Mid [delete]
+// @router /:id [delete]
 func (u *MissionController) GiveUpMission() {
 }
 
 // @Title GetMissionFeedback
 // @Description Get the mission feedback.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to give up"
+// @Param   id         path      int         true        "The mission id to give up"
 // @Success 200 {object} models.CompanyFeedback
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
-// @router /:Mid/feedback [get]
+// @router /:id/feedback [get]
 func (u *MissionController) MissionFeedback() {
 }
 
@@ -117,41 +117,44 @@ func (u *MissionController) CreateMission() {
 // @Title ModifyMissionByID
 // @Description Company modify mission information.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to modify"
+// @Param   id         path      int         true        "The mission id to modify"
 // @Param   Payload     body      models.CreateMissionPayload     true    "The payload"
 // @Success 200 {string} modify successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} mission not existed
-// @router /:Mid [put]
+// @router /:id [put]
 func (u *MissionController) ModifyMission() {
 }
 
 // @Title DeleteMissionByID
 // @Description Delete a mission by ID.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to delete"
+// @Param   id         path      int         true        "The mission id to delete"
 // @Success 200 {string} delete successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} mission not existed
-// @router /:Mid [delete]
+// @router /:id [delete]
 func (u *MissionController) DeleteMission() {
 }
 
 // @Title GetStaticMissionTagList
 // @Description Get the mission tags list.
+// @Param   id         path      int         true        "The mission id to get"
+// @Param   page      query      int  		  true 		  "页码 从0开始"
+// @Param   limit 		query    int  			true  	  "limit, 每页的尺寸"
 // @Success 200 {object} models.TagList
 // @Failure 407 {string} something wrong
-// @router /tag/list [get]
+// @router /:id/tag/list [get]
 func (u *MissionController) MissionStaticTagList() {
 }
 
 // @Title MissionStatisticsByID
 // @Description New user must sign up.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Mid         path      int         true        "The mission id to get"
+// @Param   id         path      int         true        "The mission id to get"
 // @Success 200 {object} models.MissionStatistics
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} mission not existed
-// @router /:Mid/statistics [get]
+// @router /:id/statistics [get]
 func (u *MissionController) MissionStatistics() {
 }

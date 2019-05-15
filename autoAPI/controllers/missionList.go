@@ -11,6 +11,8 @@ type MissionListController struct {
 // @Description Get missionList information by ID.
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   MlID        path      int         true        "The missionList ID to get information"
+// @Param   page        query      int  		  true 		  "页码 从0开始"
+// @Param   limit 		query    int  			true  	  "limit, 每页的尺寸"
 // @Success 200 {object} models.MissionListInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} missionList not existed
