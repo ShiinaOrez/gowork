@@ -24,6 +24,8 @@ func (u *MissionController) MissionInfo() {
 // @Description Search mission.
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   Payload     body      models.SearchPayload    true     "The payload"
+// @Param   page      query      int  		  true 		  "页码 从0开始"
+// @Param   limit 		query    int  			true  	  "limit, 每页的尺寸"
 // @Success 200 {object} models.MissionList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed

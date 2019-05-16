@@ -252,6 +252,12 @@ type SearchPayload struct {
 	TagList       []TagPayload `json:"tag_list"`
 }
 
+
+type MissionListSearchPayload struct {
+	Pattern       string      `json:"pattern"`
+	TagList       []TagPayload `json:"tag_list"`
+}
+
 type MissionEntity struct {
 	MissionID     int         `json:"mission_id"`
 	MissionName   string      `json:"mission_name"`
@@ -327,6 +333,21 @@ type MissionListEntity struct {
 
 type MissionListList struct {
 	List             []MissionListEntity 	`json:"list"`
+	Total 			 int 					`json:"total"`
+}
+
+type MissionListSearchEntity struct {
+	MissionListID            int          	`json:"mission_list_id"`
+	MissionListName          string       	`json:"mission_list_name"`
+	MissionListCreateTime    string       	`json:"mission_list_create_time"`
+	CompanyID                int          	`json:"company_id"`
+	CompanyName              string       	`json:"company_name"`
+	CompanyLogo              string       	`json:"company_logo"`
+}
+
+
+type MissionListSearchList struct {
+	List             []MissionListSearchEntity 	`json:"list"`
 	Total 			 int 					`json:"total"`
 }
 
