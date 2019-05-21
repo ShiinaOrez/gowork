@@ -589,26 +589,6 @@ paths:
         "404":
           description: '{string} company | category not existed'
   /company/info:
-    get:
-      tags:
-      - company
-      description: Get company base information.
-      operationId: CompanyController.CompanyBaseInformationByID
-      parameters:
-      - in: header
-        name: Token
-        description: The token to conform
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.CompanyBaseInformation'
-        "401":
-          description: '{string} auth failed'
-        "404":
-          description: '{string} company not existed'
     put:
       tags:
       - company
@@ -2366,28 +2346,6 @@ definitions:
     properties:
       if_allow:
         type: boolean
-  models.CompanyBaseInformation:
-    title: CompanyBaseInformation
-    type: object
-    properties:
-      comapany_legal_name:
-        type: string
-      company_address:
-        type: string
-      company_avatar:
-        type: string
-      company_email:
-        type: string
-      company_intro:
-        type: string
-      company_name:
-        type: string
-      company_tel:
-        type: string
-      tag_list:
-        type: array
-        items:
-          $ref: '#/definitions/models.Tag'
   models.CompanyCancelAttentionBody:
     title: CompanyCancelAttentionBody
     type: object

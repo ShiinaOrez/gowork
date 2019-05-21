@@ -21,15 +21,6 @@ type CompanyController struct {
 func (u *CompanyController) CompanyInfo() {
 }
 
-// @Title CompanyBaseInformationByID
-// @Description Get company base information.
-// @Param   Token       header    string      true        "The token to conform"
-// @Success 200 {object} models.CompanyBaseInformation
-// @Failure 401 {string} auth failed
-// @Failure 404 {string} company not existed
-// @router /info [get]
-func (u *CompanyController) CompanyBaseInfo() {
-}
 
 // @Title CompanySearchByIntelligent
 // @Description Search company by intelligent way.
