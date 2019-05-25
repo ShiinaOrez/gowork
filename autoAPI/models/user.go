@@ -147,8 +147,8 @@ type CompanySimpleInformation struct {
 }
 
 type UserAttentionCompanyList struct {
-	CompanyList   []CompanySimpleInformation  `json:"company_list"`
-	Pagination
+	List   []CompanySimpleInformation  `json:"company_list"`
+	Total 			int 					`json:"total"`
 }
 
 type EditSettingBody struct {
@@ -208,8 +208,7 @@ type Tag struct {
 type TagList struct {
 	CategoryID    int        `json:"category_id"`
 	CategoryName  string     `json:"category_name"`
-	TagsList      []Tag      `json:"tags_list"`
-	Pagination
+	TagsList      []Tag      `json:"list"`
 }
 
 type Elite struct {
@@ -228,8 +227,7 @@ type Elite struct {
 }
 
 type EliteList struct {
-	ElitesList    []Elite     `json:"elites_list"`
-	Pagination
+	List    		[]*Elite       	`json:"list"`
 }
 
 type MissionInformation struct {
@@ -254,6 +252,12 @@ type SearchPayload struct {
 	TagList       []TagPayload `json:"tag_list"`
 }
 
+
+type MissionListSearchPayload struct {
+	Pattern       string      `json:"pattern"`
+	TagList       []TagPayload `json:"tag_list"`
+}
+
 type MissionEntity struct {
 	MissionID     int         `json:"mission_id"`
 	MissionName   string      `json:"mission_name"`
@@ -267,8 +271,8 @@ type MissionEntity struct {
 }
 
 type MissionList struct {
-	MissionsList  []MissionEntity `json:"missions_list"`
-	Pagination
+	List  	[]MissionEntity `json:"list"`
+	Total 	int 			`json:"total"`
 }
 
 type SubmitMissionPayload struct {
@@ -309,11 +313,11 @@ type MissionInMissionList struct {
 }
 
 type MissionListInformation struct {
-	MissionListName          string       `json:"mission_list_name"`
-	MissionListCreateTime    string       `json:"mission_list_create_time"`
-	MissionListIntro         string       `json:"mission_list_intro"`
-	MissionList              []MissionInMissionList `json:"mission_list"`
-	Pagination
+	MissionListName          string       			`json:"mission_list_name"`
+	MissionListCreateTime    string       			`json:"mission_list_create_time"`
+	MissionListIntro         string       			`json:"mission_list_intro"`
+	List              		[]MissionInMissionList  `json:"mission_list"`
+	Total 					int 					`json:"total"`
 }
 
 type MissionListEntity struct {
@@ -328,8 +332,23 @@ type MissionListEntity struct {
 }
 
 type MissionListList struct {
-	MissionLists             []MissionListEntity `json:"mission_lists"`
-	Pagination
+	List             []MissionListEntity 	`json:"list"`
+	Total 			 int 					`json:"total"`
+}
+
+type MissionListSearchEntity struct {
+	MissionListID            int          	`json:"mission_list_id"`
+	MissionListName          string       	`json:"mission_list_name"`
+	MissionListCreateTime    string       	`json:"mission_list_create_time"`
+	CompanyID                int          	`json:"company_id"`
+	CompanyName              string       	`json:"company_name"`
+	CompanyLogo              string       	`json:"company_logo"`
+}
+
+
+type MissionListSearchList struct {
+	List             []MissionListSearchEntity 	`json:"list"`
+	Total 			 int 					`json:"total"`
 }
 
 type CompanyInformation struct {
@@ -381,8 +400,8 @@ type EliteSimpleInformation struct {
 }
 
 type ElitesList struct {
-	Pagination
-    EliteList            []EliteSimpleInformation `json:"elite_list"`
+	Total 			int 					 `json:"total"`
+    List            []EliteSimpleInformation `json:"list"`
 }
 
 type PositionSimple struct {
@@ -500,8 +519,8 @@ type CompanyMissionNumberOverview struct {
 }
 
 type CompanyMessageList struct {
-	Pagination
-	MessageList          []CompanyMessage `json:"message_list"`
+	Total 		  int 				`json:"total"`
+	List          []CompanyMessage  `json:"list"`
 }
 
 
@@ -562,6 +581,7 @@ type UpdateTelStep1Payload struct {
 }
 
 type UpdateTelStep2Payload struct {
+	Tel 			string 			`json:"tel"`
 	Code			string 			`json:"code"`
 }
 
@@ -570,6 +590,7 @@ type UpdateEmailStep1Payload struct {
 }
 
 type UpdateEmailStep2Payload struct {
+	Email 			string 			`json:"email"`
 	Code 			string			`json:"code"`
 }
 

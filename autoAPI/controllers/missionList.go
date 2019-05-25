@@ -11,12 +11,28 @@ type MissionListController struct {
 // @Description Get missionList information by ID.
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   MlID        path      int         true        "The missionList ID to get information"
+// @Param   page        query      int  		  true 		  "页码 从0开始"
+// @Param   limit 		query    int  			true  	  "limit, 每页的尺寸"
 // @Success 200 {object} models.MissionListInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} missionList not existed
 // @router /:MlID [get]
 func (u *MissionListController) GetMissionListInformation() {
 }
+
+// @Title SearchForMissionList
+// @Description 搜索选材清单
+// @Param   Token       header    string      true        "The token to conform"
+// @Param   page        query      int  	  true        "页码 从0开始"
+// @Param   limit 		query    int  		  true  	  "limit, 每页的尺寸"
+// @Param   Payload     body      models.MissionListSearchPayload    true     "Payload"
+// @Success 200 {object} models.MissionListSearchList
+// @Failure 401 {string} auth failed
+// @Failure 404 {string} user not existed
+// @router /search [post]
+func (u *MissionListController) MissionListSearch() {
+}
+
 
 // @Title DeleteMissionListByID
 // @Description Delete a missionList by ID.

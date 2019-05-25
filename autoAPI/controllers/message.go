@@ -62,6 +62,8 @@ func (u *MessageController) DeleteMessage() {
 // @Title CompanyMessageList
 // @Description Get message not from platform, might from another company or a user
 // @Param   Token       header    string      true        "The token to conform"
+// @Param   page      query      int  		  true 		  "页码 从0开始"
+// @Param   limit 		query    int  			true  	  "limit, 每页的尺寸"
 // @Success 200 {object} models.CompanyMessageList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} company not existed
