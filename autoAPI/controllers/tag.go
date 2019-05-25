@@ -9,74 +9,48 @@ type TagController struct {
 	beego.Controller
 }
 
-// @Title TagIndustryList
-// @Description Get industry tag list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {string} none tag exist
-// @router /industry/list [get]
-func (u *TagController) TagIndustryList() {
+// @Title CreateTag
+// @Description Provide category id and tag information.
+// @Param   Payload   body   models.CreateTagPayload   true   ""
+// @Success 200   {object}   models.CreateTagReturn
+// @Failure 400   {string}   bad request
+// @Failure 401   {string}   authentication fail.
+// @router / [post]
+func (t *TagController) CreateTag() {
+
 }
 
-// @Title TagPositionList
-// @Description Get position tag list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {object} none tag exist
-// @router /position/list [get]
-func (u *TagController) TagPositionList() {
+// @Title DeleteTag
+// @Description Delete tag by tag id.
+// @Param   TagID   path   int   "The tag id for query and "
+// @Success 200   {string}   delete successful
+// @Failure 401   {string}   authentication fail.
+// @Failure 404   {string}   tag not found
+// @router /:id  [delete]
+func (t *TagController) DeleteTag() {
+
 }
 
-// @Title TagUniversityList
-// @Description Get university tags list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {string} none tag exist
-// @router /university/list [get]
-func (u *TagController) TagUniversityList() {
+// @Title UpdateTag
+// @Description Update a tag, but just change the tag name
+// @Param   TagID   path   int   "The tag id to query"
+// @Param   UpdateTagPayload   body   true   models.UpdateTagPayload
+// @Success 200   {string}   OK
+// @Failure 400   {string}   bad request
+// @Failure 401   {string}   authentication fail
+// @Failure 404   {string}   not found
+// router /:id  [put]
+func (t *TagController) UpdateTag() {
+
 }
 
-// @Title TagAbilityList
-// @Description Get ability tags list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {string} none tag exist
-// @router /ability/list [get]
-func (u *TagController) TagAbilityList() {
-}
+// @Title GetTagInformation
+// @Description Get the tag information
+// @Param   TagID   path   int   "The tag id to query."
+// @Success 200   {object}   models.GetTagReturn
+// @Failure 401   {string}   authentication fail
+// @Failure 404   {string}   not found
+// @router /:id  [get]
+func (t *TagController) GetTag() {
 
-// @Title TagCharacterList
-// @Description Get character tags list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {string} none tag exist
-// @router /character/list [get]
-func (u *TagController) TagCharacterList() {
-}
-
-// @Title TagGradeList
-// @Description Get grade tags list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {string} none tag exist
-// @router /grade/list [get]
-func (u *TagController) TagGradeList() {
-}
-
-// @Title TagAddressList
-// @Description Get address tags list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {string} none tag exist
-// @router /address/list [get]
-func (u *TagController) TagAddressList() {
-}
-
-// @Title TagWelfareList
-// @Description Get welfare tags list.
-// @Param   page    query    int        true        "The page number."
-// @Success 200 {object} models.TagList
-// @Success 201 {string} none tag exist
-// @router /welfare/list [get]
-func (u *TagController) TagWelfareList() {
 }

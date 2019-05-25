@@ -10,11 +10,12 @@ type MessageController struct {
 // @Title PlatformMessageList
 // @Description Get platform message list.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Page        Query     int         true        "The page number"
+// @Param   Page        query     int         true        "The page number"
+// @Param   id          path      int         true        "UserID"
 // @Success 200 {object} models.PlatformMessageList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | company not existed
-// @router /platform/list [get]
+// @router /:id/platform/list [get]
 func (u *MessageController) GetPlatformMessageList() {
 }
 

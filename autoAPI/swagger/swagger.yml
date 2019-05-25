@@ -1233,7 +1233,7 @@ paths:
         description: The token to conform
         required: true
         type: string
-      - in: Query
+      - in: query
         name: Page
         description: The page number
         required: true
@@ -1902,7 +1902,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user not existed'
-  /user/attention/{Cid}:
+  /user/attention/{id}:
     put:
       tags:
       - user
@@ -1915,7 +1915,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: Cid
+        name: id
         description: The company id
         required: true
         type: string
@@ -1929,7 +1929,7 @@ paths:
     post:
       tags:
       - user
-      description: Pay attention to a company by Cid
+      description: Pay attention to a company by id
       operationId: UserController.UserPayAttentionToCompany
       parameters:
       - in: header
@@ -1938,7 +1938,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: Cid
+        name: id
         description: The company id
         required: true
         type: string
@@ -1951,7 +1951,7 @@ paths:
           description: '{string} user | company not existed'
         "405":
           description: '{string} already attention'
-  /user/attention/{Cid}/status:
+  /user/attention/{id}/status:
     get:
       tags:
       - user
@@ -1964,7 +1964,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: Cid
+        name: id
         description: The company id
         required: true
         type: string
@@ -1975,7 +1975,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user | company not existed'
-  /user/attention/list:
+  /user/attentions:
     get:
       tags:
       - user

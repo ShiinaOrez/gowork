@@ -1745,7 +1745,7 @@
                         "type": "string"
                     },
                     {
-                        "in": "Query",
+                        "in": "query",
                         "name": "Page",
                         "description": "The page number",
                         "required": true,
@@ -2789,7 +2789,116 @@
                 }
             }
         },
-        "/user/attention/list": {
+        "/user/attention/{id}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "User cancel pay attention to a company by id.",
+                "operationId": "UserController.UserCancelAttentionToCompany",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The company id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} cancel successful"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed | haven't attention"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Pay attention to a company by id",
+                "operationId": "UserController.UserPayAttentionToCompany",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The company id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} pay attention successful"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    },
+                    "405": {
+                        "description": "{string} already attention"
+                    }
+                }
+            }
+        },
+        "/user/attention/{id}/status": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Query is a user-company attention relationship existed.",
+                "operationId": "UserController.UserAttentionCompanyStatus",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The company id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{int}"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
+        "/user/attentions": {
             "get": {
                 "tags": [
                     "user"
@@ -2824,115 +2933,6 @@
                     },
                     "404": {
                         "description": "{string} user not existed"
-                    }
-                }
-            }
-        },
-        "/user/attention/{Cid}": {
-            "put": {
-                "tags": [
-                    "user"
-                ],
-                "description": "User cancel pay attention to a company by id.",
-                "operationId": "UserController.UserCancelAttentionToCompany",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company id",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} cancel successful"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} user | company not existed | haven't attention"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "user"
-                ],
-                "description": "Pay attention to a company by Cid",
-                "operationId": "UserController.UserPayAttentionToCompany",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company id",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} pay attention successful"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} user | company not existed"
-                    },
-                    "405": {
-                        "description": "{string} already attention"
-                    }
-                }
-            }
-        },
-        "/user/attention/{Cid}/status": {
-            "get": {
-                "tags": [
-                    "user"
-                ],
-                "description": "Query is a user-company attention relationship existed.",
-                "operationId": "UserController.UserAttentionCompanyStatus",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token to conform",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The company id",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{int}"
-                    },
-                    "401": {
-                        "description": "{string} auth failed"
-                    },
-                    "404": {
-                        "description": "{string} user | company not existed"
                     }
                 }
             }

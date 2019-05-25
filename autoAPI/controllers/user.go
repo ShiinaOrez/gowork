@@ -16,7 +16,7 @@ type UserController struct {
 // @Success 200 {object} models.GetUserInformation
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed
-// @router /:id/info [Get]
+// @router /info/:ID [Get]
 func (u *UserController) UserInfo() {
 }
 
@@ -42,25 +42,25 @@ func (u *UserController) UserMissionInfo() {
 }
 
 // @Title UserPayAttentionToCompany
-// @Description Pay attention to a company by Cid
+// @Description Pay attention to a company by id
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Cid         path      string      true        "The company id"
+// @Param   id         path      string      true        "The company id"
 // @Success 200 {string} pay attention successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | company not existed
 // @Failure 405 {string} already attention
-// @router /attention/:Cid [post]
+// @router /attention/:id [post]
 func (u *UserController) UserAttentionCompany() {
 }
 
 // @Title UserCancelAttentionToCompany
 // @Description User cancel pay attention to a company by id.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Cid         path      string      true        "The company id"
+// @Param   id         path      string      true        "The company id"
 // @Success 200 {string} cancel successful
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | company not existed | haven't attention
-// @router /attention/:Cid [put]
+// @router /attention/:id [put]
 func (u *UserController) UserCancelAttentionCompany() {
 }
 
@@ -71,18 +71,18 @@ func (u *UserController) UserCancelAttentionCompany() {
 // @Success 200 {object} models.UserAttentionCompanyList
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed
-// @router /attention/list [get]
+// @router /attentions [get]
 func (u *UserController) UserAttentionList() {
 }
 
 // @Title UserAttentionCompanyStatus
 // @Description Query is a user-company attention relationship existed.
 // @Param   Token       header    string      true        "The token to conform"
-// @Param   Cid         path      string      true        "The company id"
+// @Param   id         path      string      true        "The company id"
 // @Success 200 {int}
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | company not existed
-// @router /attention/:Cid/status [get]
+// @router /attention/:id/status [get]
 func (u *UserController) AttentionCompanyStatu() {
 }
 

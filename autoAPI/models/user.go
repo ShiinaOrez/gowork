@@ -566,9 +566,28 @@ type UpdateTelStep2Payload struct {
 }
 
 type UpdateEmailStep1Payload struct {
-	Email				string 			`json:"email"`
+	Email           string 			`json:"email"`
 }
 
 type UpdateEmailStep2Payload struct {
 	Code 			string			`json:"code"`
+}
+
+type CreateTagPayload struct {
+	CategoryID      uint64     `json:"category_id"`
+	TagName         string     `json:"tag_name`
+}
+
+type CreateTagReturn struct {
+	Msg             string     `json:"msg"`
+	TagID           uint64     `json:"tag_id`
+}
+
+type UpdateTagPayload struct {
+	Name            string     `json:"name"`
+}
+
+type GetTagReturn struct {
+	Name            string     `json:"name"`
+	CategoryID      uint64     `json:"category_id"`
 }
