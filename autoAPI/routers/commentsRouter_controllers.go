@@ -126,7 +126,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"],
         beego.ControllerComments{
-            Method: "CreateCategory",
+            Method: "CategoryCreate",
             Router: `/`,
             AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
@@ -135,7 +135,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"],
         beego.ControllerComments{
-            Method: "GetCategory",
+            Method: "GetCategoryInfo",
             Router: `/:id`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
@@ -153,7 +153,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"],
         beego.ControllerComments{
-            Method: "AddTagsToCategory",
+            Method: "AddTagToCategory",
             Router: `/:id/addTags`,
             AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
@@ -171,7 +171,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"],
         beego.ControllerComments{
-            Method: "GetCategoryForCompany",
+            Method: "CategoryForCompany",
             Router: `/forCompany`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
@@ -180,7 +180,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"],
         beego.ControllerComments{
-            Method: "GetCategoryForElite",
+            Method: "CategoryForElite",
             Router: `/forElite`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
@@ -189,7 +189,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:CategoryController"],
         beego.ControllerComments{
-            Method: "GetCategoryForMission",
+            Method: "CategoryForMission",
             Router: `/forMission`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
@@ -756,18 +756,18 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "EditSetting",
+            Method: "UserBaseInfo",
             Router: `/info`,
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "UserBaseInfo",
+            Method: "EditSetting",
             Router: `/info`,
-            AllowHTTPMethods: []string{"get"},
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

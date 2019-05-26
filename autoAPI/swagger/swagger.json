@@ -646,13 +646,310 @@
                 }
             }
         },
-        "/category/": {},
-        "/category/forCompany": {},
-        "/category/forElite": {},
-        "/category/forMission": {},
-        "/category/{id}": {},
-        "/category/{id}/addTags": {},
-        "/category/{id}/removeTag": {},
+        "/category/": {
+            "post": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Create a category, provide the category name.",
+                "operationId": "CategoryController.CreateCategory",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The payload of create category.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateCategoryPayload"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateCategoryReturn"
+                        }
+                    },
+                    "400": {
+                        "description": "{string} bad request"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
+        "/category/forCompany": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Get the category list for elite search.",
+                "operationId": "CategoryController.GetCategoryForCompany",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CompanySearchList"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    }
+                }
+            }
+        },
+        "/category/forElite": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Get the category list for elite search.",
+                "operationId": "CategoryController.GetCategoryForElite",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoryForSearch"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    }
+                }
+            }
+        },
+        "/category/forMission": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Get the category list for elite search.",
+                "operationId": "CategoryController.GetCategoryForMission",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoryForSearch"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    }
+                }
+            }
+        },
+        "/category/{id}": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Get a category information by category id.",
+                "operationId": "CategoryController.CategoryGetInformation",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id to query category.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetCategoryReturn"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user not existed"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Delete a category by id.",
+                "operationId": "CategoryController.DeleteCategory",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id to query category.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} OK"
+                    },
+                    "400": {
+                        "description": "{string} bad request"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
+        "/category/{id}/addTags": {
+            "put": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Add a list of tag to category.",
+                "operationId": "CategoryController.AddTagsToCategory",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id to query category.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The payload is a list of tags.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AddTagsToCategoryPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} OK"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
+        "/category/{id}/removeTag": {
+            "put": {
+                "tags": [
+                    "category"
+                ],
+                "description": "Remove tag from category.",
+                "operationId": "CategoryController.RemoveTagFromCategory",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token to conform",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id to query category.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The payload is a tag id.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RemoveTagFromCategoryPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} OK"
+                    },
+                    "400": {
+                        "description": "{string} bad request"
+                    },
+                    "401": {
+                        "description": "{string} auth failed"
+                    },
+                    "404": {
+                        "description": "{string} category not found"
+                    }
+                }
+            }
+        },
         "/company/attention": {
             "put": {
                 "tags": [
