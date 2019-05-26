@@ -11,7 +11,7 @@ type TagController struct {
 
 // @Title CreateTag
 // @Description Provide category id and tag information.
-// @Param   Payload   body   models.CreateTagPayload   true   ""
+// @Param   Payload   body   models.CreateTagPayload   true   "The payload to create tag."
 // @Success 200   {object}   models.CreateTagReturn
 // @Failure 400   {string}   bad request
 // @Failure 401   {string}   authentication fail.
@@ -22,7 +22,7 @@ func (t *TagController) CreateTag() {
 
 // @Title DeleteTag
 // @Description Delete tag by tag id.
-// @Param   TagID   path   int   "The tag id for query and "
+// @Param   id    path   int  true  "The tag id for query and delete it."
 // @Success 200   {string}   delete successful
 // @Failure 401   {string}   authentication fail.
 // @Failure 404   {string}   tag not found
@@ -33,8 +33,8 @@ func (t *TagController) DeleteTag() {
 
 // @Title UpdateTag
 // @Description Update a tag, but just change the tag name
-// @Param   TagID   path   int   "The tag id to query"
-// @Param   UpdateTagPayload   body   true   models.UpdateTagPayload
+// @Param   id    path   int  true  "The tag id to query"
+// @Param   UpdateTagPayload   body   models.UpdateTagPayload   true   "The payload to update tag."
 // @Success 200   {string}   OK
 // @Failure 400   {string}   bad request
 // @Failure 401   {string}   authentication fail
@@ -46,7 +46,7 @@ func (t *TagController) UpdateTag() {
 
 // @Title GetTagInformation
 // @Description Get the tag information
-// @Param   TagID   path   int   "The tag id to query."
+// @Param   id    path   int  true  "The tag id to query."
 // @Success 200   {object}   models.GetTagReturn
 // @Failure 401   {string}   authentication fail
 // @Failure 404   {string}   not found

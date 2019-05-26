@@ -612,3 +612,32 @@ type GetTagReturn struct {
 	Name            string     `json:"name"`
 	CategoryID      uint64     `json:"category_id"`
 }
+
+type CreateCategoryPayload struct {
+	Name            string    `json:"name"`
+	ForElite        bool      `json:"for_elite"`
+	ForMission      bool      `json:"for_mission"`
+	ForCompany      bool      `json:"for_company"`
+}
+
+type CreateCategoryReturn struct {
+	CategoryID      uint64    `json:"category_id"`
+}
+
+type AddTagsToCategoryPayload struct {
+	TagsList        []uint64  `json:"tags_list"`
+}
+
+type RemoveTagFromCategory struct {
+	TagID           uint64    `json:"tag_id"`
+}
+
+type CategoryAndTags struct {
+	CategoryName    string    `json:"category_name"`
+	CategoryID      uint64    `json:"category_id"`
+	CategoryTags    []Tag     `json:"category_tags"`
+}
+
+type CategoryForSearch struct {
+	CategoryList    []CategoryAndTags `json:"category_list"`
+}

@@ -53,6 +53,11 @@ func init() {
 				&controllers.MessageController{},
 			),
 		),
+                beego.NSNamespace("/category",
+                        beego.NSInclude(
+                                &controllers.CategoryController{},
+                        ),
+                ),
 	)
 	beego.AddNamespace(ns)
 }
