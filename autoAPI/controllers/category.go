@@ -14,7 +14,7 @@ type CategoryController struct {
 // @Failure 400          {string} bad request
 // @Failure 401          {string} authentication failed
 // @router  /  [post]
-func CreateCategory() {
+func (u *CategoryController) CreateCategory() {
 
 }
 
@@ -27,7 +27,7 @@ func CreateCategory() {
 // @Failure 401          {string} authentication failed
 // @Failure 404          {string} category not found
 // @router  /:id  [get]
-func GetCategory() {
+func (u *CategoryController) GetCategory() {
 
 }
 
@@ -41,7 +41,7 @@ func GetCategory() {
 // @Failure 401          {string} authentication failed
 // @Failure 404          {string} category not found
 // @router  /:id/addTags  [put]         
-func AddTagsToCategory() {
+func (u *CategoryController) AddTagsToCategory() {
 
 }
 
@@ -55,7 +55,7 @@ func AddTagsToCategory() {
 // @Failure 401          {string} authentication failed
 // @Failure 404          {string} category not found
 // @router  /:id/removeTag  [put]
-func RemoveTagFromCategory() {
+func (u *CategoryController) RemoveTagFromCategory() {
 
 }
 
@@ -68,7 +68,7 @@ func RemoveTagFromCategory() {
 // @Failure 401          {string} authentication failed
 // @Failure 404          {string} category not found
 // @router  /:id  [delete]
-func DeleteCategory() {
+func (u *CategoryController) DeleteCategory() {
 
 }
 
@@ -78,7 +78,7 @@ func DeleteCategory() {
 // @Success 200          {object} models.CategoryForSearch
 // @Failure 401          {string} authentication failed
 // @router  /forElite  [get]
-func GetCategoryForElite() {
+func (u *CategoryController) GetCategoryForElite() {
 
 }
 
@@ -88,7 +88,7 @@ func GetCategoryForElite() {
 // @Success 200          {object} models.CategoryForSearch
 // @Failure 401          {string} authentication failed
 // @router  /forMission  [get]
-func GetCategoryForMission() {
+func (u *CategoryController) GetCategoryForMission() {
 
 }
 
@@ -98,6 +98,6 @@ func GetCategoryForMission() {
 // @Success 200          {object} models.CategoryForSearch
 // @Failure 401          {string} authentication failed
 // @router  /forCompany  [get]
-func GetCategoryForCompany() {
+func (u *CategoryController) GetCategoryForCompany() {
 
 }

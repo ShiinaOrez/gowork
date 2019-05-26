@@ -442,6 +442,13 @@ paths:
             $ref: '#/definitions/models.ResultOfUserLogin'
         "401":
           description: '{string} sign up failed'
+  /category/: {}
+  /category/{id}: {}
+  /category/{id}/addTags: {}
+  /category/{id}/removeTag: {}
+  /category/forCompany: {}
+  /category/forElite: {}
+  /category/forMission: {}
   /company/attention:
     put:
       tags:
@@ -1808,6 +1815,11 @@ paths:
       description: Provide category id and tag information.
       operationId: TagController.CreateTag
       parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
       - in: body
         name: Payload
         description: The payload to create tag.
@@ -1823,7 +1835,90 @@ paths:
           description: '{string}   bad request'
         "401":
           description: '{string}   authentication fail.'
-  /tag/{id}: {}
+  /tag/{id}:
+    put:
+      tags:
+      - tag
+      description: 更新Tag
+      operationId: TagController.TagUpdateAPI
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: TagID
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: UpdateTagPayload
+        description: The payload to update tag.
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateTagPayload'
+      responses:
+        "200":
+          description: '{}'
+        "400":
+          description: '{string}   bad request'
+        "401":
+          description: '{string} auth failed'
+        "404":
+          description: '{string} user | company not existed'
+    delete:
+      tags:
+      - tag
+      description: 删除一个Tag
+      operationId: TagController.DeleteTagAPI
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: TagID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: '{}'
+        "401":
+          description: '{string} auth failed'
+        "404":
+          description: '{string} user | company not existed'
+  /tag/{id}/:
+    get:
+      tags:
+      - tag
+      description: Get the tag information
+      operationId: TagController.GetTagInformation
+      parameters:
+      - in: header
+        name: Token
+        description: The token to conform
+        required: true
+        type: string
+      - in: path
+        name: id
+        description: TagID
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GetTagReturn'
+        "401":
+          description: '{string} auth failed'
+        "404":
+          description: '{string} not found'
   /user/attention/{id}:
     put:
       tags:
@@ -2237,6 +2332,15 @@ definitions:
       mission_list_id:
         type: integer
         format: int64
+  models.AddTagsToCategoryPayload:
+    title: AddTagsToCategoryPayload
+    type: object
+    properties:
+      tags_list:
+        type: array
+        items:
+          type: integer
+          format: int64
   models.AuthInitTags:
     title: AuthInitTags
     type: object
@@ -2248,6 +2352,19 @@ definitions:
   models.BaseModel:
     title: BaseModel
     type: object
+  models.CategoryAndTags:
+    title: CategoryAndTags
+    type: object
+    properties:
+      category_id:
+        type: integer
+        format: int64
+      category_name:
+        type: string
+      category_tags:
+        type: array
+        items:
+          $ref: '#/definitions/models.Tag'
   models.CategoryCreateResponse:
     title: CategoryCreateResponse
     type: object
@@ -2255,6 +2372,14 @@ definitions:
       id:
         type: integer
         format: int64
+  models.CategoryForSearch:
+    title: CategoryForSearch
+    type: object
+    properties:
+      category_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.CategoryAndTags'
   models.ChangePasswordPayload:
     title: ChangePasswordPayload
     type: object
@@ -2471,6 +2596,25 @@ definitions:
       rows_num:
         type: integer
         format: int64
+  models.CreateCategoryPayload:
+    title: CreateCategoryPayload
+    type: object
+    properties:
+      for_company:
+        type: boolean
+      for_elite:
+        type: boolean
+      for_mission:
+        type: boolean
+      name:
+        type: string
+  models.CreateCategoryReturn:
+    title: CreateCategoryReturn
+    type: object
+    properties:
+      category_id:
+        type: integer
+        format: int64
   models.CreateCompanyCategoryBody:
     title: CreateCompanyCategoryBody
     type: object
@@ -2685,6 +2829,9 @@ definitions:
       rows_num:
         type: integer
         format: int64
+  models.GetCategoryReturn:
+    title: GetCategoryReturn
+    type: object
   models.GetCompanySuitabilityList:
     title: GetCompanySuitabilityList
     type: object
@@ -3095,6 +3242,9 @@ definitions:
       mission_list_id:
         type: integer
         format: int64
+  models.RemoveTagFromCategoryPayload:
+    title: RemoveTagFromCategoryPayload
+    type: object
   models.ResetPasswordPayload:
     title: ResetPasswordPayload
     type: object
