@@ -2676,7 +2676,8 @@
                     {
                         "in": "body",
                         "name": "Payload",
-                        "description": "true",
+                        "description": "The payload to create tag.",
+                        "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.CreateTagPayload"
                         }
@@ -4791,6 +4792,15 @@
                 }
             }
         },
+        "models.UpdateTagPayload": {
+            "title": "UpdateTagPayload",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "models.UpdateTelStep1Payload": {
             "title": "UpdateTelStep1Payload",
             "type": "object",
@@ -4855,10 +4865,6 @@
                     "type": "boolean"
                 }
             }
-        },
-        "true": {
-            "title": "true",
-            "type": "object"
         }
     },
     "tags": [
@@ -4893,6 +4899,10 @@
         {
             "name": "message",
             "description": "Operations about Messages\n"
+        },
+        {
+            "name": "category",
+            "description": "Operations about Category\n"
         }
     ]
 }
