@@ -695,7 +695,7 @@
                 "tags": [
                     "category"
                 ],
-                "description": "Get the category list for elite search.",
+                "description": "获取用于公司搜索的Category \u0026 tag",
                 "operationId": "CategoryController.GetCategoryForCompany",
                 "parameters": [
                     {
@@ -724,7 +724,7 @@
                 "tags": [
                     "category"
                 ],
-                "description": "Get the category list for elite search.",
+                "description": "获取用于人才搜索的Category \u0026 tag",
                 "operationId": "CategoryController.GetCategoryForElite",
                 "parameters": [
                     {
@@ -753,7 +753,7 @@
                 "tags": [
                     "category"
                 ],
-                "description": "Get the category list for elite search.",
+                "description": "获取用于任务搜索的Category \u0026 tag",
                 "operationId": "CategoryController.GetCategoryForMission",
                 "parameters": [
                     {

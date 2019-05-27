@@ -72,7 +72,7 @@ func (u *CategoryController) DeleteCategory() {
 
 
 // @Title GetCategoryForElite
-// @Description  Get the category list for elite search.
+// @Description  获取用于人才搜索的Category & tag
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {object} models.CategoryForSearch
 // @Failure 401 {string} auth failed
@@ -81,7 +81,7 @@ func (u *CategoryController) CategoryForElite() {
 }
 
 // @Title  GetCategoryForMission
-// @Description Get the category list for elite search.
+// @Description 获取用于任务搜索的Category & tag
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {object} models.CategoryForSearch
 // @Failure 401 {string} auth failed
@@ -91,7 +91,7 @@ func (u *CategoryController) CategoryForMission() {
 
 
 // @Title GetCategoryForCompany
-// @Description Get the category list for elite search.
+// @Description 获取用于公司搜索的Category & tag
 // @Param   Token       header    string      true        "The token to conform"
 // @Success 200 {object} models.CompanySearchList
 // @Failure 401 {string} auth failed

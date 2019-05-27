@@ -592,7 +592,7 @@ paths:
     get:
       tags:
       - category
-      description: Get the category list for elite search.
+      description: 获取用于公司搜索的Category & tag
       operationId: CategoryController.GetCategoryForCompany
       parameters:
       - in: header
@@ -611,7 +611,7 @@ paths:
     get:
       tags:
       - category
-      description: Get the category list for elite search.
+      description: 获取用于人才搜索的Category & tag
       operationId: CategoryController.GetCategoryForElite
       parameters:
       - in: header
@@ -630,7 +630,7 @@ paths:
     get:
       tags:
       - category
-      description: Get the category list for elite search.
+      description: 获取用于任务搜索的Category & tag
       operationId: CategoryController.GetCategoryForMission
       parameters:
       - in: header
