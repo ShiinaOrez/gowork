@@ -141,8 +141,8 @@ paths:
         required: true
         type: string
       - in: body
-        name: password
-        description: The password of company account
+        name: code
+        description: The confirm code
         required: true
         type: string
       responses:
@@ -604,7 +604,7 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.CompanySearchList'
+            $ref: '#/definitions/models.CategoryForSearch'
         "401":
           description: '{string} auth failed'
   /category/forElite:
@@ -3124,7 +3124,7 @@ definitions:
       missions_list:
         type: array
         items:
-          $ref: '#/definitions/models.MissionEntityToShow'
+          $ref: '#/definitions/models.MissionInfo'
       name:
         type: string
       star_level:
@@ -3207,15 +3207,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.Tag'
-  models.MissionEntityToShow:
-    title: MissionEntityToShow
-    type: object
-    properties:
-      mission_id:
-        type: integer
-        format: int64
-      statu:
-        type: boolean
   models.MissionInMissionList:
     title: MissionInMissionList
     type: object
@@ -3233,6 +3224,28 @@ definitions:
       mission_start_time:
         type: string
       mission_status:
+        type: boolean
+  models.MissionInfo:
+    title: MissionInfo
+    type: object
+    properties:
+      company_id:
+        type: integer
+        format: int64
+      company_logo:
+        type: string
+      company_name:
+        type: string
+      deadline:
+        type: string
+      if_completed:
+        type: boolean
+      mission_id:
+        type: integer
+        format: int64
+      mission_name:
+        type: string
+      status:
         type: boolean
   models.MissionInformation:
     title: MissionInformation

@@ -76,6 +76,17 @@ type ReviewerLoginError struct {
 	Msg       string  `json:"msg"`
 }
 
+type MissionInfo struct {
+	MissionID  		int 			`json:"mission_id"`
+	Status 			bool 			`json:"status"`
+	MissionName 	string 			`json:"mission_name"`
+	IfCompleted 	bool 			`json:"if_completed"`
+	Deadline 		string 			`json:"deadline"`
+	CompanyLogo 	string 			`json:"company_logo"`
+	CompanyName 	string 			`json:"company_name"`
+	CompanyID 		int 			`json:"company_id"`
+}
+
 type MissionEntityToShow struct {
 	MissionID     int         `json:"mission_id"`
 	Statu         bool        `json:"statu"`
@@ -103,7 +114,7 @@ type GetUserInformation struct {
 	EduTimeRange  string     `json:"edu_time_range"`
 	City          string     `json:"city"`
 	Intro         string     `json:"intro"`
-	MissionsList  []MissionEntityToShow `json:"missions_list"`
+	MissionsList  []MissionInfo `json:"missions_list"`
 }
 
 type GetUserBaseInformation struct {
