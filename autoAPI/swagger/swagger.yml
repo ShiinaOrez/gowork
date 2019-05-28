@@ -2340,7 +2340,7 @@ paths:
     get:
       tags:
       - user
-      description: Get user's information by ID
+      description: Get user's information by ID. MissionList中，Status指是否已经完成。deadline指结束时间，格式2018-01-01
       operationId: UserController.GetUserInformationByID
       parameters:
       - in: path
@@ -3238,8 +3238,6 @@ definitions:
         type: string
       deadline:
         type: string
-      if_completed:
-        type: boolean
       mission_id:
         type: integer
         format: int64

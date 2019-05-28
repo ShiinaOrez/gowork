@@ -78,9 +78,8 @@ type ReviewerLoginError struct {
 
 type MissionInfo struct {
 	MissionID  		int 			`json:"mission_id"`
-	Status 			bool 			`json:"status"`
+	Status 			bool 			`json:"status"` 		// 该用户是否已经完成
 	MissionName 	string 			`json:"mission_name"`
-	IfCompleted 	bool 			`json:"if_completed"`
 	Deadline 		string 			`json:"deadline"`
 	CompanyLogo 	string 			`json:"company_logo"`
 	CompanyName 	string 			`json:"company_name"`
