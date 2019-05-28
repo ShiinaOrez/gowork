@@ -141,8 +141,8 @@ paths:
         required: true
         type: string
       - in: body
-        name: code
-        description: The confirm code
+        name: password
+        description: The password of company account
         required: true
         type: string
       responses:
