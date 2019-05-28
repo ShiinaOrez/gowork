@@ -22,7 +22,7 @@ func CreateCategory() {
 // @Description Get a category information by category id.
 // @Param   Token        header   string                          true    "The token to verify."
 // @Param   id           path     int                             true    "The id to query category."
-// @Success 200          {object} models.GetCategoryReturn        true    "The category information."
+// @Success 200          {object} models.CategoryAndTags          true    "The category information."
 // @Failure 400          {string} bad request
 // @Failure 401          {string} authentication failed
 // @Failure 404          {string} category not found
@@ -101,3 +101,5 @@ func GetCategoryForMission() {
 func GetCategoryForCompany() {
 
 }
+
+func Change
