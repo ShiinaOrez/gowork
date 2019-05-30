@@ -11,8 +11,7 @@ type AuthController struct {
 
 // @Title UserSignIn
 // @Description Account sign in.
-// @Param	email		body 	string	true		"The email for login"
-// @Param	password	body 	string	true		"The password for login"
+// @Param   PostBody 	body    models.AuthEmailSignIn true "依照验证码登录所需PostBody"
 // @Success 200 {object} models.ResultOfUserLogin 
 // @Failure 401 {string}
 // @router /user/signin/email [post]
@@ -116,8 +115,7 @@ func (u *AuthController) ReviewerSignUp() {
 
 // @Title CompanySignIn
 // @Description Company login.
-// @Param   email              body    string              true        "The company account email"
-// @Param   code               body    string              true        "The confirm code"
+// @Param   PostBody 	body    models.AuthEmailSignIn true "依照验证码登录所需PostBody"
 // @Success 200 {object} models.ResultOfCompanyLogin
 // @Success 401 {object} models.CompanyLoginError
 // @router /company/signin/email [post]

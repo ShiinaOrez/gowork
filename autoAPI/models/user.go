@@ -29,6 +29,11 @@ type AuthInitTags struct {
 	TagsList []TagForUserModelID `json:"tags_list"`
 }
 
+type AuthEmailSignIn struct {
+	Email 			string		`json:"email"`
+	Password 		string 		`json:"password"`
+}
+
 type ResultOfUserLogin struct {
 	UserID int     `json:"user_id"`
 	Token  string  `json:"token"`

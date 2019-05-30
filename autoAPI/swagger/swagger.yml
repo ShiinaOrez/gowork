@@ -136,15 +136,11 @@ paths:
       operationId: AuthController.CompanySignIn
       parameters:
       - in: body
-        name: email
-        description: The company account email
+        name: PostBody
+        description: 依照验证码登录所需PostBody
         required: true
-        type: string
-      - in: body
-        name: code
-        description: The confirm code
-        required: true
-        type: string
+        schema:
+          $ref: '#/definitions/models.AuthEmailSignIn'
       responses:
         "200":
           description: ""
@@ -318,15 +314,11 @@ paths:
       operationId: AuthController.UserSignIn
       parameters:
       - in: body
-        name: email
-        description: The email for login
+        name: PostBody
+        description: 依照验证码登录所需PostBody
         required: true
-        type: string
-      - in: body
-        name: password
-        description: The password for login
-        required: true
-        type: string
+        schema:
+          $ref: '#/definitions/models.AuthEmailSignIn'
       responses:
         "200":
           description: ""
@@ -2537,6 +2529,14 @@ definitions:
         items:
           type: integer
           format: int64
+  models.AuthEmailSignIn:
+    title: AuthEmailSignIn
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
   models.AuthInitTags:
     title: AuthInitTags
     type: object

@@ -21,17 +21,12 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "email",
-                        "description": "The company account email",
+                        "name": "PostBody",
+                        "description": "依照验证码登录所需PostBody",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "code",
-                        "description": "The confirm code",
-                        "required": true,
-                        "type": "string"
+                        "schema": {
+                            "$ref": "#/definitions/models.AuthEmailSignIn"
+                        }
                     }
                 ],
                 "responses": {
@@ -465,17 +460,12 @@
                 "parameters": [
                     {
                         "in": "body",
-                        "name": "email",
-                        "description": "The email for login",
+                        "name": "PostBody",
+                        "description": "依照验证码登录所需PostBody",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "password",
-                        "description": "The password for login",
-                        "required": true,
-                        "type": "string"
+                        "schema": {
+                            "$ref": "#/definitions/models.AuthEmailSignIn"
+                        }
                     }
                 ],
                 "responses": {
@@ -3761,6 +3751,18 @@
                         "type": "integer",
                         "format": "int64"
                     }
+                }
+            }
+        },
+        "models.AuthEmailSignIn": {
+            "title": "AuthEmailSignIn",
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         },
