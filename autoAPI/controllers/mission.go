@@ -60,7 +60,7 @@ func (u *MissionController) MissionStatus() {
 // @Description Submit the works for mission
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   id         path      int         true        "The mission id to submit"
-// @Param   Payload     body      models.SubmitMissionPayload    true    "The payload"
+// @Param   Payload     body      models.DoMissionPayload    true    "The payload"
 // @Success 200 {string} submit successfully!
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
@@ -95,14 +95,14 @@ func (u *MissionController) GiveUpMission() {
 }
 
 // @Title GetMissionFeedback
-// @Description Get the mission feedback.
+// @Description Get the mission feedback. (感觉好像没啥用?)
 // @Param   Token       header    string      true        "The token to conform"
 // @Param   id         path      int         true        "The mission id to give up"
-// @Success 200 {object} models.CompanyFeedback
+// @Success 200 {object} models.CompanyDoMissionFeedback
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user | mission not existed
 // @router /:id/feedback [get]
-func (u *MissionController) MissionFeedback() {
+func (u *MissionController) SubmissionFeedback() {
 }
 
 // @Title CreateAndPostMission

@@ -1578,6 +1578,62 @@
                 }
             }
         },
+        "/company/mission/{id}/submissions/": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "description": "获取一个任务所有的用户完成任务后的提交，以及每个用户提交之后 公司给的Feedback.",
+                "operationId": "CompanyController.GetMissionSubmissionList",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "页码，从0开始",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "limit 可以理解为每页有多少",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "任务ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token。GetMissionSubmissionList这个API可以供任何已经登录过的用户查看，无论company user 或者 admin",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.DoMissionResponseList"
+                        }
+                    },
+                    "401": {
+                        "description": "{string} cofirm code incorrect"
+                    },
+                    "404": {
+                        "description": "{string} company not found"
+                    }
+                }
+            }
+        },
         "/company/missionList": {
             "post": {
                 "tags": [
@@ -1782,6 +1838,52 @@
                     },
                     "404": {
                         "description": "{string} user | company not existed"
+                    }
+                }
+            }
+        },
+        "/company/password/{id}": {
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "description": "If company want to change password.",
+                "operationId": "CompanyController.ComapnyChangePassword",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Token",
+                        "description": "The token.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Cid",
+                        "description": "The user id to get user.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Payload",
+                        "description": "The change password payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ChangePasswordPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} change successful"
+                    },
+                    "401": {
+                        "description": "{string} cofirm code incorrect"
+                    },
+                    "404": {
+                        "description": "{string} company not found"
                     }
                 }
             }
@@ -2360,7 +2462,7 @@
                         "description": "The payload",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SubmitMissionPayload"
+                            "$ref": "#/definitions/models.DoMissionPayload"
                         }
                     }
                 ],
@@ -2423,7 +2525,7 @@
                 "tags": [
                     "mission"
                 ],
-                "description": "Get the mission feedback.",
+                "description": "Get the mission feedback. (感觉好像没啥用?)",
                 "operationId": "MissionController.GetMissionFeedback",
                 "parameters": [
                     {
@@ -2446,7 +2548,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.CompanyFeedback"
+                            "$ref": "#/definitions/models.CompanyDoMissionFeedback"
                         }
                     },
                     "401": {
@@ -3564,52 +3666,6 @@
                 }
             }
         },
-        "/user/password/{id}": {
-            "put": {
-                "tags": [
-                    "user"
-                ],
-                "description": "If company want to change password.",
-                "operationId": "UserController.ComapnyChangePassword",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Token",
-                        "description": "The token.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "Cid",
-                        "description": "The user id to get user.",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    {
-                        "in": "body",
-                        "name": "Payload",
-                        "description": "The change password payload",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.ChangePasswordPayload"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} change successful"
-                    },
-                    "401": {
-                        "description": "{string} cofirm code incorrect"
-                    },
-                    "404": {
-                        "description": "{string} company not found"
-                    }
-                }
-            }
-        },
         "/user/personal/setting": {
             "get": {
                 "tags": [
@@ -3854,8 +3910,8 @@
                 }
             }
         },
-        "models.CompanyFeedback": {
-            "title": "CompanyFeedback",
+        "models.CompanyDoMissionFeedback": {
+            "title": "CompanyDoMissionFeedback",
             "type": "object",
             "properties": {
                 "feedback": {
@@ -4267,6 +4323,65 @@
                 },
                 "msg": {
                     "type": "string"
+                }
+            }
+        },
+        "models.DoMissionPayload": {
+            "title": "DoMissionPayload",
+            "type": "object",
+            "properties": {
+                "file_url": {
+                    "type": "string"
+                },
+                "intro": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DoMissionResponse": {
+            "title": "DoMissionResponse",
+            "type": "object",
+            "properties": {
+                "feedback": {
+                    "$ref": "#/definitions/models.CompanyDoMissionFeedback"
+                },
+                "file_url": {
+                    "type": "string"
+                },
+                "if_feedback": {
+                    "type": "boolean"
+                },
+                "intro": {
+                    "type": "string"
+                },
+                "uid": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "upload_time": {
+                    "type": "string"
+                },
+                "user_avatar": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.DoMissionResponseList": {
+            "title": "DoMissionResponseList",
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.DoMissionResponse"
+                    }
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -5205,18 +5320,6 @@
                     "format": "int64"
                 },
                 "msg": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.SubmitMissionPayload": {
-            "title": "SubmitMissionPayload",
-            "type": "object",
-            "properties": {
-                "file_url": {
-                    "type": "string"
-                },
-                "intro": {
                     "type": "string"
                 }
             }

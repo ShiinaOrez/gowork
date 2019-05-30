@@ -290,15 +290,32 @@ type MissionList struct {
 	Total 	int 			`json:"total"`
 }
 
-type SubmitMissionPayload struct {
+type DoMissionPayload struct {
 	Intro         string      `json:"intro"`
 	FileURL       string      `json:"file_url"`
 }
 
-type CompanyFeedback struct {
+type DoMissionResponse struct {
+	UserID 		  int 		  `json:"uid"`
+	Username      string 	  `json:"username"`
+	UserAvatar    string 	  `json:"user_avatar"`
+	UploadTime    string 	  `json:"upload_time"`
+	IfFeedback    bool 		  `json:"if_feedback"`
+	Intro         string      `json:"intro"`
+	FileURL       string      `json:"file_url"`
+	Feedback      CompanyDoMissionFeedback `json:"feedback"`
+}
+
+type DoMissionResponseList struct {
+	List   		[]DoMissionResponse   	`json:"list"`
+	Total 		int 					`json:"total"`
+}
+
+type CompanyDoMissionFeedback struct {
 	Feedback      string      `json:"feedback"`
 	StarLevel     float32     `json:"star_level"`
 }
+
 
 type CreateMissionPayload struct {
 	MissionName   string      `json:"mission_name"`
