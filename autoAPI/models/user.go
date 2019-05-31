@@ -121,6 +121,26 @@ type GetUserInformation struct {
 	MissionsList  []MissionInfo `json:"missions_list"`
 }
 
+type GetUserInformationInCompanyView struct {
+	IsFollow	  bool 		 `json:"is_follow"`
+	AvatarURL     string     `json:"avatar_url"`
+	Name          string     `json:"name"`
+	Status        string     `json:"status"`
+	Age           int        `json:"age"`
+	University    string     `json:"university"`
+	Attention     bool       `json:"attention"`
+	UserTagsList  []TagForGetUserInformation `json:"user_tags_list"`
+	Education     string     `json:"education"`
+	Tel           string     `json:"tel"`
+	EmailAddress  string     `json:"email_address"`
+	StarLevel     int        `json:"star_level"`
+	Major         string     `json:"major"`
+	EduTimeRange  string     `json:"edu_time_range"`
+	City          string     `json:"city"`
+	Intro         string     `json:"intro"`
+	MissionsList  []MissionInfo `json:"missions_list"`
+}
+
 type GetUserBaseInformation struct {
 	AvatarURL     string     `json:"avatar_url"`
 	Name          string     `json:"name"`

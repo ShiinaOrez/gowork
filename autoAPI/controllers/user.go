@@ -13,7 +13,7 @@ type UserController struct {
 // @Description Get user's information by ID. MissionList中，Status指是否已经完成。deadline指结束时间，格式2018-01-01
 // @Param   id           path    int            true        "The user ID"
 // @Param   Token         header  string         true        "The token to conform"
-// @Success 200 {object} models.GetUserInformation
+// @Success 200 {object} models.GetUserInformationInCompanyView
 // @Failure 401 {string} auth failed
 // @Failure 404 {string} user not existed
 // @router /info/:ID [Get]

@@ -2421,7 +2421,7 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.GetUserInformation'
+            $ref: '#/definitions/models.GetUserInformationInCompanyView'
         "401":
           description: '{string} auth failed'
         "404":
@@ -3178,8 +3178,8 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.TagForGetUserInformation'
-  models.GetUserInformation:
-    title: GetUserInformation
+  models.GetUserInformationInCompanyView:
+    title: GetUserInformationInCompanyView
     type: object
     properties:
       age:
@@ -3199,6 +3199,8 @@ definitions:
         type: string
       intro:
         type: string
+      is_follow:
+        type: boolean
       major:
         type: string
       missions_list:

@@ -3584,7 +3584,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.GetUserInformation"
+                            "$ref": "#/definitions/models.GetUserInformationInCompanyView"
                         }
                     },
                     "401": {
@@ -4695,8 +4695,8 @@
                 }
             }
         },
-        "models.GetUserInformation": {
-            "title": "GetUserInformation",
+        "models.GetUserInformationInCompanyView": {
+            "title": "GetUserInformationInCompanyView",
             "type": "object",
             "properties": {
                 "age": {
@@ -4723,6 +4723,9 @@
                 },
                 "intro": {
                     "type": "string"
+                },
+                "is_follow": {
+                    "type": "boolean"
                 },
                 "major": {
                     "type": "string"
