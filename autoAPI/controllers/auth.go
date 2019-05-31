@@ -31,18 +31,20 @@ func (u *AuthController) UserSignInByTel() {
 // @Title UserSignUp
 // @Description New user must sign up.
 // @Param   real_name       body    string              true        "The real name of user"
-// @Param   sex            body    bool                true        "The sex of user"
+// @Param   sex             body    bool                true        "The sex of user"
 // @Param   birth_year      body    int                 true        "The birth year of user"
 // @Param   birth_month     body    int                 true        "The birth month of user"
-// @Param   city           body    string              true        "The city of user"
-// @Param   university     body    string              true        "The university of user"
+// @Param   city            body    string              true        "The city of user"
+// @Param   university      body    string              true        "The university of user"
 // @Param   enroll_year     body    int                 true        "The enroll year of user"
-// @Param   graduate_year   body    int   	       true        "The graduate year of user"
+// @Param   graduate_year   body    int                 true        "The graduate year of user"
 // @Param   education_level body    string              true        "The education level of user"
-// @Param   major          body    string              true        "The major of user"
-// @Param   status         body    string              true        "The status of user"
+// @Param   major           body    string              true        "The major of user"
+// @Param   status          body    string              true        "The status of user"
 // @Param   init_tags       body    models.AuthInitTags true        "The initialize tags of user"
-// @Param   intro          body    string              true        "The introduction of user"
+// @Param   intro           body    string              true        "The introduction of user"
+// @Param   email           body    string              true        "The account email of user."
+// @Param   password        body    string              true        "The account password of user."
 // @Success 200            {object}      models.ResultOfUserLogin
 // @Failure 401 {string} sign up failed
 // @router /user/signup [post]
