@@ -774,15 +774,6 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "UserBaseInfo",
-            Router: `/info`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
-        beego.ControllerComments{
             Method: "EditSetting",
             Router: `/info`,
             AllowHTTPMethods: []string{"post"},
@@ -792,8 +783,26 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
+            Method: "UserBaseInfo",
+            Router: `/info`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
+        beego.ControllerComments{
             Method: "UserInfo",
             Router: `/info/:ID`,
+            AllowHTTPMethods: []string{"Get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
+        beego.ControllerComments{
+            Method: "UserInfoInCompanyView",
+            Router: `/infoCompany/:ID`,
             AllowHTTPMethods: []string{"Get"},
             MethodParams: param.Make(),
             Filters: nil,

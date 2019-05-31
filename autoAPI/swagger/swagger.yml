@@ -2421,6 +2421,34 @@ paths:
         "200":
           description: ""
           schema:
+            $ref: '#/definitions/models.GetUserInformation'
+        "401":
+          description: '{string} auth failed'
+        "404":
+          description: '{string} user not existed'
+  /user/infoCompany/{ID}:
+    get:
+      tags:
+      - user
+      description: Get user's information by ID in company view. <br> MissionList中，Status指是否已经完成。<br>
+        deadline指结束时间，格式2018-01-01. <br> 和普通/user/info/id的区别在与是否有isFollow.
+      operationId: UserController.GetUserInformationByIDInCompanyView
+      parameters:
+      - in: path
+        name: id
+        description: The user ID
+        required: true
+        type: integer
+        format: int64
+      - in: header
+        name: Token
+        description: The token to conform. 必须为Company ID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
             $ref: '#/definitions/models.GetUserInformationInCompanyView'
         "401":
           description: '{string} auth failed'
@@ -3168,6 +3196,48 @@ definitions:
         type: string
       sex:
         type: boolean
+      status:
+        type: string
+      tel:
+        type: string
+      university:
+        type: string
+      user_tags_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.TagForGetUserInformation'
+  models.GetUserInformation:
+    title: GetUserInformation
+    type: object
+    properties:
+      age:
+        type: integer
+        format: int64
+      attention:
+        type: boolean
+      avatar_url:
+        type: string
+      city:
+        type: string
+      edu_time_range:
+        type: string
+      education:
+        type: string
+      email_address:
+        type: string
+      intro:
+        type: string
+      major:
+        type: string
+      missions_list:
+        type: array
+        items:
+          $ref: '#/definitions/models.MissionInfo'
+      name:
+        type: string
+      star_level:
+        type: integer
+        format: int64
       status:
         type: string
       tel:
