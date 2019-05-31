@@ -105,7 +105,6 @@ func (u *CompanyController) UpdateCompanyLogo() {
 func (u *CompanyController) EditCompanyInfo() {
 }
 
-// TODO
 // @Title UpdateCompanyTelephoneStep1
 // @Description 获取手机号，给相应手机号发验证码（长6位的数字）
 // @Param   Token       header    string      true        "The token to conform"
@@ -118,7 +117,6 @@ func (u *CompanyController) EditCompanyInfo() {
 func (u *CompanyController) UpdateCompanyTelStep1() {
 }
 
-// TODO
 // @Title UpdateCompanyTelephoneStep2
 // @Description 获取验证码(长6位的数字)，如果验证码正确，则更改手机号
 // @Param   Token       header    string      true        "The token to conform"
@@ -131,7 +129,7 @@ func (u *CompanyController) UpdateCompanyTelStep1() {
 func (u *CompanyController) UpdateCompanyTelStep2() {
 }
 
-// TODO
+
 // @Title UpdateCompanyEmailAddressStep1
 // @Description 前端发送一个邮箱地址，给相应邮箱发送一个验证码（6位长数字）。
 // @Param   Token       header    string      true        "The token to conform"
@@ -285,5 +283,20 @@ func (u *CompanyController) CompanyMessageSetting() {
 // @Failure 401 {string} cofirm code incorrect
 // @Failure 404 {string} company not found
 // @router /password/:id [put]
-func (u *UserController) CompanyChangePassword() {
+func (u *CompanyController) CompanyChangePassword() {
+}
+
+
+// @Title GetMissionSubmissionList
+// @Description  获取一个任务所有的用户完成任务后的提交，以及每个用户提交之后 公司给的Feedback.
+// @Param 	page		query 	  int 		  true 		  "页码，从0开始"
+// @Param 	limit		query 	  int 		  true 		  "limit 可以理解为每页有多少"
+// @Param   id        path       int       true    "任务ID"
+// @Param   Token     header     string    true    "The token。GetMissionSubmissionList这个API可以供任何已经登录过的用户查看，无论company user 或者 admin"
+// @Success 200 {object} models.DoMissionResponseList
+// @Failure 401 {string} cofirm code incorrect
+// @Failure 404 {string} company not found
+// @router /mission/{id}/submissions/ [get]
+func (u *CompanyController) GetFeedbackList() {
+
 }

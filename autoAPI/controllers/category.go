@@ -93,7 +93,7 @@ func (u *CategoryController) CategoryForMission() {
 // @Title GetCategoryForCompany
 // @Description 获取用于公司搜索的Category & tag
 // @Param   Token       header    string      true        "The token to conform"
-// @Success 200 {object} models.CompanySearchList
+// @Success 200 {object} models.CategoryForSearch
 // @Failure 401 {string} auth failed
 // @router /forCompany [get]
 func (u *CategoryController) CategoryForCompany() {

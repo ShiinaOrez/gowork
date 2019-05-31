@@ -29,6 +29,11 @@ type AuthInitTags struct {
 	TagsList []TagForUserModelID `json:"tags_list"`
 }
 
+type AuthEmailSignIn struct {
+	Email 			string		`json:"email"`
+	Password 		string 		`json:"password"`
+}
+
 type ResultOfUserLogin struct {
 	UserID int     `json:"user_id"`
 	Token  string  `json:"token"`
@@ -76,6 +81,16 @@ type ReviewerLoginError struct {
 	Msg       string  `json:"msg"`
 }
 
+type MissionInfo struct {
+	MissionID  		int 			`json:"mission_id"`
+	Status 			bool 			`json:"status"` 		// 该用户是否已经完成
+	MissionName 	string 			`json:"mission_name"`
+	Deadline 		string 			`json:"deadline"`
+	CompanyLogo 	string 			`json:"company_logo"`
+	CompanyName 	string 			`json:"company_name"`
+	CompanyID 		int 			`json:"company_id"`
+}
+
 type MissionEntityToShow struct {
 	MissionID     int         `json:"mission_id"`
 	Statu         bool        `json:"statu"`
@@ -103,7 +118,27 @@ type GetUserInformation struct {
 	EduTimeRange  string     `json:"edu_time_range"`
 	City          string     `json:"city"`
 	Intro         string     `json:"intro"`
-	MissionsList  []MissionEntityToShow `json:"missions_list"`
+	MissionsList  []MissionInfo `json:"missions_list"`
+}
+
+type GetUserInformationInCompanyView struct {
+	IsFollow	  bool 		 `json:"is_follow"`
+	AvatarURL     string     `json:"avatar_url"`
+	Name          string     `json:"name"`
+	Status        string     `json:"status"`
+	Age           int        `json:"age"`
+	University    string     `json:"university"`
+	Attention     bool       `json:"attention"`
+	UserTagsList  []TagForGetUserInformation `json:"user_tags_list"`
+	Education     string     `json:"education"`
+	Tel           string     `json:"tel"`
+	EmailAddress  string     `json:"email_address"`
+	StarLevel     int        `json:"star_level"`
+	Major         string     `json:"major"`
+	EduTimeRange  string     `json:"edu_time_range"`
+	City          string     `json:"city"`
+	Intro         string     `json:"intro"`
+	MissionsList  []MissionInfo `json:"missions_list"`
 }
 
 type GetUserBaseInformation struct {
@@ -275,15 +310,32 @@ type MissionList struct {
 	Total 	int 			`json:"total"`
 }
 
-type SubmitMissionPayload struct {
+type DoMissionPayload struct {
 	Intro         string      `json:"intro"`
 	FileURL       string      `json:"file_url"`
 }
 
-type CompanyFeedback struct {
+type DoMissionResponse struct {
+	UserID 		  int 		  `json:"uid"`
+	Username      string 	  `json:"username"`
+	UserAvatar    string 	  `json:"user_avatar"`
+	UploadTime    string 	  `json:"upload_time"`
+	IfFeedback    bool 		  `json:"if_feedback"`
+	Intro         string      `json:"intro"`
+	FileURL       string      `json:"file_url"`
+	Feedback      CompanyDoMissionFeedback `json:"feedback"`
+}
+
+type DoMissionResponseList struct {
+	List   		[]DoMissionResponse   	`json:"list"`
+	Total 		int 					`json:"total"`
+}
+
+type CompanyDoMissionFeedback struct {
 	Feedback      string      `json:"feedback"`
 	StarLevel     float32     `json:"star_level"`
 }
+
 
 type CreateMissionPayload struct {
 	MissionName   string      `json:"mission_name"`
