@@ -774,15 +774,6 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "EditSetting",
-            Router: `/info`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
-        beego.ControllerComments{
             Method: "UserBaseInfo",
             Router: `/info`,
             AllowHTTPMethods: []string{"get"},
@@ -792,17 +783,17 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "UserInfo",
-            Router: `/info/:ID`,
-            AllowHTTPMethods: []string{"Get"},
+            Method: "EditSetting",
+            Router: `/info`,
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
 
     beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"] = append(beego.GlobalControllerRouter["github.com/ShiinaOrez/gowork/autoAPI/controllers:UserController"],
         beego.ControllerComments{
-            Method: "UserInfoInCompanyView",
-            Router: `/infoCompany/:ID`,
+            Method: "UserInfo",
+            Router: `/info/:ID`,
             AllowHTTPMethods: []string{"Get"},
             MethodParams: param.Make(),
             Filters: nil,
