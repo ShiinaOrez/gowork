@@ -20,16 +20,6 @@ type UserController struct {
 func (u *UserController) UserInfo() {
 }
 
-// @Title GetUserInformationByIDInCompanyView
-// @Description Get user's information by ID in company view. <br> MissionList中，Status指是否已经完成。<br> deadline指结束时间，格式2018-01-01. <br> 和普通/user/info/id的区别在与是否有isFollow.
-// @Param   id           path    int            true        "The user ID"
-// @Param   Token         header  string         true        "The token to conform. 必须为Company ID"
-// @Success 200 {object} models.GetUserInformationInCompanyView
-// @Failure 401 {string} auth failed
-// @Failure 404 {string} user not existed
-// @router /infoCompany/:ID [Get]
-func (u *UserController) UserInfoInCompanyView() {
-}
 
 // @Title GetUserBaseInformation
 // @Description Get user base information
