@@ -136,11 +136,15 @@ paths:
       operationId: AuthController.CompanySignIn
       parameters:
       - in: body
-        name: PostBody
-        description: 依照验证码登录所需PostBody
+        name: email
+        description: The company account email
         required: true
-        schema:
-          $ref: '#/definitions/models.AuthEmailSignIn'
+        type: string
+      - in: body
+        name: password
+        description: The password of company account
+        required: true
+        type: string
       responses:
         "200":
           description: ""
@@ -314,11 +318,15 @@ paths:
       operationId: AuthController.UserSignIn
       parameters:
       - in: body
-        name: PostBody
-        description: 依照验证码登录所需PostBody
+        name: email
+        description: The email for login
         required: true
-        schema:
-          $ref: '#/definitions/models.AuthEmailSignIn'
+        type: string
+      - in: body
+        name: password
+        description: The password for login
+        required: true
+        type: string
       responses:
         "200":
           description: ""
@@ -596,7 +604,7 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.CategoryForSearch'
+            $ref: '#/definitions/models.CompanySearchList'
         "401":
           description: '{string} auth failed'
   /category/forElite:
@@ -1063,46 +1071,6 @@ paths:
           description: '{string} sign up failed'
         "404":
           description: '{string} user | company not existed'
-  /company/mission/{id}/submissions/:
-    get:
-      tags:
-      - company
-      description: 获取一个任务所有的用户完成任务后的提交，以及每个用户提交之后 公司给的Feedback.
-      operationId: CompanyController.GetMissionSubmissionList
-      parameters:
-      - in: query
-        name: page
-        description: 页码，从0开始
-        required: true
-        type: integer
-        format: int64
-      - in: query
-        name: limit
-        description: limit 可以理解为每页有多少
-        required: true
-        type: integer
-        format: int64
-      - in: path
-        name: id
-        description: 任务ID
-        required: true
-        type: integer
-        format: int64
-      - in: header
-        name: Token
-        description: The token。GetMissionSubmissionList这个API可以供任何已经登录过的用户查看，无论company
-          user 或者 admin
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.DoMissionResponseList'
-        "401":
-          description: '{string} cofirm code incorrect'
-        "404":
-          description: '{string} company not found'
   /company/missionList:
     post:
       tags:
@@ -1155,7 +1123,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} company | category not existed'
-  /company/missionList/{id}/list/:
+  /company/missionList/{id}/list:
     get:
       tags:
       - company
@@ -1243,37 +1211,6 @@ paths:
           description: '{} auth failed'
         "404":
           description: '{} company | category not existed'
-  /company/password/{id}:
-    put:
-      tags:
-      - company
-      description: If company want to change password.
-      operationId: CompanyController.ComapnyChangePassword
-      parameters:
-      - in: header
-        name: Token
-        description: The token.
-        required: true
-        type: string
-      - in: path
-        name: Cid
-        description: The user id to get user.
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: Payload
-        description: The change password payload
-        required: true
-        schema:
-          $ref: '#/definitions/models.ChangePasswordPayload'
-      responses:
-        "200":
-          description: '{string} change successful'
-        "401":
-          description: '{string} cofirm code incorrect'
-        "404":
-          description: '{string} company not found'
   /company/search/fast:
     post:
       tags:
@@ -1598,7 +1535,7 @@ paths:
         description: The payload
         required: true
         schema:
-          $ref: '#/definitions/models.DoMissionPayload'
+          $ref: '#/definitions/models.SubmitMissionPayload'
       responses:
         "200":
           description: '{string} submit successfully!'
@@ -1638,7 +1575,7 @@ paths:
     get:
       tags:
       - mission
-      description: Get the mission feedback. (感觉好像没啥用?)
+      description: Get the mission feedback.
       operationId: MissionController.GetMissionFeedback
       parameters:
       - in: header
@@ -1656,7 +1593,7 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.CompanyDoMissionFeedback'
+            $ref: '#/definitions/models.CompanyFeedback'
         "401":
           description: '{string} auth failed'
         "404":
@@ -2151,7 +2088,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user | company not existed'
-  /tag/{id}/:
+  /tag/{id}:
     get:
       tags:
       - tag
@@ -2403,7 +2340,7 @@ paths:
     get:
       tags:
       - user
-      description: Get user's information by ID. MissionList中，Status指是否已经完成。deadline指结束时间，格式2018-01-01
+      description: Get user's information by ID
       operationId: UserController.GetUserInformationByID
       parameters:
       - in: path
@@ -2472,6 +2409,37 @@ paths:
           description: '{string} cofirm code incorrect'
         "404":
           description: '{string} user not found'
+  /user/password/{id}:
+    put:
+      tags:
+      - user
+      description: If company want to change password.
+      operationId: UserController.ComapnyChangePassword
+      parameters:
+      - in: header
+        name: Token
+        description: The token.
+        required: true
+        type: string
+      - in: path
+        name: Cid
+        description: The user id to get user.
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: Payload
+        description: The change password payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.ChangePasswordPayload'
+      responses:
+        "200":
+          description: '{string} change successful'
+        "401":
+          description: '{string} cofirm code incorrect'
+        "404":
+          description: '{string} company not found'
   /user/personal/setting:
     get:
       tags:
@@ -2569,14 +2537,6 @@ definitions:
         items:
           type: integer
           format: int64
-  models.AuthEmailSignIn:
-    title: AuthEmailSignIn
-    type: object
-    properties:
-      email:
-        type: string
-      password:
-        type: string
   models.AuthInitTags:
     title: AuthInitTags
     type: object
@@ -2637,8 +2597,8 @@ definitions:
       uid:
         type: integer
         format: int64
-  models.CompanyDoMissionFeedback:
-    title: CompanyDoMissionFeedback
+  models.CompanyFeedback:
+    title: CompanyFeedback
     type: object
     properties:
       feedback:
@@ -2923,46 +2883,6 @@ definitions:
         format: int64
       msg:
         type: string
-  models.DoMissionPayload:
-    title: DoMissionPayload
-    type: object
-    properties:
-      file_url:
-        type: string
-      intro:
-        type: string
-  models.DoMissionResponse:
-    title: DoMissionResponse
-    type: object
-    properties:
-      feedback:
-        $ref: '#/definitions/models.CompanyDoMissionFeedback'
-      file_url:
-        type: string
-      if_feedback:
-        type: boolean
-      intro:
-        type: string
-      uid:
-        type: integer
-        format: int64
-      upload_time:
-        type: string
-      user_avatar:
-        type: string
-      username:
-        type: string
-  models.DoMissionResponseList:
-    title: DoMissionResponseList
-    type: object
-    properties:
-      list:
-        type: array
-        items:
-          $ref: '#/definitions/models.DoMissionResponse'
-      total:
-        type: integer
-        format: int64
   models.EditSettingBody:
     title: EditSettingBody
     type: object
@@ -3204,7 +3124,7 @@ definitions:
       missions_list:
         type: array
         items:
-          $ref: '#/definitions/models.MissionInfo'
+          $ref: '#/definitions/models.MissionEntityToShow'
       name:
         type: string
       star_level:
@@ -3287,6 +3207,15 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.Tag'
+  models.MissionEntityToShow:
+    title: MissionEntityToShow
+    type: object
+    properties:
+      mission_id:
+        type: integer
+        format: int64
+      statu:
+        type: boolean
   models.MissionInMissionList:
     title: MissionInMissionList
     type: object
@@ -3304,26 +3233,6 @@ definitions:
       mission_start_time:
         type: string
       mission_status:
-        type: boolean
-  models.MissionInfo:
-    title: MissionInfo
-    type: object
-    properties:
-      company_id:
-        type: integer
-        format: int64
-      company_logo:
-        type: string
-      company_name:
-        type: string
-      deadline:
-        type: string
-      mission_id:
-        type: integer
-        format: int64
-      mission_name:
-        type: string
-      status:
         type: boolean
   models.MissionInformation:
     title: MissionInformation
@@ -3610,6 +3519,14 @@ definitions:
         type: integer
         format: int64
       msg:
+        type: string
+  models.SubmitMissionPayload:
+    title: SubmitMissionPayload
+    type: object
+    properties:
+      file_url:
+        type: string
+      intro:
         type: string
   models.Tag:
     title: Tag
