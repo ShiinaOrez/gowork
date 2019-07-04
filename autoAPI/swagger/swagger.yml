@@ -67,7 +67,7 @@ paths:
           description: '{string} post information successful'
         "401":
           description: '{object| models.PostConfirmInformationError'
-  /auth/company/{Cid}/info:
+  /auth/company/info/{id}:
     put:
       tags:
       - auth
@@ -2088,7 +2088,6 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user | company not existed'
-  /tag/{id}:
     get:
       tags:
       - tag
