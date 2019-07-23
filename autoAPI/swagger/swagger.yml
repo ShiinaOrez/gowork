@@ -1111,7 +1111,7 @@ paths:
         required: true
         type: string
       - in: query
-        name: mlid
+        name: id
         description: Mission List ID
         required: true
         type: integer
@@ -1774,7 +1774,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user not existed'
-  /missionList/{MlID}:
+  /missionList/{id}:
     get:
       tags:
       - missionList
@@ -1787,7 +1787,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: MlID
+        name: id
         description: The missionList ID to get information
         required: true
         type: integer
@@ -1825,7 +1825,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: MlID
+        name: id
         description: The missionList ID to delete it
         required: true
         type: integer
@@ -1839,7 +1839,7 @@ paths:
           description: '{string} missionList not existed'
         "407":
           description: '{string} delete failed'
-  /missionList/{MlID}/getElite:
+  /missionList/{id}/getElite:
     get:
       tags:
       - missionList
@@ -1852,7 +1852,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: MlID
+        name: id
         description: The missionList ID to get
         required: true
         type: integer
@@ -1866,7 +1866,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} mission list  not existed'
-  /missionList/attention/{MlID}:
+  /missionList/attention/{id}:
     put:
       tags:
       - missionList
@@ -1879,7 +1879,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: MlID
+        name: id
         description: The missionList ID to get
         required: true
         type: integer
@@ -1905,7 +1905,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: MlID
+        name: id
         description: The missionList ID to get
         required: true
         type: integer
@@ -1919,7 +1919,7 @@ paths:
           description: '{string} missionList not existed'
         "407":
           description: '{string} already pay attention'
-  /missionList/attention/{MlID}/status:
+  /missionList/{id}/attention/status:
     get:
       tags:
       - missionList
@@ -1932,7 +1932,7 @@ paths:
         required: true
         type: string
       - in: path
-        name: MlID
+        name: id
         description: The missionList ID to get
         required: true
         type: integer
@@ -1965,7 +1965,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} user not existed'
-  /missionList/search:
+  /missionList/search/fast:
     post:
       tags:
       - missionList
