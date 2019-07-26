@@ -17,45 +17,36 @@ paths:
       operationId: AuthController.CompanyInformationConfirm
       parameters:
       - in: body
-        name: company_name
+        name: Payload
         description: The company name
         required: true
-        type: string
-      - in: body
-        name: license_image
-        description: The company license image
-        required: true
-        type: string
-      - in: body
-        name: organization_code
-        description: The company organization code
-        required: true
-        type: string
-      - in: body
-        name: origin_image
-        description: The company organization origin image
-        required: true
-        type: string
-      - in: body
-        name: legal_identify
-        description: The company legal's identify
-        required: true
-        type: string
-      - in: body
-        name: card_image
-        description: The company legal ID card image
-        required: true
-        type: string
-      - in: body
-        name: legal_name
-        description: The legal body name
-        required: true
-        type: string
-      - in: body
-        name: legal_number
-        description: The legal body number
-        required: true
-        type: string
+        schema:
+          type: object
+          properties:
+            company_name:
+              description: The company name.
+              type: string
+            license_image:
+              description: The company license image.
+              type: string
+            organization_code:
+              description: The company organization code.
+              type: string
+            origin_image:
+              description: The company organization origin image.
+              type: string
+            legal_identify:
+              description: The company legal's indentify
+              type: string
+            card_image:
+              description: The company legal ID card image.
+              type: string
+            legal_name:
+              description: The legal body name
+              type: string
+            legal_number:
+              description: The legal body number.
+              type: string
       - in: path
         name: Cid
         description: The company ID
@@ -3284,6 +3275,9 @@ definitions:
               format: int64
             company_name:
               type: string
+            company_logo:
+              type: string
+              format: url
             company_id:
               type: integer
               format: int64
@@ -3293,7 +3287,7 @@ definitions:
             tag_list:
               type: array
               items:
-                $ref: '#definitions/models.Tag'
+                $ref: '#/definitions/models.Tag'
       total_count:
         type: integer
         format: int64
