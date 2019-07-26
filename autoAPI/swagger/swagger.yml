@@ -1735,7 +1735,7 @@ paths:
           description: '{string} user | mission not existed'
         "406":
           description: '{string} File error'
-  /mission/search:
+  /mission/search/fast:
     post:
       tags:
       - mission
@@ -1769,7 +1769,7 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MissionList'
+            $ref: '#/definitions/models.SearchMissionList'
         "401":
           description: '{string} auth failed'
         "404":
@@ -3258,6 +3258,45 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/models.Tag'
+  models.SearchMissionList:
+    title: SearchMissionList
+    type: object
+    properties:
+      mission_list:
+        type: array
+        items:
+          properties:
+            mission_id:
+              type: integer
+              format: int64
+            mission_name:
+              type: string
+            online:
+              type: boolean
+            sign_up_end_date:
+              type: string
+              format: date
+            upload_end_date:
+              type: string
+              format: date
+            person_limit:
+              type: integer
+              format: int64
+            company_name:
+              type: string
+            company_id:
+              type: integer
+              format: int64
+            release_date:
+              type: string
+              format: date
+            tag_list:
+              type: array
+              items:
+                $ref: '#definitions/models.Tag'
+      total_count:
+        type: integer
+        format: int64
   models.MissionList:
     title: MissionList
     type: object
