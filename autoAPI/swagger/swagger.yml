@@ -1035,6 +1035,65 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} company not existed'
+  /company/mission/submitionList/{id}:
+    get:
+      tags:
+      - company
+      description: 获取一个任务的提交结果列表
+      parameters:
+      - in: path
+        name: id
+        description: The mission id.
+        required: true
+        type: integer
+        format: int64
+      - in: header
+        name: Token
+        description: The token to confirm.
+        required: true
+        type: string
+      responses:
+        200:
+          description: "OK"
+          schema:
+            properties:
+              list:
+                type: array
+                items:
+                  properties:
+                    feedback:
+                      type: object
+                      properties:
+                        feedback:
+                          type: string
+                        star_level:
+                          type: integer
+                          format: int64
+                    file_url:
+                      type: string
+                      format: url
+                    intro:
+                      type: string
+                      format: text
+                    uid:
+                      type: integer
+                      format: int64
+                    upload_time:
+                      type: string
+                      format: date
+                    user_avatar:
+                      type: string
+                      format: url
+                    username:
+                      type: string
+                    users_mission_id:
+                      type: integer
+                      format: int64
+                    
+              total:
+                type: integer
+                format: int
+  
   /company/mission/{id}/overview:
     get:
       tags:
