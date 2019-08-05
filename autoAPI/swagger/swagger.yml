@@ -1093,6 +1093,38 @@ paths:
               total:
                 type: integer
                 format: int
+                
+  /company/mission/submition/{id}/feedback:
+    post:
+      tags:
+      - company
+      description: 对于已经提交结果的任务进行反馈
+      parameters:
+      - in: path
+        name: id
+        description: The users_mission id.
+        required: true
+        type: integer
+        format: int64
+      - in: header
+        name: Token
+        description: The token to confirm
+        required: true
+        type: string
+      - in: body
+        name: Payload
+        description: post payload
+        required: true
+        schema:
+          properties:
+            content:
+              type: string
+              format: text
+            score:
+              type: integer
+      responses:
+        200:
+          description: "OK"
   
   /company/mission/{id}/overview:
     get:
