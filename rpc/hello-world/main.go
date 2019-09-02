@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-    go server.StartServer()
-    client.StartClient()
+    ch := server.StartServer()
+    client.StartClient(ch)
 }
