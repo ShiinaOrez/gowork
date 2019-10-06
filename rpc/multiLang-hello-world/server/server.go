@@ -3,6 +3,7 @@ package server
 import (
     "net"
     "net/rpc"
+    "net/rpc/jsonrpc"
     "fmt"
     "log"
     "github.com/ShiinaOrez/gowork/rpc/safe-hello-world/constvar"
@@ -39,12 +40,12 @@ func StartServer() *chan struct{} {
         fmt.Printf("Accepting...")
         for {
 	        conn, err := listener.Accept()
-    	    if err != nil {
-       	     	log.Fatal()
-        	}
-        	fmt.Println("OK")
+                if err != nil {
+       	            log.Fatal()
+                }
+                fmt.Println("OK")
 
-        	go rpc.ServeConn(conn)
+        	go rpc.ServeCodec(jsonrpc.NewServerCodec(conn))
         }
     }()
     return &ch

@@ -1,21 +1,28 @@
 package main
 
-import (
-	"github.com/kataras/iris"
+import "fmt"
 
-	"github.com/kataras/iris/middleware/logger"
-	"github.com/kataras/iris/middleware/recover"
-)
+type Eyes  string // 眼睛类型
+type Mouth string // 嘴类型
+type Nose  string // 鼻子类型
+type Ears  string // 耳朵类型
 
-func main(){
-	shiina:=iris.New()
-	shiina.Logger().SetLevel("debug")
-	shiina.Use(recover.New())
-	shiina.Use(logger.New())
+func (ears *Ears) Hear(s string) {
+    fmt.Println(s)
+}
 
-	shiina.Handle("GET","/",func(ctx iris.Context){
-		ctx.JSON(iris.Map{"message": "hello,my friend!"})
-	})
+func (eyes *Eyes) Hear(s string) {
+    fmt.Println(s)
+}
 
-	shiina.Run(iris.Addr(":8080"),iris.WithoutServerError(iris.ErrServerClosed))
+type Face struct { // 脸类型，由各个部分拼接而成
+    Eyes
+    Mouth
+    Nose
+    Ears
+}
+
+func main() {
+    face := Face{}
+    face.Hear("Golang is the best!")
 }
