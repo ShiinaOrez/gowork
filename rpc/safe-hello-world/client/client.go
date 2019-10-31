@@ -1,42 +1,42 @@
 package client
 
 import (
-    "net/rpc"
-    "fmt"
-    "log"
-    "github.com/ShiinaOrez/gowork/rpc/safe-hello-world/constvar"
+	"fmt"
+	"github.com/ShiinaOrez/gowork/rpc/safe-hello-world/constvar"
+	"log"
+	"net/rpc"
 )
 
 type HelloServiceClient struct {
-    *rpc.Client
+	*rpc.Client
 }
 
 func (client *HelloServiceClient) Hello(request string, reply *string) error {
-    return client.Client.Call(constvar.HelloServiceName+".Hello", request, reply)
+	return client.Client.Call(constvar.HelloServiceName+".Hello", request, reply)
 }
 
 func DialHelloService(network, address string) (*HelloServiceClient, error) {
-    c, err := rpc.Dial(network, address)
-    if err != nil {
-        return nil, err
-    }
-    return &HelloServiceClient{Client: c}, nil
+	c, err := rpc.Dial(network, address)
+	if err != nil {
+		return nil, err
+	}
+	return &HelloServiceClient{Client: c}, nil
 }
 
 func StartClient(ch *chan struct{}) {
-    _ = <-(*ch)
-    close(*ch)
-    fmt.Printf("Dialing...")
-    client, err := DialHelloService("tcp", "localhost:2333")
-    if err != nil {
-        log.Fatal("Dialing:", err)
-    }
-    fmt.Println("OK")
+	_ = <-(*ch)
+	close(*ch)
+	fmt.Printf("Dialing...")
+	client, err := DialHelloService("tcp", "localhost:2333")
+	if err != nil {
+		log.Fatal("Dialing:", err)
+	}
+	fmt.Println("OK")
 
-    reply := ""
-    err = client.Hello("safe-rpc", &reply)
-    if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(reply)
+	reply := ""
+	err = client.Hello("safe-rpc", &reply)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(reply)
 }

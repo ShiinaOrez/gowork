@@ -57,7 +57,7 @@ func init() {
 			beego.NSInclude(
 				&controllers.CategoryController{},
 			),
-        ),
+		),
 	)
 	beego.AddNamespace(ns)
 }

@@ -4,12 +4,13 @@ import (
 	_ "fmt"
 	"github.com/ShiinaOrez/gowork/to-gather/models"
 	"github.com/kataras/iris"
-	"strings"
 	_ "strconv"
+	"strings"
 	"time"
 )
 
-var  REQUIRED = []string{"year", "month", "day", "location", "event", "question", "tel", "qq", "time"}
+var REQUIRED = []string{"year", "month", "day", "location", "event", "question", "tel", "qq", "time"}
+
 type Token string
 
 func ActivityPost(ctx iris.Context) {
@@ -27,11 +28,11 @@ func ActivityPost(ctx iris.Context) {
 	currentTime := myTime(time.Now())
 	if !currentTime.Before(data.Year, data.Month, data.Day) {
 		ctx.StatusCode(405)
-		ctx.JSON(map[string]string {
+		ctx.JSON(map[string]string{
 			"msg": "date invalid",
 		})
 		return
-	} 
+	}
 
 	act.PosterID = uid
 	actID := (&act).Init(data)
@@ -65,7 +66,7 @@ func ActivityGet(ctx iris.Context) {
 		act.Pickable = false
 		DB.Save(&act)
 		ctx.StatusCode(403)
-		ctx.JSON(map[string]string {
+		ctx.JSON(map[string]string{
 			"msg": "activity out of time range",
 		})
 		return
@@ -95,7 +96,7 @@ func ActivityGet(ctx iris.Context) {
 func ActivityPick(ctx iris.Context) {
 	var data ActivityPickData
 	aid, _ := ctx.Params().GetInt("aid")
-    uid, _ := ctx.Values().GetInt("uid")
+	uid, _ := ctx.Values().GetInt("uid")
 	var act models.Activity
 	var usr models.User
 	var record models.Picker2Activity
@@ -157,7 +158,7 @@ func ActivityPick(ctx iris.Context) {
 		act.Pickable = false
 		DB.Save(&act)
 		ctx.StatusCode(403)
-		ctx.JSON(map[string]string {
+		ctx.JSON(map[string]string{
 			"msg": "activity out of time range",
 		})
 		return
@@ -209,7 +210,7 @@ func ActivityPut(ctx iris.Context) {
 		act.Pickable = false
 		DB.Save(&act)
 		ctx.StatusCode(403)
-		ctx.JSON(map[string]string {
+		ctx.JSON(map[string]string{
 			"msg": "activity out of time range",
 		})
 		return
@@ -255,7 +256,7 @@ func ActivityPut(ctx iris.Context) {
 			ctx.JSON(map[string]string{
 				"msg": "makesure successful!",
 			})
-		} else{
+		} else {
 			record.Waiting = false
 			record.Fail = true
 			ctx.StatusCode(201)

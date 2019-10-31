@@ -1,9 +1,9 @@
 package ds
 
 type Dir struct {
-	FileTree  FileBSTree
-	DirTree   DirBSTree
-	Name      string
+	FileTree FileBSTree
+	DirTree  DirBSTree
+	Name     string
 }
 
 type DirBSTreeNode struct {
@@ -13,11 +13,11 @@ type DirBSTreeNode struct {
 }
 
 type DirBSTree struct {
-	Root      *DirBSTreeNode
-	Size      int
+	Root *DirBSTreeNode
+	Size int
 }
 
-func BuildDirNode () *DirBSTreeNode {
+func BuildDirNode() *DirBSTreeNode {
 	return new(DirBSTreeNode)
 }
 
@@ -31,21 +31,21 @@ func (tree *DirBSTree) Push(value Dir, comp func(Dir, Dir) bool) int {
 		tree.Root.Value = value
 		tree.Size = 1
 		return tree.Size
-	}else{
+	} else {
 		now := tree.Root
 		for now != nil {
 			if comp(value, now.Value) {
 				if now.LeftNode != nil {
 					now = now.LeftNode
-				}else{
+				} else {
 					now.LeftNode = BuildDirNode()
 					now.LeftNode.Value = value
 					break
 				}
-			}else{
+			} else {
 				if now.RightNode != nil {
 					now = now.RightNode
-				}else{
+				} else {
 					now.RightNode = BuildDirNode()
 					now.RightNode.Value = value
 					break
@@ -55,7 +55,7 @@ func (tree *DirBSTree) Push(value Dir, comp func(Dir, Dir) bool) int {
 		tree.Size += 1
 		return tree.Size
 	}
-}  
+}
 
 func (now *DirBSTreeNode) Traversal(res []DirBSTreeNode) []DirBSTreeNode {
 	if now.LeftNode != nil {
@@ -73,22 +73,22 @@ func (tree *DirBSTree) Find(target Dir, comp func(Dir, Dir) bool) bool {
 	for now != nil {
 		if now.Value == target {
 			return true
-		}else{
+		} else {
 			if comp(target, now.Value) {
 				now = now.LeftNode
-			}else{
+			} else {
 				now = now.RightNode
 			}
 		}
 	}
 	return false
-} 
+}
 
-func (tree *DirBSTree) Sort() []Dir{
+func (tree *DirBSTree) Sort() []Dir {
 	var res []Dir
 	var rv []DirBSTreeNode
 	rv = tree.Root.Traversal(rv)
-	for _, node := range(rv) {
+	for _, node := range rv {
 		res = append(res, node.Value)
 	}
 	return res

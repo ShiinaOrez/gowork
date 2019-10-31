@@ -33,7 +33,6 @@ func (u *MissionListController) GetMissionListInformation() {
 func (u *MissionListController) MissionListSearch() {
 }
 
-
 // @Title DeleteMissionListByID
 // @Description Delete a missionList by ID.
 // @Param   Token       header    string      true        "The token to conform"

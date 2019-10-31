@@ -7,7 +7,7 @@ import (
 
 type Product struct {
 	gorm.Model
-	Code string
+	Code  string
 	Price int
 }
 
@@ -24,29 +24,27 @@ func main() {
 	// 创建
 	db.Create(&Product{Code: "L1212", Price: 1000})
 
-	db.Set("gorm:table_options","Price=233")
+	db.Set("gorm:table_options", "Price=233")
 
-/*	has_table:=db.HasTable(&Product{})
-	//check the table exist? return type is bool
-	fmt.Println(has_table)//true*/
+	/*	has_table:=db.HasTable(&Product{})
+		//check the table exist? return type is bool
+		fmt.Println(has_table)//true*/
 
 	db.CreateTable(&Product{})
 
 	db.DropTable(&Product{})
 
+	/*	// 读取
+			var product Product
+			db.First(&product, 1) // 查询id为1的product
 
+		//	fmt.Println(product.Code)
 
-/*	// 读取
-	var product Product
-	db.First(&product, 1) // 查询id为1的product
+			db.First(&product, "code = ?", "L1212") // 查询code为l1212的product
 
-//	fmt.Println(product.Code)
+			// 更新 - 更新product的price为2000
+			db.Model(&product).Update("Price", 2000)
 
-	db.First(&product, "code = ?", "L1212") // 查询code为l1212的product
-
-	// 更新 - 更新product的price为2000
-	db.Model(&product).Update("Price", 2000)
-
-	// 删除 - 删除product
-	db.Delete(&product)*/
+			// 删除 - 删除product
+			db.Delete(&product)*/
 }

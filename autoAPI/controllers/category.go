@@ -30,8 +30,6 @@ func (u *CategoryController) CategoryCreate() {
 func (u *CategoryController) GetCategoryInfo() {
 }
 
-
-
 // @Title  AddTagsToCategory
 // @Description Add a list of tag to category.
 // @Param   Token       header    string      true        "The token to conform"
@@ -43,7 +41,6 @@ func (u *CategoryController) GetCategoryInfo() {
 // @router /:id/addTags [put]
 func (u *CategoryController) AddTagToCategory() {
 }
-
 
 // @Title RemoveTagFromCategory
 // @Description  Remove tag from category.
@@ -70,7 +67,6 @@ func (u *CategoryController) RemoveTagFromCategory() {
 func (u *CategoryController) DeleteCategory() {
 }
 
-
 // @Title GetCategoryForElite
 // @Description  获取用于人才搜索的Category & tag
 // @Param   Token       header    string      true        "The token to conform"
@@ -88,7 +84,6 @@ func (u *CategoryController) CategoryForElite() {
 // @router /forMission [get]
 func (u *CategoryController) CategoryForMission() {
 }
-
 
 // @Title GetCategoryForCompany
 // @Description 获取用于公司搜索的Category & tag

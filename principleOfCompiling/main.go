@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -53,7 +53,7 @@ func init() {
 	sourceCode = string(bytes)
 	fmt.Println("ok")
 
-    _ = os.Remove("./out.log")
+	_ = os.Remove("./out.log")
 	f, _ := os.OpenFile("./out.log", os.O_WRONLY|os.O_CREATE|os.O_SYNC|os.O_APPEND, 0755)
 	os.Stdout = f
 }
@@ -97,7 +97,7 @@ func main() {
 						result = append(result, tuple)
 						word = word[index:]
 					} else if IsNotNumberOrLetter(word[0]) {
-						fmt.Println("Syntex Error At: ", string(word[0]));
+						fmt.Println("Syntex Error At: ", string(word[0]))
 						return
 					} else { // identifier
 						index := 0

@@ -10,4 +10,3 @@ type File struct {
 func init() {
 	ROOT = "/"
 }
-

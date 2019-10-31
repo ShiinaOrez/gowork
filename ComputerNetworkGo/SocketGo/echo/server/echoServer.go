@@ -11,11 +11,11 @@ import (
 var host = flag.String("host", "", "host")     //host by flag
 var port = flag.String("port", "3333", "port") //port by flag
 
-func main () {
-	flag.Parse() //parse flag
-	l, err := net.Listen("tcp", *host+":"+*port)  //new listener, use tcp4&tcp6, on host:port
-	checkError(err) // checkError, Create Listener Failed
-	defer l.Close() // defer close(), if you create a connectionn, please close it in the end
+func main() {
+	flag.Parse()                                 //parse flag
+	l, err := net.Listen("tcp", *host+":"+*port) //new listener, use tcp4&tcp6, on host:port
+	checkError(err)                              // checkError, Create Listener Failed
+	defer l.Close()                              // defer close(), if you create a connectionn, please close it in the end
 	fmt.Println("Listening on " + *host + ":" + *port)
 
 	for { // listen & listen & listen

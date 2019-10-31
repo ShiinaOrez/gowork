@@ -20,7 +20,6 @@ type UserController struct {
 func (u *UserController) UserInfo() {
 }
 
-
 // @Title GetUserBaseInformation
 // @Description Get user base information
 // @Param   Token         header  string         true        "The token to conform"

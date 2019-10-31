@@ -12,7 +12,7 @@ type AuthController struct {
 // @Title UserSignIn
 // @Description Account sign in.
 // @Param   PostBody 	body    models.AuthEmailSignIn true "依照验证码登录所需PostBody"
-// @Success 200 {object} models.ResultOfUserLogin 
+// @Success 200 {object} models.ResultOfUserLogin
 // @Failure 401 {string}
 // @router /user/signin/email [post]
 func (u *AuthController) UserSignInByEmail() {
@@ -22,7 +22,7 @@ func (u *AuthController) UserSignInByEmail() {
 // @Description Account sign in.
 // @Param   tel         body    string  true        "The telephone number of login"
 // @Param	code	    body 	string	true		"The confirm code"
-// @Success 200 {object} models.ResultOfUserLogin 
+// @Success 200 {object} models.ResultOfUserLogin
 // @Failure 401 {string}
 // @router /user/signin/tel [post]
 func (u *AuthController) UserSignInByTel() {

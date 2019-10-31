@@ -13,11 +13,11 @@ type FileBSTreeNode struct {
 }
 
 type FileBSTree struct {
-	Root      *FileBSTreeNode
-	Size      int
+	Root *FileBSTreeNode
+	Size int
 }
 
-func BuildFileNode () *FileBSTreeNode {
+func BuildFileNode() *FileBSTreeNode {
 	return new(FileBSTreeNode)
 }
 
@@ -31,21 +31,21 @@ func (tree *FileBSTree) Push(value File, comp func(File, File) bool) int {
 		tree.Root.Value = value
 		tree.Size = 1
 		return tree.Size
-	}else{
+	} else {
 		now := tree.Root
 		for now != nil {
 			if comp(value, now.Value) {
 				if now.LeftNode != nil {
 					now = now.LeftNode
-				}else{
+				} else {
 					now.LeftNode = BuildFileNode()
 					now.LeftNode.Value = value
 					break
 				}
-			}else{
+			} else {
 				if now.RightNode != nil {
 					now = now.RightNode
-				}else{
+				} else {
 					now.RightNode = BuildFileNode()
 					now.RightNode.Value = value
 					break
@@ -55,7 +55,7 @@ func (tree *FileBSTree) Push(value File, comp func(File, File) bool) int {
 		tree.Size += 1
 		return tree.Size
 	}
-}  
+}
 
 func (now *FileBSTreeNode) Traversal(res []FileBSTreeNode) []FileBSTreeNode {
 	if now.LeftNode != nil {
@@ -73,22 +73,22 @@ func (tree *FileBSTree) Find(target File, comp func(File, File) bool) bool {
 	for now != nil {
 		if now.Value == target {
 			return true
-		}else{
+		} else {
 			if comp(target, now.Value) {
 				now = now.LeftNode
-			}else{
+			} else {
 				now = now.RightNode
 			}
 		}
 	}
 	return false
-} 
+}
 
-func (tree *FileBSTree) Sort() []File{
+func (tree *FileBSTree) Sort() []File {
 	var res []File
 	var rv []FileBSTreeNode
 	rv = tree.Root.Traversal(rv)
-	for _, node := range(rv) {
+	for _, node := range rv {
 		res = append(res, node.Value)
 	}
 	return res

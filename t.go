@@ -1,12 +1,12 @@
 package main
 
 import (
-    "gowork/muxibook/models"
-    "fmt"
+	"fmt"
+	"gowork/muxibook/models"
 )
 
-func main(){
-    var a models.User
-    a.Username="Shiina"
-    fmt.Println(a.Username)
+func main() {
+	var a models.User
+	a.Username = "Shiina"
+	fmt.Println(a.Username)
 }

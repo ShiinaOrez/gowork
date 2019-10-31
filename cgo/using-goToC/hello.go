@@ -7,6 +7,5 @@ import "fmt"
 
 // export SayHello
 func SayHello(s *C.char) {
-    fmt.Print(C.GoString(s))
+	fmt.Print(C.GoString(s))
 }
-

@@ -16,10 +16,10 @@ type DatabaseRecord interface {
 
 type GetPageData struct {
 	Data    []DatabaseRecord
-	PageNow  int
-	PageMax  int
-	HasNext  bool
-	RowsNum  int
+	PageNow int
+	PageMax int
+	HasNext bool
+	RowsNum int
 }
 
 func (token Token) LoginRequired() (bool, int) {
@@ -43,7 +43,7 @@ func (token Token) LoginRequired() (bool, int) {
 func GetDate(year, month, day int) time.Time {
 	secondsEastOfUTC := int((8 * time.Hour).Seconds())
 	beijing := time.FixedZone("Beijing Time", secondsEastOfUTC)
-	return time.Date(year, time.Month(month), day, 00, 0,0,0, beijing)
+	return time.Date(year, time.Month(month), day, 00, 0, 0, 0, beijing)
 }
 
 func (now myTime) Before(year, month, day int) bool {
@@ -51,8 +51,8 @@ func (now myTime) Before(year, month, day int) bool {
 	currentMonth := int(time.Time(now).Month())
 	currentDay := time.Time(now).Day()
 	if (currentYear > year) ||
-	   ((currentYear == year) && (currentMonth > month)) ||
-	   ((currentYear == year) && (currentMonth == month) && (currentDay > day)) {
+		((currentYear == year) && (currentMonth > month)) ||
+		((currentYear == year) && (currentMonth == month) && (currentDay > day)) {
 		return false
 	} else {
 		return true
@@ -63,8 +63,8 @@ func GetPage(OriginData []DatabaseRecord, PageSize int, PageNow int) (GetPageDat
 	var has_next bool
 	rows_num := len(OriginData)
 	page_now := PageNow
-	page_max := (rows_num/PageSize) + 1
-	if page_now<page_max {
+	page_max := (rows_num / PageSize) + 1
+	if page_now < page_max {
 		has_next = true
 	} else {
 		if page_now > page_max {
@@ -73,7 +73,7 @@ func GetPage(OriginData []DatabaseRecord, PageSize int, PageNow int) (GetPageDat
 		has_next = false
 	}
 	var data []DatabaseRecord
-	for i := PageSize*(page_now - 1); i < PageSize*page_now; i++ {
+	for i := PageSize * (page_now - 1); i < PageSize*page_now; i++ {
 		if i == rows_num {
 			break
 		} else {

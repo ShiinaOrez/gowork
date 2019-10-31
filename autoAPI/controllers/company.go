@@ -9,7 +9,6 @@ type CompanyController struct {
 	beego.Controller
 }
 
-
 // @Title CompanyInformationByID
 // @Description Get company information by id. (information less)
 // @Param   Token       header    string      true        "The token to conform"
@@ -20,7 +19,6 @@ type CompanyController struct {
 // @router /info/:id/ [get]
 func (u *CompanyController) CompanyInfo() {
 }
-
 
 // @Title CompanySearchByIntelligent
 // @Description Search company by intelligent way.
@@ -67,7 +65,6 @@ func (u *CompanyController) CompanyPayAttention() {
 // @router /attention [put]
 func (u *CompanyController) CompanyCancelAttention() {
 }
-
 
 // @Title GetCompanyMissionListByID
 // @Description Get a company mission list by company ID. 获取一个公司的任务列表（不是选材清单）
@@ -128,7 +125,6 @@ func (u *CompanyController) UpdateCompanyTelStep1() {
 // @router /info/tel/step2 [put]
 func (u *CompanyController) UpdateCompanyTelStep2() {
 }
-
 
 // @Title UpdateCompanyEmailAddressStep1
 // @Description 前端发送一个邮箱地址，给相应邮箱发送一个验证码（6位长数字）。
@@ -237,8 +233,6 @@ func (u *CompanyController) CreateCompanyCategory() {
 func (u *CompanyController) CompanyCategoryAddTag() {
 }
 
-
-
 // @Title GetAllMissionListOfCompany
 // @Description Get a company all mission list. 获取一个公司的全部选材清单
 // @Param   Token       header    string      true        "The token to conform"
@@ -285,7 +279,6 @@ func (u *CompanyController) CompanyMessageSetting() {
 // @router /password/:id [put]
 func (u *CompanyController) CompanyChangePassword() {
 }
-
 
 // @Title GetMissionSubmissionList
 // @Description  获取一个任务所有的用户完成任务后的提交，以及每个用户提交之后 公司给的Feedback.

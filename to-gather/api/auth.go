@@ -1,13 +1,13 @@
 package api
 
 import (
-	"github.com/jinzhu/gorm"
-	"github.com/kataras/iris"
+	_ "fmt"
 	"github.com/ShiinaOrez/gowork/to-gather/models"
+	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"github.com/kataras/iris"
 	"log"
 	"strconv"
-	_ "fmt"
 )
 
 var DB *gorm.DB
@@ -39,13 +39,13 @@ func Login(ctx iris.Context) {
 		usr.StdNum = data.StdNum
 		DB.Create(&usr)
 	}
-	ReturnData := LoginReturnData {
+	ReturnData := LoginReturnData{
 		strconv.Itoa(usr.ID) + "?" + usr.Name,
 		usr.ID,
 		usr.StdNum,
 	}
 	ctx.StatusCode(200)
-	ctx.JSON(map[string]LoginReturnData {
+	ctx.JSON(map[string]LoginReturnData{
 		"Data": ReturnData,
 	})
 	return

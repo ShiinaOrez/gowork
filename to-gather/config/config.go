@@ -12,17 +12,17 @@ type Config struct {
 }
 
 func Init(cfg string) error {
-	c := Config {
+	c := Config{
 		Name: cfg,
 	}
 	if err := c.initConfig(); err != nil {
 		return err
 	}
 	c.watchConfig()
-	return  nil
+	return nil
 }
 
-func (c * Config) initConfig() error {
+func (c *Config) initConfig() error {
 	if c.Name != "" {
 		viper.SetConfigFile(c.Name)
 	} else {
@@ -40,7 +40,7 @@ func (c * Config) initConfig() error {
 	return nil
 }
 
-func (c * Config) watchConfig() {
+func (c *Config) watchConfig() {
 	viper.WatchConfig()
 	viper.OnConfigChange(func(e fsnotify.Event) {
 		log.Printf("Config file changed: %s", e.Name)

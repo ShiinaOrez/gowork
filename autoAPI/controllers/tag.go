@@ -31,7 +31,6 @@ func (t *TagController) CreateTag() {
 func (t *TagController) DeleteTag() {
 }
 
-
 // @Title TagUpdateAPI
 // @Description 更新Tag
 // @Param   Token       header    string      true        "The token to conform"
@@ -44,7 +43,6 @@ func (t *TagController) DeleteTag() {
 // @router /:id [put]
 func (t *TagController) UpdateTag() {
 }
-
 
 // @Title GetTagInformation
 // @Description Get the tag information

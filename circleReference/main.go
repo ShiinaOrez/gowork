@@ -3,14 +3,14 @@ package main
 import "fmt"
 
 type RouterGroup struct {
-    engine  *Engine
+	engine *Engine
 }
 
 type Engine struct {
-    RouterGroup
+	RouterGroup
 }
 
 func main() {
-    rg := RouterGroup{}
-    fmt.Println(rg.engine)
+	rg := RouterGroup{}
+	fmt.Println(rg.engine)
 }

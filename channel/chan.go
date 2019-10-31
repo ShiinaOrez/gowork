@@ -4,11 +4,11 @@ import (
 	"fmt"
 )
 
-func main(){
+func main() {
 	fmt.Println("bi(a)tch")
-	ch:=make(chan int,1)
+	ch := make(chan int, 1)
 	ch <- 2
-	x:=<-ch
+	x := <-ch
 	<-ch
 	close(ch)
 	fmt.Println(x)
