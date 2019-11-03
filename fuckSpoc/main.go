@@ -43,16 +43,34 @@ func main() {
 
 	formData := fmt.Sprintf(
 		"username=%s&password=%s&execution=e1s1&_eventId=submit&lt=%s",
-		"---",
-		"---",
+		"2017211712",
+		"sry19990512",
 		lt,
 	) + "&submit=%E7%99%BB%E5%BD%95"
 
 	request, err := http.NewRequest(
 		"POST",
-		temp1+";jsessionid="+session["JSESSIONID"]+temp2,
+		temp1+temp2,
 		strings.NewReader(formData),
 	)
+	request.AddCookie(&http.Cookie{
+		Name: "CASPRIVACY",
+		Value: "",
+		Path: "/cas/",
+	})
+	request.AddCookie(&http.Cookie{
+		Name: "CASTGC",
+		Value: "",
+		Path: "/cas/",
+	})
+	request.AddCookie(&http.Cookie{
+		Name: "JSESSIONID",
+		Value: session["JSESSIONID"],
+		Path: "/cas/",
+	})
+	for _, c := range request.Cookies() {
+		fmt.Println(c.String())
+	}
 	if err != nil {
 		log.Println("Error:", err)
 		return
