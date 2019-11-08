@@ -37,14 +37,17 @@ func main() {
 		}
 	}
 	body, err := ioutil.ReadAll(resp.Body)
+	eventR, _ := regexp.Compile("execution\" value=\"(.*)\" />")
 	r, _ := regexp.Compile("LT-(.*)-account.ccnu.edu.cn")
 	lt := r.FindString(string(body))
+	eventId := eventR.FindString(string(body))
+	
 	resp.Body.Close()
 
 	formData := fmt.Sprintf(
-		"username=%s&password=%s&execution=e1s1&_eventId=submit&lt=%s",
-		"2017211712",
-		"sry19990512",
+		"username=%s&password=%s&execution="+eventId[18:22]+"&_eventId=submit&lt=%s",
+		"xxx",
+		"xxx",
 		lt,
 	) + "&submit=%E7%99%BB%E5%BD%95"
 
