@@ -41,7 +41,7 @@ func main() {
 	r, _ := regexp.Compile("LT-(.*)-account.ccnu.edu.cn")
 	lt := r.FindString(string(body))
 	eventId := eventR.FindString(string(body))
-	
+
 	resp.Body.Close()
 
 	formData := fmt.Sprintf(
@@ -57,19 +57,19 @@ func main() {
 		strings.NewReader(formData),
 	)
 	request.AddCookie(&http.Cookie{
-		Name: "CASPRIVACY",
+		Name:  "CASPRIVACY",
 		Value: "",
-		Path: "/cas/",
+		Path:  "/cas/",
 	})
 	request.AddCookie(&http.Cookie{
-		Name: "CASTGC",
+		Name:  "CASTGC",
 		Value: "",
-		Path: "/cas/",
+		Path:  "/cas/",
 	})
 	request.AddCookie(&http.Cookie{
-		Name: "JSESSIONID",
+		Name:  "JSESSIONID",
 		Value: session["JSESSIONID"],
-		Path: "/cas/",
+		Path:  "/cas/",
 	})
 	for _, c := range request.Cookies() {
 		fmt.Println(c.String())

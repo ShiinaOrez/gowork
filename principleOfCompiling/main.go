@@ -1,14 +1,14 @@
 package main
 
 import (
-	"log"
 	_ "fmt"
+	"log"
 )
 
 func is_factor(tuples []Tuple) bool {
 	if len(tuples) == 1 {
 		if tuples[0].Syn == 10 || tuples[0].Syn == 11 {
-			return true;
+			return true
 		} else {
 			log.Println("Error: Item must be indentifier or number or (expression)!")
 			return false
@@ -18,7 +18,7 @@ func is_factor(tuples []Tuple) bool {
 		return false
 	} else {
 		if tuples[0].Syn == 27 && tuples[len(tuples)-1].Syn == 28 {
-			if res := is_expression(tuples[1:len(tuples)-1]); !res {
+			if res := is_expression(tuples[1 : len(tuples)-1]); !res {
 				log.Println("Error: Error with expression!")
 				return false
 			}
@@ -53,7 +53,7 @@ func is_item(tuples []Tuple) bool {
 			if index == length-1 {
 				index += 1
 			}
-			if res := is_factor(tuples[last_end+1:index]); !res {
+			if res := is_factor(tuples[last_end+1 : index]); !res {
 				log.Println("Error: Error with factor!")
 				return false
 			} else {
@@ -82,7 +82,7 @@ func is_expression(tuples []Tuple) bool {
 				log.Println("Error: Lack of `(` !")
 				return false
 			}
-			if res := is_item(tuples[left_bracket[len(left_bracket)-1]:index+1]); !res {
+			if res := is_item(tuples[left_bracket[len(left_bracket)-1] : index+1]); !res {
 				log.Println("Error: Error with item!")
 				return false
 			}
@@ -103,7 +103,7 @@ func is_expression(tuples []Tuple) bool {
 				last_end = index
 				continue
 			}
-			if res := is_item(tuples[last_end+1:index]); !res {
+			if res := is_item(tuples[last_end+1 : index]); !res {
 				log.Println("Error: Error with item!")
 				return false
 			} else {
@@ -126,7 +126,7 @@ func is_assignment_statement(tuples []Tuple) bool {
 	}
 	if length < 2 || tuples[1].Syn != 18 {
 		log.Println("Error: Assignment statement required `:=` !")
-		return false;
+		return false
 	}
 	if res := is_expression(tuples[2:]); !res {
 		log.Println("Error: Error with expression!")
@@ -160,7 +160,7 @@ func is_statement_string(tuples []Tuple) bool {
 			if index == length-1 {
 				index += 1
 			}
-			if res := is_statement(tuples[last_end+1:index]); !res {
+			if res := is_statement(tuples[last_end+1 : index]); !res {
 				log.Println("Error: Error with statement!")
 				return false
 			} else {
@@ -179,7 +179,7 @@ func main() {
 		log.Println("Error: Please start with `begin` and end with `end`!")
 		return
 	}
-	if res := is_statement_string(tuples[1:length-1]); !res {
+	if res := is_statement_string(tuples[1 : length-1]); !res {
 		log.Println("Error: Error with statement string!")
 	} else {
 		log.Println("Analysis Successful!")
