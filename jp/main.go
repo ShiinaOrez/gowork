@@ -18,6 +18,21 @@ var m []Pair = []Pair {
 	{"う", "u"},
 	{"え", "e"},
 	{"お", "o"},
+	{"か", "ka"},
+	{"き", "ki"},
+	{"く", "ku"},
+	{"け", "ke"},
+	{"こ", "ko"},
+	{"さ", "sa"},
+	{"し", "shi"},
+	{"す", "su"},
+	{"せ", "se"},
+	{"そ", "so"},
+	{"た", "ta"},
+	{"ち", "chi"},
+	{"つ", "tsu"},
+	{"て", "te"},
+	{"と", "to"},
 }
 
 func init() {
@@ -26,14 +41,14 @@ func init() {
 	fmt.Println("┃***********************┃")
 	fmt.Println("┣━━━━━━━┳━━━━━━━┳━━━━━━━┫")
 	fmt.Println("┃ COUNT ┃ BINGO ┃ WRONG ┃")
-	fmt.Println("┃     0 ┃     0 ┃     \033[0;31;40m0\033[0m ┃")
+	fmt.Println("┃     0 ┃     0 ┃     \033[1;31m0\033[0m ┃")
 	fmt.Println("┣━━━━━━━┻━━━━━━━┻━━━━━━━┛")
 }
 
 func printDashboard(count, bingo, wrong int) {
 	fmt.Printf("┣━━━━━━━┳━━━━━━━┳━━━━━━━┓\n")
 	fmt.Printf("┃ COUNT ┃ BINGO ┃ WRONG ┃\n")
-	fmt.Printf("┃ %5d ┃ %5d ┃ \033[0;31;40m%5d\033[0m ┃\n", count, bingo, wrong)
+	fmt.Printf("┃ %5d ┃ %5d ┃ \033[1;31m%5d\033[0m ┃\n", count, bingo, wrong)
 	fmt.Printf("┣━━━━━━━┻━━━━━━━┻━━━━━━━┛\n")
 }
 
