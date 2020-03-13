@@ -48,6 +48,11 @@ var m []Pair = []Pair {
 	{"む", "mu"},
 	{"め", "me"},
 	{"も", "mo"},
+	{"ら", "ra"},
+	{"り", "ri"},
+	{"る", "ru"},
+	{"れ", "re"},
+	{"ろ", "ro"},
 }
 
 func init() {
@@ -69,6 +74,7 @@ func printDashboard(count, bingo, wrong int) {
 
 func main() {
 	tot := len(m)
+
 	count := 0
 	bingo := 0
 	wrong := 0
@@ -79,12 +85,13 @@ func main() {
 		count += 1
 
 		var v string
-		fmt.Printf("┃ %s: ", p.Key)
+		fmt.Printf("┃ (%03d) %s: ", count, p.Key)
 		fmt.Scanf("%s\n", &v)
 		if v == p.Value {
 			bingo += 1
 		} else {
 			wrong += 1
+			fmt.Printf("\033[1;31m┣━━━━━━━━━WRONG━━━━━━━━━┫\033[0m\n")
 		}
 		printDashboard(count, bingo, wrong)
 	}
