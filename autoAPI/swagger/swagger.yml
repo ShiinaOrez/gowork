@@ -2026,7 +2026,7 @@ paths:
           description: '{string} auth failed'
         "404":
           description: '{string} missionList not existed'
-  /missionList/attention/list:
+  /missionList/{id}/attentions:
     get:
       tags:
       - missionList

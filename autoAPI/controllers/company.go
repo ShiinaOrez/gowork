@@ -293,3 +293,11 @@ func (u *CompanyController) CompanyChangePassword() {
 func (u *CompanyController) GetFeedbackList() {
 
 }
+
+// @Title GetCompanyTags
+// @Description  获取公司注册时的标签
+// @Success 200 {object} models.GetCompanyTags
+// @router /tags/ [get]
+func (u *CompanyController) GetCompanyTags() {
+
+}

@@ -173,3 +173,11 @@ func (u *UserController) GetSuitabilityList() {
 // @router /password [put]
 func (u *UserController) ResetPassword() {
 }
+
+// @Title GetUserTags
+// @Description  获取用户注册时的标签
+// @Success 200 {object} models.GetUserTags
+// @router /tags/ [get]
+func (u *UserController) GetUserTags() {
+
+}
