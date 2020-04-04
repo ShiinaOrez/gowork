@@ -240,7 +240,7 @@ func LoginRequest(Sid, Password string) error {
 }
 
 func main() {
-	err := LoginRequest("2017211712", "sry19990512")
+	err := LoginRequest("2017211712", "password")
 	if err != nil {
 		fmt.Println(err.Error())
 	}

@@ -148,7 +148,7 @@ func main() {
 		Jar:     jar,
 	}
 	
-	response, err := LoginSPOC("2017211712", "hjl20030119", &client)
+	response, err := LoginSPOC("2017211712", "password", &client)
 	if err != nil {
 		fmt.Println(err.Error())
 	}
