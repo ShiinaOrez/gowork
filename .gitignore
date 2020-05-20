@@ -2,3 +2,4 @@ bee
 *.db
 lastupdate.tmp
 autoAPI/lastupdate.tmp
+.idea/
