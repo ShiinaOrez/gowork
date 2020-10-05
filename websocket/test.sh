@@ -1,1 +1,1 @@
-curl -X GET  http://localhost:12345/monitor
+curl -X GET  http://ws.shiina-orez.cn/monitor

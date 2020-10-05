@@ -19,6 +19,8 @@ type FirstMission struct {
 }
 
 func (mission FirstMission) Start(args Argument) *chan int {
+	fmt.Println("First Mission Start...")
+	fmt.Println("Args:", args)
 	ch := make(chan int)
 	go func() {
 		fmt.Println(args["str"].(string))
@@ -40,6 +42,8 @@ type SecondMission struct {
 }
 
 func (mission SecondMission) Start(args Argument) *chan int {
+	fmt.Println("Second Mission Start...")
+	fmt.Println("Args:", args)
 	ch := make(chan int)
 	go func() {
 		fmt.Println(args["str"].(string))
@@ -97,10 +101,11 @@ func main() {
 	missionMap["3"] = SecondMission{Content:make(map[string]interface{})}
 	var logicMap = make(map[string][]string)
 	logicMap["1"] = []string{"2", "3"}
+	logicMap["2"] = []string{"3"}
 	var inMap = make(map[string]int)
 	inMap["1"] = 0
 	inMap["2"] = 1
-	inMap["3"] = 1
+	inMap["3"] = 2
 	var startArg = map[string]interface{} {
 		"str": "Mission First Is Running.",
 	}

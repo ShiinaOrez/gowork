@@ -2,71 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b55ff35-24ba-44fc-8785-692477b084c1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compiler_online/utils/utils.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoAPI/controllers/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/autoAPI/controllers/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoAPI/controllers/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/autoAPI/controllers/tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoAPI/lastupdate.tmp" beforeDir="false" afterPath="$PROJECT_DIR$/autoAPI/lastupdate.tmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoAPI/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/autoAPI/models/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoAPI/swagger/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/autoAPI/swagger/swagger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoAPI/swagger/swagger.yml" beforeDir="false" afterPath="$PROJECT_DIR$/autoAPI/swagger/swagger.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jp/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/jp/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kylin_new_test/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/kylin_new_test/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/websocket/test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/websocket/test.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/websocket/websockets.html" beforeDir="false" afterPath="$PROJECT_DIR$/websocket/websockets.html" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.44911692">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/autoAPI/controllers/message.go">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/autoAPI/controllers/company.go">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="383">
-                  <caret line="240" selection-start-line="240" selection-end-line="240" />
-                  <folding>
-                    <element signature="e#21#59#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/autoAPI/lastupdate.tmp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="188" selection-start-column="188" selection-end-column="188" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/autoAPI/models/user.go">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="584">
-                  <caret line="536" column="31" selection-start-line="536" selection-start-column="5" selection-end-line="536" selection-end-column="31" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -75,92 +22,19 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>CompanyInformation</find>
-      <find>PositionList</find>
-      <find>body</find>
-      <find>EditCompany</find>
-      <find>CompanyInfo</find>
-      <find>Edit</find>
-      <find>Attention</find>
-      <find>MissionList</find>
-    </findStrings>
-  </component>
-  <component name="GOROOT" path="/usr/local/Cellar/go/1.11.5/libexec" />
+  <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/ctx_test/main.go" />
-        <option value="$PROJECT_DIR$/read_json/main.go" />
-        <option value="$PROJECT_DIR$/write_rest/main.go" />
-        <option value="$PROJECT_DIR$/use_database/main.go" />
-        <option value="$PROJECT_DIR$/gorm/main.go" />
-        <option value="$PROJECT_DIR$/gorm/model.go" />
-        <option value="$PROJECT_DIR$/gorm/muxibook_model.go" />
-        <option value="$PROJECT_DIR$/muxibook/api/user.go" />
-        <option value="$PROJECT_DIR$/muxibook/models/models.go" />
-        <option value="$PROJECT_DIR$/muxibook/api/book.go" />
-        <option value="$PROJECT_DIR$/muxibook/main.go" />
-        <option value="$PROJECT_DIR$/to-gather/main.go" />
-        <option value="$PROJECT_DIR$/to-gather/models/structures.go" />
-        <option value="$PROJECT_DIR$/to-gather/api/activity.go" />
-        <option value="$PROJECT_DIR$/to-gather/api/structures.go" />
-        <option value="$PROJECT_DIR$/to-gather/api/auth.go" />
-        <option value="$PROJECT_DIR$/to-gather/api/data_structure.go" />
-        <option value="$PROJECT_DIR$/to-gather/structure/structures.go" />
-        <option value="$PROJECT_DIR$/to-gather/models/models.go" />
-        <option value="$PROJECT_DIR$/autoAPI/controllers/message.go" />
-        <option value="$PROJECT_DIR$/autoAPI/models/user.go" />
-        <option value="$PROJECT_DIR$/autoAPI/controllers/company.go" />
-        <option value="$PROJECT_DIR$/autoAPI/lastupdate.tmp" />
-      </list>
-    </option>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="867" />
-    <option name="width" value="813" />
-    <option name="height" value="1050" />
-  </component>
+  <component name="ProjectId" id="1dkThPGx3OPhy55OCn7UA8OisPa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="gowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gowork" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gowork" type="462c0819:PsiDirectoryNode" />
-              <item name="autoAPI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gowork" type="462c0819:PsiDirectoryNode" />
-              <item name="autoAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gowork" type="462c0819:PsiDirectoryNode" />
-              <item name="autoAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
@@ -169,9 +43,11 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="go.sdk" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -179,45 +55,138 @@
       <recent name="$PROJECT_DIR$/to-gather/structure" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RunManager" selected="Go Build.go build github.com/ShiinaOrez/gowork/compiler_online">
+    <configuration name="go build github.com/ShiinaOrez/gowork/alibaba/2-1" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="gowork" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/alibaba/2-1/main.go" />
+      <package value="github.com/ShiinaOrez/gowork/alibaba/2-1" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/ShiinaOrez/gowork/alibaba/2" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="gowork" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/alibaba/2/main.go" />
+      <package value="github.com/ShiinaOrez/gowork/alibaba/2" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/ShiinaOrez/gowork/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="gowork" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/cmd/main.go" />
+      <package value="github.com/ShiinaOrez/gowork/cmd" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/ShiinaOrez/gowork/compiler_online" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="gowork" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/compiler_online/main.go" />
+      <package value="github.com/ShiinaOrez/gowork/compiler_online" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/ShiinaOrez/gowork/jp/gramma" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="gowork" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/jp/gramma/main.go" />
+      <package value="github.com/ShiinaOrez/gowork/jp/gramma" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <item itemvalue="Go Build.go build github.com/ShiinaOrez/gowork/compiler_online" />
+        <item itemvalue="Go Build.go build github.com/ShiinaOrez/gowork/cmd" />
+        <item itemvalue="Go Build.go build github.com/ShiinaOrez/gowork/jp/gramma" />
+        <item itemvalue="Go Build.go build github.com/ShiinaOrez/gowork/alibaba/2-1" />
+        <item itemvalue="Go Build.go build github.com/ShiinaOrez/gowork/alibaba/2" />
       </list>
-    </option>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21733822" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6670146" weight="0.010380623" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49945652" visible="true" weight="0.23061225" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005435" side_tool="true" weight="0.32942554" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-    </layout>
+    </recent_temporary>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <proxy>direct</proxy>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="560" y="-851" key="#GOROOT" timestamp="1592968226552">
+      <screen x="0" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="560" y="-851" key="#GOROOT/0.-1057.1920.1057/0.23.1680.947/-1080.-926.1080.1897@0.-1057.1920.1057" timestamp="1592968226552" />
+    <state width="1638" height="320" key="GridCell.Tab.0.bottom" timestamp="1601899602844">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="320" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1601204963110" />
+    <state width="1638" height="320" key="GridCell.Tab.0.bottom/-3840.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@0.0.1680.1050" timestamp="1596784508208" />
+    <state width="1878" height="257" key="GridCell.Tab.0.bottom/0.-1057.1920.1057/0.23.1680.947/-1080.-926.1080.1897@0.-1057.1920.1057" timestamp="1592979559537" />
+    <state width="1638" height="320" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1601899602844" />
+    <state width="1638" height="320" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1600521635361" />
+    <state width="1638" height="363" key="GridCell.Tab.0.bottom/0.23.1680.954@0.23.1680.954" timestamp="1593928299766" />
+    <state width="1638" height="320" key="GridCell.Tab.0.center" timestamp="1601899602842">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="320" key="GridCell.Tab.0.center/-1920.0.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1601204963108" />
+    <state width="1638" height="320" key="GridCell.Tab.0.center/-3840.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@0.0.1680.1050" timestamp="1596784508206" />
+    <state width="1878" height="257" key="GridCell.Tab.0.center/0.-1057.1920.1057/0.23.1680.947/-1080.-926.1080.1897@0.-1057.1920.1057" timestamp="1592979559536" />
+    <state width="1638" height="320" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1601899602842" />
+    <state width="1638" height="320" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1600521635360" />
+    <state width="1638" height="363" key="GridCell.Tab.0.center/0.23.1680.954@0.23.1680.954" timestamp="1593928299765" />
+    <state width="1638" height="320" key="GridCell.Tab.0.left" timestamp="1601899602841">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="320" key="GridCell.Tab.0.left/-1920.0.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1601204963107" />
+    <state width="1638" height="320" key="GridCell.Tab.0.left/-3840.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@0.0.1680.1050" timestamp="1596784508205" />
+    <state width="1878" height="257" key="GridCell.Tab.0.left/0.-1057.1920.1057/0.23.1680.947/-1080.-926.1080.1897@0.-1057.1920.1057" timestamp="1592979559535" />
+    <state width="1638" height="320" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1601899602841" />
+    <state width="1638" height="320" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1600521635360" />
+    <state width="1638" height="363" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1593928299764" />
+    <state width="1638" height="320" key="GridCell.Tab.0.right" timestamp="1601899602843">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="320" key="GridCell.Tab.0.right/-1920.0.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1601204963109" />
+    <state width="1638" height="320" key="GridCell.Tab.0.right/-3840.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@0.0.1680.1050" timestamp="1596784508207" />
+    <state width="1878" height="257" key="GridCell.Tab.0.right/0.-1057.1920.1057/0.23.1680.947/-1080.-926.1080.1897@0.-1057.1920.1057" timestamp="1592979559536" />
+    <state width="1638" height="320" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1601899602843" />
+    <state width="1638" height="320" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1600521635360" />
+    <state width="1638" height="363" key="GridCell.Tab.0.right/0.23.1680.954@0.23.1680.954" timestamp="1593928299765" />
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom" timestamp="1593928299770">
+      <screen x="0" y="23" width="1680" height="954" />
+    </state>
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1593742753551" />
+    <state width="1638" height="363" key="GridCell.Tab.1.bottom/0.23.1680.954@0.23.1680.954" timestamp="1593928299770" />
+    <state width="1638" height="363" key="GridCell.Tab.1.center" timestamp="1593928299769">
+      <screen x="0" y="23" width="1680" height="954" />
+    </state>
+    <state width="1638" height="363" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1593742753550" />
+    <state width="1638" height="363" key="GridCell.Tab.1.center/0.23.1680.954@0.23.1680.954" timestamp="1593928299769" />
+    <state width="1638" height="363" key="GridCell.Tab.1.left" timestamp="1593928299768">
+      <screen x="0" y="23" width="1680" height="954" />
+    </state>
+    <state width="1638" height="363" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1593742753549" />
+    <state width="1638" height="363" key="GridCell.Tab.1.left/0.23.1680.954@0.23.1680.954" timestamp="1593928299768" />
+    <state width="1638" height="363" key="GridCell.Tab.1.right" timestamp="1593928299769">
+      <screen x="0" y="23" width="1680" height="954" />
+    </state>
+    <state width="1638" height="363" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593742753550" />
+    <state width="1638" height="363" key="GridCell.Tab.1.right/0.23.1680.954@0.23.1680.954" timestamp="1593928299769" />
+    <state x="349" y="135" key="SettingsEditor" timestamp="1592970758132">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="349" y="135" key="SettingsEditor/0.23.1680.947@0.23.1680.947" timestamp="1592970758132" />
+    <state x="503" y="289" width="673" height="472" key="find.popup" timestamp="1593743171664">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="503" y="289" width="673" height="472" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1593743171664" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -228,170 +197,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ctx_test/main.go" />
-    <entry file="file://$PROJECT_DIR$/use_database/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gorm/muxibook_model.go" />
-    <entry file="file://$PROJECT_DIR$/gorm/model.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gorm/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="18" column="20" selection-start-line="14" selection-start-column="4" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/write_rest/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_json/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/std-way/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/go/src/time/format.go" />
-    <entry file="file://$PROJECT_DIR$/../go/src/github.com/jinzhu/gorm/main.go" />
-    <entry file="file://$PROJECT_DIR$/../go/src/github.com/kataras/iris/context/context.go" />
-    <entry file="file://$PROJECT_DIR$/to-gather/api/activity.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/to-gather/models/structures.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/to-gather/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/to-gather/models/models.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" selection-start-line="37" selection-end-line="38" />
-          <folding>
-            <element signature="e#16#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/to-gather/api/data_structure.go" />
-    <entry file="file://$PROJECT_DIR$/to-gather/api/auth.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" selection-start-line="13" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/muxibook/api/book.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#13#233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/muxibook/api/user.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="e#13#181#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/muxibook/models/models.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-          <folding>
-            <element signature="e#16#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/muxibook/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#14#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoAPI/swagger/swagger.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoAPI/models/position.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoAPI/controllers/message.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoAPI/models/user.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="536" column="31" selection-start-line="536" selection-start-column="5" selection-end-line="536" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoAPI/controllers/company.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="240" selection-start-line="240" selection-end-line="240" />
-          <folding>
-            <element signature="e#21#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoAPI/lastupdate.tmp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="188" selection-start-column="188" selection-end-column="188" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

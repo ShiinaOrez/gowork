@@ -91,7 +91,7 @@ func main() {
 			bingo += 1
 		} else {
 			wrong += 1
-			fmt.Printf("\033[1;31m┣━━━━━━━━━WRONG━━━━━━━━━┫\033[0m\n")
+			fmt.Printf("\033[1;31m┣━━━━━━WRONG: %3s ━━━━━━┫\033[0m\n", p.Value)
 		}
 		printDashboard(count, bingo, wrong)
 	}
